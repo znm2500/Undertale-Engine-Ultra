@@ -1,0 +1,10 @@
+depth=DEPTH_BATTLE.SOUL;
+image_speed=0;
+color=c_white;
+al=0.7
+Anim_Create(id,"al",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,al,-al,35)
+s=0
+ss=0
+index=1
+follow_board=false;
+_inv=0;

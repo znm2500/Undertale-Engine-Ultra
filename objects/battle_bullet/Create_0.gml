@@ -1,0 +1,13 @@
+depth=DEPTH_BATTLE.BULLET;
+angle = 0
+follow=0
+yy=y
+xx=x
+alarm[0] = 1
+vs=0
+hs=0
+rotate=0
+dis=point_distance(xx,yy,320,320)
+_angle=0
+point_at=0
+angle_offset=180

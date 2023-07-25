@@ -36,8 +36,9 @@ if(_char!=" "&&_char!="　"){
 	INST.color_outline[3]=_color_outline[3];
 	INST.shadow_x=_shadow_x;
 	INST.shadow_y=_shadow_y;
-if(!Battle_GetMenu()==BATTLE_MENU.ITEM){	INST.alpha=_alpha}
-	
+	if(room=room_battle){
+if((!Battle_GetMenu()==BATTLE_MENU.ITEM)){	INST.alpha=_alpha}
+	}
 	INST.alpha_text=_alpha_text;
 	INST.alpha_shadow=_alpha_shadow;
 	INST.alpha_outline=_alpha_outline;

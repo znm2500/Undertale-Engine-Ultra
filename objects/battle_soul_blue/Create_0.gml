@@ -7,7 +7,7 @@ on_block = 0
 on_platform = 0
 on_board = 0
 inst_plat = noone
-color=c_blue
+image_blend=c_blue
 jump_state = 0
 //0为在地上不动 1为向上跳 2为自由下落
 gravity_jump = 0.15

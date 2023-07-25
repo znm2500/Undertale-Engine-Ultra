@@ -1,7 +1,7 @@
 event_inherited();
 
 //移动
-Anim_Create(battle,"sa",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,battle.sa,0-battle.sa,10)
+
 
 if(Battle_GetState()==BATTLE_STATE.IN_TURN && moveable){
 	var SPD=Player_GetSpdTotal()

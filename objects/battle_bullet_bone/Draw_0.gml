@@ -2,13 +2,13 @@
 // You can write your code in this editor
 
 if(type=0){
-	blend = c_white;
+	image_blend = c_white;
 }
 if(type=1){
-	blend = make_color_rgb(20,196,255);
+	image_blend = c_aqua;
 }
 if(type=2){
-	blend = make_color_rgb(248,148,29);
+	image_blend = c_orange;
 }
 
 if(out = 0){
@@ -21,4 +21,5 @@ else{
 	depth = DEPTH_BATTLE.BULLET_OUTSIDE_LOW;
 	draw_self()
 }
+
 

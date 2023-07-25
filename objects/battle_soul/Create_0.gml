@@ -1,7 +1,8 @@
 depth=DEPTH_BATTLE.SOUL;
 image_speed=0;
-color=c_white;
+image_blend=c_white;
 al=0.7
+moveable=1
 Anim_Create(id,"al",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,al,-al,35)
 s=0
 ss=0

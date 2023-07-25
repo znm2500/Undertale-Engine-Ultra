@@ -28,10 +28,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_battle_soul_slice",
-    "path": "sprites/spr_battle_soul_slice/spr_battle_soul_slice.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

@@ -1,0 +1,65 @@
+event_inherited();
+
+//移动
+if(Battle_GetState()==BATTLE_STATE.IN_TURN && moveable){
+	var SPD=Player_GetSpdTotal()
+	var SPD=(Input_IsHeld(INPUT.CANCEL) ? SPD/2 : SPD);
+	repeat(SPD*10){
+		if(Input_IsHeld(INPUT.DOWN)){
+			movedown=1
+			moveup=0
+			moveleft=0
+			moveright=0
+		}
+		if(Input_IsHeld(INPUT.UP)){
+			movedown=0
+			moveup=1
+			moveleft=0
+			moveright=0
+		}
+		if(Input_IsHeld(INPUT.RIGHT)){
+			movedown=0
+			moveup=0
+			moveleft=0
+			moveright=1
+			}
+		if(Input_IsHeld(INPUT.LEFT)){
+			movedown=0
+			moveup=0
+			moveleft=1
+			moveright=0
+			}
+		if(movedown=1){
+			if(!position_meeting(x,(y-sprite_height/2)+0.05,block)){
+				y+=0.15;
+			moveup=0
+			moveleft=0
+			moveright=0
+			}
+		}
+		if(moveup=1){
+			if(!position_meeting(x,(y-sprite_height/2)-0.05,block)){
+				y-=0.15;
+			movedown=0
+			moveleft=0
+			moveright=0
+			}
+		}
+		if(moveright=1){
+			if(!position_meeting((x-sprite_width/2)+0.05,y,block)){
+				x+=0.15;
+			movedown=0
+			moveup=0
+			moveleft=0
+			}
+		}
+		if(moveleft=1){
+			if(!position_meeting((x-sprite_width/2)-0.05,y,block)){
+				x-=0.15;
+			movedown=0
+			moveup=0
+			moveright=0
+			}
+		}
+	}
+}

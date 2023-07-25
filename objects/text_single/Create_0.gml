@@ -23,10 +23,11 @@ shadow_x=1;
 shadow_y=1;
 
 alpha=1
+if(room=room_battle){
 if(Battle_GetMenu()==BATTLE_MENU.ITEM){depth=DEPTH_BATTLE.BULLET
-if(y>334){alpha=0}
+if(round(y)>battle_board.y-battle_board.up-5+20+64+16){alpha=0}
 else{alpha=1}}
-
+}
 alpha_text=1;
 alpha_shadow=1;
 alpha_outline=1;

@@ -1,1 +1,0 @@
-landmark_id=0;

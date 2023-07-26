@@ -544,6 +544,7 @@
     {"id":{"name":"Player_SetExp","path":"scripts/Player_SetExp/Player_SetExp.yy",},},
     {"id":{"name":"Player_GetAtk","path":"scripts/Player_GetAtk/Player_GetAtk.yy",},},
     {"id":{"name":"Player_GetDef","path":"scripts/Player_GetDef/Player_GetDef.yy",},},
+    {"id":{"name":"soul_line","path":"objects/soul_line/soul_line.yy",},},
     {"id":{"name":"Player_GetSpd","path":"scripts/Player_GetSpd/Player_GetSpd.yy",},},
     {"id":{"name":"Player_GetInv","path":"scripts/Player_GetInv/Player_GetInv.yy",},},
     {"id":{"name":"Player_SetAtk","path":"scripts/Player_SetAtk/Player_SetAtk.yy",},},

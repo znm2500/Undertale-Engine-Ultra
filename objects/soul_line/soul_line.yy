@@ -1,22 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "battle_soul_purple",
+  "name": "soul_line",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":72,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Soul",
-    "path": "folders/Objects/Battle/Soul.yy",
+    "name": "other",
+    "path": "folders/Objects/Battle/Soul/other.yy",
   },
-  "parentObjectId": {
-    "name": "battle_soul",
-    "path": "objects/battle_soul/battle_soul.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -32,10 +27,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_battle_soul",
-    "path": "sprites/spr_battle_soul/spr_battle_soul.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

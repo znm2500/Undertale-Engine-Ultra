@@ -25,6 +25,7 @@
     {"name":"battle_soul_yellow_bullet","order":1,"path":"objects/battle_soul_yellow_bullet/battle_soul_yellow_bullet.yy",},
     {"name":"snd_shoot","order":2,"path":"sounds/snd_shoot/snd_shoot.yy",},
     {"name":"spr_soul_aren","order":3,"path":"sprites/spr_soul_aren/spr_soul_aren.yy",},
+    {"name":"soul_line","order":4,"path":"objects/soul_line/soul_line.yy",},
     {"name":"battle_soul_orange","order":8,"path":"objects/battle_soul_orange/battle_soul_orange.yy",},
     {"name":"spr_soul_block","order":2,"path":"sprites/spr_soul_block/spr_soul_block.yy",},
     {"name":"battle_soul_purple","order":13,"path":"objects/battle_soul_purple/battle_soul_purple.yy",},

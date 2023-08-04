@@ -2,6 +2,7 @@
   "FolderOrderSettings": [
     {"name":"effect","order":7,"path":"folders/Objects/Battle/Soul/effect.yy",},
     {"name":"other","order":12,"path":"folders/Objects/Battle/Soul/other.yy",},
+    {"name":"BoneWall","order":3,"path":"folders/Scripts/Battle/Bullet/Bone/BoneWall.yy",},
     {"name":"origin","order":1,"path":"folders/Sprites/Battle/Soul/origin.yy",},
     {"name":"other","order":6,"path":"folders/Sprites/Battle/Soul/other.yy",},
   ],
@@ -11,7 +12,6 @@
     {"name":"battle_soul_blue","order":2,"path":"objects/battle_soul_blue/battle_soul_blue.yy",},
     {"name":"soul_aren","order":2,"path":"objects/soul_aren/soul_aren.yy",},
     {"name":"battle_soul_green","order":3,"path":"objects/battle_soul_green/battle_soul_green.yy",},
-    {"name":"Macro_Bone","order":3,"path":"scripts/Macro_Bone/Macro_Bone.yy",},
     {"name":"Battle_MakeBone","order":1,"path":"scripts/Battle_MakeBone/Battle_MakeBone.yy",},
     {"name":"battle_soul_yellow","order":11,"path":"objects/battle_soul_yellow/battle_soul_yellow.yy",},
     {"name":"battle_soul_aqua","order":5,"path":"objects/battle_soul_aqua/battle_soul_aqua.yy",},
@@ -22,6 +22,7 @@
     {"name":"bone_arrow","order":2,"path":"objects/bone_arrow/bone_arrow.yy",},
     {"name":"spr_arrow","order":1,"path":"sprites/spr_arrow/spr_arrow.yy",},
     {"name":"Purplesoul_Addpoint","order":1,"path":"scripts/Purplesoul_Addpoint/Purplesoul_Addpoint.yy",},
+    {"name":"bone_box_round","order":6,"path":"objects/bone_box_round/bone_box_round.yy",},
     {"name":"battle_soul_yellow_bullet","order":1,"path":"objects/battle_soul_yellow_bullet/battle_soul_yellow_bullet.yy",},
     {"name":"snd_shoot","order":2,"path":"sounds/snd_shoot/snd_shoot.yy",},
     {"name":"spr_soul_aren","order":3,"path":"sprites/spr_soul_aren/spr_soul_aren.yy",},
@@ -34,6 +35,7 @@
     {"name":"battle_bullet_bone","order":1,"path":"objects/battle_bullet_bone/battle_bullet_bone.yy",},
     {"name":"battle_soul_yellow_target","order":3,"path":"objects/battle_soul_yellow_target/battle_soul_yellow_target.yy",},
     {"name":"snd_ding","order":1,"path":"sounds/snd_ding/snd_ding.yy",},
+    {"name":"bone_cube","order":5,"path":"objects/bone_cube/bone_cube.yy",},
     {"name":"battle_bullet_arrow","order":2,"path":"objects/battle_bullet_arrow/battle_bullet_arrow.yy",},
   ],
 }

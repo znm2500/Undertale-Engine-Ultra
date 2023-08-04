@@ -5,6 +5,7 @@ size_x = 100
 size_y=100
 length = 100
 rot = 0
+
 rott = 0
 roting = 1
 type = 0

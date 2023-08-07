@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-Heal_Anim(99)
+Player_Heal(99,1)
 
 
 

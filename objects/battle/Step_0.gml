@@ -1,4 +1,5 @@
-
+if(heal!=0){Player_SetHp(round(hp))
+	Player_SetKR(round(kr))}
 //菜单
 if(_state==BATTLE_STATE.MENU){
 	//按钮

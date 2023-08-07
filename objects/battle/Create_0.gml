@@ -5,6 +5,9 @@ _enemy_object[2]=Encounter_GetEnemy(ENCOUNTER,2);
 //敌人实例
 sa=0
 damage=0
+heal=0
+hp=0
+kr=0
 _enemy[0]=noone;
 _enemy[1]=noone;
 _enemy[2]=noone;

@@ -2,6 +2,7 @@
   "FolderOrderSettings": [
     {"name":"effect","order":7,"path":"folders/Objects/Battle/Soul/effect.yy",},
     {"name":"other","order":12,"path":"folders/Objects/Battle/Soul/other.yy",},
+    {"name":"blaster","order":6,"path":"folders/Scripts/Battle/Bullet/blaster.yy",},
     {"name":"Bone","order":3,"path":"folders/Scripts/Battle/Bullet/Bone.yy",},
     {"name":"BoneWall","order":3,"path":"folders/Scripts/Battle/Bullet/Bone/BoneWall.yy",},
     {"name":"Bullet","order":3,"path":"folders/Sprites/Battle/Bullet.yy",},
@@ -12,7 +13,6 @@
     {"name":"origin","order":1,"path":"folders/Sprites/Battle/Soul/origin.yy",},
     {"name":"other","order":6,"path":"folders/Sprites/Battle/Soul/other.yy",},
     {"name":"UI","order":8,"path":"folders/Sprites/Battle/UI.yy",},
-    {"name":"blaster","order":6,"path":"folders/Scripts/Battle/Bullet/blaster.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_battle_soul_break","order":2,"path":"sprites/spr_battle_soul_break/spr_battle_soul_break.yy",},

@@ -47,7 +47,7 @@ _group_font_space_x[2,1]=1
 _group_font_space_y[2]=3
 
 
-_group_voice[0,0]=snd_text_voice_default;
+_group_voice[0,0]=snd_text_voice_sans;
 _group_voice[1,0]=snd_text_voice_typer;
-
+_group_voice[2,0]=snd_text_voice_asgore;
 _group_face[0]=face;

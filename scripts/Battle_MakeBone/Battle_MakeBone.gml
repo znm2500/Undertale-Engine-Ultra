@@ -1,6 +1,7 @@
-///@arg x, y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration,follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
+///@arg x,y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration,follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
 function Battle_MakeBone(){
     var OBJ = 0;
+	var DURATION=-1
     var X = argument[0];
     var Y = argument[1];
     var LENGTH = argument[2];
@@ -11,7 +12,9 @@ function Battle_MakeBone(){
     var ANGLE = argument[7];
     var ROT = argument[8];
     var DESTROY = argument[9];
-    var DURATION = argument[10];
+	 if (argument_count >= 11)
+           var DURATION = argument[10];
+
 
     if (argument_count >= 12)
         OBJ = argument[11];
@@ -437,28 +440,43 @@ bone.length=L
 bone.rott=II
 return bone
 }
-///@arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z
-function Battle_MakeBoneCube(){
-var _x=argument[0]
-var _y=argument[1]
-var angle_x=argument[2]
-var angle_y=argument[3]
-var angle_z=argument[4]
-var rotate_x=argument[5]
-var rotate_y=argument[6]
-var rotate_z=argument[7]
-var scale_x=argument[8]
-var scale_y=argument[9]
-var scale_z=argument[10]
-var inst=instance_create_depth(_x,_y,0,bone_cube)
-inst.anglex=angle_x
-inst.angley=angle_y
-inst.anglez=angle_z
-inst.angxs=rotate_x
-inst.angys=rotate_y
-inst.angzs=rotate_z
-inst.scalex=scale_x
-inst.scaley=scale_y
-inst.scalez=scale_z
-return inst
+/// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration
+
+function Battle_MakeBone3D() {
+    var _x = argument[0];  
+    var _y = argument[1];  
+    var angle_x = argument[2];  
+    var angle_y = argument[3];  
+    var angle_z = argument[4];  
+    var rotate_x = argument[5];  
+    var rotate_y = argument[6]; 
+    var rotate_z = argument[7];
+    var scale_x = argument[8];  
+    var scale_y = argument[9];
+    var scale_z = argument[10]; 
+    var _vspeed = argument[11]; 
+    var _hspeed = argument[12];
+    var shape = argument[13]; 
+    var type = argument[14]; 
+    var out = argument[15];  
+    var duration = argument_count > 15 ? argument[16] : 0; 
+    
+    var inst = instance_create_depth(_x, _y, 0, battle_bullet_bone_3d); 
+    inst.anglex = angle_x;  
+    inst.angley = angle_y; 
+    inst.anglez = angle_z;  
+    inst.angxs = rotate_x;  
+    inst.angys = rotate_y;  
+    inst.angzs = rotate_z;  
+    inst.scalex = scale_x;  
+    inst.scaley = scale_y;  
+    inst.scalez = scale_z;  
+    inst.vspeed = _vspeed; 
+    inst.hspeed = _hspeed;  
+    inst.shape = shape;  
+    inst.type = type;  
+    inst.out = out;  
+    inst.duration = duration;  
+    
+    return inst; 
 }

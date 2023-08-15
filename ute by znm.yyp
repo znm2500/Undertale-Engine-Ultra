@@ -711,7 +711,7 @@
     {"id":{"name":"item_faded_ribbon","path":"objects/item_faded_ribbon/item_faded_ribbon.yy",},},
     {"id":{"name":"item_tml","path":"objects/item_tml/item_tml.yy",},},
     {"id":{"name":"phone","path":"objects/phone/phone.yy",},},
-    {"id":{"name":"bone_cube","path":"objects/bone_cube/bone_cube.yy",},},
+    {"id":{"name":"battle_bullet_bone_3d","path":"objects/battle_bullet_bone_3d/battle_bullet_bone_3d.yy",},},
     {"id":{"name":"phone_toriel","path":"objects/phone_toriel/phone_toriel.yy",},},
     {"id":{"name":"char","path":"objects/char/char.yy",},},
     {"id":{"name":"char_player","path":"objects/char_player/char_player.yy",},},

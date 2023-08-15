@@ -16,5 +16,5 @@ function Battle_CreateBoardExtra(){
 	return extra;
 }
 
-//直接创建一个加框，创建后需要手动添加顶点
+//直接创建一个加框,创建后需要手动添加顶点
 //Create a Extra-Board directly,you need to add vertexes by yourself

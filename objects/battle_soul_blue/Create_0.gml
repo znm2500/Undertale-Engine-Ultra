@@ -19,7 +19,7 @@ max_speed = 20
 moving = 0
 
 /*
-这是一个向左甩灵魂的代码示例，最后四行不能漏掉
+这是一个向左甩灵魂的代码示例,最后四行不能漏掉
 
 Here is a example of slaming soul, last 4 lines mustn't be omitted
 

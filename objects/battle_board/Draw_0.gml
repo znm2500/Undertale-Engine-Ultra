@@ -20,7 +20,7 @@ for(var i = 0; i < global.borderCount; i++){
 	}
 }
 
-for(var i = 0; i < global.borderCount; i++){	//遍历所有框，应用遮罩效果
+for(var i = 0; i < global.borderCount; i++){	//遍历所有框,应用遮罩效果
 	bb = ds_list_find_value(global.borders_list,i);
 	if(instance_exists(bb)){
 		bb.replaceSurfaceAlpha(_surface, 0, 0, i == 0);

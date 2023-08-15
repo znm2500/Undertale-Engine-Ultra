@@ -45,5 +45,5 @@ function Battle_SetBoardSize() {
 	return true;
 }
 
-//旧版ute中的脚本，后来被糖萌芦删除了，但它确实好用
+//旧版ute中的脚本,后来被糖萌芦删除了,但它确实好用
 //Script in older version Undertale Engine,it was deleted by TML later but I think it's really useful

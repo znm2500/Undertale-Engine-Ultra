@@ -54,7 +54,7 @@
     {"name":"battle_bullet_bone","order":1,"path":"objects/battle_bullet_bone/battle_bullet_bone.yy",},
     {"name":"battle_soul_yellow_target","order":3,"path":"objects/battle_soul_yellow_target/battle_soul_yellow_target.yy",},
     {"name":"snd_ding","order":1,"path":"sounds/snd_ding/snd_ding.yy",},
-    {"name":"bone_cube","order":5,"path":"objects/bone_cube/bone_cube.yy",},
+    {"name":"battle_bullet_bone_3d","order":5,"path":"objects/battle_bullet_bone_3d/battle_bullet_bone_3d.yy",},
     {"name":"battle_bullet_arrow","order":2,"path":"objects/battle_bullet_arrow/battle_bullet_arrow.yy",},
   ],
 }

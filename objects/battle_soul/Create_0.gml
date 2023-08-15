@@ -9,3 +9,4 @@ ss=0
 index=1
 follow_board=false;
 _inv=0;
+global.moving=0;

@@ -30,5 +30,5 @@ function Battle_CreateBoardCover(){
 	return cover;
 }
 
-//创建一个矩形的减框，多边形减框暂无
+//创建一个矩形的减框,多边形减框暂无
 //Create a Cover-Board,but there is no polygon Cover-Board

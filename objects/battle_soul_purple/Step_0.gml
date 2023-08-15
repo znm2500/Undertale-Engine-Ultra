@@ -3,7 +3,7 @@ event_inherited();
 px = [];
 py = [];
 
-// 按照水平和垂直位置，收集坐标
+// 按照水平和垂直位置,收集坐标
 for (var i = 0; i < array_length(point); i++) { 
 	if (point[i].horizontal) {
 		array_push(py, point[i].y);
@@ -115,7 +115,7 @@ if (!moving) {
 	}
 }
 
-// 如果没有按下或持续按下指定的输入，设置位置为最近点的位置
+// 如果没有按下或持续按下指定的输入,设置位置为最近点的位置
 
      if(!h_moving)x = x_on;
    else if(!v_moving)y = y_on;

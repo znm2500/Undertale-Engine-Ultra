@@ -1,5 +1,5 @@
 depth = DEPTH_BATTLE.BOARD;
-listVertex = ds_list_create();	//多边形的顶点，请使用ds_list_add、ds_list_delete等进行操作
+listVertex = ds_list_create();	//多边形的顶点,请使用ds_list_add、ds_list_delete等进行操作
 listDivideIndex = ds_list_create();	//多边形的三角剖分
 rot = 0;	//旋转角度（逆时针）
 rotSpeed = 0;	//旋转速度
@@ -32,13 +32,13 @@ function relativeContains(_x, _y, _listVertex = listVertex) {
 		cur = _listVertex[| i];
 		if(prev[1] != cur[1]) {
 			isAllHor = false;
-			prevTrend = cur[1] < prev[1];	//因为是反向遍历，所以是小于（和后面的大于相反）
+			prevTrend = cur[1] < prev[1];	//因为是反向遍历,所以是小于（和后面的大于相反）
 			prevHasIntersection = (yy >= min(prev[1], cur[1]) && yy <= max(prev[1], cur[1]));
 			break;
 		}
 		prev = cur;
 	}
-	if(isAllHor)	//如果全部都为水平线，则返回false
+	if(isAllHor)	//如果全部都为水平线,则返回false
 		return false;
 	
 	//计算交点横坐标
@@ -63,7 +63,7 @@ function relativeContains(_x, _y, _listVertex = listVertex) {
 		}
 		prev = cur;
 	}
-	if(count == 0)	//如果没有交点，则返回false
+	if(count == 0)	//如果没有交点,则返回false
 		return false;
 
 	array_sort(intersections, true);	//从小到大对交点横坐标进行排序
@@ -79,7 +79,7 @@ function relativeContains(_x, _y, _listVertex = listVertex) {
     return false;
 }
 
-// [返回离边框最近处的位置，长度为2的数组（下标0是x，下标1是y）]
+// [返回离边框最近处的位置,长度为2的数组（下标0是x,下标1是y）]
 function limit(_x, _y) {
 	var size = ds_list_size(listVertex);
 	if(size == 0)
@@ -127,7 +127,7 @@ function limit(_x, _y) {
 }
 
 // 用于更新多边形的三角剖分
-// 如果你要实现框内遮罩的效果，请在添加或删除多边形的顶点后调用此函数
+// 如果你要实现框内遮罩的效果,请在添加或删除多边形的顶点后调用此函数
 function updateDivide() {
 	ds_list_clear(listDivideIndex);	//清除原剖分结果
 	var size = ds_list_size(listVertex);
@@ -141,10 +141,10 @@ function updateDivide() {
 	for(var i = 0; i < size; i++)
 		ds_list_add(marker, i);
 	
-	// 辅助函数，用于_index处的顶点是否可以剖分
+	// 辅助函数,用于_index处的顶点是否可以剖分
 	function canDivide(_index) {		
-		//判断是否为凸顶点，如果不是，则return false
-		//实际上这里也有部分为凹顶点的情况无法被排除，但是后续的代码会同时排除掉这些
+		//判断是否为凸顶点,如果不是,则return false
+		//实际上这里也有部分为凹顶点的情况无法被排除,但是后续的代码会同时排除掉这些
 		var p1 = listVertexTmp[| iloop(_index - 1, listVertexTmp)], p2 = listVertexTmp[| iloop(_index + 1, listVertexTmp)];
 		if(!relativeContains((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2, listVertexTmp))
 			return false;
@@ -163,7 +163,7 @@ function updateDivide() {
 		}
 		return true;
 	}
-	// 辅助函数，用于检查是否为凸多边形
+	// 辅助函数,用于检查是否为凸多边形
 	function isConvex() {
 		var bool1 = false, bool2 = false;	//分别记录边的两种走向是否存在
 		for(var i = 0; i < ds_list_size(listVertexTmp); i++) {
@@ -179,7 +179,7 @@ function updateDivide() {
 				bool2 = true;
 			}
 			
-			if(bool1 && bool2)	//如果两种走向都存在，则不是凸多边形
+			if(bool1 && bool2)	//如果两种走向都存在,则不是凸多边形
 				return false;
 		}
 		return true;	//是凸多边形
@@ -218,10 +218,10 @@ function updateDivide() {
 
 // 用于更改surface的alpha以达到限制显示范围的目的（遮罩）
 // 传入参数:
-//     _surf: 传入的surface，将会对其进行修改
-//     _xOffset: 限制区域的横向偏移量，一般为0即可
-//     _yOffset: 限制区域的纵向偏移量，一般为0即可
-//     _fillAlpha: 是否将alpha全设为0，用于多个多边形叠加时，第一个传入true，其余传入false以叠加遮罩
+//     _surf: 传入的surface,将会对其进行修改
+//     _xOffset: 限制区域的横向偏移量,一般为0即可
+//     _yOffset: 限制区域的纵向偏移量,一般为0即可
+//     _fillAlpha: 是否将alpha全设为0,用于多个多边形叠加时,第一个传入true,其余传入false以叠加遮罩
 function replaceSurfaceAlpha(_surf, _xOffset = 0, _yOffset = 0, _fillAlpha = true) {
 	//一些设定
 	surface_set_target(_surf);
@@ -256,7 +256,7 @@ function replaceSurfaceAlpha(_surf, _xOffset = 0, _yOffset = 0, _fillAlpha = tru
 	surface_reset_target();
 }
 
-// 用于绘制边框，如果isAutoDrawBorder为true，则会自动调用
+// 用于绘制边框,如果isAutoDrawBorder为true,则会自动调用
 function drawBorder() {
 	var vsin = dsin(-rot), vcos = dcos(-rot);
 	for(var i = 0; i < ds_list_size(listVertex); i++) {
@@ -269,8 +269,8 @@ function drawBorder() {
 		draw_sprite_ext(spr_pixel,0,x + ax - 5*cos(degtorad(floor(point_direction(ax,ay,bx,by)))),y + ay + 5*sin(degtorad(floor(point_direction(ax,ay,bx,by)))),5,point_distance(ax,ay,bx,by)+5+5*cos(degtorad((point_direction(ax,ay,bx,by)%45))),point_direction(ax,ay,bx,by)+90,battle_board.color_frame,1);
 	}
 }
-// 辅助函数，用于当_index超出边界时循环
-// 因为都是稍微超出，所以只考虑了稍微超出时的情况
+// 辅助函数,用于当_index超出边界时循环
+// 因为都是稍微超出,所以只考虑了稍微超出时的情况
 function iloop(_index, _list = listVertex) {
 	if(_index >= ds_list_size(_list))
 		return _index - ds_list_size(_list);

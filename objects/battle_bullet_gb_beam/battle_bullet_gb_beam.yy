@@ -11,7 +11,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "blaster",
-    "path": "folders/Scripts/Battle/Bullet/blaster.yy",
+    "path": "folders/Objects/Battle/Bullet/blaster.yy",
   },
   "parentObjectId": null,
   "persistent": false,

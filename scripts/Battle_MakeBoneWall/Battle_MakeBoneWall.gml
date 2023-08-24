@@ -293,9 +293,8 @@ function Battle_MakeBoneWallTop(){
     audio_play_sound(snd_exclamation, 0, false)
     return b;
 }
-/// @arg length, radius, type, pause, duration
-function Battle_MakeBoneWallRound_Rotate() {
-	room_speed=60
+/// @arg rotatespeed,radius,type,pause,duration
+function Battle_MakeBoneWallRound() {
     var duration = -1;
     var rotateSpeed = argument[0];
     var radius = argument[1];

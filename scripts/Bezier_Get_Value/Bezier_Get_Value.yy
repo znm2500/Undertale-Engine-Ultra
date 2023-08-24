@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "MakeGB",
+  "name": "Bezier_Get_Value",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Bullet",
-    "path": "folders/Scripts/Battle/Bullet.yy",
+    "name": "Bezier",
+    "path": "folders/Scripts/Bezier.yy",
   },
 }

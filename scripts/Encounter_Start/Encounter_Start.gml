@@ -36,8 +36,8 @@ function Encounter_Start() {
 		}
 		return true;
 	}else{
-		//Console_OutputLine("Encounter_Start() failed!");
-		Console_OutputLine("Encounter ID "+string(ENCOUNTER)+" doesn't exists!");
+		
+		
 		return false;
 	}
 

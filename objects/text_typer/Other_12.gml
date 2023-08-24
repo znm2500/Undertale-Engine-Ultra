@@ -26,10 +26,10 @@ switch(cmd[|0]){
 					break;
 					
 				case c_yellow:
-					_color_text[0]=make_color_rgb(255,255,195);
-					_color_text[1]=make_color_rgb(255,255,195);
-					_color_text[2]=make_color_rgb(255,255,60);
-					_color_text[3]=make_color_rgb(255,255,60);
+					_color_text[0]=make_color_rgb(255,255,128);
+					_color_text[1]=make_color_rgb(255,255,128);
+					_color_text[2]=make_color_rgb(255,255,0);
+					_color_text[3]=make_color_rgb(255,255,0);
 					_color_shadow[0]=make_color_rgb(76,76,0);
 					_color_shadow[1]=make_color_rgb(76,76,0);
 					_color_shadow[2]=make_color_rgb(76,76,0);
@@ -37,10 +37,10 @@ switch(cmd[|0]){
 					break;
 					
 				case c_red:
-					_color_text[0]=make_color_rgb(255,195,195);
-					_color_text[1]=make_color_rgb(255,195,195);
-					_color_text[2]=make_color_rgb(255,60,60);
-					_color_text[3]=make_color_rgb(255,60,60);
+					_color_text[0]=make_color_rgb(255,0,0);
+					_color_text[1]=make_color_rgb(255,0,0);
+					_color_text[2]=make_color_rgb(96,0,0);
+					_color_text[3]=make_color_rgb(96,0,0);
 					_color_shadow[0]=make_color_rgb(76,0,0);
 					_color_shadow[1]=make_color_rgb(76,0,0);
 					_color_shadow[2]=make_color_rgb(76,0,0);
@@ -57,26 +57,10 @@ switch(cmd[|0]){
 					_color_shadow[2]=make_color_rgb(0,0,0);
 					_color_shadow[3]=make_color_rgb(0,0,0);
 					break;
-					case c_aqua:
-					_color_text[0]=make_color_rgb(20, 169, 255)
-					_color_text[1]=make_color_rgb(20, 169, 255)
-					_color_text[2]=make_color_rgb(0,0,0);
-					_color_text[3]=make_color_rgb(0,0,0);
-					_color_shadow[0]=make_color_rgb(0,0,0);
-					_color_shadow[1]=make_color_rgb(0,0,0);
-					_color_shadow[2]=make_color_rgb(0,0,0);
-					_color_shadow[3]=make_color_rgb(0,0,0);
-					break;
-					case c_orange:
-					_color_text[0]=make_color_rgb(255, 160, 64)
-					_color_text[1]=make_color_rgb(255, 160, 64)
-					_color_text[2]=make_color_rgb(15,15,115);
-					_color_text[3]=make_color_rgb(15,15,115);
-					_color_shadow[0]=make_color_rgb(0,0,0);
-					_color_shadow[1]=make_color_rgb(0,0,0);
-					_color_shadow[2]=make_color_rgb(0,0,0);
-					_color_shadow[3]=make_color_rgb(0,0,0);
-					break;
+				case 9000:
+				_rainbow=1
+				break
+				
 			}
 		}
 		break;
@@ -187,6 +171,11 @@ switch(cmd[|0]){
 	case "alpha":
 		if(is_real(cmd[|1])){
 			_alpha=cmd[|1];
+		}
+		break;
+	case "angle":
+		if(is_real(cmd[|1])){
+			_angle=cmd[|1];
 		}
 		break;
 		case "headd":

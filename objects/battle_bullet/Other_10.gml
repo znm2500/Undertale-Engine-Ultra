@@ -5,12 +5,12 @@ switch (type) {
         
         break;
     case 1:
-        if (battle_soul.moving) {
+        if (global.moving) {
             
         }
         break;
     case 2:
-        if (!battle_soul.moving) {
+        if (!global.moving) {
             
         }
         break;

@@ -1,4 +1,4 @@
-/// @arg heal, anim
+/// @arg heal,=anim
 function Player_Heal() {
     var heal = argument[0];
     var anim = argument[1];

@@ -11,6 +11,4 @@ if(room_exists(target_room)){
 		BGM_SetVolume(0,0,bgm_fade_time);
 	}
 	alarm[0]=fade_in_time+warp_wait+1;
-}else{
-	Console_OutputLine("Attempt to warp to non-existing room "+string(target_room)+"!");
 }

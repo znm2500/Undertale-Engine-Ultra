@@ -25,8 +25,21 @@ function GetColorFromString() {
 		case "gray_light":
 			color=c_ltgray;
 			break;
+			case "rainbow":
+			color=9000;
+			break;
 	}
 	return color;
 
 
 }
+/// @arg col1,col2
+function Blend_Color(){
+    var c1 = argument[0];
+    var c2 = argument[1];
+    var red = color_get_red(c1) * color_get_red(c2) / 255;
+    var green = color_get_green(c1) * color_get_green(c2) / 255;
+    var blue = color_get_blue(c1) * color_get_blue(c2) / 255;
+    return make_color_rgb(red, green, blue);
+}
+

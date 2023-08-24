@@ -32,7 +32,7 @@ for(var i = 0; i < global.borderCount; i++){	//遍历所有框,应用遮罩效�
 draw_surface(_surface,0,0);
 draw_surface(_surface3,0,0);
 if(edge=1){
-	draw_sprite_ext(spr_battle_board_edge, 0,lx,ly, 1, 1, angle, color_frame, alpha_frame)
+draw_sprite_ext(spr_battle_board_edge, 0,lx,ly, 1, 1, angle, color_frame, alpha_frame)
 draw_sprite_ext(spr_battle_board_edge, 1,rx,ry, 1, 1,angle, color_frame, alpha_frame)
 draw_sprite_ext(spr_battle_board_edge, 2,ux,uy, 1, 1,angle, color_frame, alpha_frame)
 draw_sprite_ext(spr_battle_board_edge, 3,dx,dy, 1, 1,angle, color_frame, alpha_frame)

@@ -440,7 +440,7 @@ bone.length=L
 bone.rott=II
 return bone
 }
-/// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration
+/// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap
 
 function Battle_MakeBone3D() {
     var _x = argument[0];  
@@ -460,7 +460,7 @@ function Battle_MakeBone3D() {
     var type = argument[14]; 
     var out = argument[15];  
     var duration = argument_count > 15 ? argument[16] : 0; 
-    
+    var GAP = argument_count > 16 ? argument[17] : 40; 
     var inst = instance_create_depth(_x, _y, 0, battle_bullet_bone_3d); 
     inst.anglex = angle_x;  
     inst.angley = angle_y; 
@@ -477,6 +477,60 @@ function Battle_MakeBone3D() {
     inst.type = type;  
     inst.out = out;  
     inst.duration = duration;  
-    
+    inst.gap=GAP;
     return inst; 
 }
+///@arg x,y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration, scale, extra_angle, follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
+function Battle_MakeBoneArrow(){
+var OBJ = 0;
+var DURATION=-1;
+var SCALE = 1;
+var EXTRA_ANGLE = 0;
+var X = argument[0];
+var Y = argument[1];
+var LENGTH = argument[2];
+var HSPEED = argument[3];
+var VSPEED = argument[4];
+var COLOR = argument[5];
+var OUT = argument[6];
+var ANGLE = argument[7];
+var ROT = argument[8];
+var DESTROY = argument[9];
+if (argument_count >= 11)
+var DURATION = argument[10];
+if (argument_count >= 12)
+var SCALE = argument[11];
+if (argument_count >= 13)
+var EXTRA_ANGLE = argument[12];
+if (argument_count >= 14)
+OBJ = argument[13];
+
+var bone = instance_create_depth(X, Y, 0,battle_bullet_bone);
+bone.length = LENGTH;
+bone.hspeed = HSPEED;
+bone.vspeed = VSPEED;
+bone.type = COLOR;
+bone.out = OUT;
+bone.rotate = ROT;
+bone.auto_destroy = DESTROY;
+bone.angle = ANGLE;
+bone._angle = ANGLE;
+bone.duration = DURATION;
+bone.scale = SCALE;
+bone.extra_angle = EXTRA_ANGLE;
+bone.follow = OBJ;
+
+if (argument_count >= 15)
+    bone.follow_board = argument[14];
+if (argument_count >= 16)
+    bone.follow_angle = argument[15];
+if (argument_count >= 17)
+    bone.point = argument[16];
+if (argument_count >= 18)
+    bone.point_at = argument[17];
+if (argument_count >= 20) {
+    bone.follow_x = argument[18];
+    bone.follow_y = argument[19];
+}
+
+return bone;}

@@ -6,7 +6,6 @@
     {"name":"other","order":12,"path":"folders/Objects/Battle/Soul/other.yy",},
     {"name":"Battle","order":3,"path":"folders/Scripts/Battle.yy",},
     {"name":"Bone","order":3,"path":"folders/Scripts/Battle/Bullet/Bone.yy",},
-    {"name":"BoneWall","order":3,"path":"folders/Scripts/Battle/Bullet/Bone/BoneWall.yy",},
     {"name":"Bezier","order":18,"path":"folders/Scripts/Bezier.yy",},
     {"name":"BGM","order":4,"path":"folders/Scripts/BGM.yy",},
     {"name":"Border","order":5,"path":"folders/Scripts/Border.yy",},

@@ -50,7 +50,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Board","folderPath":"folders/Scripts/Battle/Board.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Bullet","folderPath":"folders/Scripts/Battle/Bullet.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Bone","folderPath":"folders/Scripts/Battle/Bullet/Bone.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"BoneWall","folderPath":"folders/Scripts/Battle/Bullet/Bone/BoneWall.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dialog","folderPath":"folders/Scripts/Battle/Dialog.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enemy","folderPath":"folders/Scripts/Battle/Enemy.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Action","folderPath":"folders/Scripts/Battle/Enemy/Action.yy",},

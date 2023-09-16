@@ -4,7 +4,7 @@ uniform float time;
 uniform vec2 mouse_pos;
 uniform vec2 resolution;
 uniform float blur_amount;
-
+varying vec4 v_vColour;
 void main()
 { 
 float blurSize = 1.0/resolution.y * blur_amount;
@@ -19,6 +19,6 @@ float blurSize = 1.0/resolution.y * blur_amount;
    sum += texture2D(gm_BaseTexture, vec2(v_texcoord.x, v_texcoord.y + 2.0*blurSize)) * 0.12;
    sum += texture2D(gm_BaseTexture, vec2(v_texcoord.x, v_texcoord.y + 3.0*blurSize)) * 0.09;
    sum += texture2D(gm_BaseTexture, vec2(v_texcoord.x, v_texcoord.y + 4.0*blurSize)) * 0.05;
-   gl_FragColor = sum;
+   gl_FragColor = v_vColour*sum;
 
 }

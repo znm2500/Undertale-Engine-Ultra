@@ -1,5 +1,5 @@
 draw_set_color(c_white)
-depth=DEPTH_UI.FADER+1
+depth=-9999
 
 uni_resolution_hoz = shader_get_uniform(shd_gaussian_horizontal, "resolution")
 uni_resolution_vert = shader_get_uniform(shd_gaussian_vertical, "resolution")
@@ -11,8 +11,7 @@ var_blur_amount = 1
 
 surface_width = window_get_width()
 surface_height = window_get_height()
-final_surface = application_surface
-surf = surface_create(surface_width, surface_height)
+final_surface = surface_create(surface_width, surface_height)
 
 duration = 30
 alarm[0] = 1

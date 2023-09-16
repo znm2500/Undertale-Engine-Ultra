@@ -1,10 +1,11 @@
-///@arg enabled
+///@arg enabled,blur
 function Border_SetEnabled() {
 	var ENABLED=argument[0];
 
 	if(ENABLED){
 		window_set_size(960,540);
 		border._enabled=true;
+		border.blur=argument[1]
 	}else{
 		window_set_size(640,480);
 		border._enabled=false;
@@ -18,6 +19,7 @@ function Border_SetEnabled() {
 			border._sprite_previous=-1;
 		}
 	}
+	
 	return true;
 
 

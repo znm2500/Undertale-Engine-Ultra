@@ -13,7 +13,6 @@ follow_angle=0
 follow_x=0
 follow_y=0
 rotate=0
-dis=point_distance(xx,yy,320,320)
 _angle=0
 point_at=0
 angle_offset=180

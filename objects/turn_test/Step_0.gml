@@ -1,4 +1,4 @@
 if(start = 1){
 	time += 1;}
-
-battle_board.angle++
+if(Input_IsHeld(INPUT.CONFIRM))
+battle_board.angle+=4

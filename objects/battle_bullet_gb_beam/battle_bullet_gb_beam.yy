@@ -13,7 +13,10 @@
     "name": "blaster",
     "path": "folders/Objects/Battle/Bullet/blaster.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "battle_bullet",
+    "path": "objects/battle_bullet/battle_bullet.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

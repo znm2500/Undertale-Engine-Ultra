@@ -1,4 +1,4 @@
-///@arg x,y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration,follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
+///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
 function Battle_MakeBone(){
     var OBJ = 0;
 	var DURATION=-1
@@ -480,7 +480,7 @@ function Battle_MakeBone3D() {
     inst.gap=GAP;
     return inst; 
 }
-///@arg x,y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration, scale, extra_angle, follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
+///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,scale,extra_angle,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
 function Battle_MakeBoneArrow(){
 var OBJ = 0;
 var DURATION=-1;

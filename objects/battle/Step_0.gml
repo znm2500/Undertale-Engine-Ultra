@@ -335,11 +335,11 @@ if(_state!=BATTLE_STATE.RESULT && Battle_GetEnemyNumber()==0){
 	Battle_SetNextState(BATTLE_STATE.RESULT);
 	BGM_Stop(5);
 	var text="{define `EXP` "+string(Battle_GetRewardExp())+"}{define `GOLD` "+string(Battle_GetRewardGold())+"}";
-	text+=Lang_GetString("battle.result.won");
+	text+="* You WON!&* You earned {insert EXP} EXP and {insert GOLD} GOLD.";
 	Player_SetExp(Player_GetExp()+Battle_GetRewardExp());
 	Player_SetGold(Player_GetGold()+Battle_GetRewardGold());
 	if(Player_UpdateLv()){
-		text+="&"+Lang_GetString("battle.result.lv_up");
+		text+="&"+"* Your LOVE increased.";
 		audio_play_sound(snd_level_up,0,false);
 	}
 	text+="{pause}{end}";

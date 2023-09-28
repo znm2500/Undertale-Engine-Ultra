@@ -4,7 +4,7 @@ function Item_GetTextEat() {
 
 	var result="";
 	result+="{define `ITEM` `"+NAME+"`}";
-	result+=Lang_GetString("item.eat");
+	result+="* You ate the {insert ITEM}.";
 
 	return result;
 

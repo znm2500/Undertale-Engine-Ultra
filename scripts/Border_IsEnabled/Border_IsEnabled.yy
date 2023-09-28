@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Border",
-    "path": "folders/Scripts/Border.yy",
+    "path": "folders/Objects/Scripts/Border.yy",
   },
 }

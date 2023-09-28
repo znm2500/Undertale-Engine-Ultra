@@ -15,7 +15,7 @@ if(_menu==0){
 	}else{
 		Flag_Load(FLAG_TYPE.INFO);
 		_inst_name=instance_create_depth(140,124,0,text_typer);
-		_inst_name.text=_prefix+Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.NAME,Lang_GetString("ui.save.name.empty"));
+		_inst_name.text=_prefix+Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.NAME,"EMPTY");
 		_inst_lv=instance_create_depth(308,124,0,text_typer);
 		_inst_lv.text=_prefix+"LV "+string(Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.LV));
 		_inst_time=instance_create_depth(452,124,0,text_typer);
@@ -26,13 +26,13 @@ if(_menu==0){
 		_inst_room=instance_create_depth(140,160,0,text_typer);
 		_inst_room.text=_prefix+Player_GetRoomName(Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.ROOM));
 		_inst_continue=instance_create_depth(170,210,0,text_typer);
-		_inst_continue.text=_prefix+Lang_GetString("menu.continue");
+		_inst_continue.text=_prefix+"Continue";
 		_inst_continue.override_color_text_enabled=true;
 		_inst_reset=instance_create_depth(390,210,0,text_typer);
-		_inst_reset.text=_prefix+Lang_GetString("menu.reset");
+		_inst_reset.text=_prefix+"Reset";
 		_inst_reset.override_color_text_enabled=true;
 		_inst_settings=instance_create_depth(264,250,0,text_typer);
-		_inst_settings.text=_prefix+Lang_GetString("menu.settings");
+		_inst_settings.text=_prefix+"Settings";
 		_inst_settings.override_color_text_enabled=true;
 		event_user(2);
 		

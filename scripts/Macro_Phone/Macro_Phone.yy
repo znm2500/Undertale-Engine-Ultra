@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Macro",
-    "path": "folders/Scripts/Macro.yy",
+    "path": "folders/Objects/Scripts/Macro.yy",
   },
 }

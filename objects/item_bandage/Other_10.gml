@@ -1,5 +1,5 @@
 ///@desc Use
-Dialog_Add(Lang_GetString("item.bandage.use.0")+Item_GetTextHeal(10));
+Dialog_Add("* You re-applied the bandage."+Item_GetTextHeal(10));
 Dialog_Start();
 
 Player_Heal(10);

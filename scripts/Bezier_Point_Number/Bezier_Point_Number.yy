@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Bezier",
-    "path": "folders/Scripts/Bezier.yy",
+    "path": "folders/Objects/Scripts/Bezier.yy",
   },
 }

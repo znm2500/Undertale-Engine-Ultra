@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Anim",
-    "path": "folders/Scripts/GMU/Anim.yy",
+    "path": "folders/Objects/Scripts/GMU/Anim.yy",
   },
 }

@@ -1,5 +1,5 @@
 ///@desc Info
-Dialog_Add(Lang_GetString("item.stick.info"));
+Dialog_Add("* Stick - Weapon AT 0&* Its bark is worse than&  its bite.");
 Dialog_Start();
 
 event_inherited();

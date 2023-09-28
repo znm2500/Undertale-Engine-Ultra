@@ -4,7 +4,7 @@ function Item_GetTextEquip() {
 
 	var result="";
 	result+="{define `ITEM` `"+NAME+"`}";
-	result+=Lang_GetString("item.equip");
+	result+="* You equiped the {insert ITEM}.";
 
 	return result;
 

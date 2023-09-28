@@ -8,4 +8,6 @@ if(instance_exists(rect)){
 	rect.rotSpeed = rot;
 	rect.x = x;
 	rect.y = y;
+
+
 }

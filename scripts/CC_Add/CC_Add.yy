@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "CC",
-    "path": "folders/Scripts/CC.yy",
+    "path": "folders/Objects/Scripts/CC.yy",
   },
 }

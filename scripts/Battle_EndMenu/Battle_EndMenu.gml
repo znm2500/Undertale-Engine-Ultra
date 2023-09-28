@@ -44,24 +44,24 @@ function Battle_EndMenu() {
 				var text="";
 				if(GOLD==0&&EXP==0){
 					var rand=irandom(20);
-					var fled_text=0;
+					var fled_text="* Escaped...";
 					if(rand<2){
-						fled_text=1;
+						fled_text="* I'm outta here.";
 					}else if(rand==2){
-						fled_text=2;
+						fled_text="* I've got better to do.";
 					}else if(rand==3){
-						fled_text=3;
+						fled_text="* Don't slow me down.";
 					}else{
-						fled_text=0;
+						fled_text="* Escaped...";
 					}
-					text+=Lang_GetString("battle.result.fled."+string(fled_text));
+					text+=fled_text;
 				}else{
 					text+="{define `EXP` "+string(EXP)+"}"+"{define `GOLD` "+string(GOLD)+"}";
-					text+=Lang_GetString("battle.result.fled.reward");
+					text+="* Ran away with {insert EXP} EXP&  and {insert GOLD} GOLD.";
 					Player_SetExp(Player_GetExp()+Battle_GetRewardExp());
 					Player_SetGold(Player_GetGold()+Battle_GetRewardGold());
 					if(Player_UpdateLv()){
-						//text+="&"+Lang_GetString("battle.result.lv_up");
+						
 						audio_play_sound(snd_level_up,0,false);
 					}
 				}

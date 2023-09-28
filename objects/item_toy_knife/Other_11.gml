@@ -1,5 +1,5 @@
 ///@desc Info
-Dialog_Add(Lang_GetString("item.toy_knife.info"));
+Dialog_Add("* Toy Knife - Weapon AT 3&* Made of plastic.&* A rarity nowadays.");
 Dialog_Start();
 
 event_inherited();

@@ -50,8 +50,8 @@ if(_menu==0){
 				}
 			}else if(_choice==1){
 				_menu=2;
-				_naming_name=Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.NAME,Lang_GetString("ui.save.name.empty"));
-				_confirm_title=Lang_GetString("menu.confirm.title.reset");
+				_naming_name=Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.NAME,"EMPTY");
+				_confirm_title="A name has already&been chosen.";
 				event_user(0);
 			}else if(_choice==2){
 				room_goto(room_settings);

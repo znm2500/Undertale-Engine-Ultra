@@ -257,16 +257,41 @@ function replaceSurfaceAlpha(_surf, _xOffset = 0, _yOffset = 0, _fillAlpha = tru
 }
 
 // 用于绘制边框,如果isAutoDrawBorder为true,则会自动调用
-function drawBorder(offset=0) {
-	var vsin = dsin(-rot), vcos = dcos(-rot);
-	for(var i = 0; i < ds_list_size(listVertex); i++) {
-		var a = listVertex[| i], b = listVertex[| iloop(i + 1)];
-		var ax = a[0] * vcos - a[1] * vsin;
-		var ay = a[0] * vsin + a[1] * vcos;
-		var bx = b[0] * vcos - b[1] * vsin;
-		var by = b[0] * vsin + b[1] * vcos;
-		draw_sprite_ext(spr_pixel,0,x + ax - (5-offset)*cos(degtorad(floor(point_direction(ax,ay,bx,by)))),y + ay + (5-offset)*sin(degtorad(floor(point_direction(ax,ay,bx,by)))),5,point_distance(ax,ay,bx,by)+5+5*cos(degtorad((point_direction(ax,ay,bx,by)%45)))-2*offset,point_direction(ax,ay,bx,by)+90,battle_board.color_frame,1);
-	}
+function drawBorder(offset=0, rect=0) {
+  
+    
+    if (rect) {
+        var lx = x + lengthdir_x(ds_list_find_value(listVertex,0)[0], -rot) + lengthdir_x(ds_list_find_value(listVertex,0)[1], -rot + 90);
+        var ly = y + lengthdir_x(ds_list_find_value(listVertex,0)[1], -rot) + lengthdir_x(ds_list_find_value(listVertex,0)[0], -rot - 90);
+        var rx = x + lengthdir_x(ds_list_find_value(listVertex,1)[0], -rot) + lengthdir_x(ds_list_find_value(listVertex,1)[1], -rot + 90);
+        var ry = y + lengthdir_x(ds_list_find_value(listVertex,1)[1], -rot) + lengthdir_x(ds_list_find_value(listVertex,1)[0], -rot - 90);
+        var ux = x + lengthdir_x(ds_list_find_value(listVertex,3)[0], -rot) + lengthdir_x(ds_list_find_value(listVertex,3)[1], -rot + 90);
+        var uy = y + lengthdir_x(ds_list_find_value(listVertex,3)[1], -rot) + lengthdir_x(ds_list_find_value(listVertex,3)[0], -rot - 90);
+        var dx = x + lengthdir_x(ds_list_find_value(listVertex,2)[0], -rot) + lengthdir_x(ds_list_find_value(listVertex,2)[1], -rot + 90);
+        var dy = y + lengthdir_x(ds_list_find_value(listVertex,2)[1], -rot) + lengthdir_x(ds_list_find_value(listVertex,2)[0], -rot - 90);
+    }
+    
+    var vsin = dsin(-rot);
+    var vcos = dcos(-rot);
+    
+    for (var i = 0; i < ds_list_size(listVertex); i++) {
+        var a = listVertex[| i];
+        var b = listVertex[| iloop(i + 1)];
+        
+        var ax = a[0] * vcos - a[1] * vsin;
+        var ay = a[0] * vsin + a[1] * vcos;
+        var bx = b[0] * vcos - b[1] * vsin;
+        var by = b[0] * vsin + b[1] * vcos;
+        
+        draw_sprite_ext(spr_pixel, 0, x + ax - (5-offset) * cos(degtorad(floor(point_direction(ax,ay,bx,by)))), y + ay + (5-offset) * sin(degtorad(floor(point_direction(ax,ay,bx,by)))), 5, point_distance(ax,ay,bx,by) + 5 + 5 * cos(degtorad((point_direction(ax,ay,bx,by) % 45))) - 2 * offset, point_direction(ax,ay,bx,by) + 90, battle_board.color_frame, battle_board.alpha_frame);
+    }
+    
+    if (battle_board.edge) {
+        draw_sprite_ext(spr_battle_board_edge, 0, lx, ly, 1, 1, rot, battle_board.color_frame, battle_board.alpha_frame);
+        draw_sprite_ext(spr_battle_board_edge, 0, rx, ry, -1, 1, rot, battle_board.color_frame, battle_board.alpha_frame);
+        draw_sprite_ext(spr_battle_board_edge, 0, ux, uy, 1, -1, rot, battle_board.color_frame, battle_board.alpha_frame);
+        draw_sprite_ext(spr_battle_board_edge, 0, dx, dy, -1, -1, rot, battle_board.color_frame, battle_board.alpha_frame);
+    }
 }
 // 辅助函数,用于当_index超出边界时循环
 // 因为都是稍微超出,所以只考虑了稍微超出时的情况

@@ -13,13 +13,6 @@ Input_Bind(INPUT.UP,INPUT_TYPE.KEYBOARD,0,vk_up);
 Input_Bind(INPUT.DOWN,INPUT_TYPE.KEYBOARD,0,vk_down);
 Input_Bind(INPUT.LEFT,INPUT_TYPE.KEYBOARD,0,vk_left);
 Input_Bind(INPUT.RIGHT,INPUT_TYPE.KEYBOARD,0,vk_right);
-
-Lang_Init();
-Lang_LoadList();
-Lang_LoadString(0);
-Lang_LoadSprite(0);
-Lang_LoadFont(0);
-
 Flag_Init();
 
 Encounter_Init();

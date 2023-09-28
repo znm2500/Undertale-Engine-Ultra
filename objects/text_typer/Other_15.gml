@@ -16,25 +16,25 @@ ds_map_add(_map_macro,"VOICE.DEFAULT",0);
 ds_map_add(_map_macro,"VOICE.TYPER",1);
 ds_map_add(_map_macro,"voice.asgore",2)
 
-_group_font[0,0]=Lang_GetFont(Lang_GetString("font.dialog.0"));
-_group_font_scale_x[0,0]=real(Lang_GetString("font.dialog.0.scale.x"));
-_group_font_scale_y[0,0]=real(Lang_GetString("font.dialog.0.scale.y"));
-_group_font_space_x[0,0]=real(Lang_GetString("font.dialog.0.space.x"));
-_group_font[0,1]=font_cd
+_group_font[0,0]=font_determination_mono;
+_group_font_scale_x[0,0]=1;
+_group_font_scale_y[0,0]=1;
+_group_font_space_x[0,0]=0;
+_group_font[0,1]=font_menu
 _group_font_scale_x[0,1]=1
 _group_font_scale_y[0,1]=1
 _group_font_space_x[0,1]=1
-_group_font_space_y[0]=real(Lang_GetString("font.dialog.space.y"));
+_group_font_space_y[0]=0;
 
-_group_font[1,0]=Lang_GetFont(Lang_GetString("font.menu.0"));
-_group_font_scale_x[1,0]=real(Lang_GetString("font.menu.0.scale.x"));
-_group_font_scale_y[1,0]=real(Lang_GetString("font.menu.0.scale.y"));
-_group_font_space_x[1,0]=real(Lang_GetString("font.menu.0.space.x"));
-_group_font[1,1]=font_cd
+_group_font[1,0]=font_determination_mono;
+_group_font_scale_x[1,0]=1;
+_group_font_scale_y[1,0]=1;
+_group_font_space_x[1,0]=0;
+_group_font[1,1]=font_menu
 _group_font_scale_x[1,1]=1
 _group_font_scale_y[1,1]=1
 _group_font_space_x[1,1]=1
-_group_font_space_y[1]=real(Lang_GetString("font.menu.space.y"));
+_group_font_space_y[1]=0;
 
 _group_font[2,0]=font_sans
 _group_font_scale_x[2,0]=1

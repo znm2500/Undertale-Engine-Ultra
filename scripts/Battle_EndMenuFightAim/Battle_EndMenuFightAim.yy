@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Fight",
-    "path": "folders/Scripts/Battle/Menu/Fight.yy",
+    "path": "folders/Objects/Scripts/Battle/Menu/Fight.yy",
   },
 }

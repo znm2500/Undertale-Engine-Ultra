@@ -1,5 +1,5 @@
 event_inherited();
 
-_name=Lang_GetString("item.stick.name");
-_name_short=Lang_GetString("item.stick.name");
-_name_short_serious=Lang_GetString("item.stick.name");
+_name="Stick";
+_name_short="Stick";
+_name_short_serious="Stick";

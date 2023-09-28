@@ -41,3 +41,12 @@ _frame_right_x=0;
 _frame_right_y=0;
 _frame_right_width=0;
 _frame_right_height=0;
+
+lx=0;
+ly=0;
+rx=0;
+ry=0;
+ux=0;
+uy=0;
+dx=0;
+dy=0;

@@ -3,52 +3,52 @@ var text="";
 var valid=true;
 switch(string_lower(_naming_name)){
 	default:
-		text=Lang_GetString("menu.confirm.title");
+		text="Is this name correct?";
 		break;
 	case "aaaaaa":
-		text=Lang_GetString("menu.confirm.title.aaaaaa");
+		text="Not very creative...?";
 		break;
 	case "alphys":
-		text=Lang_GetString("menu.confirm.title.alphys");
+		text="D-don't do that.";
 		valid=false;
 		break;
 	case "alphy":
-		text=Lang_GetString("menu.confirm.title.alphy");
+		text="Uh.... OK?";
 		break;
 	case "asgore":
-		text=Lang_GetString("menu.confirm.title.asgore");
+		text="You cannot.";
 		valid=false;
 		break;
 	case "toriel":
-		text=Lang_GetString("menu.confirm.title.toriel");
+		text="I think you should&think of your own&name, my child.";
 		valid=false;
 		break;
 	case "asriel":
-		text=Lang_GetString("menu.confirm.title.asriel");
+		text="...";
 		valid=false;
 		break;
 	case "flowey":
-		text=Lang_GetString("menu.confirm.title.flowey");
+		text="I already CHOSE&that name.";
 		valid=false;
 		break;
 	case "sans":
-		text=Lang_GetString("menu.confirm.title.sans");
+		text="nope.";
 		valid=false;
 		break;
 	case "papyru":
-		text=Lang_GetString("menu.confirm.title.papyru");
+		text="I'LL ALLOW IT!!!!";
 		break;
 	case "undyne":
-		text=Lang_GetString("menu.confirm.title.undyne");
+		text="Get your OWN name!";
 		valid=false;
 		break;
 	case "mtt":
 	case "metta":
 	case "mett":
-		text=Lang_GetString("menu.confirm.title.mtt");
+		text="OOOOH!!! ARE YOU&PROMOTING MY BRAND?";
 		break;
 	case "chara":
-		text=Lang_GetString("menu.confirm.title.chara");
+		text="The true name.";
 		break;
 }
 

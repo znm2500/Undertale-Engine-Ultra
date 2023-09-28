@@ -12,28 +12,14 @@ draw_set_alpha(1)
 gpu_set_blendenable(true)
 gpu_set_colorwriteenable(1, 1, 1, 1)
 surface_reset_target()
-
-for(var i = 0; i < global.borderCount; i++){
-	bb = ds_list_find_value(global.borders_list,i);
-	if(instance_exists(bb)){
-		bb.replaceSurfaceAlpha(_surface, 0, 0, i == 0);
-	}
-}
-
 for (var i = 0; i < global.borderCount; i++) { 
     // 遍历所有框，应用遮罩效果
     bb = ds_list_find_value(global.borders_list, i);
     if (instance_exists(bb)){
         bb.replaceSurfaceAlpha(_surface, 0, 0, i == 0);
        
-		 bb.drawBorder(edge?4:0);
+		 bb.drawBorder(edge?4:0,1);
     }
 }
 draw_surface(_surface,0,0);
 draw_surface(_surface3,0,0);
-if(edge){
-draw_sprite_ext(spr_battle_board_edge, 0,lx,ly, 1, 1, angle, color_frame, alpha_frame)
-draw_sprite_ext(spr_battle_board_edge, 0,rx,ry, -1, 1,angle, color_frame, alpha_frame)
-draw_sprite_ext(spr_battle_board_edge, 0,ux,uy, 1, -1,angle, color_frame, alpha_frame)
-draw_sprite_ext(spr_battle_board_edge, 0,dx,dy, -1, -1,angle, color_frame, alpha_frame)
-}

@@ -30,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_battle_button_act",
+    "path": "sprites/spr_battle_button_act/spr_battle_button_act.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

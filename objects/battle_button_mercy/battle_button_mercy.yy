@@ -30,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_battle_button_mercy",
+    "path": "sprites/spr_battle_button_mercy/spr_battle_button_mercy.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

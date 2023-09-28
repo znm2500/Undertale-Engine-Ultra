@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Input",
-    "path": "folders/Scripts/GMU/Input.yy",
+    "path": "folders/Objects/Scripts/GMU/Input.yy",
   },
 }

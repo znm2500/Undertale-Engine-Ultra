@@ -11,6 +11,7 @@ if(font_exists(font)){
 		var proc=0;
 		repeat(scale_x){
 			proc+=1;
+			
 			draw_text_transformed_color(x+_offset_x+proc,y+_offset_y,text,scale_x,scale_y,angle,color_outline[0],color_outline[1],color_outline[3],color_outline[2],alpha_outline*alpha);
 			draw_text_transformed_color(x+_offset_x-proc,y+_offset_y,text,scale_x,scale_y,angle,color_outline[0],color_outline[1],color_outline[3],color_outline[2],alpha_outline*alpha);
 		}

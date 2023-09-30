@@ -100,6 +100,7 @@
     {"name":"spr_battle_soul_yellow_target","order":1,"path":"sprites/spr_battle_soul_yellow_target/spr_battle_soul_yellow_target.yy",},
     {"name":"spr_gameover","order":1,"path":"sprites/spr_gameover/spr_gameover.yy",},
     {"name":"spr_battle_button_mercy","order":4,"path":"sprites/spr_battle_button_mercy/spr_battle_button_mercy.yy",},
+    {"name":"spr_bone_1","order":1,"path":"sprites/spr_bone_1/spr_bone_1.yy",},
     {"name":"world","order":9,"path":"objects/world/world.yy",},
     {"name":"camera","order":10,"path":"objects/camera/camera.yy",},
     {"name":"fader","order":11,"path":"objects/fader/fader.yy",},

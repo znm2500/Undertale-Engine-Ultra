@@ -566,6 +566,7 @@
     {"id":{"name":"Demo_Init","path":"scripts/Demo_Init/Demo_Init.yy",},},
     {"id":{"name":"Demo_StartRecording","path":"scripts/Demo_StartRecording/Demo_StartRecording.yy",},},
     {"id":{"name":"Demo_PauseRecording","path":"scripts/Demo_PauseRecording/Demo_PauseRecording.yy",},},
+    {"id":{"name":"spr_bone_1","path":"sprites/spr_bone_1/spr_bone_1.yy",},},
     {"id":{"name":"Demo_ResumeRecording","path":"scripts/Demo_ResumeRecording/Demo_ResumeRecording.yy",},},
     {"id":{"name":"Demo_StopRecording","path":"scripts/Demo_StopRecording/Demo_StopRecording.yy",},},
     {"id":{"name":"battle_menu_item_dot","path":"objects/battle_menu_item_dot/battle_menu_item_dot.yy",},},

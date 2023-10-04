@@ -10,11 +10,5 @@ draw_sprite_ext(sprite_index,image_index,x,y,(scale_x*image_xscale),(scale_y*ima
 var LEN=(25*scale_x);
 var X=(x+lengthdir_x(LEN,image_angle));
 var Y=(y+lengthdir_y(LEN,image_angle));
-var XSCALE=scale_x;
 var YSCALE=(scale_y*_beam_scale);
-draw_sprite_ext(SPR,0,X,Y,XSCALE,YSCALE,image_angle,color,_beam_alpha);
-var LEN=(LEN+(sprite_get_width(SPR)*scale_x));
-var X=(x+lengthdir_x(LEN,image_angle));
-var Y=(y+lengthdir_y(LEN,image_angle));
-var XSCALE=999;
-draw_sprite_ext(SPR,1,X,Y,XSCALE,YSCALE,image_angle,color,_beam_alpha);
+draw_sprite_ext(SPR,0,X,Y,9999,YSCALE,image_angle,color,_beam_alpha);

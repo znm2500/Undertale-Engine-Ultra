@@ -40,6 +40,7 @@ function Macro_Flag() {
 		BOX_END=FLAG_STATIC.BOX+20-1,
 		SHOP_HOST,
 		KR
+
 	};
 #endregion
 

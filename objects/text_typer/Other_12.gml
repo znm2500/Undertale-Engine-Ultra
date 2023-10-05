@@ -15,6 +15,7 @@ switch(cmd[|0]){
 			var color=GetColorFromString(cmd[|1]);
 			switch(color){
 				case c_white:
+				_rainbow=0
 					_color_text[0]=c_white;
 					_color_text[1]=c_white;
 					_color_text[2]=c_white;
@@ -26,6 +27,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_yellow:
+				_rainbow=0
 					_color_text[0]=make_color_rgb(255,255,128);
 					_color_text[1]=make_color_rgb(255,255,128);
 					_color_text[2]=make_color_rgb(255,255,0);
@@ -37,6 +39,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_red:
+				_rainbow=0
 					_color_text[0]=make_color_rgb(255,0,0);
 					_color_text[1]=make_color_rgb(255,0,0);
 					_color_text[2]=make_color_rgb(96,0,0);
@@ -48,6 +51,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_black:
+				_rainbow=0
 					_color_text[0]=make_color_rgb(0,0,0);
 					_color_text[1]=make_color_rgb(0,0,0);
 					_color_text[2]=make_color_rgb(0,0,0);
@@ -57,8 +61,11 @@ switch(cmd[|0]){
 					_color_shadow[2]=make_color_rgb(0,0,0);
 					_color_shadow[3]=make_color_rgb(0,0,0);
 					break;
-				case 9000:
+				case c_rainbow:
 				_rainbow=1
+				break
+				default:
+				_rainbow=0
 				break
 				
 			}

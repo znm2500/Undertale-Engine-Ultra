@@ -1,3 +1,4 @@
+#macro c_rainbow 9000
 ///@arg string
 function GetColorFromString() {
 	var STR=argument[0];
@@ -26,7 +27,7 @@ function GetColorFromString() {
 			color=c_ltgray;
 			break;
 			case "rainbow":
-			color=9000;
+			color=c_rainbow;
 			break;
 	}
 	return color;

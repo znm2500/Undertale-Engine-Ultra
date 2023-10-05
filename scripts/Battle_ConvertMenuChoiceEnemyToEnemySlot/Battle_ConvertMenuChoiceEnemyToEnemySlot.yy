@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Menu",
-    "path": "folders/Objects/Scripts/Battle/Menu.yy",
+    "path": "folders/Scripts/Battle/Menu.yy",
   },
 }

@@ -1,6 +1,6 @@
 Anim_Init();
 
-
+Shop_Init()
 
 Input_Init();
 Input_Bind(INPUT.CONFIRM,INPUT_TYPE.KEYBOARD,0,vk_enter);

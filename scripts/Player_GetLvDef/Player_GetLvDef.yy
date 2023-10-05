@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "LV Up",
-    "path": "folders/Objects/Scripts/Player/LV Up.yy",
+    "path": "folders/Scripts/Player/LV Up.yy",
   },
 }

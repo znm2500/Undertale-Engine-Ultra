@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Spareable",
-    "path": "folders/Objects/Scripts/Battle/Enemy/Spareable.yy",
+    "path": "folders/Scripts/Battle/Enemy/Spareable.yy",
   },
 }

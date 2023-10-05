@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "BGM",
-    "path": "folders/Objects/Scripts/BGM.yy",
+    "path": "folders/Scripts/BGM.yy",
   },
 }

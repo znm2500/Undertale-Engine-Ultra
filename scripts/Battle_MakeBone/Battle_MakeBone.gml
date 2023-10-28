@@ -204,6 +204,13 @@ function Battle_MakeBoneBottom(){
     }
   
     var bone = Battle_MakeBoneV(X, (((battle_board.y + battle_board.down) - (LENGTH / 2)) - 5), LENGTH, HSPEED, 0, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    
+    if(argument[11] == 1){
+        bone.angle = 90;
+        bone._angle = 90;
+        bone.y = battle_board.y + battle_board.down;
+    }
+	
     return bone;
 }
 ///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
@@ -242,6 +249,11 @@ function Battle_MakeBoneLeft(){
     }
   
     var bone = Battle_MakeBoneH((((battle_board.x - battle_board.left) + (LENGTH / 2)) + 5), Y, LENGTH, 0, VSPEED, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+	if(argument[11] == 1){
+        bone.angle = 0;
+        bone._angle = 0;
+        bone.x = battle_board.x - battle_board.left;
+    }
     return bone;
 }
 ///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
@@ -279,8 +291,12 @@ function Battle_MakeBoneRight(){
         FOLLOW_Y = argument[14];
     }
   
-    var bone = Battle_MakeBoneH((((battle_board.x + battle_board.right) - (LENGTH / 2)) - 5), Y, LENGTH, 0, VSPEED, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
- bone.angle+=180
+ var bone = Battle_MakeBoneH((((battle_board.x + battle_board.right) - (LENGTH / 2)) - 5), Y, LENGTH, 0, VSPEED, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+ if(argument[11] == 1){
+        bone.angle = 180;
+        bone._angle = 180;
+        bone.x = battle_board.x + battle_board.right;
+    }
  return bone;
 }
 ///@arg x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
@@ -319,7 +335,11 @@ function Battle_MakeBoneTop(){
     }
   
     var bone = Battle_MakeBoneV(X, (((battle_board.y - battle_board.up) + (LENGTH / 2)) + 5), LENGTH, HSPEED, 0, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    bone.angle += 180;
+    if(argument[11] == 1){
+        bone.angle = -90;
+        bone._angle = -90;
+        bone.y = battle_board.y - battle_board.up;
+    }
     return bone;
 }
 ///@arg x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y

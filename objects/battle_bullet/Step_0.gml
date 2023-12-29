@@ -4,17 +4,19 @@ if (follow) {
     
     if (follow_board) {
         angle = _angle + battle_board.angle;
-      
         _angle += rotate;
-        x = battle_board.x + lengthdir_x(xx - center_x, -battle_board.angle) + lengthdir_x(yy - center_y, -battle_board.angle + 90);
-        y = battle_board.y + lengthdir_x(xx - center_x, -battle_board.angle - 90) + lengthdir_x(yy - center_y, -battle_board.angle);
+        
+        var pos = RotateAround(center_x, center_y, xx, yy, battle_board.angle);
+        x = battle_board.x + pos[0];
+        y = battle_board.y + pos[1];
     }
     else {
         angle = _angle + follow_angle;
-       
         _angle += rotate;
-        x = follow_x + lengthdir_x(xx - center_x, -follow_angle) + lengthdir_x(yy - center_y, -follow_angle + 90);
-        y = follow_y + lengthdir_x(xx - center_x, -follow_angle - 90) + lengthdir_x(yy - center_y, -follow_angle);
+        
+        var pos = RotateAround(follow_x, follow_y, xx, yy, follow_angle);
+        x = follow_x + pos[0];
+        y = follow_y + pos[1];
     }
 }
 else {
@@ -28,7 +30,7 @@ if (place_meeting(x, y, battle_soul)) {
 }
 
 if (place_meeting(x, y, battle_soul_yellow_bullet) && type == 4) {
-    obj = instance_place(x, y, battle_soul_yellow_bullet);
+    var obj = instance_place(x, y, battle_soul_yellow_bullet);
     instance_destroy(obj);
     instance_destroy();
 }

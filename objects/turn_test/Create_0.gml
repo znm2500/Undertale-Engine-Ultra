@@ -8,7 +8,7 @@ Battle_MakeBoneBottom(320,20,0,0,00,0,0,-1,1,1,1)
 
 
 
-Battle_MakeBoneWallLeft(9999,20,1,1,1)
+Battle_MakeBoneWallLeft(30,20,1,1,1)
 
 
 

@@ -1,23 +1,29 @@
 if (follow) {
     angle = battle_board.angle;
-    
-    xx1 = battle_board.x + lengthdir_x(x1 - center_x, -angle) + lengthdir_x(y1 - center_y, -angle + 90);
-    yy1 = battle_board.y + lengthdir_x(x1 - center_x, -angle - 90) + lengthdir_x(y1 - center_y, -angle);
-    
-    xx2 = battle_board.x + lengthdir_x(x2 - center_x, -angle) + lengthdir_x(y2 - center_y, -angle + 90);
-    yy2 = battle_board.y + lengthdir_x(x2 - center_x, -angle - 90) + lengthdir_x(y2 - center_y, -angle);
-    
-    xx3 = battle_board.x + lengthdir_x(x1 - center_x, -angle) + lengthdir_x(y2 - center_y, -angle + 90);
-    yy3 = battle_board.y + lengthdir_x(x1 - center_x, -angle - 90) + lengthdir_x(y2 - center_y, -angle);
-    
-    xx4 = battle_board.x + lengthdir_x(x2 - center_x, -angle) + lengthdir_x(y1 - center_y, -angle + 90);
-    yy4 = battle_board.y + lengthdir_x(x2 - center_x, -angle - 90) + lengthdir_x(y1 - center_y, -angle);
+
+    var pos = [];
+    pos[0] = RotateAround(center_x, center_y, x1, y1, angle);
+    pos[1] = RotateAround(center_x, center_y, x2, y2, angle);
+    pos[2] = RotateAround(center_x, center_y, x2, y1, angle);
+    pos[3] = RotateAround(center_x, center_y, x1, y2, angle);
+
+    xx1 = battle_board.x + pos[0][0];
+    yy1 = battle_board.y + pos[0][1];
+
+    xx2 = battle_board.x + pos[1][0];
+    yy2 = battle_board.y + pos[1][1];
+
+    xx3 = battle_board.x + pos[2][0];
+    yy3 = battle_board.y + pos[2][1];
+
+    xx4 = battle_board.x + pos[3][0];
+    yy4 = battle_board.y + pos[3][1];
 } else {
     xx1 = x1;
     xx2 = x2;
     xx3 = x2;
     xx4 = x1;
-    
+
     yy1 = y1;
     yy2 = y2;
     yy3 = y1;

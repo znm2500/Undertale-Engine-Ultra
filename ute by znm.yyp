@@ -148,6 +148,7 @@
     {"id":{"name":"spr_block_corner","path":"sprites/spr_block_corner/spr_block_corner.yy",},},
     {"id":{"name":"spr_trigger","path":"sprites/spr_trigger/spr_trigger.yy",},},
     {"id":{"name":"spr_battle_soul","path":"sprites/spr_battle_soul/spr_battle_soul.yy",},},
+    {"id":{"name":"RotateAround","path":"scripts/RotateAround/RotateAround.yy",},},
     {"id":{"name":"spr_battle_dialog_enemy_corner","path":"sprites/spr_battle_dialog_enemy_corner/spr_battle_dialog_enemy_corner.yy",},},
     {"id":{"name":"spr_battle_dialog_enemy_spike","path":"sprites/spr_battle_dialog_enemy_spike/spr_battle_dialog_enemy_spike.yy",},},
     {"id":{"name":"battle_bullet_test","path":"objects/battle_bullet_test/battle_bullet_test.yy",},},

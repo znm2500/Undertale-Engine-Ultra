@@ -73,6 +73,7 @@
     {"name":"Shop_SetDialog","order":20,"path":"scripts/Shop_SetDialog/Shop_SetDialog.yy",},
     {"name":"bone_box","order":3,"path":"objects/bone_box/bone_box.yy",},
     {"name":"battle_soul_blue","order":2,"path":"objects/battle_soul_blue/battle_soul_blue.yy",},
+    {"name":"RotateAround","order":22,"path":"scripts/RotateAround/RotateAround.yy",},
     {"name":"battle_bullet_test","order":1,"path":"objects/battle_bullet_test/battle_bullet_test.yy",},
     {"name":"Shop_GetBGM","order":8,"path":"scripts/Shop_GetBGM/Shop_GetBGM.yy",},
     {"name":"Shop_Custom","order":4,"path":"scripts/Shop_Custom/Shop_Custom.yy",},

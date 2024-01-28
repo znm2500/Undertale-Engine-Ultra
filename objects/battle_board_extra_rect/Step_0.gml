@@ -9,4 +9,5 @@ if(instance_exists(rect)){
 	rect.x = x;
 	rect.y = y;
 	rect.rect=1;
+	rect.updateDivide();
 }

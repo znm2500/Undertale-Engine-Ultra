@@ -1,3 +1,4 @@
 ds_list_delete(global.cover_borders_list,ds_list_find_index(global.cover_borders_list,id))
 ds_list_destroy(listVertex)
 ds_list_destroy(listVertex_Outline)
+ds_list_destroy(listDivideIndex)

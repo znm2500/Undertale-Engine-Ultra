@@ -3,8 +3,6 @@ var vcos = dcos(-angle);
 
 surface_set_target(battle_board._surface);
 
-
-
 if (rect&&battle_board.edge) {
 	
     var lx = x + lengthdir_x(ds_list_find_value(listVertex, 0)[0], -angle) + lengthdir_x(ds_list_find_value(listVertex, 0)[1], -angle + 90);
@@ -34,36 +32,39 @@ if (rect&&battle_board.edge) {
     }
 }
 else{
-draw_primitive_begin(pr_trianglestrip)
-for (var i = 0; i <= ds_list_size(listVertex_Outline); i++) {
-    var a = listVertex_Outline[| iloop(i)];
-    var ax = a[0] * vcos - a[1] * vsin;
-    var ay = a[0] * vsin + a[1] * vcos;
-  
-draw_vertex_color(x+ax,y+ay,battle_board.color_frame,battle_board.alpha_frame)
-}
-draw_primitive_end()}
+var size = ds_list_size(listDivideIndex);
+    for (var i = 0; i < size; i++) {	//遍历所有的三角
+        var di = listDivideIndex[| i];
+        draw_primitive_begin(pr_trianglelist);
+        for (var j = 0; j < 3; j++) {
+            var pos = listVertex_Outline[| di[j]];
+            var resultx = pos[0] * vcos - pos[1] * vsin;
+            var resulty = pos[0] * vsin + pos[1] * vcos;
+            draw_vertex_color(x + resultx, y + resulty,battle_board.color_frame,battle_board.alpha_frame);
+        }
+        draw_primitive_end();
+    }}
 
 surface_reset_target();
-draw_primitive_begin(pr_trianglestrip);
 surface_set_target(battle_board._surface1)
 gpu_set_alphatestenable(0)
 gpu_set_blendmode(bm_normal)
 gpu_set_blendenable(false)
 gpu_set_colorwriteenable(0, 0, 0, 1)
 draw_set_alpha(1)
-for (var i = 0; i <= ds_list_size(listVertex); i++) {
-    var a = listVertex[| iloop(i)];
-
-
-    var ax = a[0] * vcos - a[1] * vsin;
-    var ay = a[0] * vsin + a[1] * vcos;
-
-
-    draw_vertex(ax + x, ay + y);
-}
+var size = ds_list_size(listDivideIndex);
+    for (var i = 0; i < size; i++) {	//遍历所有的三角
+        var di = listDivideIndex[| i];
+        draw_primitive_begin(pr_trianglelist);
+        for (var j = 0; j < 3; j++) {
+            var pos = listVertex[| di[j]];
+            var resultx = pos[0] * vcos - pos[1] * vsin;
+            var resulty = pos[0] * vsin + pos[1] * vcos;
+            draw_vertex(x + resultx, y + resulty);
+        }
+        draw_primitive_end();
+    }
 draw_set_alpha(1)
 gpu_set_blendenable(true)
 gpu_set_colorwriteenable(1, 1, 1, 1)
-draw_primitive_end();
 surface_reset_target()

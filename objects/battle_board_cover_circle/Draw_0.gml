@@ -1,5 +1,5 @@
 surface_set_target(battle_board._surface);
-draw_circle_color(x,y,radius+5,c_white,c_white,0)
+draw_circle_color(x,y,radius+5,battle_board.color_frame,battle_board.color_frame,0);
 surface_reset_target();
 draw_primitive_begin(pr_trianglestrip);
 surface_set_target(battle_board._surface1)

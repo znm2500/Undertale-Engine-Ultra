@@ -5,8 +5,8 @@ surface_set_target(battle_board._surface);
 
 
 
-if (rect) {
-	if(battle_board.edge){
+if (rect&&battle_board.edge) {
+	
     var lx = x + lengthdir_x(ds_list_find_value(listVertex, 0)[0], -angle) + lengthdir_x(ds_list_find_value(listVertex, 0)[1], -angle + 90);
     var ly = y + lengthdir_x(ds_list_find_value(listVertex, 0)[1], -angle) + lengthdir_x(ds_list_find_value(listVertex, 0)[0], -angle - 90);
     var rx = x + lengthdir_x(ds_list_find_value(listVertex, 1)[0], -angle) + lengthdir_x(ds_list_find_value(listVertex, 1)[1], -angle + 90);
@@ -20,7 +20,7 @@ if (rect) {
     draw_sprite_ext(spr_battle_board_edge, 0, rx, ry, -1, 1, angle, battle_board.color_frame, battle_board.alpha_frame);
     draw_sprite_ext(spr_battle_board_edge, 0, ux, uy, 1, -1, angle, battle_board.color_frame, battle_board.alpha_frame);
     draw_sprite_ext(spr_battle_board_edge, 0, dx, dy, -1, -1, angle, battle_board.color_frame, battle_board.alpha_frame);
-}
+
   for (var i = 0; i < ds_list_size(listVertex); i++) {
         var a = listVertex[| i];
         var b = listVertex[| iloop(i + 1)];
@@ -30,7 +30,7 @@ if (rect) {
         var bx = b[0] * vcos - b[1] * vsin;
         var by = b[0] * vsin + b[1] * vcos;
 
-        draw_sprite_ext(spr_pixel, 0, x + ax - (5 - 4 * rect) * cos(degtorad(floor(point_direction(ax, ay, bx, by)))), y + ay + (5 - 4 * rect) * sin(degtorad(floor(point_direction(ax, ay, bx, by)))), 5, point_distance(ax, ay, bx, by) + 5 + 5 * cos(degtorad((point_direction(ax, ay, bx, by) % 45))) - 2 * 4 * rect, point_direction(ax, ay, bx, by) + 90, battle_board.color_frame, battle_board.alpha_frame);
+        draw_sprite_ext(spr_pixel, 0, x + ax - (5 - 4 * battle_board.edge) * cos(degtorad(floor(point_direction(ax, ay, bx, by)))), y + ay + (5 - 4 * battle_board.edge) * sin(degtorad(floor(point_direction(ax, ay, bx, by)))), 5, point_distance(ax, ay, bx, by) + 5 + 5 * cos(degtorad((point_direction(ax, ay, bx, by) % 45))) - 2 * 4 * battle_board.edge, point_direction(ax, ay, bx, by) + 90, battle_board.color_frame, battle_board.alpha_frame);
     }
 }
 else{

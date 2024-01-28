@@ -1,7 +1,7 @@
 rect = instance_create_depth(x,y,0,battle_board_cover);
 ds_list_add(
 	rect.listVertex,
-	[-283,-65],[283,-65],[283,65],[-283,65]
+	[-left,-up],[right,-up],[right,down],[-left,down]
 	);
 rect.updateDivide();
 

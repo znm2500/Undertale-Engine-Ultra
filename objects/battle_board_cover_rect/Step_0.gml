@@ -1,3 +1,4 @@
+angle+=rot
 if(instance_exists(rect)){
 	ds_list_clear(rect.listVertex);
 	ds_list_add(
@@ -5,7 +6,6 @@ if(instance_exists(rect)){
 	[-left,-up],[right,-up],[right,down],[-left,down]
 	);
 	rect.angle = angle;
-	rect.rot = rot;
 	rect.x = x;
 	rect.y = y;
 	rect.rect=1;

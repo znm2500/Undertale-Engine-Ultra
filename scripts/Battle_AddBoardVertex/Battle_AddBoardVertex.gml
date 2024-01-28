@@ -1,14 +1,11 @@
-///@arg board
-///@arg vertex_x
-///@arg vertex_y
-function Battle_AddBoardExtraVertex(){
-	var BOARD = argument[0];
-	var X = argument[1];
-	var Y = argument[2];
-	var VERTEXLIST = BOARD.listVertex;
-	
-	ds_list_add(VERTEXLIST,[X,Y])
-	BOARD.updateDivide();
+function Battle_AddBoardVertex(board, vertex_x, vertex_y) {
+    var BOARD = board;
+    var X = vertex_x;
+    var Y = vertex_y;
+    var VERTEXLIST = BOARD.listVertex;
+
+    ds_list_add(VERTEXLIST, [X, Y]);
+    BOARD.updateDivide();
 }
 
 //给指定加框添加顶点,最少要三个顶点才能正常运行

@@ -1,0 +1,1 @@
+ds_list_delete(global.cover_borders_list,ds_list_find_index(global.cover_borders_list,id))

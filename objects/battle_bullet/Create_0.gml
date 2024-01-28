@@ -12,6 +12,7 @@ follow_board=0
 follow_angle=0
 follow_x=0
 follow_y=0
+follow_target=noone
 center_x=0
 center_y=0
 rotate=0

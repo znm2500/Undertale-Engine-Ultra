@@ -1,1 +1,1 @@
-rot += rotSpeed
+angle += rotSpeed

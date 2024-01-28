@@ -25,4 +25,5 @@ alpha_frame=1
 _angle=0;
 global.borderCount = 0
 global.borders_list = ds_list_create()
+global.cover_borders_list = ds_list_create()
 event_user(5);

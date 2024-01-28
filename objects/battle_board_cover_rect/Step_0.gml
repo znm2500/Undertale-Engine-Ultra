@@ -5,10 +5,10 @@ if(instance_exists(rect)){
 	[-left,-up],[right,-up],[right,down],[-left,down]
 	);
 	rect.angle = angle;
-	rect.rotSpeed = rot;
+	rect.rot = rot;
 	rect.x = x;
 	rect.y = y;
 	rect.rect=1;
-
+	rect.updateDivide();
 
 }

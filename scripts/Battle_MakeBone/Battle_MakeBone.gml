@@ -1,7 +1,8 @@
-///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
-function Battle_MakeBone(){
+///@arg x, y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration, follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
+
+function Battle_MakeBone() {
     var OBJ = 0;
-	var DURATION=-1
+    var DURATION = -1;
     var X = argument[0];
     var Y = argument[1];
     var LENGTH = argument[2];
@@ -12,14 +13,14 @@ function Battle_MakeBone(){
     var ANGLE = argument[7];
     var ROT = argument[8];
     var DESTROY = argument[9];
-	 if (argument_count >= 11)
-           var DURATION = argument[10];
 
+    if (argument_count >= 11)
+        DURATION = argument[10];
 
     if (argument_count >= 12)
         OBJ = argument[11];
 
-    var bone = instance_create_depth(X, Y, 0,battle_bullet_bone);
+    var bone = instance_create_depth(X, Y, 0, battle_bullet_bone);
     bone.length = LENGTH;
     bone.hspeed = HSPEED;
     bone.vspeed = VSPEED;
@@ -30,15 +31,20 @@ function Battle_MakeBone(){
     bone.angle = ANGLE;
     bone._angle = ANGLE;
     bone.duration = DURATION;
-bone.follow=OBJ
+    bone.follow = OBJ;
+
     if (argument_count >= 13)
         bone.follow_board = argument[12];
+
     if (argument_count >= 14)
         bone.follow_angle = argument[13];
+
     if (argument_count >= 15)
         bone.point = argument[14];
+
     if (argument_count >= 16)
         bone.point_at = argument[15];
+
     if (argument_count >= 18) {
         bone.follow_x = argument[16];
         bone.follow_y = argument[17];
@@ -46,6 +52,7 @@ bone.follow=OBJ
 
     return bone;
 }
+
 ///@arg x,y,length,hspeed,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneH(){
 

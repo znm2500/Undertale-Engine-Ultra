@@ -34,7 +34,7 @@ application_surface_draw_enable(false);
 
 
 
-//show_debug_overlay(true);
+
 
 randomize();
 

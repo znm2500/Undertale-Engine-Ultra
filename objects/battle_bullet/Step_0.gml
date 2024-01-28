@@ -1,23 +1,21 @@
 if (follow) {
     xx += hs;
     yy += vs;
-    
     if (follow_board) {
-        angle = _angle + battle_board.angle;
-        _angle += rotate;
-        
-        var pos = RotateAround(center_x, center_y, xx, yy, battle_board.angle);
-        x = battle_board.x + pos[0];
-        y = battle_board.y + pos[1];
+        follow_target = battle_board
     }
-    else {
-        angle = _angle + follow_angle;
-        _angle += rotate;
-        
-        var pos = RotateAround(follow_x, follow_y, xx, yy, follow_angle);
-        x = follow_x + pos[0];
-        y = follow_y + pos[1];
+    if (instance_exists(follow_target)) {
+        follow_x = follow_target.x
+        follow_y = follow_target.y
+        follow_angle = follow_target.angle
     }
+    angle = _angle + follow_angle;
+    _angle += rotate;
+
+    var pos = RotateAround(center_x, center_y, xx, yy,follow_x,follow_y, follow_angle);
+    x = pos[0];
+    y = pos[1];
+
 }
 else {
     xx = x;

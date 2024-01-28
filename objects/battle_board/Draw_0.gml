@@ -17,8 +17,9 @@ for (var i = 0; i < global.borderCount; i++) {
     bb = ds_list_find_value(global.borders_list, i);
     if (instance_exists(bb)){
         bb.replaceSurfaceAlpha(_surface, 0, 0, i == 0);
-       
-		 bb.drawBorder(edge?4:0,1);
+      
+		 bb.drawBorder();
+		
     }
 }
 draw_surface(_surface,0,0);

@@ -1,0 +1,6 @@
+hrect = Battle_CreateBoardCoverRect(x,y,size/2,size/2,(size-precision*2)/2,(size-precision*2)/2,angle)
+vrect = Battle_CreateBoardCoverRect(x,y,(size-precision*2)/2,(size-precision*2)/2,size/2,size/2,angle)
+circle_0 = Battle_CreateBoardCoverCircle(x+(size-precision*2)/2-1,y-(size-precision*2)/2-1,precision)
+circle_1 = Battle_CreateBoardCoverCircle(x-(size-precision*2)/2-1,y-(size-precision*2)/2-1,precision)
+circle_2 = Battle_CreateBoardCoverCircle(x-(size-precision*2)/2-1,y+(size-precision*2)/2-1,precision)
+circle_3 = Battle_CreateBoardCoverCircle(x+(size-precision*2)/2-1,y+(size-precision*2)/2-1,precision)

@@ -6,7 +6,7 @@ mainboard.listVertex,
 
 mainboard.x = x
 mainboard.y = y
-mainboard.rot = angle
+mainboard.angle = angle
 mainboard.color_frame = color_frame
 
 global.borderCount = ds_list_size(global.borders_list)

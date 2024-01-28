@@ -1,4 +1,3 @@
-instance_destroy(_inst_frame_up)
-instance_destroy(_inst_frame_down)
-instance_destroy(_inst_frame_left)
-instance_destroy(_inst_frame_right)
+ds_list_delete(global.cover_borders_list,ds_list_find_index(global.cover_borders_list,id))
+ds_list_destroy(listVertex)
+ds_list_destroy(listVertex_Outline)

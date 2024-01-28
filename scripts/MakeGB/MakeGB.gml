@@ -1,53 +1,26 @@
-///@arg x
-///@arg y
-///@arg x_target
-///@arg y_target
-///@arg angle_start
-///@arg angle_target
-///@arg scale_x
-///@arg scale_y
-///@arg color
-///@arg *pause 
-///@arg *duration 
-///@arg *time_move
-function MakeGB() {
-	var xx = argument[0];
-	var yy = argument[1];
-	var idealx = argument[2];
-	var idealy = argument[3];
-	var angle = argument[4];
-	var idealrot = argument[5];
-	var xscale = argument[6];
-	var yscale = argument[7];
-	var color = argument[8];
-	
-	var pause = 25;
-	var duration = 35;
-	var time_move = 25;
+function Battle_MakeGB(x, y, x_target, y_target, angle_start, angle_target, scale_x, scale_y, type, pause=25, duration=35, time_move=25) {
+    var xx = x;
+    var yy = y;
+    var idealx = x_target;
+    var idealy = y_target;
+    var angle = angle_start;
+    var idealrot = angle_target;
+    var xscale = scale_x;
+    var yscale = scale_y;
+    var cc = type;
 
-	if(argument_count >= 10){
-		pause = argument[9];
-	}
+    var bb = instance_create_depth(xx, yy, DEPTH_BATTLE.BULLET_OUTSIDE_HIGH, battle_bullet_gb);
+    
+    bb.x_target = idealx;
+    bb.y_target = idealy;
+    bb.angle_start = angle;
+    bb.angle_target = idealrot;
+    bb.scale_x = xscale;
+    bb.scale_y = yscale;
+    bb.type = cc;
+    bb.time_release_delay = pause;
+    bb.time_beam_end_delay = duration;
+    bb.time_move = time_move;
 
-	if(argument_count >= 11){
-		duration = argument[10];
-	}
-
-	if(argument_count >= 12){
-		time_move = argument[11];
-	}
-
-	var bb = instance_create_depth(xx,yy,DEPTH_BATTLE.BULLET_OUTSIDE_HIGH,battle_bullet_gb);
-	bb.x_target = idealx;
-	bb.y_target = idealy;
-	bb.angle_start = angle;
-	bb.angle_target = idealrot;
-	bb.scale_x = xscale;
-	bb.scale_y = yscale;
-	bb.type = color;
-	bb.time_release_delay = pause;
-	bb.time_beam_end_delay = duration;
-	bb.time_move = time_move;
-
-	return bb;
+    return bb;
 }

@@ -4,4 +4,5 @@ ds_list_add(
 	[-283,-65],[283,-65],[283,65],[-283,65]
 	);
 rect.updateDivide();
+
 ds_list_add(global.borders_list,rect);

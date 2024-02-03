@@ -157,9 +157,9 @@ switch(_state)
 		{
 			_typer_left.text = _pre_inst;
 			var i = 0;
+			
 			for(i=0;i<4;i++)
 			{
-				
 			_typer_left.text += Shop_GetDialogTitle(i) + "&";
 			}
 			_typer_left.text += "{color `white`}Exit";

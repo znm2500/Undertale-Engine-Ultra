@@ -68,7 +68,6 @@
     {"name":"Timelines","order":14,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings": [
-    {"name":"Shop_SaveDialog","order":16,"path":"scripts/Shop_SaveDialog/Shop_SaveDialog.yy",},
     {"name":"spr_battle_soul_break","order":2,"path":"sprites/spr_battle_soul_break/spr_battle_soul_break.yy",},
     {"name":"Shop_SetDialog","order":20,"path":"scripts/Shop_SetDialog/Shop_SetDialog.yy",},
     {"name":"bone_box","order":3,"path":"objects/bone_box/bone_box.yy",},
@@ -107,7 +106,6 @@
     {"name":"Shop_GetHost","order":11,"path":"scripts/Shop_GetHost/Shop_GetHost.yy",},
     {"name":"BGM_Fade","order":1,"path":"scripts/BGM_Fade/BGM_Fade.yy",},
     {"name":"font_dotumche","order":1,"path":"fonts/font_dotumche/font_dotumche.yy",},
-    {"name":"Shop_GetDialog","order":9,"path":"scripts/Shop_GetDialog/Shop_GetDialog.yy",},
     {"name":"Shop_CreateTyper","order":3,"path":"scripts/Shop_CreateTyper/Shop_CreateTyper.yy",},
     {"name":"shop_host","order":9,"path":"objects/shop_host/shop_host.yy",},
     {"name":"Battle_MakePlatform","order":2,"path":"scripts/Battle_MakePlatform/Battle_MakePlatform.yy",},

@@ -23,13 +23,12 @@ sold_available = true;
 sold_false_text = "* Refuse selling.";
 
 dialog_before_text = "Dialog.";
-dialog_init[0] = Shop_SetDialog(1,c_rainbow,"awa");
-dialog_init[1] = Shop_SetDialog("adadaa",c_red,"sj");
-dialog_init[2] = Shop_SetDialog("adad",c_white,"awa");
-dialog_init[3] = Shop_SetDialog("adrk",c_white,"awa",Shop_SetDialog("dj",c_white,"new"));
+dialog[0] = Shop_SetDialog("111",c_rainbow,"awa");
+dialog[1] = Shop_SetDialog("adadaa",c_red,"sj");
+dialog[2] = Shop_SetDialog("adad",c_white,"awa");
+dialog[3] = Shop_SetDialog("adrk",c_white,"awa",Shop_SetDialog("dj",c_white,"new"));
 //dialog[0] = sdt_1_1;
 //dialog[1] = sdt_2_1;
 //dialog[2] = sdt_3_1;
 //dialog[3] = sdt_4_1;
-
 exit_text = "* ByeBye.";

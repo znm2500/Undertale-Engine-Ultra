@@ -32,7 +32,7 @@ _pre_index_sell = 0;
 
 
 _host = instance_create_depth(160,border_y1,-100,Shop_GetHost(SHOP));
-Shop_GetDialog(_host);
+
 
 var i=0;
 for(i=0;i<4;i++)

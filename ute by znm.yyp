@@ -129,7 +129,6 @@
   },
   "resources": [
     {"id":{"name":"Shop_CallDialog","path":"scripts/Shop_CallDialog/Shop_CallDialog.yy",},},
-    {"id":{"name":"Shop_SaveDialog","path":"scripts/Shop_SaveDialog/Shop_SaveDialog.yy",},},
     {"id":{"name":"spr_battle_soul_break","path":"sprites/spr_battle_soul_break/spr_battle_soul_break.yy",},},
     {"id":{"name":"Shop_SetDialog","path":"scripts/Shop_SetDialog/Shop_SetDialog.yy",},},
     {"id":{"name":"bone_box","path":"objects/bone_box/bone_box.yy",},},
@@ -334,7 +333,6 @@
     {"id":{"name":"Battle_GetEnemyActionName","path":"scripts/Battle_GetEnemyActionName/Battle_GetEnemyActionName.yy",},},
     {"id":{"name":"turn_test","path":"objects/turn_test/turn_test.yy",},},
     {"id":{"name":"Battle_SetEnemyActionName","path":"scripts/Battle_SetEnemyActionName/Battle_SetEnemyActionName.yy",},},
-    {"id":{"name":"Shop_GetDialog","path":"scripts/Shop_GetDialog/Shop_GetDialog.yy",},},
     {"id":{"name":"Battle_GetEnemyActionNumber","path":"scripts/Battle_GetEnemyActionNumber/Battle_GetEnemyActionNumber.yy",},},
     {"id":{"name":"Battle_SetEnemyActionNumber","path":"scripts/Battle_SetEnemyActionNumber/Battle_SetEnemyActionNumber.yy",},},
     {"id":{"name":"Battle_IsEnemySpareable","path":"scripts/Battle_IsEnemySpareable/Battle_IsEnemySpareable.yy",},},
@@ -715,8 +713,8 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"room_init","path":"rooms/room_init/room_init.yy",},},
     {"roomId":{"name":"room_logo","path":"rooms/room_logo/room_logo.yy",},},
-    {"roomId":{"name":"room_battle","path":"rooms/room_battle/room_battle.yy",},},
     {"roomId":{"name":"room_area_0","path":"rooms/room_area_0/room_area_0.yy",},},
+    {"roomId":{"name":"room_battle","path":"rooms/room_battle/room_battle.yy",},},
     {"roomId":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},},
     {"roomId":{"name":"room_shop","path":"rooms/room_shop/room_shop.yy",},},
     {"roomId":{"name":"room_gameover","path":"rooms/room_gameover/room_gameover.yy",},},

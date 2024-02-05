@@ -72,7 +72,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 
 			//灵魂位置
 
-
 			battle_soul.x = battle_board.x - battle_board.left - 5 + 40;
 			if ( battle_soul.y = battle_button.y + 22 ) {
 				battle_soul.y = battle_board.y - battle_board.up - 5 + 36 + 32 * _menu_choice_enemy;
@@ -89,7 +88,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 			if ( Input_IsPressed( INPUT.CONFIRM ) ) {
 				audio_play_sound( snd_menu_confirm, 0, false );
 				Battle_SetMenu( BATTLE_MENU.FIGHT_AIM );
-
+                Anim_Destroy(battle_soul)     
 				Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 			}
 		} else
@@ -146,7 +145,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 						}
 						//确定
 						if ( Input_IsPressed( INPUT.CONFIRM ) ) {
-
+                            Anim_Destroy(battle_soul)  
 							audio_play_sound( snd_menu_confirm, 0, false );
 							Battle_SetMenu( BATTLE_MENU.ACT_ACTION );
 						}
@@ -197,6 +196,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 							if ( Input_IsPressed( INPUT.CANCEL ) ) {
 								Battle_SetMenu( BATTLE_MENU.ACT_TARGET );
 							} else if ( Input_IsPressed( INPUT.CONFIRM ) ) {
+								Anim_Destroy(battle_soul)  
 								Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 								audio_play_sound( snd_menu_confirm, 0, false );
 								Battle_EndMenu();
@@ -247,7 +247,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 								} else if ( Input_IsPressed( INPUT.CONFIRM ) ) {
 									audio_play_sound( snd_menu_confirm, 0, false );
 									Battle_EndMenu();
-
+                                    Anim_Destroy(battle_soul)  
 									Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 
 								}
@@ -296,7 +296,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 									} else if ( Input_IsPressed( INPUT.CONFIRM ) ) {
 										audio_play_sound( snd_menu_confirm, 0, false );
 										Battle_EndMenu();
-
+                                        Anim_Destroy(battle_soul)    
 										Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 									}
 								}

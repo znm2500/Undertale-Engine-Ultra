@@ -1,9 +1,9 @@
-depth=DEPTH_UI.PANEL;
+depth=-9000;
 
 _state=-1;
 _choice=0;
-
-_prefix="{shadow false}{scale 2}{font 1}{instant true}{gui true}{depth "+string(DEPTH_UI.TEXT)+"}";
+_choice_soul=0;
+_prefix="{shadow false}{scale 1}{font 1}{instant true}{depth "+string(-9999)+"}";
 
 _inst_name=noone;
 _inst_lv=noone;

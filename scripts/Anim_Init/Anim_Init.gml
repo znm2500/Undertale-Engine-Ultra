@@ -37,7 +37,11 @@ function Anim_IsExists(target,var_name){
     var result = false;
     for(var i = 0;i < ds_list_size(global.__anim_data);i ++) {
         var anim_item = ds_list_find_value(global.__anim_data,i);
-        if(anim_item[$ "target"]==target&&anim_item[$ "var_name"]==var_name){
+		if(var_name==undefined){if(anim_item[$ "target"]==target){
+			result=true;
+			break;}
+				}
+       else if(anim_item[$ "target"]==target&&anim_item[$ "var_name"]==var_name){
             result=true;
             break;
         }
@@ -130,16 +134,23 @@ return(false);
 }
 function Anim_Destroy(target,var_name){
 var ease_list = global.__anim_data;
+var success=false;
 if(Anim_IsExists(target,var_name)){
     for(var i = 0;i < ds_list_size(ease_list);i ++) {
         var anim_item = ease_list[|i];
-        if(var_name==anim_item[$ "var_name"]&&target==anim_item[$ "target"]){
+		if(var_name==undefined){
+		if(target==anim_item[$ "target"]){
+			 ds_list_delete(ease_list,i);
+            success=true;
+		}
+		}
+       else if(var_name==anim_item[$ "var_name"]&&target==anim_item[$ "target"]){
             ds_list_delete(ease_list,i);
-            return(true);
+            success=true;
         }
     }
 }
-return(false);
+return(success);
 }
 function Anim_Step(){
 var ease_list = global.__anim_data;

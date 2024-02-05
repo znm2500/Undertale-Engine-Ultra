@@ -13,11 +13,13 @@ if(_menu==-1){
 	if(Input_IsPressed(INPUT.UP)){
 		if(_choice>0){
 			_choice-=1;
+			Anim_Create(id,"_choice_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_soul,_choice-_choice_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.DOWN)){
 		if(_choice<(Phone_GetNumber()>0 ? 2 : 1)){
 			_choice+=1;
+			Anim_Create(id,"_choice_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_soul,_choice-_choice_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){
@@ -47,11 +49,13 @@ if(_menu==-1){
 	if(Input_IsPressed(INPUT.UP)){
 		if(_choice_item>0){
 			_choice_item-=1;
+			Anim_Create(id,"_choice_item_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_soul,_choice_item-_choice_item_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.DOWN)){
 		if(_choice_item<Item_GetNumber()-1){
 			_choice_item+=1;
+			Anim_Create(id,"_choice_item_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_soul,_choice_item-_choice_item_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){
@@ -67,11 +71,33 @@ if(_menu==-1){
 		if(_choice_item_operate>0){
 			_choice_item_operate-=1;
 			audio_play_sound(snd_menu_switch,0,false);
+			 switch (_choice_item_operate) {
+        case 0:
+		Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,11.5-_choice_item_operate_soul,15)
+            break;
+        case 1:
+            Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,59.5-_choice_item_operate_soul,15)
+            break;
+        case 2:
+            Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,116.5-_choice_item_operate_soul,15)
+            break;
+    }
 		}
 	}else if(Input_IsPressed(INPUT.RIGHT)){
 		if(_choice_item_operate<2){
 			_choice_item_operate+=1;
 			audio_play_sound(snd_menu_switch,0,false);
+			switch (_choice_item_operate) {
+        case 0:
+		Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,11.5-_choice_item_operate_soul,15)
+            break;
+        case 1:
+            Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,59.5-_choice_item_operate_soul,15)
+            break;
+        case 2:
+            Anim_Create(id,"_choice_item_operate_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_operate_soul,116.5-_choice_item_operate_soul,15)
+            break;
+    }
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){
 		//TODO
@@ -102,11 +128,13 @@ if(_menu==-1){
 	if(Input_IsPressed(INPUT.UP)){
 		if(_choice_phone>0){
 			_choice_phone-=1;
+			Anim_Create(id,"_choice_phone_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_phone_soul,_choice-_choice_phone_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.DOWN)){
 		if(_choice_phone<Phone_GetNumber()-1){
 			_choice_phone+=1;
+			Anim_Create(id,"_choice_phone_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_phone_soul,_choice-_choice_phone_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){

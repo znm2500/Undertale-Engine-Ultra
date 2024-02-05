@@ -5,7 +5,7 @@ if(instance_exists(_inst_item_box)){
 	instance_destroy(_inst_item_box);
 }
 
-_inst_item_inventory=instance_create_depth(16+6+46,16+6+50,0,text_typer);
+_inst_item_inventory=instance_create_depth((16+6+46)/2,(16+6+50)/2,0,text_typer);
 _inst_item_inventory.text=_prefix;
 var proc=0;
 repeat(8){
@@ -14,7 +14,7 @@ repeat(8){
 	proc+=1;
 }
 
-_inst_item_box=instance_create_depth(16+6+46+302,16+6+50,0,text_typer);
+_inst_item_box=instance_create_depth((16+6+46+302)/2,(16+6+50)/2,0,text_typer);
 _inst_item_box.text=_prefix;
 proc=0;
 repeat(10){

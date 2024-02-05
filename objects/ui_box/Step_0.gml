@@ -7,17 +7,23 @@ if(_state==-1){
 	if(Input_IsPressed(INPUT.UP)){
 		if(_choice_item>0){
 			_choice_item-=1;
+			Anim_Create(id,"_choice_item_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_soul,_choice_item-_choice_item_soul,15)
+			
 		}
 	}else if(Input_IsPressed(INPUT.DOWN)){
 		if((_choice_mode==0 && _choice_item<7) || (_choice_mode==1 && _choice_item<9)){
 			_choice_item+=1;
+			Anim_Create(id,"_choice_item_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_soul,_choice_item-_choice_item_soul,15)
 		}
 	}else if(Input_IsPressed(INPUT.RIGHT)){
 		_choice_mode=1;
+		Anim_Create(id,"_choice_mode_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_mode_soul,_choice_mode-_choice_mode_soul,15)
 	}else if(Input_IsPressed(INPUT.LEFT)){
 		_choice_mode=0;
+		Anim_Create(id,"_choice_mode_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_mode_soul,_choice_mode-_choice_mode_soul,15)
 		if(_choice_item>7){
 			_choice_item=7;
+			Anim_Create(id,"_choice_item_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_item_soul,_choice_item-_choice_item_soul,15)
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){
 		if(_choice_mode==0){
@@ -37,5 +43,6 @@ if(_state==-1){
 		}
 	}else if(Input_IsPressed(INPUT.CANCEL)){
 		instance_destroy();
+		char_player.moveable = true
 	}
 }

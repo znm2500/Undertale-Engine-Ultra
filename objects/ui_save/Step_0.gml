@@ -7,11 +7,13 @@ if(_state==-1){
 	if(Input_IsPressed(INPUT.LEFT)){
 		if(_choice==1){
 			_choice=0;
+			Anim_Create(id,"_choice_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_soul,_choice-_choice_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.RIGHT)){
 		if(_choice==0){
 			_choice=1;
+			Anim_Create(id,"_choice_soul",ANIM_TWEEN.CUBIC,ANIM_EASE.OUT,_choice_soul,_choice-_choice_soul,15)
 			audio_play_sound(snd_menu_switch,0,false);
 		}
 	}else if(Input_IsPressed(INPUT.CONFIRM)){

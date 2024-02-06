@@ -58,7 +58,7 @@ if (_char != " " && _char != "　") {
     INST.alpha_outline = _alpha_outline;
     INST.effect = _effect;
     INST.gui = _gui;
-
+    INST.surface_target=_surface_target;
     if (sprite_exists(_char_sprite)) {
         INST.sprite = _char_sprite;
         INST.sprite_image = _char_sprite_image;

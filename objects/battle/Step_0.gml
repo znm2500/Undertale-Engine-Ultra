@@ -6,7 +6,7 @@ if ( heal != 0 ) {
 if ( _state == BATTLE_STATE.MENU ) {
 	//按钮
 	if ( _menu == BATTLE_MENU.BUTTON ) {
-		//左/右777
+		//左/右
 
 		if ( Input_IsPressed( INPUT.LEFT ) ) {
 			var button = _menu_choice_button;
@@ -209,9 +209,11 @@ if ( _state == BATTLE_STATE.MENU ) {
 								if ( battle_soul.image_angle != 90 )
 									Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, 90 - battle_soul.image_angle, 20 )
 								with( text_typer ) {
+									
 									if ( round( y ) != battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first )
 										Anim_Create( id, "y", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, id.y, battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first - id.y, 20 )
 								}
+								text_single.surface_target=Battle_GetBoardSurface()
 								if ( Input_IsPressed( INPUT.UP ) ) {
 									var slot = Battle_GetMenuChoiceItem() - 1;
 									if ( slot >= 0 ) {

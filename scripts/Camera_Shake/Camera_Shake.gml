@@ -1,40 +1,13 @@
-///@arg shake_x
-///@arg shake_y
-///@arg shake_speed_x*
-///@arg shake_speed_y*
-///@arg shake_random_x*
-///@arg shake_random_y*
-///@arg shake_decrease_x*
-///@arg shake_decrease_y*
-function Camera_Shake() {
+function Camera_Shake(shake_x,shake_y,shake_speed_x=0,shake_speed_y=0,shake_random_x=0,shake_random_y=0,shake_decrease_x=1,shake_decrease_y=1,blur=1) {
 
-	var X=argument[0];
-	var Y=argument[1];
-	var SPEED_X=0;
-	var SPEED_Y=0;
-	var RANDOM_X=false;
-	var RANDOM_Y=false;
-	var DECREASE_X=1;
-	var DECREASE_Y=1;
-	if(argument_count>=3){
-		SPEED_X=argument[2];
-	}
-	if(argument_count>=4){
-		SPEED_Y=argument[3];
-	}
-	if(argument_count>=5){
-		RANDOM_X=argument[4];
-	}
-	if(argument_count>=6){
-		RANDOM_Y=argument[5];
-	}
-	if(argument_count>=7){
-		DECREASE_X=argument[6];
-	}
-	if(argument_count>=8){
-		DECREASE_Y=argument[7];
-	}
-
+	var X=shake_x;
+	var Y=shadow_y;
+	var SPEED_X=shake_speed_x;
+	var SPEED_Y=shake_speed_y;
+	var RANDOM_X=shake_random_x;
+	var RANDOM_Y=shake_random_y;
+	var DECREASE_X=shake_decrease_x;
+	var DECREASE_Y=shake_decrease_y;
 	camera.shake_x=X;
 	camera.shake_y=Y;
 	camera.shake_speed_x=SPEED_X;
@@ -49,7 +22,7 @@ function Camera_Shake() {
 	camera._shake_time_y=0;
 	camera._shake_positive_x=true;
 	camera._shake_positive_y=true;
-instance_create_depth(0,0,0,obj_effect_blur)
+if(blur)instance_create_depth(0,0,0,obj_effect_blur)
 	return true;
 
 

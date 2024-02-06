@@ -1,5 +1,5 @@
 Anim_Init();
-
+Bezier_Init();
 Shop_Init()
 
 Input_Init();

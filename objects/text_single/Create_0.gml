@@ -9,7 +9,7 @@ rainbow=0
 shadow = false;  
 outline = false;  
 color=0
-surf=noone
+surface_target=noone
 if(rainbow){color_text[0] = make_color_hsv((x+color)%255,255,255);  
 color_text[1] = make_color_hsv((x+color+string_width(text))%255,255,255);  
 color_text[2] = make_color_hsv((y+color)%255,255,255);    
@@ -32,13 +32,11 @@ color_outline[1] = make_color_rgb(110, 110, 110);
 color_outline[2] = make_color_rgb(110, 110, 110);  
 color_outline[3] = make_color_rgb(110, 110, 110);  
 shadow_x = 1;  
-shadow_y = 1;  
-surf = noone;  
+shadow_y = 1;   
 alpha = 1;  
   
 if (room == room_battle) {  
-    if (Battle_GetMenu() == BATTLE_MENU.ITEM) {  
-        depth = DEPTH_BATTLE.BULLET;  
+    if (Battle_GetMenu() == BATTLE_MENU.ITEM&&depth==DEPTH_BATTLE.BULLET) {  		
         if (round(y) > battle_board.y - battle_board.up - 5 + 20 + 64 + 16) {  
             alpha = 0;  
         } else {  

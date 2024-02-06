@@ -565,7 +565,7 @@ switch(cmd[|0]){
 		break
 	case "legs":
 		if(is_string(cmd[|1])&&instance_exists(battle_enemy_test)){
-			battle_enemy_test._legs=asset_get_index(cmd[|1])
+			battle_enemy_test._legs=cmd[|1]
 		}
 		break
 		
@@ -597,7 +597,10 @@ switch(cmd[|0]){
 			}
 		}
 		break;
-		
+	case "surface":
+	if(is_real(cmd[|1]))
+	_surface_target=cmd[|1]
+	break
 	case "skip_space":
 		if(is_bool(cmd[|1])){
 			_skip_space=cmd[|1];

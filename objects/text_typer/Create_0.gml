@@ -66,7 +66,7 @@ _gui=false;
 _angleprevious=_angle
 //group init
 event_user(5);
-_surf=noone
+_surface_target=noone
 width=0;
 height=0;
 override_alpha_enabled=false;

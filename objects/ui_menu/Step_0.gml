@@ -4,7 +4,10 @@ if(instance_exists(ui_dialog)){
 		event_user(0);
 	}
 }
-
+if(instance_exists(_inst_name))
+_inst_name.x=_offset+23
+if(instance_exists(_inst_menu))
+_inst_menu.x=_offset+(32+6+46)/2
 if(_menu==-1){
 	if(!instance_exists(ui_dialog)){
 		instance_destroy();
@@ -42,8 +45,9 @@ if(_menu==-1){
 				audio_play_sound(snd_menu_confirm,0,false);
 				break;
 		}
-	}else if(Input_IsPressed(INPUT.MENU)||Input_IsPressed(INPUT.CANCEL)){
-		instance_destroy();
+	}else if(Input_IsPressed(INPUT.MENU)||Input_IsPressed(INPUT.CANCEL)&&floor(_offset)==0){
+		alarm[0]=15
+		Anim_Create(id,"_offset",ANIM_TWEEN.CUBIC,ANIM_EASE.IN,_offset,-100-_offset,15)
 	}
 }else if(_menu==1){
 	if(Input_IsPressed(INPUT.UP)){

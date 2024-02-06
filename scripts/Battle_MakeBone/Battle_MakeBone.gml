@@ -1,5 +1,4 @@
-///@arg x, y, length, hspeed, vspeed, type, out, angle, rotate, auto_destroy, duration, follow, follow_board, follow_angle, point, point_at, follow_x, follow_y
-
+///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
 function Battle_MakeBone() {
     var OBJ = 0;
     var DURATION = -1;

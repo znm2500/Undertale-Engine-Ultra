@@ -1,19 +1,18 @@
-depth=-9000;
+depth = -9000;
 
-box_slot=0;
-_state=-1;
-_choice_mode=0;
-_choice_mode_soul=0;
-_choice_item=0;
-_choice_item_soul=0;
-_prefix="{shadow false}{scale 1}{font 1}{instant true}{depth "+string(-9999)+"}";
-
-_inst_inventory=noone;
-_inst_box=noone;
-_inst_item_inventory=noone;
-_inst_item_box=noone;
-_inst_finish=noone;
-
-if(instance_exists(char_player)){
-	char_player._moveable_box=false;
+box_slot = 0;
+_state = -1;
+_choice_mode = 0;
+_choice_mode_soul = 0;
+_choice_item = 0;
+_choice_item_soul = 0;
+_surface = surface_create(room_width * 2, room_height * 2) _prefix = "{shadow true}{color `white`}{scale 2}{font 1}{instant true}{depth " + string( - 9999) + "}{surface " + string(_surface) + "}";
+_show_width = 0 _inst_inventory = noone;
+_inst_box = noone;
+_inst_item_inventory = noone;
+_inst_item_box = noone;
+_inst_finish = noone;
+Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.IN, _show_width, 304 - _show_width, 30);
+if (instance_exists(char_player)) {
+    char_player._moveable_box = false;
 }

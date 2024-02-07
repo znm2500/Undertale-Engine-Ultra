@@ -20,3 +20,4 @@ if(instance_exists(_inst_return)){
 if(instance_exists(char_player)){
 	char_player._moveable_save=true;
 }
+surface_free(_surface)

@@ -1,5 +1,4 @@
 _voice_played=false;
-
 event_user(4);
 var proc=0;
 repeat(ds_list_size(_list_inst)){

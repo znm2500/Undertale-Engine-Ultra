@@ -1,10 +1,10 @@
 depth=-9000;
-
+_show_width=0
 _state=-1;
 _choice=0;
 _choice_soul=0;
-_prefix="{shadow false}{scale 1}{font 1}{instant true}{depth "+string(-9999)+"}";
-
+_prefix="{shadow true}{color `white`}{scale 2}{font 1}{instant true}{depth "+string(-9999)+"}";
+_surface=surface_create(room_width*2,room_height*2)
 _inst_name=noone;
 _inst_lv=noone;
 _inst_time=noone;

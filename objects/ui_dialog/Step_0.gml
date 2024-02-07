@@ -1,7 +1,7 @@
 if (!instance_exists(_inst)) {
 	if (!Dialog_IsEmpty()) {
 		_inst = instance_create_depth(60 / 2, (_top ? 30 : 340) / 2, 0, text_typer);
-		_inst.text = "{voice 0}{speed 2}{space_y 1}{shadow true}{depth " + string( - 9999) + "}";
+		_inst.text = "{voice 0}{shadow true}{speed 2}{space_y 1}{color `white`}{depth " + string( - 9999) + "}";
 		_inst.text += Dialog_Get();
 		if (_choose_enable) _inst.text += "&&         " + _choice[0] + "         " + _choice[1] _inst.text += "{pause}{end}";
 		

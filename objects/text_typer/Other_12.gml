@@ -28,8 +28,8 @@ switch(cmd[|0]){
 					
 				case c_yellow:
 				_rainbow=0
-					_color_text[0]=make_color_rgb(255,255,128);
-					_color_text[1]=make_color_rgb(255,255,128);
+					_color_text[0]=make_color_rgb(255,255,224);
+					_color_text[1]=make_color_rgb(255,255,224);
 					_color_text[2]=make_color_rgb(255,255,0);
 					_color_text[3]=make_color_rgb(255,255,0);
 					_color_shadow[0]=make_color_rgb(76,76,0);

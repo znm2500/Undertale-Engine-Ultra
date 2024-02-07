@@ -211,7 +211,7 @@ function Bezier_Step() {
 			}
 			var bezier_value = Bezier_GetValue(bezier_item[$ "bezier_struct"], bezier_item[$ "time"] / bezier_item[$ "duration"] * 100);
 			var bezier_value =bezier_value[bezier_item[$ "component"]];
-//show_debug_message(bezier_value)
+
 			switch (bezier_item[$ "target_type"]) {
 			case 0:
 				{

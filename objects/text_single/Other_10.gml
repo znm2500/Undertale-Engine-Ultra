@@ -1,6 +1,6 @@
 ///@desc Draw
+if(surface_exists(surface_target)){surface_set_target(surface_target)}
 
-if(surface_exists(surface_target)){surface_set_target(Battle_GetBoardSurface())}
 if(effect!=1){
 if(font_exists(font)){
 	draw_set_font(font);

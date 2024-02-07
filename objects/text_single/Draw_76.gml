@@ -24,11 +24,11 @@ switch(effect){
 		break;
 }
 if(rainbow){color++
-	if(rainbow){color_text[0] = make_color_hsv((x+color)%255,255,255);  
+color_text[0] = make_color_hsv((x+color)%255,255,255);  
 color_text[1] = make_color_hsv((x+color+string_width(text))%255,255,255);  
 color_text[2] = make_color_hsv((y+color)%255,255,255);    
 color_text[3] =  make_color_hsv((y+color+string_height(text))%255,255,255);  
 color_shadow[0] = make_color_hsv((x+color)%255,128,128);
 color_shadow[1] = make_color_hsv((x+color+string_width(text))%255,128,128);    
 color_shadow[2] = make_color_hsv((y+color)%255,128,128);  
-color_shadow[3] = make_color_hsv((y+color+string_height(text))%255,128,128);   }}
+color_shadow[3] = make_color_hsv((y+color+string_height(text))%255,128,128);   }

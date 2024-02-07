@@ -208,8 +208,7 @@ if ( _state == BATTLE_STATE.MENU ) {
 								//上/下
 								if ( battle_soul.image_angle != 90 )
 									Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, 90 - battle_soul.image_angle, 20 )
-								with( text_typer ) {
-									
+								with( text_typer ){_surface_target=Battle_GetBoardSurface()
 									if ( round( y ) != battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first )
 										Anim_Create( id, "y", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, id.y, battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first - id.y, 20 )
 								}

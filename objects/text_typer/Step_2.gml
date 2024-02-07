@@ -1,7 +1,11 @@
 _voice_played=false;
 
 event_user(4);
-
+var proc=0;
+repeat(ds_list_size(_list_inst)){
+		var INST=ds_list_find_value(_list_inst,proc);
+		INST.surface_target=_surface_target
+		proc++}
 if(_paused&&Input_IsPressed(INPUT.CONFIRM)){
 	_paused=false;
 }

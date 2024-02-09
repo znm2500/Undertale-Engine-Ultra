@@ -2,7 +2,6 @@ event_inherited();
 
 char_id=0;
 Phone_Set(0,phone_toriel)
-Phone_Set(1,phone_toriel)
 res_idle_sprite[DIR.UP]=spr_char_frisk_up;
 res_idle_sprite[DIR.DOWN]=spr_char_frisk_down;
 res_idle_sprite[DIR.LEFT]=spr_char_frisk_right;

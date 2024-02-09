@@ -11,7 +11,7 @@ if(instance_exists(char_player)){
 if(bgm_fade){
 	BGM_Stop(0);
 }
-room_goto(room_battle);
-Flag_Set(FLAG_TYPE.TEMP,FLAG_TEMP.SHOP_ROOM_RETURN,room)
+Shop_Set(0,shop_host_test,spr_shop_bg)
+Shop_Start(0)
 fader.color=fade_out_color;
 Fader_Fade(-1,0,fade_out_time);

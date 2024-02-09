@@ -253,7 +253,8 @@ function Anim_Step() {
                 {
                     if (is_string(anim_item[$ "var_name"])) var var_name = string_split(anim_item[$ "var_name"], ",");
                     else if (is_array(anim_item[$ "var_name"])) var var_name = anim_item[$ "var_name"];
-                    ds_grid_set(anim_item[$ "target"], var_name[0], var_name[1], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]) break;
+                    ds_grid_set(anim_item[$ "target"], var_name[0], var_name[1], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+					break;
                 }
             default:
                 {

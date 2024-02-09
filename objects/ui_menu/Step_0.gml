@@ -8,7 +8,8 @@ if (instance_exists(_inst_name)) _inst_name.x = _offset + 23
 if (instance_exists(_inst_menu)) _inst_menu.x = _offset + (32 + 6 + 46) / 2
 switch (_menu) {
 case - 1 : if (!instance_exists(ui_dialog)) {
-        _menu--alarm[0] = 15;
+        _menu--;
+		alarm[0] = 15;
 
     }
     break;

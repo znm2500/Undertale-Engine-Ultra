@@ -2,7 +2,7 @@ if (_menu == 1) {
     _destroy_time[0] = 0
     if (!instance_exists(_inst_item)) {
         _inst_item = instance_create_depth((188 + 6 + 38), (52 + 6 + 22), 0, text_typer);
-        _inst_item.text = _prefix + "{scale 2}{shadow true}{color `white`}{surface " + string(_surface) + "}";
+        _inst_item.text = _prefix + "{scale 2}{shadow true}{color `white`}{surface " + string(real(_surface)) + "}";
 
         var proc = 0;
         repeat(Item_GetNumber()) {
@@ -12,15 +12,15 @@ if (_menu == 1) {
     }
     if (!instance_exists(_inst_item_use)) {
         _inst_item_use = instance_create_depth((188 + 6 + 38), (52 + 6 + 302), 0, text_typer);
-        _inst_item_use.text = _prefix + "{scale 2}{surface " + string(_surface) + "}" + "USE";
+        _inst_item_use.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}" + "USE";
     }
     if (!instance_exists(_inst_item_info)) {
         _inst_item_info = instance_create_depth((188 + 6 + 134), (52 + 6 + 302), 0, text_typer);
-        _inst_item_info.text = _prefix + "{scale 2}{surface " + string(_surface) + "}" + "INFO";
+        _inst_item_info.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}" + "INFO";
     }
     if (!instance_exists(_inst_item_drop)) {
         _inst_item_drop = instance_create_depth((188 + 6 + 248), (52 + 6 + 302), 0, text_typer);
-        _inst_item_drop.text = _prefix + "{scale 2}{surface " + string(_surface) + "}" + "DROP";
+        _inst_item_drop.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}" + "DROP";
     }
 } else {
     if (_menu != 2) {
@@ -54,7 +54,7 @@ if (_menu == 3) {
         var weapon = Item_GetName(Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.ITEM_WEAPON));
         var armor = Item_GetName(Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.ITEM_ARMOR));
         var gold = Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.GOLD);
-        _inst_stat_0.text = _prefix + "{scale 2}{surface " + string(_surface) + "}" + "{define `NAME` `" + name + "`}{define `LV` " + string(lv) + "}{define `HP` " + string(hp) + "}{define `HP_MAX` " + string(hp_max) + "}{define `ATK` " + string(atk) + "}{define `ATK_ITEM` " + string(atk_item) + "}{define `DEF` " + string(def) + "}{define `DEF_ITEM` " + string(def_item) + "}{define `WEAPON` `" + weapon + "`}{define `ARMOR` `" + armor + "`}{define `GOLD` " + string(gold) + "}" + "\"{insert NAME}\"{space_y -1}&&{space_y 0}LV  {insert LV}&HP  {insert HP} / {insert HP_MAX}&&AT  {insert ATK} ({insert ATK_ITEM})&DF  {insert DEF} ({insert DEF_ITEM}){space_y -1}&&{space_y 0}WEAPON: {insert WEAPON}&ARMOR: {insert ARMOR}{space_y 4}&{space_y 0}GOLD: {insert GOLD}";
+        _inst_stat_0.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}" + "{define `NAME` `" + name + "`}{define `LV` " + string(lv) + "}{define `HP` " + string(hp) + "}{define `HP_MAX` " + string(hp_max) + "}{define `ATK` " + string(atk) + "}{define `ATK_ITEM` " + string(atk_item) + "}{define `DEF` " + string(def) + "}{define `DEF_ITEM` " + string(def_item) + "}{define `WEAPON` `" + weapon + "`}{define `ARMOR` `" + armor + "`}{define `GOLD` " + string(gold) + "}" + "\"{insert NAME}\"{space_y -1}&&{space_y 0}LV  {insert LV}&HP  {insert HP} / {insert HP_MAX}&&AT  {insert ATK} ({insert ATK_ITEM})&DF  {insert DEF} ({insert DEF_ITEM}){space_y -1}&&{space_y 0}WEAPON: {insert WEAPON}&ARMOR: {insert ARMOR}{space_y 4}&{space_y 0}GOLD: {insert GOLD}";
     }
     if (!instance_exists(_inst_stat_1)) {
         _inst_stat_1 = instance_create_depth((188 + 6 + 190), (52 + 6 + 182), 0, text_typer);
@@ -62,7 +62,7 @@ if (_menu == 3) {
         var lv = Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.LV);
         var lv_xp = Player_GetLvExp(lv + 1);
         var kills = Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.KILLS);
-        _inst_stat_1.text = _prefix + "{scale 2}{surface " + string(_surface) + "}" + "{define `EXP` " + string(xp) + "}{define `EXP_NEXT` " + (lv_xp != -1 ? string(lv_xp - xp) : "`N/A`") + "}" + "EXP: {insert EXP}&NEXT: {insert EXP_NEXT}" + (kills > 0 ? "{define `KILLS` " + string(kills) + "}" + "{space_y -1}&&{space_y 0}&{space_y 4}&{space_y 0}KILLS: {insert KILLS}": "");
+        _inst_stat_1.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}" + "{define `EXP` " + string(xp) + "}{define `EXP_NEXT` " + (lv_xp != -1 ? string(lv_xp - xp) : "`N/A`") + "}" + "EXP: {insert EXP}&NEXT: {insert EXP_NEXT}" + (kills > 0 ? "{define `KILLS` " + string(kills) + "}" + "{space_y -1}&&{space_y 0}&{space_y 4}&{space_y 0}KILLS: {insert KILLS}": "");
     }
 } else {
     Anim_Create(_destroy_time, "1", 0, 0, _destroy_time[1], 20 - _destroy_time[1], 20 - _destroy_time[1]) if (instance_exists(_inst_stat_0) && _destroy_time[1] > 0) {
@@ -77,7 +77,7 @@ if (_menu == 4) {
     _destroy_time[2] = 0
     if (!instance_exists(_inst_phone)) {
         _inst_phone = instance_create_depth((188 + 6 + 38), (52 + 6 + 22), 0, text_typer);
-        _inst_phone.text = _prefix + "{scale 2}{surface " + string(_surface) + "}";
+        _inst_phone.text = _prefix + "{scale 2}{surface " + string(real(_surface)) + "}";
 
         var proc = 0;
         repeat(Phone_GetNumber()) {

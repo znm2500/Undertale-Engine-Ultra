@@ -212,7 +212,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 									if ( round( y ) != battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first )
 										Anim_Create( id, "y", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, id.y, battle_board.y - battle_board.up - 5 + 20 - 32 * battle._menu_choice_item_first - id.y, 20 )
 								}
-								text_single.surface_target=Battle_GetBoardSurface()
 								if ( Input_IsPressed( INPUT.UP ) ) {
 									var slot = Battle_GetMenuChoiceItem() - 1;
 									if ( slot >= 0 ) {

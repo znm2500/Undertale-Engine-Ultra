@@ -3,25 +3,25 @@ if (_state == 0) {
     Flag_Load(FLAG_TYPE.INFO);
 
     _inst_name = instance_create_depth((108 + 6 + 26), (118 + 6 + 16), 0, text_typer);
-    _inst_name.text = _prefix + "{surface " + string(_surface) + "}" + Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.NAME, "EMPTY");
+    _inst_name.text = _prefix + "{surface " + string(real(_surface)) + "}" + Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.NAME, "EMPTY");
 
     _inst_lv = instance_create_depth((108 + 6 + 180), (118 + 6 + 16), 0, text_typer);
-    _inst_lv.text = _prefix + "{surface " + string(_surface) + "}" + "LV " + string(Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.LV));
+    _inst_lv.text = _prefix + "{surface " + string(real(_surface)) + "}" + "LV " + string(Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.LV));
 
     _inst_time = instance_create_depth((108 + 6 + 338), (118 + 6 + 16), 0, text_typer);
     var time = Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.TIME);
     var minute = time div 60;
     var second = time mod 60;
-    _inst_time.text = _prefix + "{surface " + string(_surface) + "}" + string(minute) + ":" + (second < 10 ? "0": "") + string(second);
+    _inst_time.text = _prefix + "{surface " + string(real(_surface)) + "}" + string(minute) + ":" + (second < 10 ? "0": "") + string(second);
 
     _inst_room = instance_create_depth((108 + 6 + 26), (118 + 6 + 56), 0, text_typer);
-    _inst_room.text = _prefix + "{surface " + string(_surface) + "}" + Player_GetRoomName(Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.ROOM, -1));
+    _inst_room.text = _prefix + "{surface " + string(real(_surface)) + "}" + Player_GetRoomName(Flag_Get(FLAG_TYPE.INFO, FLAG_INFO.ROOM, -1));
 
     _inst_save = instance_create_depth((108 + 6 + 56), (118 + 6 + 116), 0, text_typer);
-    _inst_save.text = _prefix + "{surface " + string(_surface) + "}" + "Save";
+    _inst_save.text = _prefix + "{surface " + string(real(_surface)) + "}" + "Save";
 
     _inst_return = instance_create_depth((108 + 6 + 236), (118 + 6 + 116), 0, text_typer);
-    _inst_return.text = _prefix + "{surface " + string(_surface) + "}" + "Return";
+    _inst_return.text = _prefix + "{surface " + string(real(_surface)) + "}" + "Return";
 }
 if (_state == 1) {
     Player_Save(0);

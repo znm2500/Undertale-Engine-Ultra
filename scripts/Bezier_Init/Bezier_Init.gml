@@ -195,7 +195,61 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
 				return (true);
 			}
 		}
-	}
+	}else if (ds_exists(target, ds_type_list)) {
+
+        if (var_name > -1 && ds_list_size(target) > var_name) {
+            ds_list_add(global.__anim_data, {
+                target_type: 4,
+                target: target,
+                var_name: string(var_name),
+                bezier_struct: bezier_struct,
+					component: component,
+					tweenstart: start,
+					change: change,
+					duration: duration,
+					delay: delay,
+					time: 0
+            });
+            return (true);
+        }
+
+    } else if (ds_exists(target, ds_type_map)) {
+
+        if (ds_map_exists(target, var_name)) {
+            ds_list_add(global.__anim_data, {
+                target_type: 5,
+                target: target,
+                var_name: var_name,
+                bezier_struct: bezier_struct,
+					component: component,
+					tweenstart: start,
+					change: change,
+					duration: duration,
+					delay: delay,
+					time: 0
+            });
+            return (true);
+        }
+
+    } else if (ds_exists(target, ds_type_grid)) {
+        var nums = string_split(var_name, ",");
+        if (nums[0] > -1 && ds_grid_width(target) > nums[0] && nums[1] > -1 && ds_grid_height(target) > nums[1]) {
+            ds_list_add(global.__anim_data, {
+                target_type: 6,
+                target: target,
+                var_name: var_name,
+                bezier_struct: bezier_struct,
+					component: component,
+					tweenstart: start,
+					change: change,
+					duration: duration,
+					delay: delay,
+					time: 0
+            });
+            return (true);
+        }
+
+    }
 	return (false);
 }
 function Bezier_Step() {

@@ -23,7 +23,7 @@ if (_menu == 1 || _menu == 2 || (_show_width[0] != 0)) {
 }
 
 if (_menu == 1) {
-    surface_set_target(_surface) draw_sprite_ext(spr_battle_soul, 0, (94 + 3 + 11) * 2, (26 + 3 + 20 + 16 * _choice_phone_soul) * 2, 1, 1, 90, c_red, 1);
+    surface_set_target(_surface) draw_sprite_ext(spr_battle_soul, 0, (94 + 3 + 11) * 2, (26 + 3 + 20 + 16 * _choice_item_soul) * 2, 1, 1, 90, c_red, 1);
     surface_reset_target()
 }
 

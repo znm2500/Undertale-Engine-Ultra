@@ -80,7 +80,7 @@ switch (_state) {
                         var ITEM = _item[_pre_index];
                         if (Item_GetNumber() < 8 && Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.GOLD) >= ITEM._price_buy) {
                             _choice_state = 1;
-                        } else if (Item_GetNumber() >= 8 && Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.GOLD) < ITEM._price_buy) {
+                        } else if (Item_GetNumber() < 8 && Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.GOLD) < ITEM._price_buy) {
                             _choice_state = 3;
                         } else if (Item_GetNumber() >= 8 && Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.GOLD) >= ITEM._price_buy) {
                             _choice_state = 4;

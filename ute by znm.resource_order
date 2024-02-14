@@ -98,7 +98,7 @@
     {"name":"Shop_Uninit","order":19,"path":"scripts/Shop_Uninit/Shop_Uninit.yy",},
     {"name":"Vector3","order":19,"path":"scripts/Vector3/Vector3.yy",},
     {"name":"snd_buyitem","order":5,"path":"sounds/snd_buyitem/snd_buyitem.yy",},
-    {"name":"MakeGB","order":5,"path":"scripts/MakeGB/MakeGB.yy",},
+    {"name":"Battle_MakeGB","order":5,"path":"scripts/Battle_MakeGB/Battle_MakeGB.yy",},
     {"name":"shop_dialog_typer","order":8,"path":"objects/shop_dialog_typer/shop_dialog_typer.yy",},
     {"name":"battle_board_cover","order":7,"path":"objects/battle_board_cover/battle_board_cover.yy",},
     {"name":"spr_shopkeeper","order":1,"path":"sprites/spr_shopkeeper/spr_shopkeeper.yy",},

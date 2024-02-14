@@ -276,7 +276,7 @@
     {"id":{"name":"Battle_GetMenu","path":"scripts/Battle_GetMenu/Battle_GetMenu.yy",},},
     {"id":{"name":"Battle_SetMenu","path":"scripts/Battle_SetMenu/Battle_SetMenu.yy",},},
     {"id":{"name":"Battle_EndMenu","path":"scripts/Battle_EndMenu/Battle_EndMenu.yy",},},
-    {"id":{"name":"MakeGB","path":"scripts/MakeGB/MakeGB.yy",},},
+    {"id":{"name":"Battle_MakeGB","path":"scripts/Battle_MakeGB/Battle_MakeGB.yy",},},
     {"id":{"name":"Battle_GetMenuDialog","path":"scripts/Battle_GetMenuDialog/Battle_GetMenuDialog.yy",},},
     {"id":{"name":"Battle_SetMenuDialog","path":"scripts/Battle_SetMenuDialog/Battle_SetMenuDialog.yy",},},
     {"id":{"name":"shop_dialog_typer","path":"objects/shop_dialog_typer/shop_dialog_typer.yy",},},

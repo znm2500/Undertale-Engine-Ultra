@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "MakeGB",
+  "name": "Battle_MakeGB",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

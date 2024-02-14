@@ -94,3 +94,5 @@ _player_temp_atk=0;
 _player_temp_def=0;
 _player_temp_spd=0;
 _player_temp_inv=0;
+
+global.krtime = 0;

@@ -1,20 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-
-BlueSoulControl(DIR.DOWN)
-
-
-
-
-
-
-
-
-
-
-
-
-// Inherit the parent event
+Battle_MakeBone(320,320,50,0,0,0,0,0,0,0)
+Battle_SetSoul(battle_soul_orange)
 event_inherited();
 

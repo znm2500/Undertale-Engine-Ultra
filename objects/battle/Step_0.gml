@@ -81,9 +81,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 
 			//返回
 			if ( Input_IsPressed( INPUT.CANCEL ) ) {
-				with(text_typer){
-				_paused=1
-				alarm[0]=1}
 				Battle_SetMenu( BATTLE_MENU.BUTTON );
 				Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 			}
@@ -143,9 +140,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 
 						//返回
 						if ( Input_IsPressed( INPUT.CANCEL ) ) {
-							with(text_typer){
-				            _paused=1
-				            alarm[0]=1}
 							Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 							Battle_SetMenu( BATTLE_MENU.BUTTON );
 						}
@@ -200,9 +194,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 
 							//返回/确定
 							if ( Input_IsPressed( INPUT.CANCEL ) ) {
-								with(text_typer){
-			                  	_paused=1
-				                alarm[0]=1}
 								Battle_SetMenu( BATTLE_MENU.ACT_TARGET );
 							} else if ( Input_IsPressed( INPUT.CONFIRM ) ) {
 								Anim_Destroy(battle_soul)  
@@ -250,9 +241,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 										}
 									}
 								} else if ( Input_IsPressed( INPUT.CANCEL ) ) {
-									with(text_typer){
-				                    _paused=1
-				                    alarm[0]=1}
 									Battle_SetMenu( BATTLE_MENU.BUTTON );
 									Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 
@@ -304,9 +292,6 @@ if ( _state == BATTLE_STATE.MENU ) {
 									//取消/确定
 									if ( Input_IsPressed( INPUT.CANCEL ) ) {
 										Battle_SetMenu( BATTLE_MENU.BUTTON );
-										with(text_typer){
-			                         	_paused=1;
-			                         	alarm[0]=1;}
 										Anim_Create( battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20 )
 									} else if ( Input_IsPressed( INPUT.CONFIRM ) ) {
 										audio_play_sound( snd_menu_confirm, 0, false );

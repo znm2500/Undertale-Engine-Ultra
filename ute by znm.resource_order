@@ -125,6 +125,7 @@
     {"name":"spr_arrow","order":1,"path":"sprites/spr_arrow/spr_arrow.yy",},
     {"name":"Shop_End","order":6,"path":"scripts/Shop_End/Shop_End.yy",},
     {"name":"Purplesoul_Addpoint","order":1,"path":"scripts/Purplesoul_Addpoint/Purplesoul_Addpoint.yy",},
+    {"name":"Battle_Dialog_Enemy_Add","order":23,"path":"scripts/Battle_Dialog_Enemy_Add/Battle_Dialog_Enemy_Add.yy",},
     {"name":"shd_gaussian_vertical","order":2,"path":"shaders/shd_gaussian_vertical/shd_gaussian_vertical.yy",},
     {"name":"bone_box_round","order":6,"path":"objects/bone_box_round/bone_box_round.yy",},
     {"name":"battle_soul_yellow_bullet","order":1,"path":"objects/battle_soul_yellow_bullet/battle_soul_yellow_bullet.yy",},

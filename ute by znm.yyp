@@ -442,6 +442,7 @@
     {"id":{"name":"Shop_End","path":"scripts/Shop_End/Shop_End.yy",},},
     {"id":{"name":"Purplesoul_Addpoint","path":"scripts/Purplesoul_Addpoint/Purplesoul_Addpoint.yy",},},
     {"id":{"name":"Input_Init","path":"scripts/Input_Init/Input_Init.yy",},},
+    {"id":{"name":"Battle_Dialog_Enemy_Add","path":"scripts/Battle_Dialog_Enemy_Add/Battle_Dialog_Enemy_Add.yy",},},
     {"id":{"name":"shd_gaussian_vertical","path":"shaders/shd_gaussian_vertical/shd_gaussian_vertical.yy",},},
     {"id":{"name":"spr_battle_soul_yellow_bullet","path":"sprites/spr_battle_soul_yellow_bullet/spr_battle_soul_yellow_bullet.yy",},},
     {"id":{"name":"bone_box_round","path":"objects/bone_box_round/bone_box_round.yy",},},

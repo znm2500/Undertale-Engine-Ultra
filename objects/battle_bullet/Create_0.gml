@@ -19,3 +19,4 @@ rotate=0
 _angle=0
 point_at=0
 angle_offset=180
+processed=0

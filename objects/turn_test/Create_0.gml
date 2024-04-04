@@ -1,5 +1,5 @@
-Battle_MakeBone(320,320,50,0,0,0,0,0,0,0)
+Battle_MakeBoneWallBottom(30,50,20,,1)
 Battle_SetSoul(battle_soul_orange)
-Battle_MakeGB(-200,-200,320,320,90,0,2,2,0)
+alarm[0]=1
 event_inherited();
 

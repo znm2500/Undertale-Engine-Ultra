@@ -344,11 +344,11 @@ function Battle_MakeBoneTwoH() {
     bones[1] = boneRight;
     return bones;
 }
-///@arg x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg x,y,hspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneTwoV() {
     var X = argument[0];
     var Y = argument[1];
-    var VSPEED = argument[2];
+    var HSPEED = argument[2];
     var TYPE = argument[3];
     var OUT = argument[4];
     var ROTATE = argument[5];
@@ -375,8 +375,8 @@ function Battle_MakeBoneTwoV() {
         FOLLOW_Y = argument[15];
     }
 
-    var boneLeft = Battle_MakeBoneLeft(X, (((Y - battle_board.y) + battle_board.up) - GAP), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    var boneRight = Battle_MakeBoneRight(X, (((battle_board.y + battle_board.down) - GAP) - Y), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneLeft = Battle_MakeBoneTop(X, (((Y - battle_board.y) + battle_board.up) - GAP), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneRight = Battle_MakeBoneBottom(X, (((battle_board.y + battle_board.down) - GAP) - Y), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
     bones[0] = boneLeft;
     bones[1] = boneRight;

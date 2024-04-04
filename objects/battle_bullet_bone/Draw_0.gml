@@ -1,4 +1,3 @@
-
 switch(type)
 {
     case 0:

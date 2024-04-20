@@ -125,13 +125,6 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
         delay = -delay;
     }
 
-    for (var i = 0; i < ds_list_size(global.__bezier_data); i++) {
-        var bezier_item = ds_list_find_value(global.__bezier_data, i);
-        if (bezier_item[$ "target"] == target && bezier_item[$ "var_name"] == var_name && bezier_item[$ "delay"] == delay) {
-            Bezier_Destroy(target, var_name) break
-        }
-    }
-
     if (variable_global_exists(var_name)) {
         ds_list_add(global.__bezier_data, {
             target_type: 0,

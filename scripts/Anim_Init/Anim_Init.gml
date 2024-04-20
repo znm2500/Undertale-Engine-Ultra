@@ -59,13 +59,6 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
         delay = -delay;
     }
 
-    for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
-        var anim_item = ds_list_find_value(global.__anim_data, i);
-        if (anim_item[$ "target"] == target && anim_item[$ "var_name"] == var_name && anim_item[$ "delay"] == delay) {
-            Anim_Destroy(target, var_name) break
-        }
-    }
-
     if (variable_global_exists(var_name)) {
         ds_list_add(global.__anim_data, {
             target_type: 0,

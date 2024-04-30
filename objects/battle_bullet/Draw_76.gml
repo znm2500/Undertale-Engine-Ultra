@@ -3,4 +3,8 @@ if (point_at == 1) {
         angle = point_direction(xprevious, yprevious, x, y) + angle_offset;
     }
 }
+if(follow){
+    _angle += rotate;
+    angle = _angle + follow_angle;}
+
 image_angle = angle;

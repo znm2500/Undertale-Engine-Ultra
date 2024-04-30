@@ -3,8 +3,10 @@
 
 
 
-battle_board.x=mouse_x
-battle_board.y=mouse_y
+
+
+
+BlueSoulControl(DIR.RIGHT)
 
 
 
@@ -13,10 +15,4 @@ battle_board.y=mouse_y
 
 
 
-
-
-
-
-// Inherit the parent event
-event_inherited();
 

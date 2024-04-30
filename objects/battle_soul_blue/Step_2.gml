@@ -213,7 +213,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             battle_soul.x = nearestPos[0] + sprite_width / 2;
-            battle_soul.y = nearestPos[1];
+            //battle_soul.y = nearestPos[1];
         }
 
         if (isInside2Cover) { // 如果出框
@@ -230,7 +230,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             battle_soul.x = nearestPos[0] - sprite_width / 2;
-            battle_soul.y = nearestPos[1];
+            //battle_soul.y = nearestPos[1];
         }
 
         if (isInside3Cover) { // 如果出框
@@ -246,7 +246,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     nearestDis = dis;
                 }
             }
-            battle_soul.x = nearestPos[0];
+           // battle_soul.x = nearestPos[0];
             battle_soul.y = nearestPos[1] + sprite_height / 2;
         }
 
@@ -263,7 +263,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     nearestDis = dis;
                 }
             }
-            battle_soul.x = nearestPos[0];
+           // battle_soul.x = nearestPos[0];
             battle_soul.y = nearestPos[1] - sprite_height / 2;
         }
         if (!isInside1) { //如果出框
@@ -280,7 +280,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             battle_soul.x = nearestPos[0] + sprite_width / 2;
-            battle_soul.y = nearestPos[1];
+           // battle_soul.y = nearestPos[1];
         }
         if (!isInside2) { //如果出框
             var nearestPos, nearestDis = -1; //最近位置和最近距离
@@ -296,7 +296,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             battle_soul.x = nearestPos[0] - sprite_width / 2;
-            battle_soul.y = nearestPos[1];
+           // battle_soul.y = nearestPos[1];
         }
         if (!isInside3) { //如果出框
             var nearestPos, nearestDis = -1; //最近位置和最近距离
@@ -311,7 +311,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     nearestDis = dis;
                 }
             }
-            battle_soul.x = nearestPos[0];
+          //  battle_soul.x = nearestPos[0];
             battle_soul.y = nearestPos[1] + sprite_height / 2;
         }
         if (!isInside4) { //如果出框
@@ -327,7 +327,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     nearestDis = dis;
                 }
             }
-            battle_soul.x = nearestPos[0];
+         //   battle_soul.x = nearestPos[0];
             battle_soul.y = nearestPos[1] - sprite_height / 2;
         }
     }

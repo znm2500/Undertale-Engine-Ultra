@@ -3,7 +3,7 @@ _enemy_object[0]=Encounter_GetEnemy(ENCOUNTER,0);
 _enemy_object[1]=Encounter_GetEnemy(ENCOUNTER,1);
 _enemy_object[2]=Encounter_GetEnemy(ENCOUNTER,2);
 //敌人实例
-sa=0
+soul_angle=0
 damage=0
 heal=0
 hp=0

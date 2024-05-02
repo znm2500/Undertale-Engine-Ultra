@@ -3,8 +3,6 @@
 
 
 
-battle_board.x=mouse_x
-battle_board.y=mouse_y
 
 
 
@@ -13,10 +11,8 @@ battle_board.y=mouse_y
 
 
 
+global.classic_ui=1
 
 
 
-
-// Inherit the parent event
-event_inherited();
 

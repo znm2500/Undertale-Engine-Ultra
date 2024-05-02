@@ -6,11 +6,11 @@
 
 
 
-BlueSoulControl(DIR.RIGHT)
 
 
 
 
+Battle_SetSoul(battle_soul_red)
 
 
 

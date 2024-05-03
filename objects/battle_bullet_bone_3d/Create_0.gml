@@ -5,6 +5,7 @@ enum SHAPE {
     REGULAR_DODECAHEDRON = 3,
     REGULAR_ICOSAHEDRON = 4
 }
+event_inherited();
 depth = DEPTH_BATTLE.BULLET_OUTSIDE_LOW;
 enable = 0;
 vert_list = ds_list_create();
@@ -21,11 +22,9 @@ scaley = 0;
 scalez = 0;
 shape = 0;
 out = 0;
-duration = -1;
 type = 0;
 gap = 40;
-alarm[0] = duration;
-
+#region
 add_vert = function(argument0, argument1, argument2, argument3) // 添加顶点坐标
 {
     if (argument3 == undefined)
@@ -76,3 +75,4 @@ add_edge = function(argument0, argument1) // 添加边（不同点的序列）
     ds_list_add(edge_list, _prop);
     return;
 }
+#endregion

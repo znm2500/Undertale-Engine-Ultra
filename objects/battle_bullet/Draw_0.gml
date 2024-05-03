@@ -1,9 +1,3 @@
-surface_set_target(Battle_GetBoardSurface());
-{
-    draw_self();
-}
-surface_reset_target();
-
 switch(type)
 {
     case 0:
@@ -22,3 +16,16 @@ switch(type)
         image_blend = c_yellow;
         break;
 }
+
+if(out = 0){
+	depth = DEPTH_BATTLE.BULLET;
+	surface_set_target(Battle_GetBoardSurface());{
+		draw_self()
+	}surface_reset_target();
+}
+else{
+	depth = DEPTH_BATTLE.BULLET_OUTSIDE_LOW;
+	draw_self()
+}
+
+

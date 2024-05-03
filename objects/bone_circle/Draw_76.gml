@@ -11,7 +11,7 @@
 
 
 
-global.classic_ui=1
+
 
 
 

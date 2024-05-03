@@ -1,3 +1,4 @@
+if(!enable){
 angle = (360 / number)
 for (i = 0; i < (number + 1); i += 1)
 {
@@ -7,4 +8,6 @@ for (i = 0; i < (number + 1); i += 1)
     bone[i].type = type
 
 }
-enable = 1
+enable = 1}
+event_inherited();
+

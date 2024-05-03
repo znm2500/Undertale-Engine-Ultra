@@ -419,8 +419,8 @@ function Battle_MakeBone3D() {
     var shape = argument[13];
     var type = argument[14];
     var out = argument[15];
-    var duration = argument_count > 15 ? argument[16] : 0;
-    var GAP = argument_count > 16 ? argument[17] : 40;
+    var duration = argument_count > 16 ? argument[16] : -1;
+    var GAP = argument_count > 17 ? argument[17] : 40;
     var inst = instance_create_depth(_x, _y, 0, battle_bullet_bone_3d);
     inst.anglex = angle_x;
     inst.angley = angle_y;
@@ -440,12 +440,12 @@ function Battle_MakeBone3D() {
     inst.gap = GAP;
     return inst;
 }
-///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,scale,extra_angle,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
+///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,*duration,*scale,*extra_angle,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneArrow() {
     var OBJ = 0;
     var DURATION = -1;
-    var SCALE = 1;
-    var EXTRA_ANGLE = 0;
+    var SCALE = 0.5;
+    var EXTRA_ANGLE = 30;
     var X = argument[0];
     var Y = argument[1];
     var LENGTH = argument[2];

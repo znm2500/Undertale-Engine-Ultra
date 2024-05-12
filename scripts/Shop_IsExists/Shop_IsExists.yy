@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Shop_IsExists",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Shop",
-    "path": "folders/Scripts/Shop.yy",
+  "$GMScript":"",
+  "%Name":"Shop_IsExists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Shop_IsExists",
+  "parent":{
+    "name":"Shop",
+    "path":"folders/Scripts/Shop.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

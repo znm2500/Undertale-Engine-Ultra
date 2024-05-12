@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Battle_MakePlatform",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Bullet",
-    "path": "folders/Scripts/Battle/Bullet.yy",
+  "$GMScript":"",
+  "%Name":"Battle_MakePlatform",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_MakePlatform",
+  "parent":{
+    "name":"Bullet",
+    "path":"folders/Scripts/Battle/Bullet.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

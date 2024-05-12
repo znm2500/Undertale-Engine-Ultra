@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Battle_SetTurnInfo",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Turn",
-    "path": "folders/Scripts/Battle/Turn.yy",
+  "$GMScript":"",
+  "%Name":"Battle_SetTurnInfo",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_SetTurnInfo",
+  "parent":{
+    "name":"Turn",
+    "path":"folders/Scripts/Battle/Turn.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

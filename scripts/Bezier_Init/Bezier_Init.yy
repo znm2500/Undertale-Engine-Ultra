@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Bezier_Init",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Bezier",
-    "path": "folders/Scripts/GMU/Bezier.yy",
+  "$GMScript":"",
+  "%Name":"Bezier_Init",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Bezier_Init",
+  "parent":{
+    "name":"Bezier",
+    "path":"folders/Scripts/GMU/Bezier.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -13,9 +13,10 @@ switch(cmd[|0]){
 	case "color":
 		if(is_string(cmd[|1])){
 			var color=GetColorFromString(cmd[|1]);
+			if(!global.classic_ui){
 			switch(color){
 				case c_white:
-				_rainbow=0
+				_rainbow=0;
 					_color_text[0]=c_white;
 					_color_text[1]=c_white;
 					_color_text[2]=c_white;
@@ -27,7 +28,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_yellow:
-				_rainbow=0
+				_rainbow=0;
 					_color_text[0]=make_color_rgb(255,255,224);
 					_color_text[1]=make_color_rgb(255,255,224);
 					_color_text[2]=make_color_rgb(255,255,0);
@@ -39,7 +40,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_red:
-				_rainbow=0
+				_rainbow=0;
 					_color_text[0]=make_color_rgb(255,0,0);
 					_color_text[1]=make_color_rgb(255,0,0);
 					_color_text[2]=make_color_rgb(96,0,0);
@@ -51,7 +52,7 @@ switch(cmd[|0]){
 					break;
 					
 				case c_black:
-				_rainbow=0
+				_rainbow=0;
 					_color_text[0]=make_color_rgb(0,0,0);
 					_color_text[1]=make_color_rgb(0,0,0);
 					_color_text[2]=make_color_rgb(0,0,0);
@@ -62,13 +63,72 @@ switch(cmd[|0]){
 					_color_shadow[3]=make_color_rgb(0,0,0);
 					break;
 				case c_rainbow:
-				_rainbow=1
-				break
+				_rainbow=1;
+				break;
 				default:
-				_rainbow=0
-				break
+				_rainbow=0;
+				break;
+				
 				
 			}
+			
+			}
+			else{
+			switch(color){
+				case c_white:
+				_rainbow=0;
+					_color_text[0]=c_white;
+					_color_text[1]=c_white;
+					_color_text[2]=c_white;
+					_color_text[3]=c_white;
+					_color_shadow[0]=make_color_rgb(49,49,79);
+					_color_shadow[1]=make_color_rgb(49,49,79);
+					_color_shadow[2]=make_color_rgb(15,15,115);
+					_color_shadow[3]=make_color_rgb(15,15,115);
+					break;
+					
+				case c_yellow:
+				_rainbow=0;
+					_color_text[0]=make_color_rgb(255,255,195);
+					_color_text[1]=make_color_rgb(255,255,195);
+					_color_text[2]=make_color_rgb(255,255,60);
+					_color_text[3]=make_color_rgb(255,255,60);
+					_color_shadow[0]=make_color_rgb(76,76,0);
+					_color_shadow[1]=make_color_rgb(76,76,0);
+					_color_shadow[2]=make_color_rgb(76,76,0);
+					_color_shadow[3]=make_color_rgb(76,76,0);
+					break;
+					
+				case c_red:
+				_rainbow=0;
+					_color_text[0]=make_color_rgb(255,195,195);
+					_color_text[1]=make_color_rgb(255,195,195);
+					_color_text[2]=make_color_rgb(255,60,60);
+					_color_text[3]=make_color_rgb(255,60,60);
+					_color_shadow[0]=make_color_rgb(76,0,0);
+					_color_shadow[1]=make_color_rgb(76,0,0);
+					_color_shadow[2]=make_color_rgb(76,0,0);
+					_color_shadow[3]=make_color_rgb(76,0,0);
+					break;
+					
+				case c_black:
+				_rainbow=0;
+					_color_text[0]=make_color_rgb(0,0,0);
+					_color_text[1]=make_color_rgb(0,0,0);
+					_color_text[2]=make_color_rgb(0,0,0);
+					_color_text[3]=make_color_rgb(0,0,0);
+					_color_shadow[0]=make_color_rgb(0,0,0);
+					_color_shadow[1]=make_color_rgb(0,0,0);
+					_color_shadow[2]=make_color_rgb(0,0,0);
+					_color_shadow[3]=make_color_rgb(0,0,0);
+					break;
+				case c_rainbow:
+				_rainbow=1;
+				break;
+				default:
+				_rainbow=0;
+				break;
+			}}
 		}
 		break;
 		

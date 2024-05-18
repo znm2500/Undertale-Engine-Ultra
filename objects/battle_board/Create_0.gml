@@ -18,8 +18,8 @@ angle=0;
 color_bg=c_black;
 color_frame=c_white;
 
-edge=1
-alpha_frame=1
+edge=!global.classic_ui;
+alpha_frame=1;
 _angle=0;
 global.borderCount = 0
 global.borders_list = ds_list_create()

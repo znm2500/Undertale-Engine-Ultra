@@ -382,24 +382,36 @@ function Battle_MakeBoneTwoV() {
     bones[1] = boneRight;
     return bones;
 }
-///@arg number,point,type,out,roting,rot,extra_angle,x,y,size_x,size_y,length,rott
+///@arg number,angle,type,x,y,size_x,size_y,length,out,*roting,*rot,*extra_angle,*rott,*duration
 function Makebonecircle() {
     var Number = argument[0]
     var Size = argument[1]
     var Type = argument[2]
-    var Out = argument[3]
-    var Enable = argument[4]
-    var Rot = argument[5]
-    var Ex = argument[6]
-    var X = argument[7]
-    var Y = argument[8]
-    var H = argument[9]
-    var V = argument[10]
-    var L = argument[11]
+    var Out = argument[8]
+    var Enable = argument[9]
+    var Rot = argument[10]
+    var Ex = argument[11]
+    var X = argument[3]
+    var Y = argument[4]
+    var H = argument[5]
+    var V = argument[6]
+    var L = argument[7]
     var II = argument[12]
 
-    bone = instance_create_depth(X, Y, 0, bone_circle) bone.number = Number bone.type = Type bone.point = Size bone.out = Out bone.roting = Enable bone.extra_angle = Ex bone.rot = Rot bone.size_x = H bone.size_y = V bone.length = L bone.rott = II
-    return bone
+    bone = instance_create_depth(X, Y, 0, bone_circle);
+    bone.number = Number;
+    bone.type = Type;
+    bone.angle = Size;
+    bone.out = Out;
+    bone.roting = Enable == undefined ? 1 : Enable;
+    bone.extra_angle = Ex == undefined ? 0 : Ex;
+    bone.rot = Rot == undefined ? 0 : Rot;
+    bone.size_x = H;
+    bone.size_y = V;
+    bone.length = L;
+    bone.rott = II == undefined ? 0 : II;
+    bone.duration = argument[13] == undefined ? -1 : duration;
+    return bone;
 }
 /// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap
 function Battle_MakeBone3D() {

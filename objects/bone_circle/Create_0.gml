@@ -1,4 +1,3 @@
-point=0
 number = 10
 angle = 0
 size_x = 100

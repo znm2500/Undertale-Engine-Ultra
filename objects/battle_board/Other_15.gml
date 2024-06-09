@@ -1,15 +1,9 @@
 /// @description Newcreate
-mainboard = instance_create_depth(x, y, 0, battle_board_extra);
-ds_list_add(
-    mainboard.listVertex,
-    [-283, -65], [283, -65], [283, 65], [-283, 65]
-);
-mainboard.rect = 1
+mainboard = instance_create_depth(x, y, 0, battle_board_points);
+ds_list_add(mainboard.listVertex, [ - 283, -65], [283, -65], [283, 65], [ - 283, 65]);
+mainboard.rect = 1;
 mainboard.updateDivide();
-
-global.borders_list = ds_list_create()
-ds_list_add(global.borders_list, mainboard)
-global.borderCount = ds_list_size(global.borders_list)
-mainboard.color_frame = color_frame
-mainboard.color_bg = color_bg
-mainboard.angle = angle
+mainboard.color_frame = color_frame;
+mainboard.color_bg = color_bg;
+mainboard.angle = angle;
+array_push(global.boards_array);

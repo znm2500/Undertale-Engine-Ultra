@@ -10,7 +10,7 @@ switch(_state)
 		if(_typer_right_refresh)
 			_typer_right.text = _pre_inst + "  Buy&  Sell&  Talk&  Exit";	
 		
-		//_typer_state.text = _pre_inst + string(Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.GOLD))+"G   "+string(Item_GetNumber())+"/8";
+		
 		if(_typer_state_refresh)
 		{
 			var GOLD = Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.GOLD);

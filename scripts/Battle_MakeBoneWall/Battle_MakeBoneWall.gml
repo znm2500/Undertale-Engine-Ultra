@@ -237,25 +237,22 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
     return b;
 }
 
-function Battle_MakeBoneWallRound(rotatespeed, radius, type, pause, duration=-1) {
-    var rotateSpeed = rotatespeed;
-   
-    
-    
-    var bone = Makebonecircle(round((battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 22), 0, type, 0, 1, rotateSpeed, 0, battle_board.x, battle_board.y, (battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 2, (battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 2, 0, 0);
-    
+function Battle_MakeBoneWallRound(rotatespeed, radius, type, pause, duration = -1) {
+
+    var bone = Makebonecircle(round((battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 22), 0, type, battle_board.x, battle_board.y, (battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 2, (battle_board.down + battle_board.right + battle_board.left + battle_board.up) / 2, 0, 1, 1, rotatespeed);
+
     Anim_Create(bone, "length", 0, 0, 0, 2 * (bone.size_x - radius - 5), 16, pause);
-        
+
     if (duration != -1) {
         Anim_Create(bone, "length", 0, 0, 2 * (bone.size_x - radius - 5), -2 * (bone.size_x - radius - 5), 16, (16 + pause + duration));
     }
-    
+
     var boneBox = instance_create_depth(0, 0, 0, bone_box_round);
     boneBox.duration = pause;
     boneBox.gap = radius;
-    
+
     audio_stop_sound(snd_exclamation);
     audio_play_sound(snd_exclamation, 0, false);
-    
+
     return bone;
 }

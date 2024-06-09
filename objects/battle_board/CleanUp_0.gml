@@ -1,5 +1,4 @@
 surface_free(_surface);
-surface_free(_surface1);
-surface_free(_surface2);
-surface_free(_surface3);
-surface_free(_surface4);
+surface_free(_surface_border_cover);
+surface_free(_surface_border_extra);
+surface_free(_surface_final);

@@ -1,4 +1,4 @@
-if(kr_enable){var color;
+if(global.kr){var color;
 if (Player_GetKR() > 0){
     color = make_color_rgb(255,0,255);
 }
@@ -7,6 +7,8 @@ else{
 }
 
 draw_set_font(font_mars_needs_cunnilingus);
+draw_set_halign(0);
+draw_set_valign(0);
 draw_text_ext_transformed_color(x,y,Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.NAME)+"   LV "+string(Player_GetLv()),-1,-1,1,1,0,c_white,c_white,c_white,c_white,1);
 draw_sprite_ext(spr_battle_ui_hp,0,x+214,y+4,1,1,0,c_white,1);
 

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Shop_Start",
   "isCompatibility":false,
   "isDnD":false,

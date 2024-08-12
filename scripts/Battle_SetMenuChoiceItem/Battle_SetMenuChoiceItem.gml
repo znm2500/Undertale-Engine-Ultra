@@ -16,7 +16,7 @@ function Battle_SetMenuChoiceItem() {
 			battle._menu_choice_item_first-=1;
 		}
 
-	var text="{depth "+string(DEPTH_BATTLE.BULLET)+"}"+"{surface "+string(real(Battle_GetBoardSurface()))+"}";
+	var text="{depth "+string(DEPTH_BATTLE.BULLET)+"}{show_item true}{surface "+string(real(Battle_GetBoardSurface()))+"}";
 		var proc=battle._menu_choice_item_first;
 		repeat(Item_GetNumber()){
 			if(Item_IsValid(Item_Get(proc))){

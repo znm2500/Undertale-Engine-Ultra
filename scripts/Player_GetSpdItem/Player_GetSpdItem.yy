@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Player_GetSpdItem",
   "isCompatibility":false,
   "isDnD":false,

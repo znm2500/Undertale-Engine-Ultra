@@ -382,7 +382,7 @@ function Battle_MakeBoneTwoV() {
     bones[1] = boneRight;
     return bones;
 }
-///@arg number,angle,type,x,y,size_x,size_y,length,out,*roting,*rot,*extra_angle,*rott,*duration
+///@arg number,angle,type,x,y,size_x,size_y,length,out,*roting,*rot,*extra_angle,*rotate,*duration,*rott
 function Makebonecircle() {
     var Number = argument[0]
     var Size = argument[1]
@@ -398,7 +398,7 @@ function Makebonecircle() {
     var L = argument[7]
     var II = argument[12]
 
-    bone = instance_create_depth(X, Y, 0, bone_circle);
+    var bone = instance_create_depth(X, Y, 0, bone_circle);
     bone.number = Number;
     bone.type = Type;
     bone.angle = Size;
@@ -409,8 +409,9 @@ function Makebonecircle() {
     bone.size_x = H;
     bone.size_y = V;
     bone.length = L;
-    bone.rott = II == undefined ? 0 : II;
+    bone.rotate = II == undefined ? 0 : II;
     bone.duration = argument[13] == undefined ? -1 : duration;
+	bone.rott = argument[14] == undefined ? 0 : duration;
     return bone;
 }
 /// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap

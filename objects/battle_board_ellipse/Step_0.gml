@@ -1,1 +1,1 @@
-angle += rot;
+angle += rotate;

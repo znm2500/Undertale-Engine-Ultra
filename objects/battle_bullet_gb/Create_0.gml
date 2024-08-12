@@ -1,7 +1,6 @@
 event_inherited()
 depth=DEPTH_BATTLE.BULLET_OUTSIDE_HIGH;
 image_speed=0;
-image_alpha=0;
 type=0;
 x_target=x;
 y_target=y;

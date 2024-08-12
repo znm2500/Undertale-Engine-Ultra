@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"BGM_SetPitch",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Phone_CallEvent",
   "isCompatibility":false,
   "isDnD":false,

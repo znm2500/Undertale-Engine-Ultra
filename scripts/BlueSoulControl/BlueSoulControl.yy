@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"BlueSoulControl",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,6 +1,5 @@
 if (enable == 1) {
     rott += rot;
-
     for (i = 0; i < (number + 1); i += 1) {
         var pos = RotateAround(x, y, (x + lengthdir_x(size_x, rott + ((360 / number) * i))), (y + lengthdir_y(size_y, rott + ((360 / number) * i))), x, y, angle);
         if (roting == 1) {

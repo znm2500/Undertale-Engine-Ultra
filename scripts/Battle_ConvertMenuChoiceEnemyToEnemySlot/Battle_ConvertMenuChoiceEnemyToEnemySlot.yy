@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_ConvertMenuChoiceEnemyToEnemySlot",
   "isCompatibility":false,
   "isDnD":false,

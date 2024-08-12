@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Phone_Add",
   "isCompatibility":false,
   "isDnD":false,

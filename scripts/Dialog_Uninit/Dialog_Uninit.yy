@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Dialog_Uninit",
   "isCompatibility":false,
   "isDnD":false,

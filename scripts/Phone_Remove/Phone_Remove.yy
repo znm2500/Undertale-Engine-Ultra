@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Phone_Remove",
   "isCompatibility":false,
   "isDnD":false,

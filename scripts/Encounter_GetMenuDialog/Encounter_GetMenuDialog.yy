@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Encounter_GetMenuDialog",
   "isCompatibility":false,
   "isDnD":false,

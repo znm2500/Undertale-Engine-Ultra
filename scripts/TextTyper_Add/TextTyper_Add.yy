@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"TextTyper_Add",
   "isCompatibility":false,
   "isDnD":false,

@@ -3,8 +3,9 @@ event_user(4);
 var proc=0;
 repeat(ds_list_size(_list_inst)){
 		var INST=ds_list_find_value(_list_inst,proc);
-		INST.surface_target=_surface_target
-		proc++}
+		INST.surface_target=_surface_target;
+		proc++;
+		}
 if(_paused&&Input_IsPressed(INPUT.CONFIRM)){
 	_paused=false;
 }
@@ -169,4 +170,8 @@ if(override_alpha_enabled||override_color_text_enabled){
 		}
 		proc+=1;
 	}
+}
+_time += 9;
+for(var i=0;i<10;i+=1){
+	torder[i] = _time + i*36;
 }

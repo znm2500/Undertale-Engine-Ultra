@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Item_GetWeapon",
   "isCompatibility":false,
   "isDnD":false,

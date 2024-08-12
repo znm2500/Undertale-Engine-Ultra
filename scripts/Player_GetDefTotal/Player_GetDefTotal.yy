@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Player_GetDefTotal",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_Dialog_Enemy_Add",
   "isCompatibility":false,
   "isDnD":false,

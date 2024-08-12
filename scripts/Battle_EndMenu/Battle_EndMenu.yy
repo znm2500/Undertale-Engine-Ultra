@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_EndMenu",
   "isCompatibility":false,
   "isDnD":false,

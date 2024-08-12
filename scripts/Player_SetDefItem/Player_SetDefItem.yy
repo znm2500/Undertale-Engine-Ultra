@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Player_SetDefItem",
   "isCompatibility":false,
   "isDnD":false,

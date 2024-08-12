@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_IsEnemySpareable",
   "isCompatibility":false,
   "isDnD":false,

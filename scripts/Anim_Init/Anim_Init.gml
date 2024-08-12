@@ -26,7 +26,7 @@ function Anim_Init() {
 function Anim_Uninit() {
     if (ds_exists(global.__anim_data, ds_type_list)) {
         repeat(ds_list_size(global.__anim_data)) {
-            delete(global.__anim_data[|0]);
+            delete(global.__anim_data[| 0]);
         }
         ds_list_destroy(global.__anim_data);
         return (true);
@@ -49,7 +49,7 @@ function Anim_IsExists(target, var_name) {
     }
     return (result);
 }
-function Anim_Create(target, var_name, tween_type, ease_type, start, change, duration, delay = 0, auto_destroy = 1, single_speed = 1,alone_exist=0) {
+function Anim_Create(target, var_name, tween_type, ease_type, start, change, duration, delay = 0, auto_destroy = 1, single_speed = 1, alone_exist = 0) {
     if (duration < 0) {
         duration = -duration;
     } else if (duration == 0) {
@@ -58,12 +58,15 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
     if (delay < 0) {
         delay = -delay;
     }
-if(alone_exist){ for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
-        var anim_item = ds_list_find_value(global.__anim_data, i);
-        if (anim_item[$ "target"] == target && anim_item[$ "var_name"] == var_name && anim_item[$ "delay"] == delay) {
-            Anim_Destroy(target, var_name) break
+    if (alone_exist) {
+        for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
+            var anim_item = ds_list_find_value(global.__anim_data, i);
+            if (anim_item[$ "target"] == target && anim_item[$ "var_name"] == var_name && anim_item[$ "delay"] == delay) {
+                Anim_Destroy(target, var_name);
+                break;
+            }
         }
-    }}
+    }
     if (variable_global_exists(var_name)) {
         ds_list_add(global.__anim_data, {
             target_type: 0,
@@ -120,8 +123,8 @@ if(alone_exist){ for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
             if (variable_instance_exists(self, var_name)) {
                 ds_list_add(global.__anim_data, {
                     target_type: 3,
-                    target: target,
-                    var_name: string(var_name),
+                    target: id,
+                    var_name: var_name,
                     tween_type: tween_type,
                     ease_type: ease_type,
                     tweenstart: start,
@@ -132,9 +135,9 @@ if(alone_exist){ for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
                     single_speed: single_speed,
                     time: 0
                 });
-                return (true);
             }
         }
+        return (true);
     } else if (ds_exists(target, ds_type_list)) {
 
         if (var_name > -1 && ds_list_size(target) > var_name) {
@@ -196,6 +199,7 @@ if(alone_exist){ for (var i = 0; i < ds_list_size(global.__anim_data); i++) {
         }
 
     }
+
     return (false);
 }
 function Anim_Destroy(target, var_name) {
@@ -203,11 +207,10 @@ function Anim_Destroy(target, var_name) {
     var success = false;
     if (Anim_IsExists(target, var_name)) {
         for (var i = 0; i < ds_list_size(ease_list); i++) {
-            var anim_item = ease_list[|i];
+            var anim_item = ease_list[| i];
             if (var_name == undefined) {
                 if (target == anim_item[$ "target"]) {
                     ds_list_delete(ease_list, i);
-					show_debug_message(anim_item[$ "var_name"])
                     success = true;
                 }
             } else if (var_name == anim_item[$ "var_name"] && target == anim_item[$ "target"]) {
@@ -223,7 +226,7 @@ function Anim_SetSingleSpeed(target, var_name, single_speed) {
     var success = false;
     if (Anim_IsExists(target, var_name)) {
         for (var i = 0; i < ds_list_size(ease_list); i++) {
-            var anim_item = ease_list[|i];
+            var anim_item = ease_list[| i];
             if (var_name == undefined) {
                 if (target == anim_item[$ "target"]) {
                     anim_item[$ "single_speed"] = single_speed;
@@ -240,7 +243,7 @@ function Anim_SetSingleSpeed(target, var_name, single_speed) {
 function Anim_Step() {
     var ease_list = global.__anim_data;
     for (var i = 0; i < ds_list_size(ease_list); i++) {
-        var anim_item = ease_list[|i];
+        var anim_item = ease_list[| i];
 
         anim_item[$ "time"] += anim_item[$ "single_speed"] * global.anim_speed;
         if ((anim_item[$ "time"] > anim_item[$ "duration"] + anim_item[$ "delay"]) && anim_item[$ "auto_destroy"]) {
@@ -250,51 +253,53 @@ function Anim_Step() {
         }
         anim_item[$ "time"] = max(0, min(anim_item[$ "time"], anim_item[$ "duration"] + anim_item[$ "delay"]));
 
-        var anim_value = Anim_GetValue(anim_item[$ "tween_type"], anim_item[$ "ease_type"], anim_item[$ "time"] / anim_item[$ "duration"]);
+        if (anim_item[$ "time"] - anim_item[$ "delay"] >= 0) {
+            var anim_value = Anim_GetValue(anim_item[$ "tween_type"], anim_item[$ "ease_type"], max((anim_item[$ "time"] - anim_item[$ "delay"]) / anim_item[$ "duration"], 0));
 
-        switch (anim_item[$ "target_type"]) {
-        case 0:
-            {
-                variable_global_set(anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 1:
-            {
-                variable_struct_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 2:
-            {
-                array_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 3:
-            {
-                variable_instance_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 4:
-            {
-                ds_list_replace(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 5:
-            {
-                ds_map_replace(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        case 6:
-            {
-                if (is_string(anim_item[$ "var_name"])) var var_name = string_split(anim_item[$ "var_name"], ",");
-                else if (is_array(anim_item[$ "var_name"])) var var_name = anim_item[$ "var_name"];
-                ds_grid_set(anim_item[$ "target"], var_name[0], var_name[1], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
-                break;
-            }
-        default:
-            {
-                delete(anim_item);
-                ds_list_delete(ease_list, i);
-                break;
+            switch (anim_item[$ "target_type"]) {
+            case 0:
+                {
+                    variable_global_set(anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 1:
+                {
+                    variable_struct_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 2:
+                {
+                    array_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 3:
+                {
+                    variable_instance_set(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 4:
+                {
+                    ds_list_replace(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 5:
+                {
+                    ds_map_replace(anim_item[$ "target"], anim_item[$ "var_name"], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            case 6:
+                {
+                    if (is_string(anim_item[$ "var_name"])) var var_name = string_split(anim_item[$ "var_name"], ",");
+                    else if (is_array(anim_item[$ "var_name"])) var var_name = anim_item[$ "var_name"];
+                    ds_grid_set(anim_item[$ "target"], var_name[0], var_name[1], anim_value * anim_item[$ "change"] + anim_item[$ "tweenstart"]);
+                    break;
+                }
+            default:
+                {
+                    delete(anim_item);
+                    ds_list_delete(ease_list, i);
+                    break;
+                }
             }
         }
 
@@ -306,7 +311,7 @@ function Anim_Skip(target, var_name) {
     var success = false;
     if (Anim_IsExists(target, var_name)) {
         for (var i = 0; i < ds_list_size(ease_list); i++) {
-            var anim_item = ease_list[|i];
+            var anim_item = ease_list[| i];
             if (var_name == undefined) {
                 if (target == anim_item[$ "target"]) {
                     switch (anim_item[$ "target_type"]) {

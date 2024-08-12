@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Purplesoul_Addpoint",
   "isCompatibility":false,
   "isDnD":false,

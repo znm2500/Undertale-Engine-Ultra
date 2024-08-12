@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Encounter_IsExists",
   "isCompatibility":false,
   "isDnD":false,

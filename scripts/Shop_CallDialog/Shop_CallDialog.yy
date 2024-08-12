@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Shop_CallDialog",
   "isCompatibility":false,
   "isDnD":false,

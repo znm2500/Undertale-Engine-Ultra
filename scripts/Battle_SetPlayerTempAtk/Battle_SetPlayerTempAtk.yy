@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_SetPlayerTempAtk",
   "isCompatibility":false,
   "isDnD":false,

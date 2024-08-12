@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"shd_gaussian_vertical",
-  "name":"shd_gaussian_vertical",
+  "%Name":"shd_KawaseDown",
+  "name":"shd_KawaseDown",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",

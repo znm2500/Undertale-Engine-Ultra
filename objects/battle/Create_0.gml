@@ -3,11 +3,11 @@ _enemy_object[0]=Encounter_GetEnemy(ENCOUNTER,0);
 _enemy_object[1]=Encounter_GetEnemy(ENCOUNTER,1);
 _enemy_object[2]=Encounter_GetEnemy(ENCOUNTER,2);
 //敌人实例
-soul_angle=0
-damage=0
-heal=0
-hp=0
-kr=0
+soul_angle=0;
+_heal=0;
+_hp=0;
+_kr=0;
+damage=0;
 _enemy[0]=noone;
 _enemy[1]=noone;
 _enemy[2]=noone;
@@ -95,4 +95,6 @@ _player_temp_def=0;
 _player_temp_spd=0;
 _player_temp_inv=0;
 
-global.krtime = 0;
+global.krtime=0;
+if(global.kr)
+alarm[0]=1;

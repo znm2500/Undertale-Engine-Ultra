@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Fader_Fade",
   "isCompatibility":false,
   "isDnD":false,

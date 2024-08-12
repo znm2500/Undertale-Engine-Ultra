@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Macro_Battle",
   "isCompatibility":false,
   "isDnD":false,

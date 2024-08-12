@@ -3,9 +3,10 @@ radius_x = 60; //椭圆的x半径
 radius_y = 60; //椭圆的y半径
 precision = 360; //精确度
 angle = 0;
-rot = 0;
+rotate = 0;
 cover = 0;
 board_depth = 0;
+board_number = array_length(global.boards_array); 
 array_push(global.boards_array, self);
 // 返回是否在椭圆内
 function contains(_x, _y) {
@@ -24,21 +25,15 @@ function limit(_x, _y) {
     _x -= x;
     _y -= y;
     if (!cover) {
-        if (!pos[0]) {
-            var mul = radius_y / sqrt(sqr(_x) + sqr(_y));
-        } else {
-            var k = pos[1] / pos[0];
-            var len = radius_x * radius_y * sqrt((1 + k * k) / (radius_y * radius_y + sqr(radius_x * k)));
-            var mul = len / sqrt(sqr(_x) + sqr(_y));
-        }
+        var k = (pos[0] == 0) ? 99999 : pos[1] / pos[0];
+        var len = radius_x * radius_y * sqrt((1 + k * k) / (radius_y * radius_y + sqr(radius_x * k)));
+        var mul = len / sqrt(sqr(_x) + sqr(_y));
+
     } else {
-        if (!pos[0]) {
-            var mul = radius_y + 5 / sqrt(sqr(_x) + sqr(_y));
-        } else {
-            var k = pos[1] / pos[0];
-            var len = (radius_x + 5) * (radius_y + 5) * sqrt((1 + k * k) / ((radius_x + 5) * (radius_y + 5) + sqr((radius_x + 5) * k)));
-            var mul = len / sqrt(sqr(_x) + sqr(_y));
-        }
+        var k = (pos[0] == 0) ? 99999 : pos[1] / pos[0];
+        var len = (radius_x + 5) * (radius_y + 5) * sqrt((1 + k * k) / (sqr(radius_y + 5) + sqr((5 + radius_x) * k)));
+        var mul = len / sqrt(sqr(_x) + sqr(_y));
+
     }
     return [_x * mul + x, _y * mul + y];
 }

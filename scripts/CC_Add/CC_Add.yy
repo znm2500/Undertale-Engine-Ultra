@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"CC_Add",
   "isCompatibility":false,
   "isDnD":false,

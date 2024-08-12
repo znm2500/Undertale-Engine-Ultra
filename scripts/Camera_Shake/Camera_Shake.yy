@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Camera_Shake",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Item_GetTextHeal",
   "isCompatibility":false,
   "isDnD":false,

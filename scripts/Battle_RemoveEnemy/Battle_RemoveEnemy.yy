@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_RemoveEnemy",
   "isCompatibility":false,
   "isDnD":false,

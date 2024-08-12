@@ -7,7 +7,7 @@ var STATE = Battle_GetState();
 if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     if (instance_exists(battle_soul)) {
 
-        var isInside = [array_create(4, 0), array_create(4, 0), array_create(4, 0)];
+        var isInside = array_create(3, array_create(4, 0));
         var limit_index = array_create(4, 0);
         var boardcount = array_length(global.boards_array);
         for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
@@ -58,37 +58,36 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
 
         if (dir = 0) {
             xx = 1;
-            ii = isInside[0][1] && !(isInside[1][1] && !isInside[2][1]);
+            ii = isInside[0][1] && (!isInside[1][1] || isInside[2][1]);
             jump_input = INPUT.LEFT;
-            opposite_dir = isInside[0][0];
+            opposite_dir = isInside[0][0] && (!isInside[1][0] || isInside[2][0]);
         }
         if (dir = 90) {
             yy = -1;
-            ii = isInside[0][2] && !(isInside[1][2] && !isInside[2][2]);
+            ii = isInside[0][2] && (!isInside[1][2] || isInside[2][2]);
             jump_input = INPUT.DOWN;
-
-            opposite_dir = isInside[0][3];
+            opposite_dir = isInside[0][3] && (!isInside[1][3] || isInside[2][3]);
         }
         if (dir = 180) {
             xx = -1;
-            ii = isInside[0][0] && !(isInside[1][0] && !isInside[2][0]);
+            ii = isInside[0][0] && (!isInside[1][0] || isInside[2][0]);
             jump_input = INPUT.RIGHT;
-            opposite_dir = isInside[0][1];
+            opposite_dir = isInside[0][1] && (!isInside[1][1] || isInside[2][1]);
         }
         if (dir = 270) {
             yy = 1;
-            ii = isInside[0][3] && !(isInside[1][3] && !isInside[2][3]);
+            ii = isInside[0][3] && (!isInside[1][3] || isInside[2][3]);
             jump_input = INPUT.UP;
-            opposite_dir = isInside[0][2];
+            opposite_dir = isInside[0][2] && (!isInside[1][2] || isInside[2][2]);
         }
 
         if ! (instance_position(x + xx * (sprite_width / 2 + 1), y + yy * (sprite_height / 2 + 1), block)) {
             on_block = 0;
         }
-        if ! (ii = 0) {
+        if (ii) {
             on_board = 0;
         }
-        if ! (place_meeting(x + xx, y + yy, battle_platform)) {
+        if (!place_meeting(x + xx, y + yy, battle_platform)) {
             on_platform = 0;
             inst_plat = noone;
         }
@@ -108,6 +107,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         }
         //碰到顶时强制下落
         if (jump_state = 1) {
+
             if (Input_IsReleased(jump_input)) {
                 jump_state = 2;
                 move = -1;
@@ -115,6 +115,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             if (move >= 0) {
                 jump_state = 2;
             }
+
         }
         //松开跳跃键时改变状态
         if (jump_state = 2) {
@@ -158,11 +159,11 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             //碰到支撑物时停止下落并改变状态
         }
 
-        fx = 0 fy = 0
-        if (dir == 270) fy = 1 //(sprite_height / 2)
-        else if (dir == 90) fy = -1 //((- sprite_height) / 2)
-        else if (dir == 180) fx = -1 //((- sprite_height) / 2)
-        else if (dir == 0) fx = 1 //(sprite_height / 2)
+        fx = 0 fy = 0;
+        if (dir == 270) fy = 1;
+        else if (dir == 90) fy = -1;
+        else if (dir == 180) fx = -1;
+        else if (dir == 0) fx = 1;
         if (instance_exists(inst_plat) && !(abs(abs(inst_plat.angle) - abs(dir)) = 0 || abs(abs(inst_plat.angle) - abs(dir)) = 180)) {
             while (place_meeting(x + fx, y + fy, inst_plat) && place_meeting(x, y, inst_plat)) {
                 move = 0;

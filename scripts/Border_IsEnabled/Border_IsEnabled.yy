@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Border_IsEnabled",
   "isCompatibility":false,
   "isDnD":false,

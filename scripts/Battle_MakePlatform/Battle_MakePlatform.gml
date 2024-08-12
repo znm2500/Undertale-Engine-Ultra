@@ -1,6 +1,5 @@
-function Battle_MakePlatform(x, y, sticky, width, angle, hspeed, vspeed, bounce=0, auto_destroy=1) {
+function Battle_MakePlatform(x, y, width, angle, hspeed, vspeed, sticky = 0, bounce = 0, duration = -1, auto_destroy = 1) {
     var a = instance_create_depth(x, y, 0, battle_platform);
-
     a.sticky = sticky;
     a.width = width;
     a.angle = angle;
@@ -8,6 +7,6 @@ function Battle_MakePlatform(x, y, sticky, width, angle, hspeed, vspeed, bounce=
     a.vspeed = vspeed;
     a.bounce = bounce;
     a.auto_destroy = auto_destroy;
-
+    a.duration = duration;
     return a;
 }

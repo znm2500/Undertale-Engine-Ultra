@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"BGM_SetVolume",
   "isCompatibility":false,
   "isDnD":false,

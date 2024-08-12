@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Demo_RemoveInput",
   "isCompatibility":false,
   "isDnD":false,

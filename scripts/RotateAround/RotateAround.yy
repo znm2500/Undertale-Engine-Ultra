@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"RotateAround",
   "isCompatibility":false,
   "isDnD":false,

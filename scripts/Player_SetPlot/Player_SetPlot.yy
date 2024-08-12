@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Player_SetPlot",
   "isCompatibility":false,
   "isDnD":false,

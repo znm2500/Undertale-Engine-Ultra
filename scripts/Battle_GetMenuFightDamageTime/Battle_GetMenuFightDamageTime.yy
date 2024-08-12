@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_GetMenuFightDamageTime",
   "isCompatibility":false,
   "isDnD":false,

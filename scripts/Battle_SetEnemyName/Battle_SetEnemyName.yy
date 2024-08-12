@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_SetEnemyName",
   "isCompatibility":false,
   "isDnD":false,

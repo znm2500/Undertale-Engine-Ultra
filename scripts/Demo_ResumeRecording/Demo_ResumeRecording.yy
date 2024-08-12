@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Demo_ResumeRecording",
   "isCompatibility":false,
   "isDnD":false,

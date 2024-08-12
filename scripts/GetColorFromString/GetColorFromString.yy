@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"GetColorFromString",
   "isCompatibility":false,
   "isDnD":false,

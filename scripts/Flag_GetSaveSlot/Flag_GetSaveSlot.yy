@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Flag_GetSaveSlot",
   "isCompatibility":false,
   "isDnD":false,

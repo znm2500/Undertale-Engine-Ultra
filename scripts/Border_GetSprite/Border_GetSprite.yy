@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Border_GetSprite",
   "isCompatibility":false,
   "isDnD":false,

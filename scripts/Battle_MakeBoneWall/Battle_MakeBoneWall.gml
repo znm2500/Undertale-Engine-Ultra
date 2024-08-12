@@ -19,19 +19,19 @@ function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow = 0
 
         b[ii].follow = FOLLOW;
         b[ii].follow_board = FOLLOW;
-        with (b[ii]) {
+        with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
 
             if (follow) {
                 a.var_name = "xx";
-                Anim_Create(id, "yy", 0, 0, yy, (-LENGTH), 8, PAUSE);
+                Anim_Create(id, "yy", 0, 0, yy, ( - LENGTH), 8, PAUSE);
 
                 if (DURATION != -1) {
                     Anim_Create(id, "yy", 0, 0, (yy - LENGTH), (LENGTH * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             } else {
                 a.var_name = "x";
-                Anim_Create(id, "y", 0, 0, y, (-LENGTH), 8, PAUSE);
+                Anim_Create(id, "y", 0, 0, y, ( - LENGTH), 8, PAUSE);
 
                 if (DURATION != -1) {
                     Anim_Create(id, "y", 0, 0, (y - LENGTH), (LENGTH * 2), 16, ((16 + PAUSE) + DURATION));
@@ -80,7 +80,7 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
 
         b[ii].follow = FOLLOW;
         b[ii].follow_board = FOLLOW;
-        with (b[ii]) {
+        with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
 
             if (!follow) {
@@ -88,14 +88,14 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
                 Anim_Create(id, "x", 0, 0, x, LENGTH, 8, PAUSE);
 
                 if (DURATION != -1) {
-                    Anim_Create(id, "x", 0, 0, (x + LENGTH), ((-LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
+                    Anim_Create(id, "x", 0, 0, (x + LENGTH), (( - LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             } else {
                 a.var_name = "yy";
                 Anim_Create(id, "xx", 0, 0, xx, LENGTH, 8, PAUSE);
 
                 if (DURATION != -1) {
-                    Anim_Create(id, "xx", 0, 0, (xx + LENGTH), ((-LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
+                    Anim_Create(id, "xx", 0, 0, (xx + LENGTH), (( - LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             }
 
@@ -127,8 +127,6 @@ function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = fa
     var COLOR = type;
     var FOLLOW = follow;
 
- 
-
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
 
@@ -142,17 +140,17 @@ function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = fa
 
         b[ii].follow = FOLLOW;
         b[ii].follow_board = FOLLOW;
-        with (b[ii]) {
+        with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
             if (!follow) {
                 a.var_name = "y";
-                Anim_Create(id, "x", 0, 0, x, (-LENGTH), 8, PAUSE);
+                Anim_Create(id, "x", 0, 0, x, ( - LENGTH), 8, PAUSE);
                 if (DURATION != -1) {
                     Anim_Create(id, "x", 0, 0, (x - LENGTH), (LENGTH * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             } else {
                 a.var_name = "yy";
-                Anim_Create(id, "xx", 0, 0, xx, (-LENGTH), 8, PAUSE);
+                Anim_Create(id, "xx", 0, 0, xx, ( - LENGTH), 8, PAUSE);
                 if (DURATION != -1) {
                     Anim_Create(id, "xx", 0, 0, (xx - LENGTH), (LENGTH * 2), 16, ((16 + PAUSE) + DURATION));
                 }
@@ -186,8 +184,6 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
     var COLOR = type;
     var FOLLOW = follow;
 
-
-
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
 
@@ -200,19 +196,19 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
         }
         b[ii].follow = FOLLOW;
         b[ii].follow_board = FOLLOW;
-        with (b[ii]) {
+        with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
             if (!follow) {
                 a.var_name = "x";
                 Anim_Create(id, "y", 0, 0, y, LENGTH, 8, PAUSE);
                 if (DURATION != -1) {
-                    Anim_Create(id, "y", 0, 0, (y + LENGTH), ((-LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
+                    Anim_Create(id, "y", 0, 0, (y + LENGTH), (( - LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             } else {
                 a.var_name = "xx";
                 Anim_Create(id, "yy", 0, 0, yy, LENGTH, 8, PAUSE);
                 if (DURATION != -1) {
-                    Anim_Create(id, "yy", 0, 0, (yy + LENGTH), ((-LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
+                    Anim_Create(id, "yy", 0, 0, (yy + LENGTH), (( - LENGTH) * 2), 16, ((16 + PAUSE) + DURATION));
                 }
             }
 

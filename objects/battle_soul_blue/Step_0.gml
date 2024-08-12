@@ -65,6 +65,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
             if (jump_state = 0) {
                 move = -jump_speed;
                 jump_state = 1;
+                
             }
             break;
 
@@ -89,6 +90,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
             if (jump_state = 0) {
                 move = -jump_speed;
                 jump_state = 1;
+                
             }
             break;
 
@@ -113,6 +115,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
             if (jump_state = 0) {
                 move = -jump_speed;
                 jump_state = 1;
+                
             }
             break;
 
@@ -137,6 +140,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
             if (jump_state = 0) {
                 move = -jump_speed;
                 jump_state = 1;
+                
             }
             break;
 

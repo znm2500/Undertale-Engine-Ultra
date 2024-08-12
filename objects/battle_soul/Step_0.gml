@@ -22,13 +22,12 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
 }
 if (STATE = BATTLE_STATE.IN_TURN && !global.classic_ui) {
     if (Input_IsHeld(INPUT.CANCEL)) {
-        Anim_Create(id, "s", 0, 0, s, 0.08 - s, 5);
         index = 1;
-        Anim_Create(id, "ss", 0, 0, ss, 1 - ss, 5);
+        if (light_size != 1) Anim_Create(id, "light_size", 0, 0, light_size, 1 - light_size, 5);
     } else {
-        Anim_Create(id, "ss", 0, 0, ss, -ss, 5);
+        if (light_size != 0) Anim_Create(id, "light_size", 0, 0, light_size, -light_size, 5);
         index = 0;
-        Anim_Create(id, "s", 0, 0, s, -s, 5);
+
     }
 }
 

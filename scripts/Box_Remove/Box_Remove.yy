@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Box_Remove",
   "isCompatibility":false,
   "isDnD":false,

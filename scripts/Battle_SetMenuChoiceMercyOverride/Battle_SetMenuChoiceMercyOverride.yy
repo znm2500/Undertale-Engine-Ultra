@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Battle_SetMenuChoiceMercyOverride",
   "isCompatibility":false,
   "isDnD":false,

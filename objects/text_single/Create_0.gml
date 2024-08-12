@@ -5,7 +5,8 @@ font = -1;
 scale_x = 1;
 scale_y = 1;
 angle = 0;
-rainbow = 0 shadow = false;
+rainbow = 0;
+shadow = false;
 outline = false;
 color = 0 surface_target = noone
 if (rainbow) {
@@ -33,28 +34,21 @@ color_outline[2] = make_color_rgb(110, 110, 110);
 color_outline[3] = make_color_rgb(110, 110, 110);
 shadow_x = 1;
 shadow_y = 1;
-alpha = 1;
-
-if (room == room_battle) {
-    if (Battle_GetMenu() == BATTLE_MENU.ITEM && depth == DEPTH_BATTLE.BULLET) {
-        if (round(y) > battle_board.y - battle_board.up - 5 + 20 + 64 + 16) {
-            alpha = 0;
-        } else {
-            alpha = 1;
-        }
-    }
-}
-
+show_item = 0;
 alpha_text = 1;
 alpha_shadow = 1;
 alpha_outline = 1;
 effect = 0;
 gui = true;
-
-_offset_x = 0;
-_offset_y = 0;
-_offset_xx = 0;
-_offset_yy = 0;
-_offset_xxx = 0;
-_offset_yyy = 0;
+alpha = 1;
+_offset_x = array_create(3);
+_offset_y = array_create(3);
 _effect_shook = false;
+halign = 0;
+valign = 0;
+_line = 0; //该字符所在行数
+_effect_shook = false;
+_xUnit = 0;
+_yUnit = 0;
+order = 0;
+_processed = 0;

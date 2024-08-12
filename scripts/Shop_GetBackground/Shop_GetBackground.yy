@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Shop_GetBackground",
   "isCompatibility":false,
   "isDnD":false,

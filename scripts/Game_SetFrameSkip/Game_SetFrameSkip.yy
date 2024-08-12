@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Game_SetFrameSkip",
   "isCompatibility":false,
   "isDnD":false,

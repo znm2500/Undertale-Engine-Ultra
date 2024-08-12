@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Player_SetKills",
   "isCompatibility":false,
   "isDnD":false,

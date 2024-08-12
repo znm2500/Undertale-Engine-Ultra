@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Encounter_GetSoulX",
   "isCompatibility":false,
   "isDnD":false,

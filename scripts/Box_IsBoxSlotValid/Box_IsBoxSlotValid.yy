@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Box_IsBoxSlotValid",
   "isCompatibility":false,
   "isDnD":false,

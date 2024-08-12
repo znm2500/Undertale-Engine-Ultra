@@ -8,50 +8,36 @@ function Bezier_Init() {
 function Bezier_Uninit() {
     if (ds_exists(global.__bezier_data, ds_type_list)) {
         repeat(ds_list_size(global.__bezier_data)) {
-            delete(global.__bezier_data[|0]);
+            delete(global.__bezier_data[| 0]);
         };
         ds_list_destroy(global.__bezier_data);
         return (true);
     }
 }
-/// @param start_point_x
-/// @param start_point_y
-/// @param last_point_x
-/// @param last_point_y
-function Bezier_CreateStruct(_sx, _sy, _lx, _ly) {
+function Bezier_CreateStruct(start_x, start_y, last_x, last_y) {
     var bezier = {};
-    bezier[$ "startPoint"] = [_sx, _sy];
-    bezier[$ "lastPoint"] = [_lx, _ly];
-    // 起始点/终点位置
+    bezier[$ "startPoint"] = [start_x, start_y];
+    bezier[$ "lastPoint"] = [last_x, last_y];
     bezier[$ "points"] = [];
-    // 多个控制点位置
-    return (bezier);
+    return bezier;
 }
-/// @param bezier
-function Bezier_PointNumber(_bezier) {
-    return (array_length(_bezier[$ "points"]) + 2);
+function Bezier_PointNumber(bezier) {
+    return (array_length(bezier[$ "points"]) + 2);
 }
-// 创建一个贝塞尔曲线
-/// @param bezier
-/// @param x
-/// @param y
-function Bezier_AddPoint(_bezier, _x, _y) {
-    return (array_push(_bezier[$ "points"], [_x, _y]));
+function Bezier_AddPoint(bezier, x, y) {
+    return (array_push(bezier[$ "points"], [x, y]));
 }
-
-/// @param bezier
-/// @param step
-function Bezier_GetValue(_bezier, perc) {
-    var startPoint = _bezier[$ "startPoint"];
-    var lastPoint = _bezier[$ "lastPoint"];
-    var points = _bezier[$ "points"];
+function Bezier_GetValue(bezier, step) {
+    var startPoint = bezier[$ "startPoint"];
+    var lastPoint = bezier[$ "lastPoint"];
+    var points = bezier[$ "points"];
     // 获取数据
     var allPoints = [];
     allPoints[0] = startPoint; // 添加第一个点的位置
     allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
     array_push(allPoints, lastPoint); // 添加第末尾点的位置
     // 得到要计算的所有点位置
-    var normalization = perc / 100; // 计算归一化百分比
+    var normalization = step / 100; // 计算归一化百分比
     var tempPoints = allPoints; // 临时点数组
     var nextTempPoints = []; // 下一维度临时点数组
     var tempPointsNumber = array_length(tempPoints); // 临时点数量
@@ -93,7 +79,7 @@ function Bezier_Destroy(target, var_name) {
     var success = false;
     if (Bezier_IsExists(target, var_name)) {
         for (var i = 0; i < ds_list_size(ease_list); i++) {
-            var bezier_item = ease_list[|i];
+            var bezier_item = ease_list[| i];
             if (var_name == undefined) {
                 if (target == bezier_item[$ "target"]) {
                     ds_list_delete(ease_list, i);
@@ -107,15 +93,13 @@ function Bezier_Destroy(target, var_name) {
     }
     return (success);
 }
-/// @param bezier
-/// @param index
-function Bezier_Delete_Point(_bezier, _ind) {
-    if (_ind < 0) {
+function Bezier_Delete_Point(bezier, index) {
+    if (index < 0) {
         return ( - 1);
     }
-    return (array_delete(_bezier[$ "points"], _ind, 1));
+    return (array_delete(bezier[$ "points"], index, 1));
 }
-function Bezier_Create(target, var_name, bezier_struct, component, start, change, duration, delay = 0) {
+function Bezier_Create(target, var_name, tween_type, ease_type, start, change, duration, delay = 0, auto_destroy = 1, single_speed = 1, alone_exist = 0) {
     if (duration < 0) {
         duration = -duration;
     } else if (duration == 0) {
@@ -124,7 +108,15 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
     if (delay < 0) {
         delay = -delay;
     }
-
+    if (alone_exist) {
+        for (var i = 0; i < ds_list_size(global.__bezier_data); i++) {
+            var bezier_item = ds_list_find_value(global.__bezier_data, i);
+            if (bezier_item[$ "target"] == target && bezier_item[$ "var_name"] == var_name && bezier_item[$ "delay"] == delay) {
+                Bezier_Destroy(target, var_name);
+                break;
+            }
+        }
+    }
     if (variable_global_exists(var_name)) {
         ds_list_add(global.__bezier_data, {
             target_type: 0,
@@ -136,6 +128,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
             change: change,
             duration: duration,
             delay: delay,
+            auto_destroy: auto_destroy,
+            single_speed: single_speed,
             time: 0
         });
     } else if (is_struct(target)) {
@@ -150,6 +144,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                 change: change,
                 duration: duration,
                 delay: delay,
+                auto_destroy: auto_destroy,
+                single_speed: single_speed,
                 time: 0
             });
             return (true);
@@ -166,6 +162,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                 change: change,
                 duration: duration,
                 delay: delay,
+                auto_destroy: auto_destroy,
+                single_speed: single_speed,
                 time: 0
             });
             return (true);
@@ -175,7 +173,7 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
             if (variable_instance_exists(self, var_name)) {
                 ds_list_add(global.__bezier_data, {
                     target_type: 3,
-                    target: target,
+                    target: id,
                     var_name: string(var_name),
                     bezier_struct: bezier_struct,
                     component: component,
@@ -183,11 +181,13 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                     change: change,
                     duration: duration,
                     delay: delay,
+                    auto_destroy: auto_destroy,
+                    single_speed: single_speed,
                     time: 0
                 });
-                return (true);
             }
         }
+		return (true);
     } else if (ds_exists(target, ds_type_list)) {
 
         if (var_name > -1 && ds_list_size(target) > var_name) {
@@ -201,6 +201,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                 change: change,
                 duration: duration,
                 delay: delay,
+                auto_destroy: auto_destroy,
+                single_speed: single_speed,
                 time: 0
             });
             return (true);
@@ -219,6 +221,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                 change: change,
                 duration: duration,
                 delay: delay,
+                auto_destroy: auto_destroy,
+                single_speed: single_speed,
                 time: 0
             });
             return (true);
@@ -237,6 +241,8 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
                 change: change,
                 duration: duration,
                 delay: delay,
+                auto_destroy: auto_destroy,
+                single_speed: single_speed,
                 time: 0
             });
             return (true);
@@ -248,14 +254,16 @@ function Bezier_Create(target, var_name, bezier_struct, component, start, change
 function Bezier_Step() {
     var ease_list = global.__bezier_data;
     for (var i = 0; i < ds_list_size(ease_list); i++) {
-        var bezier_item = ease_list[|i];
-        if (bezier_item[$ "delay"] <= 0) {
-            bezier_item[$ "time"]++;
-            if (bezier_item[$ "time"] > bezier_item[$ "duration"]) {
-                delete(bezier_item);
-                ds_list_delete(ease_list, i);
-                continue;
-            }
+        var bezier_item = ease_list[| i];
+        bezier_item[$ "time"] += bezier_item[$ "single_speed"] * global.bezier_speed;
+        if ((bezier_item[$ "time"] > bezier_item[$ "duration"] + bezier_item[$ "delay"]) && bezier_item[$ "auto_destroy"]) {
+            delete(bezier_item);
+            ds_list_delete(ease_list, i);
+            continue;
+        }
+        bezier_item[$ "time"] = max(0, min(bezier_item[$ "time"], bezier_item[$ "duration"] + bezier_item[$ "delay"]));
+
+        if (bezier_item[$ "time"] - bezier_item[$ "delay"] >= 0) {
             var bezier_value = Bezier_GetValue(bezier_item[$ "bezier_struct"], bezier_item[$ "time"] / bezier_item[$ "duration"] * 100);
             var bezier_value = bezier_value[bezier_item[$ "component"]];
 
@@ -305,9 +313,135 @@ function Bezier_Step() {
                 }
             }
 
-        } else {
-            bezier_item[$ "delay"]--;
         }
     }
     return (true);
 }
+function Bezier_Skip(target, var_name) {
+    var ease_list = global.__bezier_data;
+    var success = false;
+    if (Bezier_IsExists(target, var_name)) {
+        for (var i = 0; i < ds_list_size(ease_list); i++) {
+            var bezier_item = ease_list[| i];
+            if (var_name == undefined) {
+                if (target == bezier_item[$ "target"]) {
+                    switch (bezier_item[$ "target_type"]) {
+                    case 0:
+                        {
+                            variable_global_set(bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 1:
+                        {
+                            variable_struct_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 2:
+                        {
+                            array_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 3:
+                        {
+                            variable_instance_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 4:
+                        {
+                            ds_list_replace(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 5:
+                        {
+                            ds_map_replace(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    case 6:
+                        {
+                            if (is_string(bezier_item[$ "var_name"])) var var_names = string_split(bezier_item[$ "var_name"], ",");
+                            else if (is_array(bezier_item[$ "var_name"])) var var_names = bezier_item[$ "var_name"];
+                            ds_grid_set(bezier_item[$ "target"], var_names[0], var_names[1], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                            break;
+                        }
+                    default:
+                        {
+                            delete(bezier_item);
+                            ds_list_delete(ease_list, i);
+                            break;
+                        }
+                    }
+                    ds_list_delete(ease_list, i);
+                    success = true;
+                }
+            } else if (var_name == bezier_item[$ "var_name"] && target == bezier_item[$ "target"]) {
+                switch (bezier_item[$ "target_type"]) {
+                case 0:
+                    {
+                        variable_global_set(bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 1:
+                    {
+                        variable_struct_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 2:
+                    {
+                        array_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 3:
+                    {
+                        variable_instance_set(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 4:
+                    {
+                        ds_list_replace(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 5:
+                    {
+                        ds_map_replace(bezier_item[$ "target"], bezier_item[$ "var_name"], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                case 6:
+                    {
+                        if (is_string(bezier_item[$ "var_name"])) var var_names = string_split(bezier_item[$ "var_name"], ",");
+                        else if (is_array(bezier_item[$ "var_name"])) var var_names = bezier_item[$ "var_name"];
+                        ds_grid_set(bezier_item[$ "target"], var_names[0], var_names[1], bezier_item[$ "change"] + bezier_item[$ "tweenstart"]);
+                        break;
+                    }
+                default:
+                    {
+                        delete(bezier_item);
+                        ds_list_delete(ease_list, i);
+                        break;
+                    }
+                }
+                ds_list_delete(ease_list, i);
+                success = true;
+            }
+        }
+    }
+    return (success);
+}
+function Bezier_SetSingleSpeed(target, var_name, single_speed) {
+    var ease_list = global.__bezier_data;
+    var success = false;
+    if (Bezier_IsExists(target, var_name)) {
+        for (var i = 0; i < ds_list_size(ease_list); i++) {
+            var bezier_item = ease_list[| i];
+            if (var_name == undefined) {
+                if (target == bezier_item[$ "target"]) {
+                    bezier_item[$ "single_speed"] = single_speed;
+                    success = true;
+                }
+            } else if (var_name == bezier_item[$ "var_name"] && target == bezier_item[$ "target"]) {
+                bezier_item[$ "single_speed"] = single_speed;
+                success = true;
+            }
+        }
+    }
+    return (success);
+}	

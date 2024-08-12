@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Macro_Phone",
   "isCompatibility":false,
   "isDnD":false,

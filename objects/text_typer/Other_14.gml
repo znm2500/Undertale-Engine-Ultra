@@ -1,29 +1,31 @@
 ///@desc Update Position
-if(xprevious!=x||yprevious!=y||_angleprevious!=_angle){
-	var CHANGE_X=x-xprevious;
-	var CHANGE_Y=y-yprevious;
-	var proc=0;
-	repeat(ds_list_size(_list_inst)){
-		var INST=ds_list_find_value(_list_inst,proc);
-		var XX=ds_list_find_value(_list_inst_offset,proc).x
-		var YY=ds_list_find_value(_list_inst_offset,proc).y
-		if(instance_exists(INST)){
-			INST.x=x+lengthdir_x(
-    point_distance(0, 0, XX,YY),
-    point_direction(0, 0,XX,YY) + _angle
-);
-INST.y=y+lengthdir_y(
-    point_distance(0, 0, XX,YY),
-    point_direction(0, 0,XX,YY) + _angle
-);
-INST.angle=_angle
+if( x != xprevious || y != yprevious || _angle_previous != _angle)
+{
+	var INST;
+	var X_UNIT = [lengthdir_x(1, _angle*(_type_dir=0 ? 1 : -1)), lengthdir_y(1, _angle*(_type_dir=0 ? 1 : -1))];
+	var Y_UNIT = [lengthdir_x(1, (_angle - 90)*(_type_dir=0 ? 1 : -1)), lengthdir_y(1, (_angle - 90)*(_type_dir=0 ? 1 : -1))];
+	
+	for (var PROC = 0; PROC < ds_list_size(_list_inst); PROC ++){
+		INST = _list_inst[| PROC];
+		if instance_exists(INST)
+		{
+			with (INST)
+			{
+				if(other._angle_follow)angle = other._angle;
+				if(other._position_follow)other.CharUpdate(id);
+				_xUnit = X_UNIT;
+				_yUnit = Y_UNIT;
+				
+			}
 		}
-		proc+=1;
 	}
-	if(instance_exists(_face)&&!_face_linked){
-		_face.x+=CHANGE_X;
-		_face.y+=CHANGE_Y;
+	
+	if( instance_exists(_face) && !_face_linked)
+	{
+		_face.x += x - xprevious;
+		_face.y += y - yprevious;
+		_face.image_angle = _angle;
 	}
-	xprevious=x;
-	yprevious=y;
+
+	_angle_previous = _angle;
 }

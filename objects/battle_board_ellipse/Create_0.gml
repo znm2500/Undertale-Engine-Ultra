@@ -7,6 +7,7 @@ rotate = 0;
 cover = 0;
 board_depth = 0;
 board_number = array_length(global.boards_array); 
+isCollide = array_create(4,0);
 array_push(global.boards_array, self);
 // 返回是否在椭圆内
 function contains(_x, _y) {
@@ -55,24 +56,12 @@ function replaceSurfaceAlpha() {
     }
     draw_primitive_end();
     surface_reset_target();
-    surface_set_target(!cover ? battle_board._surface_border_cover: battle_board._surface_border_extra);
-    draw_set_alpha(0);
-    draw_primitive_begin(pr_trianglefan);
-    draw_vertex(x, y);
-    for (var i = 0; i <= precision; i++) {
-        var pos = RotateAround(x, y, x + lengthdir_x(radius_x, i * 360 / precision), y + lengthdir_y(radius_y, i * 360 / precision), x, y, angle);
-        draw_vertex(pos[0], pos[1]);
-    }
-    draw_primitive_end();
-    surface_reset_target();
-
-    //恢复默认
     gpu_set_blendenable(true);
     gpu_set_colorwriteenable(true, true, true, true);
 
 }
 function drawBorder() {
-    surface_set_target(cover ? battle_board._surface_border_cover: battle_board._surface_border_extra);
+    surface_set_target(cover ? battle_board._surface_board_cover: battle_board._surface_board_extra);
     draw_primitive_begin(pr_trianglefan);
     draw_vertex_color(x, y, battle_board.color_frame, battle_board.alpha_frame);
     for (var i = 0; i <= precision; i++) {
@@ -83,8 +72,7 @@ function drawBorder() {
     surface_reset_target();
     gpu_set_colorwriteenable(false, false, false, true);
     gpu_set_blendenable(false);
-
-    surface_set_target(!cover ? battle_board._surface_border_cover: battle_board._surface_border_extra);
+    surface_set_target(!cover ? battle_board._surface_board_cover: battle_board._surface_board_extra);
     draw_set_alpha(0);
     draw_primitive_begin(pr_trianglefan);
     draw_vertex(x, y);
@@ -94,7 +82,6 @@ function drawBorder() {
     }
     draw_primitive_end();
     surface_reset_target();
-
     gpu_set_blendenable(true);
     gpu_set_colorwriteenable(true, true, true, true);
 }

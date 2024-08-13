@@ -1,4 +1,10 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"battle_board_ellipse","order":1,"path":"objects/battle_board_ellipse/battle_board_ellipse.yy",},
+    {"name":"battle_board_points","order":2,"path":"objects/battle_board_points/battle_board_points.yy",},
+    {"name":"battle_soul_blue","order":2,"path":"objects/battle_soul_blue/battle_soul_blue.yy",},
+    {"name":"battle_soul","order":1,"path":"objects/battle_soul/battle_soul.yy",},
+    {"name":"spr_battle_soul","order":1,"path":"sprites/spr_battle_soul/spr_battle_soul.yy",},
+  ],
 }

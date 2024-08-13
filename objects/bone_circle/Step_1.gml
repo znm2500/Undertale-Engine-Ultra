@@ -6,7 +6,6 @@ if (!enable) {
         bone[i].angle = point_direction(x,y,pos[0],pos[1]);
         bone[i].length = length;
         bone[i].type = type;
-
     }
     enable = 1;
 }

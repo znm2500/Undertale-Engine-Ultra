@@ -1,9 +1,9 @@
 // 直接创建一个框，创建后需要手动添加顶点
 // Create an Board directly, you need to add vertexes by yourself
-function Battle_CreateBoardPoints(x, y, board_depth = 0, angle = 0, rot = 0, cover = 0) {
+function Battle_CreateBoardPoints(x, y, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
 
     var board = instance_create_depth(x, y, 0, battle_board_points);
-    board.rot = rot;
+    board.rotate = rotate;
     board.angle = angle;
     board.board_depth = board_depth;
     board.cover = cover;
@@ -12,14 +12,14 @@ function Battle_CreateBoardPoints(x, y, board_depth = 0, angle = 0, rot = 0, cov
 
 //创建一个矩形的框
 //Create a Board that is rect
-function Battle_CreateBoardRect(x, y, up, down, left, right, board_depth = 0, angle = 0, rot = 0, cover = 0) {
+function Battle_CreateBoardRect(x, y, up, down, left, right, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
 
     var rect = instance_create_depth(x, y, 0, battle_board_rect);
     rect.up = up;
     rect.down = down;
     rect.left = left;
     rect.right = right;
-    rect.rot = rot;
+    rect.rotate = rotate;
     rect.angle = angle;
     rect.board_depth = board_depth;
     rect.cover = cover;
@@ -39,12 +39,12 @@ function Battle_CreateBoardCircle(x, y, radius, board_depth = 0, cover = 0) {
 }
 //创建一个椭圆的框
 //Create a Board that is ellipse
-function Battle_CreateBoardEllipse(x, y, radius_x, radius_y, board_depth = 0, angle = 0, rot = 0, cover = 0) {
+function Battle_CreateBoardEllipse(x, y, radius_x, radius_y, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
 
     var ellipse = instance_create_depth(x, y, 0, battle_board_ellipse);
     ellipse.radius_x = radius_x;
     ellipse.radius_y = radius_y;
-    ellipse.rot = rot;
+    ellipse.rotate = rotate;
     ellipse.angle = angle;
     ellipse.board_depth = board_depth;
     ellipse.cover = cover;
@@ -53,12 +53,12 @@ function Battle_CreateBoardEllipse(x, y, radius_x, radius_y, board_depth = 0, an
 }
 //创建一个圆角矩形的框
 //Create a Board that is roundrect
-function Battle_CreateBoardRoundrect(x, y, size, precision, board_depth = 0, angle = 0, rot = 0, cover = 0) {
+function Battle_CreateBoardRoundrect(x, y, size, precision, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
 
     var roundrect = instance_create_depth(x, y, 0, battle_board_roundrect);
     roundrect.size = size;
     roundrect.precision = precision;
-    roundrect.rot = rot;
+    roundrect.rotate = rotate;
     roundrect.angle = angle;
     roundrect.board_depth = board_depth;
     roundrect.cover = cover;

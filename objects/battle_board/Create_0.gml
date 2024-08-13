@@ -1,8 +1,8 @@
 depth = DEPTH_BATTLE.BOARD;
 
 _surface = -1;
-_surface_border_extra = -1;
-_surface_border_cover = -1;
+_surface_board_extra = -1;
+_surface_board_cover = -1;
 _surface_final = -1;
 
 x = BATTLE_BOARD.X;

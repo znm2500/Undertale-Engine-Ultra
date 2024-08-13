@@ -7,7 +7,7 @@ for (var i = 0; i < array_length(global.boards_array); i++) {
 
 surface_set_target(_surface);
 draw_set_alpha(1);
-draw_surface(_surface_border_cover, 0, 0);
+draw_surface(_surface_board_cover, 0, 0);
 surface_reset_target();
 surface_set_target(_surface_final);
 var tex = surface_get_texture(application_surface);
@@ -38,5 +38,5 @@ surface_reset_target() for (var i = 0; i < array_length(global.boards_array); i+
     }
 }
 draw_set_alpha(1);
-draw_surface(_surface_border_extra, 0, 0);
+draw_surface(_surface_board_extra, 0, 0);
 draw_surface(_surface_final, 0, 0);

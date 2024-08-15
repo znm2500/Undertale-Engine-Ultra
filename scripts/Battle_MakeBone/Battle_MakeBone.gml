@@ -1,4 +1,4 @@
-///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_angle,point,point_at,follow_x,follow_y
+///@arg x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_target,follow_angle,point,point_at,follow_x,follow_y
 function Battle_MakeBone() {
     var OBJ = 0;
     var DURATION = -1;
@@ -30,135 +30,49 @@ function Battle_MakeBone() {
     bone.duration = DURATION;
     bone.follow = OBJ;
 
-    if (argument_count >= 13) bone.follow_board = argument[12];
+    if (argument_count >= 13) {
+        bone.follow_board = argument[12];
+        if (OBJ) {
+            bone.image_angle = ANGLE + battle_board.angle;
+            var pos = RotateAround(battle_board.x, battle_board.y, X, Y, battle_board.x, battle_board.y, battle_board.angle);
+            bone.x = pos[0];
+            bone.y = pos[1];
+        }
+    }
+    if (argument_count >= 14) {
+        bone.follow_target = argument[12];
+        if (OBJ) {
+            bone.image_angle = ANGLE + bone.follow_target.angle;
+            var pos = RotateAround(bone.follow_target.x, bone.follow_target.y, X, Y, bone.follow_target.x, bone.follow_target.y, bone.follow_target.angle);
+            bone.x = pos[0];
+            bone.y = pos[1];
+        }
+    }
+    if (argument_count >= 15) {
+        bone.follow_angle = argument[14];
+        if (OBJ) bone.image_angle = ANGLE + bone.follow_angle;
+    }
 
-    if (argument_count >= 14) bone.follow_angle = argument[13];
+    if (argument_count >= 16) bone.point = argument[15];
 
-    if (argument_count >= 15) bone.point = argument[14];
+    if (argument_count >= 17) bone.point_at = argument[16];
 
-    if (argument_count >= 16) bone.point_at = argument[15];
-
-    if (argument_count >= 18) {
-        bone.follow_x = argument[16];
-        bone.follow_y = argument[17];
+    if (argument_count >= 19) {
+        bone.follow_x = argument[17];
+        bone.follow_y = argument[18];
+        if (OBJ) {
+            var pos = RotateAround(bone.follow_x, bone.follow_y, X, Y, bone.follow_x, bone.follow_y, bone.follow_angle);
+            bone.x = pos[0];
+            bone.y = pos[1];
+        }
     }
 
     return bone;
 }
-
-///@arg x,y,length,hspeed,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
-function Battle_MakeBoneH() {
-
-    var X = argument[0];
-    var Y = argument[1];
-    var LENGTH = argument[2];
-    var HSPEED = argument[3];
-    var VSPEED = argument[4];
-    var COLOR = argument[5];
-    var OUT = argument[6];
-    var ROT = argument[7];
-    var DESTROY = argument[8];
-    var DURATION = -1;
-
-    if (argument_count >= 10) DURATION = argument[9];
-
-    var FOLLOW = false;
-    var FOLLOW_BOARD = false;
-    var FOLLOW_ANGLE = 0;
-    var POINT = 0;
-    var POINT_AT = 0;
-    var FOLLOW_X = 0;
-    var FOLLOW_Y = 0;
-
-    if (argument_count >= 11) FOLLOW = argument[10];
-    if (argument_count >= 12) FOLLOW_BOARD = argument[11];
-    if (argument_count >= 13) FOLLOW_ANGLE = argument[12];
-    if (argument_count >= 14) POINT = argument[13];
-    if (argument_count >= 15) POINT_AT = argument[14];
-    if (argument_count >= 17) {
-        FOLLOW_X = argument[15];
-        FOLLOW_Y = argument[16];
-    }
-
-    var bone = instance_create_depth(X, Y, 0, battle_bullet_bone);
-    bone.length = LENGTH;
-    bone.hspeed = HSPEED;
-    bone.vspeed = VSPEED;
-    bone.type = COLOR;
-    bone.out = OUT;
-    bone.rotate = ROT;
-    bone.auto_destroy = DESTROY;
-    bone.angle = 0;
-    bone._angle = 0;
-    bone.duration = DURATION;
-    bone.follow = FOLLOW;
-    bone.follow_board = FOLLOW_BOARD;
-    bone.follow_angle = FOLLOW_ANGLE;
-    bone.point = POINT;
-    bone.point_at = POINT_AT;
-    bone.follow_x = FOLLOW_X;
-    bone.follow_y = FOLLOW_Y;
-
-    return bone;
-}
-///@arg x,y,length,hspeed,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
-function Battle_MakeBoneV() {
-
-    var X = argument[0];
-    var Y = argument[1];
-    var LENGTH = argument[2];
-    var HSPEED = argument[3];
-    var VSPEED = argument[4];
-    var COLOR = argument[5];
-    var OUT = argument[6];
-    var ROT = argument[7];
-    var DESTROY = argument[8];
-    var DURATION = -1;
-
-    if (argument_count >= 10) DURATION = argument[9];
-
-    var FOLLOW = false;
-    var FOLLOW_BOARD = false;
-    var FOLLOW_ANGLE = 0;
-    var POINT = 0;
-    var POINT_AT = 0;
-    var FOLLOW_X = 0;
-    var FOLLOW_Y = 0;
-
-    if (argument_count >= 11) FOLLOW = argument[10];
-    if (argument_count >= 12) FOLLOW_BOARD = argument[11];
-    if (argument_count >= 13) FOLLOW_ANGLE = argument[12];
-    if (argument_count >= 14) POINT = argument[13];
-    if (argument_count >= 15) POINT_AT = argument[14];
-    if (argument_count >= 17) {
-        FOLLOW_X = argument[15];
-        FOLLOW_Y = argument[16];
-    }
-
-    var bone = instance_create_depth(X, Y, 0, battle_bullet_bone);
-    bone.length = LENGTH;
-    bone.hspeed = HSPEED;
-    bone.vspeed = VSPEED;
-    bone.type = COLOR;
-    bone.out = OUT;
-    bone.rotate = ROT;
-    bone.auto_destroy = DESTROY;
-    bone.angle = 90;
-    bone._angle = 90;
-    bone.duration = DURATION;
-    bone.follow = FOLLOW;
-    bone.follow_board = FOLLOW_BOARD;
-    bone.follow_angle = FOLLOW_ANGLE;
-    bone.point = POINT;
-    bone.point_at = POINT_AT;
-    bone.follow_x = FOLLOW_X;
-    bone.follow_y = FOLLOW_Y;
-
-    return bone;
-}
-///@arg x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneBottom() {
     var X = argument[0];
+    var Y = (((battle_board.y + battle_board.down) - (LENGTH / 2)) - 5);
     var LENGTH = argument[1];
     var HSPEED = argument[2];
     var COLOR = argument[3];
@@ -173,30 +87,28 @@ function Battle_MakeBoneBottom() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
+    var FOLLOW_TARGET = noone;
 
     if (argument_count >= 8) DURATION = argument[7];
     if (argument_count >= 9) FOLLOW = argument[8];
     if (argument_count >= 10) FOLLOW_BOARD = argument[9];
-    if (argument_count >= 11) FOLLOW_ANGLE = argument[10];
-    if (argument_count >= 12) POINT = argument[11];
-    if (argument_count >= 13) POINT_AT = argument[12];
-    if (argument_count >= 15) {
-        FOLLOW_X = argument[13];
-        FOLLOW_Y = argument[14];
+    if (argument_count >= 11) FOLLOW_TARGET = argument[10];
+    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
+    if (argument_count >= 13) POINT = argument[12];
+    if (argument_count >= 14) POINT_AT = argument[13];
+    if (argument_count >= 16) {
+        FOLLOW_X = argument[14];
+        FOLLOW_Y = argument[15];
     }
-
-    var bone = Battle_MakeBoneV(X, (((battle_board.y + battle_board.down) - (LENGTH / 2)) - 5), LENGTH, HSPEED, 0, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-
-    if (argument[11] == 1) {
-        bone.angle = 90;
-        bone._angle = 90;
-        bone.y = battle_board.y + battle_board.down;
+    if (argument[12] == 1) {
+        Y = battle_board.y + battle_board.down;
     }
-
+    var bone = Battle_MakeBone(X, Y, LENGTH, HSPEED, 0, COLOR, OUT, 90, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
     return bone;
 }
-///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneLeft() {
+    var X = (((battle_board.x - battle_board.left) + (LENGTH / 2)) + 5);
     var Y = argument[0];
     var LENGTH = argument[1];
     var VSPEED = argument[2];
@@ -212,28 +124,28 @@ function Battle_MakeBoneLeft() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
-
+    var FOLLOW_TARGET = noone;
     if (argument_count >= 8) DURATION = argument[7];
     if (argument_count >= 9) FOLLOW = argument[8];
     if (argument_count >= 10) FOLLOW_BOARD = argument[9];
-    if (argument_count >= 11) FOLLOW_ANGLE = argument[10];
-    if (argument_count >= 12) POINT = argument[11];
-    if (argument_count >= 13) POINT_AT = argument[12];
-    if (argument_count >= 15) {
-        FOLLOW_X = argument[13];
-        FOLLOW_Y = argument[14];
+    if (argument_count >= 11) FOLLOW_TARGET = argument[10];
+    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
+    if (argument_count >= 13) POINT = argument[12];
+    if (argument_count >= 14) POINT_AT = argument[13];
+    if (argument_count >= 16) {
+        FOLLOW_X = argument[14];
+        FOLLOW_Y = argument[15];
     }
+    if (argument[12] == 1) {
+        X = battle_board.x - battle_board.left;
+    }
+    var bone = Battle_MakeBone(X, Y, LENGTH, 0, VSPEED, COLOR, OUT, 0, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
-    var bone = Battle_MakeBoneH((((battle_board.x - battle_board.left) + (LENGTH / 2)) + 5), Y, LENGTH, 0, VSPEED, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    if (argument[11] == 1) {
-        bone.angle = 0;
-        bone._angle = 0;
-        bone.x = battle_board.x - battle_board.left;
-    }
     return bone;
 }
-///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneRight() {
+    var X = (((battle_board.x + battle_board.right) - (LENGTH / 2)) - 5);
     var Y = argument[0];
     var LENGTH = argument[1];
     var VSPEED = argument[2];
@@ -249,29 +161,29 @@ function Battle_MakeBoneRight() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
-
+    var FOLLOW_TARGET = noone;
     if (argument_count >= 8) DURATION = argument[7];
     if (argument_count >= 9) FOLLOW = argument[8];
     if (argument_count >= 10) FOLLOW_BOARD = argument[9];
-    if (argument_count >= 11) FOLLOW_ANGLE = argument[10];
-    if (argument_count >= 12) POINT = argument[11];
-    if (argument_count >= 13) POINT_AT = argument[12];
-    if (argument_count >= 15) {
-        FOLLOW_X = argument[13];
-        FOLLOW_Y = argument[14];
+    if (argument_count >= 11) FOLLOW_TARGET = argument[10];
+    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
+    if (argument_count >= 13) POINT = argument[12];
+    if (argument_count >= 14) POINT_AT = argument[13];
+    if (argument_count >= 16) {
+        FOLLOW_X = argument[14];
+        FOLLOW_Y = argument[15];
     }
+    if (argument[12] == 1) {
+        X = battle_board.x + battle_board.right;
+    }
+    var bone = Battle_MakeBone(X, Y, LENGTH, 0, VSPEED, COLOR, OUT, 180, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
-    var bone = Battle_MakeBoneH((((battle_board.x + battle_board.right) - (LENGTH / 2)) - 5), Y, LENGTH, 0, VSPEED, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    if (argument[11] == 1) {
-        bone.angle = 180;
-        bone._angle = 180;
-        bone.x = battle_board.x + battle_board.right;
-    }
     return bone;
 }
-///@arg x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneTop() {
     var X = argument[0];
+    var Y = (((battle_board.y - battle_board.up) + (LENGTH / 2)) + 5);
     var LENGTH = argument[1];
     var HSPEED = argument[2];
     var COLOR = argument[3];
@@ -286,27 +198,26 @@ function Battle_MakeBoneTop() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
-
+    var FOLLOW_TARGET = noone;
     if (argument_count >= 8) DURATION = argument[7];
     if (argument_count >= 9) FOLLOW = argument[8];
     if (argument_count >= 10) FOLLOW_BOARD = argument[9];
-    if (argument_count >= 11) FOLLOW_ANGLE = argument[10];
-    if (argument_count >= 12) POINT = argument[11];
-    if (argument_count >= 13) POINT_AT = argument[12];
-    if (argument_count >= 15) {
-        FOLLOW_X = argument[13];
-        FOLLOW_Y = argument[14];
+    if (argument_count >= 11) FOLLOW_TARGET = argument[10];
+    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
+    if (argument_count >= 13) POINT = argument[12];
+    if (argument_count >= 14) POINT_AT = argument[13];
+    if (argument_count >= 16) {
+        FOLLOW_X = argument[14];
+        FOLLOW_Y = argument[15];
     }
+    if (argument[12] == 1) {
+        Y = battle_board.y - battle_board.up;
+    }
+    var bone = Battle_MakeBone(X, Y, LENGTH, HSPEED, 0, COLOR, OUT, 270, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
-    var bone = Battle_MakeBoneV(X, (((battle_board.y - battle_board.up) + (LENGTH / 2)) + 5), LENGTH, HSPEED, 0, COLOR, OUT, ROT, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    if (argument[11] == 1) {
-        bone.angle = -90;
-        bone._angle = -90;
-        bone.y = battle_board.y - battle_board.up;
-    }
     return bone;
 }
-///@arg x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneTwoH() {
     var X = argument[0];
     var Y = argument[1];
@@ -324,27 +235,29 @@ function Battle_MakeBoneTwoH() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
+    var FOLLOW_TARGET = noone;
     var bones = [];
 
     if (argument_count >= 9) DURATION = argument[8];
     if (argument_count >= 10) FOLLOW = argument[9];
     if (argument_count >= 11) FOLLOW_BOARD = argument[10];
-    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
-    if (argument_count >= 13) POINT = argument[12];
-    if (argument_count >= 14) POINT_AT = argument[13];
-    if (argument_count >= 16) {
-        FOLLOW_X = argument[14];
-        FOLLOW_Y = argument[15];
+    if (argument_count >= 12) FOLLOW_TARGET = argument[11];
+    if (argument_count >= 13) FOLLOW_ANGLE = argument[12];
+    if (argument_count >= 14) POINT = argument[13];
+    if (argument_count >= 15) POINT_AT = argument[14];
+    if (argument_count >= 17) {
+        FOLLOW_X = argument[15];
+        FOLLOW_Y = argument[16];
     }
 
-    var boneLeft = Battle_MakeBoneLeft(Y, (((X - battle_board.x) + battle_board.left) - GAP), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    var boneRight = Battle_MakeBoneRight(Y, (((battle_board.x + battle_board.right) - GAP) - X), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneLeft = Battle_MakeBoneLeft(Y, (((X - battle_board.x) + battle_board.left) - GAP), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneRight = Battle_MakeBoneRight(Y, (((battle_board.x + battle_board.right) - GAP) - X), VSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
     bones[0] = boneLeft;
     bones[1] = boneRight;
     return bones;
 }
-///@arg x,y,hspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+///@arg x,y,hspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
 function Battle_MakeBoneTwoV() {
     var X = argument[0];
     var Y = argument[1];
@@ -362,21 +275,23 @@ function Battle_MakeBoneTwoV() {
     var POINT_AT = 0;
     var FOLLOW_X = 0;
     var FOLLOW_Y = 0;
+    var FOLLOW_TARGET = noone;
     var bones = [];
 
     if (argument_count >= 9) DURATION = argument[8];
     if (argument_count >= 10) FOLLOW = argument[9];
     if (argument_count >= 11) FOLLOW_BOARD = argument[10];
-    if (argument_count >= 12) FOLLOW_ANGLE = argument[11];
-    if (argument_count >= 13) POINT = argument[12];
-    if (argument_count >= 14) POINT_AT = argument[13];
-    if (argument_count >= 16) {
-        FOLLOW_X = argument[14];
-        FOLLOW_Y = argument[15];
+    if (argument_count >= 12) FOLLOW_TARGET = argument[11];
+    if (argument_count >= 13) FOLLOW_ANGLE = argument[12];
+    if (argument_count >= 14) POINT = argument[13];
+    if (argument_count >= 15) POINT_AT = argument[14];
+    if (argument_count >= 17) {
+        FOLLOW_X = argument[15];
+        FOLLOW_Y = argument[16];
     }
 
-    var boneLeft = Battle_MakeBoneTop(X, (((Y - battle_board.y) + battle_board.up) - GAP), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
-    var boneRight = Battle_MakeBoneBottom(X, (((battle_board.y + battle_board.down) - GAP) - Y), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneLeft = Battle_MakeBoneTop(X, (((Y - battle_board.y) + battle_board.up) - GAP), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
+    var boneRight = Battle_MakeBoneBottom(X, (((battle_board.y + battle_board.down) - GAP) - Y), HSPEED, TYPE, OUT, ROTATE, DESTROY, DURATION, FOLLOW, FOLLOW_BOARD, FOLLOW_TARGET, FOLLOW_ANGLE, POINT, POINT_AT, FOLLOW_X, FOLLOW_Y);
 
     bones[0] = boneLeft;
     bones[1] = boneRight;
@@ -411,7 +326,7 @@ function Makebonecircle() {
     bone.length = L;
     bone.rotate = II == undefined ? 0 : II;
     bone.duration = argument[13] == undefined ? -1 : duration;
-	bone.rott = argument[14] == undefined ? 0 : duration;
+    bone.rott = argument[14] == undefined ? 0 : duration;
     return bone;
 }
 /// @arg x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap

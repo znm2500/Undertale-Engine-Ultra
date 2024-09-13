@@ -9,7 +9,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     var limit_index = array_create(4, 0);
     var soul_position = [x, y];
     var boardcount = array_length(global.boards_array);
-	var isContains = array_create(4, false);
+    var isContains = array_create(4, false);
     for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
         global.boards_array[i].isCollide = array_create(4, false);
         isContains[0] = global.boards_array[i].contains(x - sprite_width / 2, y);
@@ -83,7 +83,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     if (ii) {
         on_board = 0;
     }
-    if (!place_meeting(x + xx, y + yy, battle_platform)) {
+    if (!place_meeting(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), battle_platform)) {
         on_platform = 0;
         inst_plat = noone;
     }
@@ -141,7 +141,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 impact = 0;
             }
         }
-        inst_plat = instance_place(x + xx, y + yy, battle_platform);
+        inst_plat = instance_place(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), battle_platform);
         if (instance_exists(inst_plat) && move > 0 && !(abs(inst_plat.angle) - abs(dir) = 0 && abs(inst_plat.angle) - abs(dir) = 180)) {
             on_platform = 1;
             jump_state = 0;
@@ -155,13 +155,8 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         //碰到支撑物时停止下落并改变状态
     }
 
-    fx = 0 fy = 0;
-    if (dir == 270) fy = 1;
-    else if (dir == 90) fy = -1;
-    else if (dir == 180) fx = -1;
-    else if (dir == 0) fx = 1;
     if (instance_exists(inst_plat) && !(abs(abs(inst_plat.angle) - abs(dir)) = 0 || abs(abs(inst_plat.angle) - abs(dir)) = 180)) {
-        while (place_meeting(x + fx, y + fy, inst_plat) && place_meeting(x, y, inst_plat)) {
+        while (place_meeting(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), inst_plat) && place_meeting(x, y, inst_plat)) {
             move = 0;
             jump_state = 0;
             mx = 0;

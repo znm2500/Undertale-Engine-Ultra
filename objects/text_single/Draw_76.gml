@@ -20,6 +20,10 @@ case 1:
     }
     _effect_shook = !_effect_shook;
     break;
+case 2:
+		_offset_x[0] = floor(lengthdir_x(1.5,typer.torder[order mod 10]));
+		_offset_y[0] = floor(lengthdir_y(1.5,typer.torder[order mod 10]));
+	break;	
 }
 if (rainbow) {
     color++;

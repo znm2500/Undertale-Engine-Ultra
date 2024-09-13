@@ -1,7 +1,6 @@
 event_inherited();
 length = 20;
 type = 0;
-special = 0;
 out = 0;
 rotate = 0;
 vspeed = 0;

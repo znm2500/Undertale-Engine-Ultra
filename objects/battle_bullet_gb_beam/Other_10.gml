@@ -5,14 +5,11 @@ case 0:
 case 1:
 
     if (global.moving) {
-
         Player_HurtKR();
-
     }
     break;
 case 2:
     if ! (global.moving) {
-
         Player_HurtKR();
     }
     break;

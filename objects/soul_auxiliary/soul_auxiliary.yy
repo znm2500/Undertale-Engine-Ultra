@@ -1,14 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"soul_aren",
+  "%Name":"soul_auxiliary",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"soul_aren",
+  "name":"soul_auxiliary",
   "overriddenProperties":[],
   "parent":{
     "name":"other",
@@ -32,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_soul_aren",
-    "path":"sprites/spr_soul_aren/spr_soul_aren.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

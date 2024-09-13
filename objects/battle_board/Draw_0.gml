@@ -4,7 +4,6 @@ for (var i = 0; i < array_length(global.boards_array); i++) {
 
     }
 }
-
 surface_set_target(_surface);
 draw_set_alpha(1);
 draw_surface(_surface_board_cover, 0, 0);
@@ -12,17 +11,13 @@ surface_reset_target();
 surface_set_target(_surface_final);
 var tex = surface_get_texture(application_surface);
 draw_primitive_begin_texture(pr_trianglefan, tex);
-var pos = RotateAround(320, 240, 320 - 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, -camera.angle);
-var temp = pos;
+var pos = [RotateAround(320, 240, 320 - 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 0, 0, -camera.angle), RotateAround(320, 240, 320 + 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 0, 0, -camera.angle)];
 draw_vertex_texture_color(320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, 0.5, 0.5, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(pos[0], pos[1], 0, 0, c_white, 1 - alpha_bg);
-var pos = RotateAround(320, 240, 320 + 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, -camera.angle);
-draw_vertex_texture_color(pos[0], pos[1], 1, 0, c_white, 1 - alpha_bg);
-var pos = RotateAround(320, 240, 320 + 1 / camera.scale_x * 320, 240 + 1 / camera.scale_y * 240, 320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, -camera.angle);
-draw_vertex_texture_color(pos[0], pos[1], 1, 1, c_white, 1 - alpha_bg);
-var pos = RotateAround(320, 240, 320 - 1 / camera.scale_x * 320, 240 + 1 / camera.scale_y * 240, 320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, -camera.angle);
-draw_vertex_texture_color(pos[0], pos[1], 0, 1, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(temp[0], temp[1], 0, 0, c_white, 1 - alpha_bg);
+draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[0][0], 240 / camera.scale_y + camera.y + pos[0][1], 0, 0, c_white, 1 - alpha_bg);
+draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[1][0], 240 / camera.scale_y + camera.y + pos[1][1], 1, 0, c_white, 1 - alpha_bg);
+draw_vertex_texture_color(320 / camera.scale_x + camera.x - pos[0][0], 240 / camera.scale_y + camera.y - pos[0][1], 1, 1, c_white, 1 - alpha_bg);
+draw_vertex_texture_color(320 / camera.scale_x + camera.x - pos[1][0], 240 / camera.scale_y + camera.y - pos[1][1], 0, 1, c_white, 1 - alpha_bg);
+draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[0][0], 240 / camera.scale_y + camera.y + pos[0][1], 0, 0, c_white, 1 - alpha_bg);
 draw_primitive_end();
 draw_surface(_surface, 0, 0);
 gpu_set_colorwriteenable(false, false, false, true);

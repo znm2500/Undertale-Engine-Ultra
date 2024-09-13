@@ -52,6 +52,7 @@ if(_char != " " && _char != "　"){
 	INST.alpha_outline = _alpha_outline;
 	INST.effect = _effect;
 	INST.gui = _gui;
+	INST.typer = id;
 	INST.halign = _halign;
 	INST.valign = _valign;
 	INST.rainbow=_rainbow;

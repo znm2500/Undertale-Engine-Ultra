@@ -1,11 +1,9 @@
 event_inherited();
-var SPD=Player_GetSpdTotal()
-	var SPD=(Input_IsHeld(INPUT.CANCEL) ? SPD/2 : SPD)
+var SPD=Player_GetSpdTotal();
+var SPD=(Input_IsHeld(INPUT.CANCEL) ? SPD/2 : SPD);
 //移动
 
-
-if(Battle_GetState()==BATTLE_STATE.IN_TURN && moveable){
-	
+if(Battle_GetState()==BATTLE_STATE.IN_TURN && moveable&&!type){	
 	repeat(SPD*10){
 		if(Input_IsHeld(INPUT.UP)){
 			if(!position_meeting(x,y-sprite_height/2,block)){
@@ -28,4 +26,5 @@ if(Battle_GetState()==BATTLE_STATE.IN_TURN && moveable){
 			}
 		}
 	}
+	
 }

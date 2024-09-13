@@ -2,35 +2,35 @@ event_inherited();
 
 if (!global.classic_ui) switch (dir) {
 case 0:
-    Anim_Create(battle, "soul_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, battle.soul_angle, 90 - battle.soul_angle, 10);
+    Anim_Create(id, "image_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, image_angle, 90 - image_angle, 10);
     break;
 
 case 90:
-    Anim_Create(battle, "soul_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, battle.soul_angle, 180 - battle.soul_angle, 10);
+    Anim_Create(id, "image_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, image_angle, 180 - image_angle, 10);
     break;
 
 case 180:
-    Anim_Create(battle, "soul_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, battle.soul_angle, -90 - battle.soul_angle, 10);
+    Anim_Create(id, "image_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, image_angle, -90 - image_angle, 10);
     break;
 
 case 270:
-    Anim_Create(battle, "soul_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, battle.soul_angle, 0 - battle.soul_angle, 10);
+    Anim_Create(id, "image_angle", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, image_angle, 0 - image_angle, 10);
     break;
 } else switch (dir) {
 case 0:
-    battle.soul_angle = 90;
+    image_angle = 90;
     break;
 
 case 90:
-    battle.soul_angle = 180;
+    image_angle = 180;
     break;
 
 case 180:
-    battle.soul_angle = -90;
+    image_angle = -90;
     break;
 
 case 270:
-    battle.soul_angle = 0;
+    image_angle = 0;
     break;
 }
 

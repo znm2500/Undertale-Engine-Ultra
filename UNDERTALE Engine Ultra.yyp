@@ -123,7 +123,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.6.1.160",
+    "IDEVersion":"2024.8.0.169",
   },
   "name":"UNDERTALE Engine Ultra",
   "resources":[
@@ -224,7 +224,7 @@
     {"id":{"name":"shop_host","path":"objects/shop_host/shop_host.yy",},},
     {"id":{"name":"shop_ui_deeperpart","path":"objects/shop_ui_deeperpart/shop_ui_deeperpart.yy",},},
     {"id":{"name":"shop","path":"objects/shop/shop.yy",},},
-    {"id":{"name":"soul_aren","path":"objects/soul_aren/soul_aren.yy",},},
+    {"id":{"name":"soul_auxiliary","path":"objects/soul_auxiliary/soul_auxiliary.yy",},},
     {"id":{"name":"soul_block","path":"objects/soul_block/soul_block.yy",},},
     {"id":{"name":"text_single","path":"objects/text_single/text_single.yy",},},
     {"id":{"name":"text_typer","path":"objects/text_typer/text_typer.yy",},},
@@ -679,7 +679,6 @@
     {"id":{"name":"spr_pixel","path":"sprites/spr_pixel/spr_pixel.yy",},},
     {"id":{"name":"spr_shop_bg","path":"sprites/spr_shop_bg/spr_shop_bg.yy",},},
     {"id":{"name":"spr_shopkeeper","path":"sprites/spr_shopkeeper/spr_shopkeeper.yy",},},
-    {"id":{"name":"spr_soul_aren","path":"sprites/spr_soul_aren/spr_soul_aren.yy",},},
     {"id":{"name":"spr_soul_block","path":"sprites/spr_soul_block/spr_soul_block.yy",},},
     {"id":{"name":"spr_soul_guangbiao","path":"sprites/spr_soul_guangbiao/spr_soul_guangbiao.yy",},},
     {"id":{"name":"spr_soul_light","path":"sprites/spr_soul_light/spr_soul_light.yy",},},

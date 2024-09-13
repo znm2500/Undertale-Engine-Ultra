@@ -1,3 +1,14 @@
+if (point_at == 1) {
+    if (x != xprevious || y != yprevious) {
+        angle = point_direction(xprevious, yprevious, x, y) + angle_offset;
+    }
+}
+if(follow){
+    _angle += rotate;
+    angle = _angle + follow_angle;}
+else
+	angle += rotate;
+image_angle = angle;
 switch(type)
 {
     case 0:

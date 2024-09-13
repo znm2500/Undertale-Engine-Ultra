@@ -14,6 +14,7 @@ yy3 = 0;
 yy4 = 0;
 angle = 0;
 follow = 0;
+circle = 0;
 center_x = battle_board.x;
 center_y = battle_board.y;
 alarm[0] = duration;

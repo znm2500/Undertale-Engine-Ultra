@@ -1,10 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 
-
-
-
-
-
-instance_destroy(soul_aren)
+instance_destroy(soul_auxiliary);
 

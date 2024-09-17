@@ -7,7 +7,6 @@ var STATE = Battle_GetState();
 if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     var isInside = array_create(3, array_create(4, false));
     var limit_index = array_create(4, 0);
-    var soul_position = [x, y];
     var boardcount = array_length(global.boards_array);
     var isContains = array_create(4, false);
     for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
@@ -52,38 +51,40 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     jump_input = 0;
     opposite_dir = 0;
 
-    if (dir = 0) {
+    switch (dir) {
+    case 0:
         xx = 1;
         ii = isInside[0][1] && (!isInside[1][1] || isInside[2][1]);
         jump_input = INPUT.LEFT;
         opposite_dir = isInside[0][0] && (!isInside[1][0] || isInside[2][0]);
-    }
-    if (dir = 90) {
+        break;
+    case 90:
         yy = -1;
         ii = isInside[0][2] && (!isInside[1][2] || isInside[2][2]);
         jump_input = INPUT.DOWN;
         opposite_dir = isInside[0][3] && (!isInside[1][3] || isInside[2][3]);
-    }
-    if (dir = 180) {
+        break;
+    case 180:
         xx = -1;
         ii = isInside[0][0] && (!isInside[1][0] || isInside[2][0]);
         jump_input = INPUT.RIGHT;
         opposite_dir = isInside[0][1] && (!isInside[1][1] || isInside[2][1]);
-    }
-    if (dir = 270) {
+        break;
+    case 270:
         yy = 1;
         ii = isInside[0][3] && (!isInside[1][3] || isInside[2][3]);
         jump_input = INPUT.UP;
         opposite_dir = isInside[0][2] && (!isInside[1][2] || isInside[2][2]);
+        break;
     }
 
     if ! (instance_position(x + xx * (sprite_width / 2 + 1), y + yy * (sprite_height / 2 + 1), block)) {
         on_block = 0;
     }
-    if (ii) {
+    if ! (ii = 0) {
         on_board = 0;
     }
-    if (!place_meeting(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), battle_platform)) {
+    if ! (place_meeting(x + xx, y + yy, battle_platform)) {
         on_platform = 0;
         inst_plat = noone;
     }
@@ -103,7 +104,6 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
     //碰到顶时强制下落
     if (jump_state = 1) {
-
         if (Input_IsReleased(jump_input)) {
             jump_state = 2;
             move = -1;
@@ -111,7 +111,6 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         if (move >= 0) {
             jump_state = 2;
         }
-
     }
     //松开跳跃键时改变状态
     if (jump_state = 2) {
@@ -141,8 +140,8 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 impact = 0;
             }
         }
-        inst_plat = instance_place(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), battle_platform);
-        if (instance_exists(inst_plat) && move > 0 && !(abs(inst_plat.angle) - abs(dir) = 0 && abs(inst_plat.angle) - abs(dir) = 180)) {
+        inst_plat = instance_place(x + xx, y + yy, battle_platform);
+        if (instance_exists(inst_plat) && move > 0) {
             on_platform = 1;
             jump_state = 0;
             move = 0;
@@ -155,20 +154,13 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         //碰到支撑物时停止下落并改变状态
     }
 
-    if (instance_exists(inst_plat) && !(abs(abs(inst_plat.angle) - abs(dir)) = 0 || abs(abs(inst_plat.angle) - abs(dir)) = 180)) {
-        while (place_meeting(x + xx * (sprite_width / 2 - 2), y + yy * (sprite_height / 2 - 2), inst_plat) && place_meeting(x, y, inst_plat)) {
-            move = 0;
-            jump_state = 0;
-            mx = 0;
-            my = 0;
-            if (dir = 270) my = -1;
-            if (dir = 90) my = 1;
-            if (dir = 180) mx = 1;
-            if (dir = 0) mx = -1;
-            x += mx;
-            y += my;
+    if (on_platform) {
+        while (place_meeting(x + xx, y + xx, inst_plat)) {
+            x -= xx;
+            y -= yy;
         }
     }
+    var soul_position = [x, y];
     if (! (isInside[2][0] || isInside[2][1] || isInside[2][2] || isInside[2][3])) {
         if (isInside[1][0]) {
             var nearestPos, nearestDis = -1; // 最近位置和最近距离

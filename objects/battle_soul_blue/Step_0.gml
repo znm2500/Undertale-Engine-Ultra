@@ -54,7 +54,6 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         break;
     }
 
-    moving = 0;
     var SPD = Player_GetSpdTotal() var SPD = (Input_IsHeld(INPUT.CANCEL) ? SPD / 2 : SPD);
     if (Input_IsHeld(INPUT.LEFT)) {
         switch (dir) {

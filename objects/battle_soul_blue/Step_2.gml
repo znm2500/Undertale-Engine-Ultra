@@ -162,6 +162,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
     var soul_position = [x, y];
     if (! (isInside[2][0] || isInside[2][1] || isInside[2][2] || isInside[2][3])) {
+        var distance = [ - 1, -1];
         if (isInside[1][0]) {
             var nearestPos, nearestDis = -1; // 最近位置和最近距离
             for (var i = 0; i < boardcount; i++) { // 遍历所有框
@@ -177,7 +178,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             soul_position[0] = nearestPos[0] + sprite_width / 2;
-
+            distance[0] = nearestDis;
         }
 
         if (isInside[1][1]) {
@@ -194,7 +195,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     }
                 }
             }
-            soul_position[0] = nearestPos[0] - sprite_width / 2;
+            if (distance[0] < nearestDis) soul_position[0] = nearestPos[0] - sprite_width / 2;
 
         }
 
@@ -214,6 +215,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             }
 
             soul_position[1] = nearestPos[1] + sprite_height / 2;
+            distance[1] = nearestDis;
         }
 
         if (isInside[1][3]) {
@@ -230,11 +232,13 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     }
                 }
             }
-
-            soul_position[1] = nearestPos[1] - sprite_height / 2;
+            if (distance[1] < nearestDis) soul_position[1] = nearestPos[1] - sprite_height / 2;
         }
+        x = soul_position[0];
+        y = soul_position[1];
     }
     if ((isInside[2][0] || isInside[2][1] || isInside[2][2] || isInside[2][3]) && (isInside[1][0] && isInside[1][1] && isInside[1][2] && isInside[1][3])) {
+        var distance = [ - 1, -1];
         if (!isInside[2][0]) {
             var nearestPos, nearestDis = -1; // 最近位置和最近距离
             for (var i = limit_index[0]; i < boardcount; i++) { // 遍历所有框
@@ -251,7 +255,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             }
 
             soul_position[0] = nearestPos[0] + sprite_width / 2;
-
+            distance[0] = nearestDis;
         }
 
         if (!isInside[2][1]) {
@@ -268,7 +272,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     }
                 }
             }
-            soul_position[0] = nearestPos[0] - sprite_width / 2;
+            if (distance[0] < nearestDis) soul_position[0] = nearestPos[0] - sprite_width / 2;
 
         }
 
@@ -287,11 +291,11 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
             soul_position[1] = nearestPos[1] + sprite_height / 2;
+            distance[1] = nearestDis;
         }
 
         if (!isInside[2][3]) {
-            var nearestPos = [x, y + sprite_height / 2],
-            nearestDis = -1; // 最近位置和最近距离
+            var nearestPos, nearestDis = -1; // 最近位置和最近距离
             for (var i = limit_index[3]; i < boardcount; i++) { // 遍历所有框
                 // 得到限制位置和距离
                 if ((!global.boards_array[i].cover) || (global.boards_array[i].cover && !(array_equals(global.boards_array[i].isCollide, [false, false, false, false]) || array_equals(global.boards_array[i].isCollide, [true, true, true, true])))) {
@@ -304,9 +308,12 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                     }
                 }
             }
-            soul_position[1] = nearestPos[1] - sprite_height / 2;
+            if (distance[1] < nearestDis) soul_position[1] = nearestPos[1] - sprite_height / 2;
         }
+        x = soul_position[0];
+        y = soul_position[1];
     }
+    var distance = [ - 1, -1];
     if (!isInside[0][0]) {
         var nearestPos, nearestDis = -1; // 最近位置和最近距离
         for (var i = 0; i < boardcount; i++) { // 遍历所有框
@@ -322,7 +329,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             }
         }
         soul_position[0] = nearestPos[0] + sprite_width / 2;
-
+        distance[0] = nearestDis;
     }
 
     if (!isInside[0][1]) {
@@ -339,8 +346,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-
-        soul_position[0] = nearestPos[0] - sprite_width / 2;
+        if (distance[0] < nearestDis) soul_position[0] = nearestPos[0] - sprite_width / 2;
 
     }
 
@@ -360,6 +366,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         }
 
         soul_position[1] = nearestPos[1] + sprite_height / 2;
+        distance[1] = nearestDis;
     }
 
     if (!isInside[0][3]) {
@@ -376,8 +383,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-
-        soul_position[1] = nearestPos[1] - sprite_height / 2;
+        if (distance[1] < nearestDis) soul_position[1] = nearestPos[1] - sprite_height / 2;
     }
     x = soul_position[0];
     y = soul_position[1];

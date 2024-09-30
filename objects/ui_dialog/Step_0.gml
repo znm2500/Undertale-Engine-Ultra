@@ -1,7 +1,7 @@
 if (!instance_exists(_inst)) {
     if (!Dialog_IsEmpty()) {
-        _inst = instance_create_depth(60 / 2 + camera.x, camera.y + (_top ? 30 : 340) / 2, 0, text_typer);
-        _inst.text = "{voice 0}{shadow true}{speed 2}{space_y 1}{color `white`}{depth " + string( - 9999) + "}";
+        _inst = instance_create_depth(60 ,(_top ? 30 : 340), 0, text_typer);
+        _inst.text = "{voice 0}{shadow true}{speed 2}{scale 2}{space_y 1}{color `white`}{depth " + string(depth) + "}{surface "+ string(real(_surface_text)) + "}";
         _inst.text += Dialog_Get();
         if (_choose_enable) _inst.text += "&&         " + _choice[0] + "         " + _choice[1];
 		_inst.text += "{pause}{end}";
@@ -10,6 +10,7 @@ if (!instance_exists(_inst)) {
         instance_destroy();
     }
 } else {
+	_inst._surface_target=_surface_text;
     if (_inst._paused && _choose_enable) {
         if (Input_IsPressed(INPUT.LEFT) && _choose) {
             _choose = 0;

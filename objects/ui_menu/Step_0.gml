@@ -172,41 +172,30 @@ case 4:
     }
     break;
 }
-if (!global.classic_ui) {
     if (instance_exists(_inst_name)) {
-        _inst_name._surface_target = _surface;
+        _inst_name._surface_target = _surface_text;
     }
     if (instance_exists(_inst_menu)) {
-        _inst_menu._surface_target = _surface;
+        _inst_menu._surface_target = _surface_text;
     }
     if (instance_exists(_inst_item)) {
-        _inst_item._surface_target = _surface;
+        _inst_item._surface_target = _surface_text;
     }
     if (instance_exists(_inst_item_use)) {
-        _inst_item_use._surface_target = _surface;
+        _inst_item_use._surface_target = _surface_text;
     }
     if (instance_exists(_inst_item_info)) {
-        _inst_item_info._surface_target = _surface;
+        _inst_item_info._surface_target = _surface_text;
     }
     if (instance_exists(_inst_item_drop)) {
-        _inst_item_drop._surface_target = _surface;
+        _inst_item_drop._surface_target = _surface_text;
     }
     if (instance_exists(_inst_stat_0)) {
-        _inst_stat_0._surface_target = _surface;
+        _inst_stat_0._surface_target = _surface_text;
     }
     if (instance_exists(_inst_stat_1)) {
-        _inst_stat_1._surface_target = _surface;
+        _inst_stat_1._surface_target = _surface_text;
     }
     if (instance_exists(_inst_phone)) {
-        _inst_phone._surface_target = _surface;
+        _inst_phone._surface_target = _surface_text;
     }
-} else {
-    if (instance_exists(_inst_name)) {
-        _inst_name.x = 23 + camera.x;
-        _inst_name.y = camera.y + (52 + 6 + (_top ? 270 : 0) + 2) / 2;
-    }
-    if (instance_exists(_inst_menu)) {
-        _inst_menu.x = (32 + 6 + 46) / 2 + camera.x;
-        _inst_menu.y = camera.y + (168 + 6 + 14) / 2;
-    }
-}

@@ -1,6 +1,5 @@
 _menu=0;
 _mode=0;
-
 _prefix="{instant true}{font 1}{space_x -0.5}";
 _inst_instruction=noone;
 _inst_begin=noone;

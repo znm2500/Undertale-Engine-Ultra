@@ -6,8 +6,8 @@ angle = 0;
 rotate = 0;
 cover = 0;
 board_depth = 0;
-board_number = array_length(global.boards_array); 
-isCollide = array_create(4,0);
+board_number = array_length(global.boards_array);
+isCollide = array_create(4, 0);
 array_push(global.boards_array, self);
 // 返回是否在椭圆内
 function contains(_x, _y) {
@@ -44,8 +44,7 @@ function replaceSurfaceAlpha() {
     //设置挖空
     gpu_set_colorwriteenable(false, false, false, true);
     gpu_set_blendenable(false);
-    surface_set_target(battle_board._surface_final);
-
+    surface_set_target(battle_board._surface_mask);
     //挖空
     draw_set_alpha(!cover);
     draw_primitive_begin(pr_trianglefan);

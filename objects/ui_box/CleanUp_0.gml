@@ -16,3 +16,5 @@ if(instance_exists(_inst_finish)){
 if(instance_exists(char_player)){
 	char_player._moveable_box=true;
 }
+surface_free(_surface);
+surface_free(_surface_text);

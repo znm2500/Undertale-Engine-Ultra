@@ -7,8 +7,8 @@ rotate = 0; //旋转速度
 rect = 0;
 cover = 0;
 board_depth = 0;
-board_number = array_length(global.boards_array); 
-isCollide = array_create(4,0);
+board_number = array_length(global.boards_array);
+isCollide = array_create(4, 0);
 array_push(global.boards_array, self);
 
 // [返回点是否在多边形内]
@@ -39,10 +39,10 @@ function relativeContains(_x, _y, _listVertex = cover ? listVertex_Outline: list
     var isAllHor = true,
     prevTrend = false,
     prevHasIntersection = false;
-    var prev = _listVertex[|size - 1],
+    var prev = _listVertex[| size - 1],
     cur;
     for (var i = size - 2; i >= 0; i--) {
-        cur = _listVertex[|i];
+        cur = _listVertex[| i];
         if (prev[1] != cur[1]) {
             isAllHor = false;
             prevTrend = cur[1] < prev[1]; //因为是反向遍历,所以是小于（和后面的大于相反）
@@ -56,9 +56,9 @@ function relativeContains(_x, _y, _listVertex = cover ? listVertex_Outline: list
 
     //计算交点横坐标
     var intersections, count = 0;
-    prev = _listVertex[|size - 1];
+    prev = _listVertex[| size - 1];
     for (var i = 0; i < size; i++) {
-        cur = _listVertex[|i];
+        cur = _listVertex[| i];
         if (prev[1] != cur[1]) {
             var hasIntersection = false;
             var trend = cur[1] > prev[1];
@@ -89,10 +89,10 @@ function relativeContains(_x, _y, _listVertex = cover ? listVertex_Outline: list
 
 // [返回离边框最近处的位置,长度为2的数组（下标0是x,下标1是y）]
 function limit(_x, _y, _listVertex = cover ? listVertex_Outline: listVertex) {
-	var size = ds_list_size(_listVertex);
+    var size = ds_list_size(_listVertex);
     if (size == 0) return [_x, _y];
     if (size == 1) {
-        var vertex = _listVertex[|0];
+        var vertex = _listVertex[| 0];
         return [vertex[0] + x, vertex[1] + y];
     }
 
@@ -104,10 +104,10 @@ function limit(_x, _y, _listVertex = cover ? listVertex_Outline: listVertex) {
     yy = -_x * vsin + _y * vcos;
 
     var nearestPos, nearestDis = -1;
-    var prev = _listVertex[|size - 1],
+    var prev = _listVertex[| size - 1],
     cur;
     for (var i = 0; i < size; i++) {
-        cur = _listVertex[|i];
+        cur = _listVertex[| i];
         if ((prev[0] - xx) * (prev[0] - cur[0]) + (prev[1] - yy) * (prev[1] - cur[1]) < 0) {
             var dis = point_distance(xx, yy, prev[0], prev[1]);
             if (dis < nearestDis || nearestDis == -1) {
@@ -143,9 +143,9 @@ function updateDivide() {
     if (size < 3) return;
     for (var i = 0; i < size; i++) {
 
-        var a = listVertex[|i];
-        var b = listVertex[|iloop(i + 1)];
-        var c = listVertex[|iloop(i - 1)];
+        var a = listVertex[| i];
+        var b = listVertex[| iloop(i + 1)];
+        var c = listVertex[| iloop(i - 1)];
 
         var ax = a[0];
         var ay = a[1];
@@ -153,7 +153,7 @@ function updateDivide() {
         var by = b[1];
         var cx = c[0];
         var cy = c[1];
-        var dangle = (point_direction(ax, ay, bx, by) - point_direction(ax, ay, cx, cy)) / 2 listVertex_Outline[|i] = [(ax + bx) / 2 + lengthdir_x(5, point_direction(ax, ay, bx, by) + 90) + lengthdir_x(point_distance(ax, ay, bx, by) / 2 + 5 / dtan(dangle), point_direction(bx, by, ax, ay)), (ay + by) / 2 + lengthdir_y(5, point_direction(ax, ay, bx, by) + 90) + lengthdir_y(point_distance(ax, ay, bx, by) / 2 + 5 / dtan(dangle), point_direction(bx, by, ax, ay))]
+        var dangle = (point_direction(ax, ay, bx, by) - point_direction(ax, ay, cx, cy)) / 2 listVertex_Outline[| i] = [(ax + bx) / 2 + lengthdir_x(5, point_direction(ax, ay, bx, by) + 90) + lengthdir_x(point_distance(ax, ay, bx, by) / 2 + 5 / dtan(dangle), point_direction(bx, by, ax, ay)), (ay + by) / 2 + lengthdir_y(5, point_direction(ax, ay, bx, by) + 90) + lengthdir_y(point_distance(ax, ay, bx, by) / 2 + 5 / dtan(dangle), point_direction(bx, by, ax, ay))]
     }
     listVertexTmp = ds_list_create(); //创建临时顶点列表
     ds_list_copy(listVertexTmp, listVertex);
@@ -165,22 +165,22 @@ function updateDivide() {
     function canDivide(_index) {
         //判断是否为凸顶点,如果不是,则return false
         //实际上这里也有部分为凹顶点的情况无法被排除,但是后续的代码会同时排除掉这些
-        var p1 = listVertexTmp[|iloop(_index - 1, listVertexTmp)],
-        p2 = listVertexTmp[|iloop(_index + 1, listVertexTmp)];
+        var p1 = listVertexTmp[| iloop(_index - 1, listVertexTmp)],
+        p2 = listVertexTmp[| iloop(_index + 1, listVertexTmp)];
         if (!relativeContains((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2, listVertexTmp)) return false;
 
         //判断移除顶点后是否出现边相交
         var istart = _index + 2 - ds_list_size(listVertexTmp),
         iend = _index - 2;
-        var a1 = listVertexTmp[|iloop(_index - 1, listVertexTmp)];
-        var a2 = listVertexTmp[|iloop(_index + 1, listVertexTmp)];
+        var a1 = listVertexTmp[| iloop(_index - 1, listVertexTmp)];
+        var a2 = listVertexTmp[| iloop(_index + 1, listVertexTmp)];
         var b1, b2;
         function cp(_a1, _a2, _b1, _b2) {
             return (_a2[0] - _a1[0]) * (_b2[1] - _b1[1]) - (_a2[1] - _a1[1]) * (_b2[0] - _b1[0]);
         }
         for (var i = istart; i < iend; i++) {
-            b1 = listVertexTmp[|iloop(i, listVertexTmp)];
-            b2 = listVertexTmp[|iloop(i + 1, listVertexTmp)];
+            b1 = listVertexTmp[| iloop(i, listVertexTmp)];
+            b2 = listVertexTmp[| iloop(i + 1, listVertexTmp)];
             if (sign(cp(a1, a2, a1, b1)) != sign(cp(a1, a2, a1, b2)) && sign(cp(b1, b2, b1, a1)) != sign(cp(b1, b2, b1, a2))) return false;
         }
         return true;
@@ -190,9 +190,9 @@ function updateDivide() {
         var bool1 = false,
         bool2 = false; //分别记录边的两种走向是否存在
         for (var i = 0; i < ds_list_size(listVertexTmp); i++) {
-            var p1 = listVertexTmp[|i];
-            var p2 = listVertexTmp[|iloop(i + 1, listVertexTmp)];
-            var p3 = listVertexTmp[|iloop(i + 2, listVertexTmp)];
+            var p1 = listVertexTmp[| i];
+            var p2 = listVertexTmp[| iloop(i + 1, listVertexTmp)];
+            var p3 = listVertexTmp[| iloop(i + 2, listVertexTmp)];
             var x1 = p2[0] - p1[0],
             y1 = p2[1] - p1[1],
             x2 = p3[0] - p2[0],
@@ -217,9 +217,9 @@ function updateDivide() {
         for (var i = 0; i < ds_list_size(listVertexTmp); i++) { //遍历所有顶点
             if (canDivide(i)) { //如果该顶点可以剖分
                 divided = true;
-                var a = marker[|iloop(i - 1, marker)];
-                var b = marker[|iloop(i + 1, marker)];
-                ds_list_add(listDivideIndex, [marker[|i], a, b]);
+                var a = marker[| iloop(i - 1, marker)];
+                var b = marker[| iloop(i + 1, marker)];
+                ds_list_add(listDivideIndex, [marker[| i], a, b]);
                 ds_list_delete(listVertexTmp, i);
                 ds_list_delete(marker, i);
                 break;
@@ -233,9 +233,9 @@ function updateDivide() {
         }
     }
     var tmpLast = ds_list_size(listVertexTmp) - 1;
-    var last = marker[|tmpLast];
+    var last = marker[| tmpLast];
     for (var i = 0; i < tmpLast - 1; i++) { //对剩下的凸多边形部分进行剖分
-        ds_list_add(listDivideIndex, [marker[|i], marker[|iloop(i + 1, marker)], last]);
+        ds_list_add(listDivideIndex, [marker[| i], marker[| iloop(i + 1, marker)], last]);
     }
 
     ds_list_destroy(listVertexTmp); //销毁临时顶点列表
@@ -247,18 +247,17 @@ function replaceSurfaceAlpha() {
     //设置挖空
     gpu_set_colorwriteenable(false, false, false, true);
     gpu_set_blendenable(false);
-    surface_set_target(battle_board._surface_final);
-
+    surface_set_target(battle_board._surface_mask);
     //挖空
     draw_set_alpha(!cover);
     var vsin = dsin( - angle),
     vcos = dcos( - angle);
     var size = ds_list_size(listDivideIndex);
     for (var i = 0; i < size; i++) { //遍历所有的三角
-        var di = listDivideIndex[|i];
+        var di = listDivideIndex[| i];
         draw_primitive_begin(pr_trianglelist);
         for (var j = 0; j < 3; j++) {
-            var pos = listVertex[|di[j]];
+            var pos = listVertex[| di[j]];
             var resultx = pos[0] * vcos - pos[1] * vsin;
             var resulty = pos[0] * vsin + pos[1] * vcos;
             draw_vertex(x + resultx, y + resulty);
@@ -266,7 +265,26 @@ function replaceSurfaceAlpha() {
         draw_primitive_end();
     }
     surface_reset_target();
-
+    if (!cover) {
+        surface_set_target(battle_board._surface_board_extra);
+        //挖空
+        draw_set_alpha(0);
+        var vsin = dsin( - angle),
+        vcos = dcos( - angle);
+        var size = ds_list_size(listDivideIndex);
+        for (var i = 0; i < size; i++) { //遍历所有的三角
+            var di = listDivideIndex[| i];
+            draw_primitive_begin(pr_trianglelist);
+            for (var j = 0; j < 3; j++) {
+                var pos = listVertex[| di[j]];
+                var resultx = pos[0] * vcos - pos[1] * vsin;
+                var resulty = pos[0] * vsin + pos[1] * vcos;
+                draw_vertex(x + resultx, y + resulty);
+            }
+            draw_primitive_end();
+        }
+        surface_reset_target();
+    }
     //恢复默认
     gpu_set_blendenable(true);
     gpu_set_colorwriteenable(true, true, true, true);
@@ -278,18 +296,18 @@ function drawBorder() {
     var vsin = dsin( - angle);
     var vcos = dcos( - angle);
     if (rect && battle_board.edge) {
-        var left = RotateAround(x, y, x + listVertex[|0][0], y + listVertex[|0][1], x, y, angle);
-        var right = RotateAround(x, y, x + listVertex[|1][0], y + listVertex[|1][1], x, y, angle);
-        var up = RotateAround(x, y, x + listVertex[|3][0], y + listVertex[|3][1], x, y, angle);
-        var down = RotateAround(x, y, x + listVertex[|2][0], y + listVertex[|2][1], x, y, angle);
+        var left = RotateAround(x, y, x + listVertex[| 0][0], y + listVertex[| 0][1], x, y, angle);
+        var right = RotateAround(x, y, x + listVertex[| 1][0], y + listVertex[| 1][1], x, y, angle);
+        var up = RotateAround(x, y, x + listVertex[| 3][0], y + listVertex[| 3][1], x, y, angle);
+        var down = RotateAround(x, y, x + listVertex[| 2][0], y + listVertex[| 2][1], x, y, angle);
         draw_sprite_ext(spr_battle_board_edge, 0, left[0], left[1], 1, 1, angle, battle_board.color_frame, battle_board.alpha_frame);
         draw_sprite_ext(spr_battle_board_edge, 0, right[0], right[1], -1, 1, angle, battle_board.color_frame, battle_board.alpha_frame);
         draw_sprite_ext(spr_battle_board_edge, 0, up[0], up[1], 1, -1, angle, battle_board.color_frame, battle_board.alpha_frame);
         draw_sprite_ext(spr_battle_board_edge, 0, down[0], down[1], -1, -1, angle, battle_board.color_frame, battle_board.alpha_frame);
 
         for (var i = 0; i < ds_list_size(listVertex); i++) {
-            var a = listVertex[|i];
-            var b = listVertex[|iloop(i + 1)];
+            var a = listVertex[| i];
+            var b = listVertex[| iloop(i + 1)];
 
             var ax = a[0] * vcos - a[1] * vsin;
             var ay = a[0] * vsin + a[1] * vcos;
@@ -301,10 +319,10 @@ function drawBorder() {
     } else {
         var size = ds_list_size(listDivideIndex);
         for (var i = 0; i < size; i++) { //遍历所有的三角
-            var di = listDivideIndex[|i];
-            draw_primitive_begin(pr_trianglelist);
+            var di = listDivideIndex[| i];
+            draw_primitive_begin(pr_trianglestrip);
             for (var j = 0; j < 3; j++) {
-                var pos = listVertex_Outline[|di[j]];
+                var pos = listVertex_Outline[| di[j]];
                 var resultx = pos[0] * vcos - pos[1] * vsin;
                 var resulty = pos[0] * vsin + pos[1] * vcos;
                 draw_vertex_color(x + resultx, y + resulty, battle_board.color_frame, battle_board.alpha_frame);
@@ -321,17 +339,16 @@ function drawBorder() {
     vcos = dcos( - angle);
     var size = ds_list_size(listDivideIndex);
     for (var i = 0; i < size; i++) { //遍历所有的三角
-        var di = listDivideIndex[|i];
+        var di = listDivideIndex[| i];
         draw_primitive_begin(pr_trianglelist);
         for (var j = 0; j < 3; j++) {
-            var pos = listVertex[|di[j]];
+            var pos = listVertex[| di[j]];
             var resultx = pos[0] * vcos - pos[1] * vsin;
             var resulty = pos[0] * vsin + pos[1] * vcos;
             draw_vertex(x + resultx, y + resulty);
         }
         draw_primitive_end();
     }
-
     surface_reset_target();
     gpu_set_blendenable(true);
     gpu_set_colorwriteenable(true, true, true, true);

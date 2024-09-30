@@ -1,37 +1,23 @@
 for (var i = 0; i < array_length(global.boards_array); i++) {
     if (instance_exists(global.boards_array[i])) {
         global.boards_array[i].drawBorder();
-
+        global.boards_array[i].replaceSurfaceAlpha();
     }
 }
-surface_set_target(_surface);
 draw_set_alpha(1);
+surface_set_target(_surface);
 draw_surface(_surface_board_cover, 0, 0);
 surface_reset_target();
-surface_set_target(_surface_final);
-var tex = surface_get_texture(application_surface);
-draw_primitive_begin_texture(pr_trianglefan, tex);
-var pos = [RotateAround(320, 240, 320 - 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 0, 0, -camera.angle), RotateAround(320, 240, 320 + 1 / camera.scale_x * 320, 240 - 1 / camera.scale_y * 240, 0, 0, -camera.angle)];
-draw_vertex_texture_color(320 / camera.scale_x + camera.x, 240 / camera.scale_y + camera.y, 0.5, 0.5, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[0][0], 240 / camera.scale_y + camera.y + pos[0][1], 0, 0, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[1][0], 240 / camera.scale_y + camera.y + pos[1][1], 1, 0, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(320 / camera.scale_x + camera.x - pos[0][0], 240 / camera.scale_y + camera.y - pos[0][1], 1, 1, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(320 / camera.scale_x + camera.x - pos[1][0], 240 / camera.scale_y + camera.y - pos[1][1], 0, 1, c_white, 1 - alpha_bg);
-draw_vertex_texture_color(320 / camera.scale_x + camera.x + pos[0][0], 240 / camera.scale_y + camera.y + pos[0][1], 0, 0, c_white, 1 - alpha_bg);
-draw_primitive_end();
+gpu_set_colorwriteenable(0, 0, 0, 1);
+gpu_set_blendmode(bm_min);
+surface_set_target(_surface);
+draw_surface(_surface_mask, 0, 0);
+surface_reset_target();
+gpu_set_blendmode(bm_subtract);
+surface_set_target(_surface_board_extra);
+draw_surface(_surface_mask, 0, 0);
+surface_reset_target();
+gpu_set_blendmode(bm_normal);
+gpu_set_colorwriteenable(1, 1, 1, 1);
 draw_surface(_surface, 0, 0);
-gpu_set_colorwriteenable(false, false, false, true);
-gpu_set_blendenable(false);
-draw_set_alpha(0);
-draw_rectangle(0, 0, surface_get_width(_surface_final), surface_get_height(_surface_final), 0);
-gpu_set_colorwriteenable(true, true, true, true);
-gpu_set_blendenable(true);
-surface_reset_target() for (var i = 0; i < array_length(global.boards_array); i++) {
-    if (instance_exists(global.boards_array[i])) {
-        global.boards_array[i].replaceSurfaceAlpha();
-
-    }
-}
-draw_set_alpha(1);
 draw_surface(_surface_board_extra, 0, 0);
-draw_surface(_surface_final, 0, 0);

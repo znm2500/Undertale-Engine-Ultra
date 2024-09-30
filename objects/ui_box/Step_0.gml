@@ -48,17 +48,17 @@ if (_state == -1) {
     }
 }
 if (instance_exists(_inst_inventory)) {
-    _inst_inventory._surface_target = _surface;
+    _inst_inventory._surface_target = _surface_text;
 }
 if (instance_exists(_inst_box)) {
-    _inst_box._surface_target = _surface;
+    _inst_box._surface_target = _surface_text;
 }
 if (instance_exists(_inst_item_inventory)) {
-    _inst_item_inventory._surface_target = _surface;
+    _inst_item_inventory._surface_target = _surface_text;
 }
 if (instance_exists(_inst_item_box)) {
-    _inst_item_box._surface_target = _surface;
+    _inst_item_box._surface_target = _surface_text;
 }
 if (instance_exists(_inst_finish)) {
-    _inst_finish._surface_target = _surface;
+    _inst_finish._surface_target = _surface_text;
 }

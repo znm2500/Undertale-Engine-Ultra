@@ -6,3 +6,4 @@ global.anim_speed = 1;
 global.bezier_speed = 1;
 global.Panel = battle_menu_fight_knife;
 global.kr = 1;
+global.surface_gui = surface_create(640, 480);

@@ -3,7 +3,7 @@ depth = DEPTH_BATTLE.BOARD;
 _surface = -1;
 _surface_board_extra = -1;
 _surface_board_cover = -1;
-_surface_final = -1;
+_surface_mask = -1;
 
 x = BATTLE_BOARD.X;
 y = BATTLE_BOARD.Y;
@@ -15,7 +15,7 @@ right = BATTLE_BOARD.RIGHT;
 
 angle = 0;
 color_bg = c_black;
-alpha_bg = 1;
+alpha_bg = 0.5;
 color_frame = c_white;
 
 edge = !global.classic_ui;

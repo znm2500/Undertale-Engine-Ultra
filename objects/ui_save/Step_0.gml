@@ -36,20 +36,20 @@ if (_state == -1) {
     }
 }
 if (instance_exists(_inst_name)) {
-    _inst_name._surface_target = _surface;
+    _inst_name._surface_target = _surface_text;
 }
 if (instance_exists(_inst_lv)) {
-    _inst_lv._surface_target = _surface;
+    _inst_lv._surface_target = _surface_text;
 }
 if (instance_exists(_inst_time)) {
-    _inst_time._surface_target = _surface;
+    _inst_time._surface_target = _surface_text;
 }
 if (instance_exists(_inst_room)) {
-    _inst_room._surface_target = _surface;
+    _inst_room._surface_target = _surface_text;
 }
 if (instance_exists(_inst_save)) {
-    _inst_save._surface_target = _surface;
+    _inst_save._surface_target = _surface_text;
 }
 if (instance_exists(_inst_return)) {
-    _inst_return._surface_target = _surface;
+    _inst_return._surface_target = _surface_text;
 }

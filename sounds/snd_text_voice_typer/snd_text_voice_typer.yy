@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.26,
   "name":"snd_text_voice_typer",
   "parent":{
     "name":"SFX",

@@ -1,4 +1,4 @@
-var SHOP=Flag_Get(FLAG_TYPE.TEMP,FLAG_TEMP.SHOP);
+var SHOP=Storage_GetTempFlag(FLAG_TEMP_SHOP);
 depth = 97;
 
 // 设定位置
@@ -37,7 +37,7 @@ _host = instance_create_depth(160,border_y1,-100,Shop_GetHost(SHOP));
 var i=0;
 for(i=0;i<4;i++)
 {
-	_item[i]=instance_create_depth(0,0,0,_host.shop_item[i]);
+	_item[i]=_host.shop_item[i];
 }
 _background = Shop_GetBackground(SHOP);
 

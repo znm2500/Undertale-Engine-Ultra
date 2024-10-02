@@ -8,7 +8,6 @@ function Battle_GetEnemyNumber() {
 		}
 		proc+=1;
 	}
-
 	return num;
 
 

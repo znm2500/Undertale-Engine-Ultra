@@ -3,9 +3,8 @@ event_inherited();
 char_id=-1;
 dir=DIR.DOWN;
 dir_locked=false;
-
 talking=false;
-
+interacting=0;
 move_speed[DIR.UP]=2;
 move_speed[DIR.DOWN]=2;
 move_speed[DIR.LEFT]=2;

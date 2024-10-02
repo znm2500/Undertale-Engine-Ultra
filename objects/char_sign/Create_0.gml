@@ -1,4 +1,4 @@
 event_inherited();
 
 dir_locked=true;
-text="";
+text="* It's a sign.";

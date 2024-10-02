@@ -1,11 +1,10 @@
 depth = -9000;
-
+//global.classic_ui=1
 if (instance_exists(char_player)) {
     _top = (char_player.y - camera.y > 130 + char_player.sprite_height);
 } else {
     _top = false;
 }
-
 _offset = -100;
 _menu = 0;
 _choice_soul = 0;
@@ -28,10 +27,9 @@ _inst_item_drop = noone;
 _inst_stat_0 = noone;
 _inst_stat_1 = noone;
 _inst_phone = noone;
-Item_Add(item_tml)
 _show_width = array_create(3, 0);
 _inst_name = instance_create_depth(32 + 6 + 8, 52 + 6 + (_top ? 270 : 0) + 2, 0, text_typer);
-_inst_name.text = _prefix + Flag_Get(FLAG_TYPE.STATIC, FLAG_STATIC.NAME);
+_inst_name.text = _prefix + Player_GetName();
 _destroy_time = array_create(3, 0);
 _inst_menu = instance_create_depth(32 + 6 + 46, 168 + 6 + 14, 0, text_typer);
 _inst_menu.text = _prefix + "{space_y 1}" + (Item_GetNumber() <= 0 ? "{color_text `gray`}": "") + "ITEM" + (Item_GetNumber() <= 0 ? "{color_text `white`}": "") + "&" + "STAT" + (Phone_GetNumber() > 0 ? "&" + "CELL": "");

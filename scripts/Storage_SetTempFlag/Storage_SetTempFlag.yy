@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Storage_SetTempFlag",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Storage_SetTempFlag",
+  "parent":{
+    "name":"Storage",
+    "path":"folders/Scripts/Storage.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

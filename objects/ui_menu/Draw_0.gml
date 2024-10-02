@@ -5,18 +5,18 @@ if (!surface_exists(_surface_text)) {
     _surface_text = surface_create(640, 480);
 }
 surface_set_target(global.surface_gui);
-draw_sprite_ext(spr_pixel, 0, _offset + 32, 52 + (_top ? 270 : 0), 142, 110, 0, c_white, 1);
-draw_sprite_ext(spr_pixel, 0, _offset + 32 + 6, 52 + 6 + (_top ? 270 : 0), 142 - 6 * 2, 110 - 6 * 2, 0, c_black, 1);
+draw_sprite_ext(spr_pixel, 0, 2 * _offset + 32, 52 + (_top ? 270 : 0), 142, 110, 0, c_white, 1);
+draw_sprite_ext(spr_pixel, 0, 2 * _offset + 32 + 6, 52 + 6 + (_top ? 270 : 0), 142 - 6 * 2, 110 - 6 * 2, 0, c_black, 1);
 
-draw_sprite_ext(spr_pixel, 0, _offset + 32, 168, 142, 148, 0, c_white, 1);
-draw_sprite_ext(spr_pixel, 0, _offset + 32 + 6, 168 + 6, 142 - 6 * 2, 148 - 6 * 2, 0, c_black, 1);
+draw_sprite_ext(spr_pixel, 0, 2 * _offset + 32, 168, 142, 148, 0, c_white, 1);
+draw_sprite_ext(spr_pixel, 0, 2 * _offset + 32 + 6, 168 + 6, 142 - 6 * 2, 148 - 6 * 2, 0, c_black, 1);
 
 draw_set_font(font_crypt_of_tomorrow);
 draw_set_color(c_white);
-draw_text_ext_transformed(_offset + 32 + 6 + 8, 52 + (_top ? 270 : 0) + 6 + 42, "LV  " + string(Player_GetLv()) + "\nHP  " + string(Player_GetHp()) + "/" + string(Player_GetHpMax()) + "\nG   " + string(Player_GetGold()), 9, -1, 2, 2, 0);
+draw_text_ext_transformed(2 * _offset + 32 + 6 + 8, 52 + (_top ? 270 : 0) + 6 + 42, "LV  " + string(Player_GetLv()) + "\nHP  " + string(Player_GetHp()) + "/" + string(Player_GetHpMax()) + "\nG   " + string(Player_GetGold()), 9, -1, 2, 2, 0);
 
-if (_menu == 0) {
-    draw_sprite_ext(spr_battle_soul, 0, _offset + 32 + 6 + 27, 168 + 6 + 31 + 36 * _choice_soul, 1, 1, !global.classic_ui * 90, c_red, 1);
+if (_menu == 0||_menu == -1) {
+    draw_sprite_ext(spr_battle_soul, 0, 2 * _offset + 32 + 6 + 27, 168 + 6 + 31 + 36 * _choice_soul, 1, 1, !global.classic_ui * 90, c_red, 1);
 }
 
 // ITEM
@@ -60,7 +60,7 @@ for (var i = 0; i < 2; i++) {
     if (_show_width[i] != 0) break;
 }
 surface_set_target(global.surface_gui) draw_surface_part_ext(_surface, 0, 0, (91 + _show_width[i]) * 2, 480, _offset * 2, 0, 1, 1, c_white, 1);
-draw_surface_part_ext(_surface_text, 0, 0, (91 + _show_width[i]) * 2, 480, _offset, 0, 1, 1, c_white, 1);
+draw_surface_part_ext(_surface_text, 0, 0, (91 + _show_width[i]) * 2, 480, _offset * 2, 0, 1, 1, c_white, 1);
 surface_reset_target();
 surface_set_target(_surface);
 draw_clear_alpha(c_white, 0);

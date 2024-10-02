@@ -1,16 +1,16 @@
 switch (_type) {
 case 0:
-    Player_HurtKR();
+    Player_HurtKr();
     break;
 case 1:
 
     if (global.moving) {
-        Player_HurtKR();
+        Player_HurtKr();
     }
     break;
 case 2:
     if ! (global.moving) {
-        Player_HurtKR();
+        Player_HurtKr();
     }
     break;
 case 3:

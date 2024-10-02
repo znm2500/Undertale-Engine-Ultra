@@ -1,7 +1,8 @@
 ///@desc Menu Switch
 if(_menu==0){
-	_mode=file_exists(Flag_GetSavePath(FLAG_TYPE.INFO));
-	if(_mode==0){
+	var s=Storage_GetInfo();
+	_mode=s.IsFileExists();
+	if(!_mode){
 		_inst_instruction=instance_create_depth(170/2,40/2,0,text_typer);
 		_inst_instruction.text=_prefix+"{color_text `gray_light`} --- Instruction ---{space_y -1}&&{space_y 2}[Z or ENTER] - Confirm&[X or SHIFT] - Cancel&[C or CTRL] - Menu (In-game)&[F4] - Fullscreen&[Hold ESC] - Quit&When HP is 0, you lose.";
 		_inst_begin=instance_create_depth(170/2,344/2,0,text_typer);
@@ -13,18 +14,24 @@ if(_menu==0){
 		}
 		event_user(2);
 	}else{
-		Flag_Load(FLAG_TYPE.INFO);
-		_inst_name=instance_create_depth(140/2,124/2,0,text_typer);
-		_inst_name.text=_prefix+Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.NAME,"EMPTY");
-		_inst_lv=instance_create_depth(308/2,124/2,0,text_typer);
-		_inst_lv.text=_prefix+"LV "+string(Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.LV));
-		_inst_time=instance_create_depth(452/2,124/2,0,text_typer);
-		var time=Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.TIME);
-		var minute=time div 60;
-		var second=time mod 60;
-		_inst_time.text=_prefix+string(minute)+":"+(second<10 ? "0" : "")+string(second);
+s.ClearData();
+		s.LoadFromFile();
+		var z=Storage_GetInfoGeneral();
+		_inst_name=instance_create_depth(140,124,0,text_typer);
+		_inst_name.text=_prefix+z.Get(FLAG_INFO_NAME,"EMPTY");
+		_inst_lv=instance_create_depth(308,124,0,text_typer);
+		_inst_lv.text=_prefix+$"LV {z.Get(FLAG_INFO_LV,0)}";
+		_inst_time=instance_create_depth(452,124,0,text_typer);
+		var time=z.Get(FLAG_INFO_TIME,0);
+		var minute=floor(time/60);
+		var second=time%60;
+		_inst_time.text=_prefix+$"{minute}:{second<10 ? "0" : ""}{second}";
 		_inst_room=instance_create_depth(140,160,0,text_typer);
-		_inst_room.text=_prefix+Player_GetRoomName(Flag_Get(FLAG_TYPE.INFO,FLAG_INFO.ROOM));
+		var roomIndex=asset_get_index(z.Get(FLAG_INFO_ROOM,""));
+		if(!room_exists(roomIndex)){
+			roomIndex=-1;
+		}
+		_inst_room.text=_prefix+Player_GetRoomName(roomIndex);
 		_inst_continue=instance_create_depth(170,210,0,text_typer);
 		_inst_continue.text=_prefix+"{color `white`}Continue";
 		_inst_continue.override_color_text_enabled=true;

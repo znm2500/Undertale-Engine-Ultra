@@ -60,7 +60,6 @@ if(refresh){
 		image_xscale*=((res_idle_flip_x[dir]&&sign(image_xscale)==1)||(!res_idle_flip_x[dir]&&sign(image_xscale)==-1) ? -1 : 1);
 	}
 }
-
 _talking_previous=talking;
 _dir_previous=dir;
 _move_previous=move[dir];

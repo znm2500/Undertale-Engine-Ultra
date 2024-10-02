@@ -44,8 +44,8 @@
   },
   "origin":3,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"GB",
+    "path":"folders/Sprites/Battle/Bullet/GB.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

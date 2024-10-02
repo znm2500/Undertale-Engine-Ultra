@@ -1,4 +1,4 @@
-var BGM=Shop_GetBGM(Flag_Get(FLAG_TYPE.TEMP,FLAG_TEMP.SHOP));
+var BGM=Shop_GetBGM(Storage_GetTempFlag(FLAG_TEMP_SHOP));
 if(audio_exists(BGM)){
 	BGM_Play(0,BGM);
 }

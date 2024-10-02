@@ -446,6 +446,7 @@ case "face":
             _face.gui = _gui;
             _face.image_xscale = _scale_x;
             _face.image_yscale = _scale_y;
+			_face.surface_target = _surface_target;
         }
     }
     break;

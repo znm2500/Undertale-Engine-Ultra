@@ -1,22 +1,16 @@
-///@arg shop_id
-function Shop_Start(){
-	var SHOP=argument[0];
+function Shop_Start(shop_id) {
 
-	if(Shop_IsExists(SHOP)){
-	
-		//if(Encounter_IsPauseBGM(SHOP)){
-		//	BGM_Pause(0);
-		//}
-		Flag_Set(FLAG_TYPE.TEMP,FLAG_TEMP.SHOP,SHOP);
-		
-		Flag_Set(FLAG_TYPE.TEMP,FLAG_TEMP.SHOP_ROOM_RETURN,room);
-		room_persistent=true;
+    if (Shop_IsExists(shop_id)) {
 
-		room_goto(room_shop);
-	
-		return true;
-	}else{
-		
-		return false;
-	}
+        var z = Storage_SetTempFlag(FLAG_TEMP_SHOP, shop_id);
+		z.Set(FLAG_TEMP_SHOP_ROOM_RETURN, room);
+        room_persistent = true;
+
+        room_goto(room_shop);
+
+        return true;
+    } else {
+
+        return false;
+    }
 }

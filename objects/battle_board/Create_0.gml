@@ -15,7 +15,7 @@ right = BATTLE_BOARD.RIGHT;
 
 angle = 0;
 color_bg = c_black;
-alpha_bg = 0.5;
+alpha_bg = 1;
 color_frame = c_white;
 
 edge = !global.classic_ui;

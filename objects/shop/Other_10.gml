@@ -1,7 +1,7 @@
 /// @description Refresh Typer
 Shop_ClearTyper();
 Shop_CreateTyper();
-
+var items=Item_GetTypeManager();
 switch(_state)
 {
 	case SHOP_STATE.MENU:
@@ -13,7 +13,7 @@ switch(_state)
 		
 		if(_typer_state_refresh)
 		{
-			var GOLD = Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.GOLD);
+			var GOLD = Storage_GetStaticFlag(FLAG_STATIC_GOLD);
 			shop._typer_state_0.text = shop._pre_inst + string(GOLD)+"G";
 			shop._typer_state_1.text = shop._pre_inst+string(Item_GetNumber())+"/8";
 		}
@@ -21,7 +21,8 @@ switch(_state)
 	case SHOP_STATE.BUY:
 		if(instance_exists(_typer_info)&&_typer_info_refresh)
 		{
-			_typer_info.text = _pre_inst_2 + _host.shop_item[_index]._shop_description;
+			var item=items.GetOrUndefined(_host.shop_item[_index]);
+			_typer_info.text = _pre_inst_2 + item._shop_description;
 		}
 		if(_typer_left_refresh)
 		{
@@ -30,14 +31,14 @@ switch(_state)
 			var MAXLENGTH = 0;
 			for(i=0;i<4;i++)
 			{
-				var ITEM = _item[i];
+				var ITEM = items.GetOrUndefined(_item[i]);
 				var LEN = string_length(string(ITEM._price_buy));
 				if(LEN>MAXLENGTH)
 					MAXLENGTH=LEN;
 			}
 			for(i=0;i<4;i++)
 			{
-				var ITEM = _item[i];
+				var ITEM = items.GetOrUndefined(_item[i]);
 				var LEN = string_length(string(ITEM._price_buy));
 				if(MAXLENGTH - LEN > 0)
 				{
@@ -60,7 +61,7 @@ switch(_state)
 					_typer_right.text = _pre + _host.buy_before_text;
 					break;
 				case 1:
-					_typer_right.text = _pre_inst_3 + "Buy it for&" + string(_item[_index]._price_buy)+"G?& Yes& No";
+					_typer_right.text = _pre_inst_3 + "Buy it for&" + string(items.GetOrUndefined(_item[_index])._price_buy)+"G?& Yes& No";
 					break;
 				case 2:
 					_typer_right.text = _pre + _host.buy_after_text;
@@ -74,10 +75,10 @@ switch(_state)
 			}
 		}
 		
-		//_typer_state.text = _pre_inst + string(Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.GOLD))+"G   "+string(Item_GetNumber())+"/8";
+		
 		if(_typer_state_refresh)
 		{
-			var GOLD = Flag_Get(FLAG_TYPE.STATIC,FLAG_STATIC.GOLD);
+			var GOLD = Storage_GetStaticFlag(FLAG_STATIC_GOLD);
 			shop._typer_state_0.text = shop._pre_inst + string(GOLD)+"G";
 			shop._typer_state_1.text = shop._pre_inst+string(Item_GetNumber())+"/8";
 		}
@@ -91,7 +92,7 @@ switch(_state)
 				var i,LEN,GOLD,ITEM;
 				for(i=0;i<NUM;i++)
 				{
-					LEN = string_length(string(Item_GetSellGold(Item_Get(i))));
+					LEN = string_length(string(Item_GetInventoryItems().GetItem(i)._price_sell));
 					if(LEN>MAXLENGTH)
 						MAXLENGTH=LEN;
 				}
@@ -102,15 +103,15 @@ switch(_state)
 					{
 						if(2*i<NUM)
 						{
-							ITEM = Item_Get(2*i);
-							GOLD = Item_GetSellGold(ITEM);
+							ITEM = Item_GetInventoryItems().GetItem(i*2);
+							GOLD = ITEM._price_sell;
 							LEN = string_length(string(GOLD));
 							if(MAXLENGTH - LEN > 0)
 							{
 								repeat(MAXLENGTH - LEN)
 									_typer_left.text += " ";
 							}
-							_typer_left.text += string(GOLD)+"G - "+Item_GetName(ITEM);
+							_typer_left.text += string(GOLD)+"G - "+ITEM._name;
 						}
 						_typer_left.text+="&";
 					}
@@ -123,15 +124,15 @@ switch(_state)
 					{
 						if((2*i+1)<NUM)
 						{
-							ITEM = Item_Get(2*i+1);
-							GOLD = Item_GetSellGold(ITEM);
+							ITEM = Item_GetInventoryItems().GetItem(i*2);
+							GOLD = ITEM._price_sell;
 							LEN = string_length(string(GOLD));
 							if(MAXLENGTH - LEN > 0)
 							{
 								repeat(MAXLENGTH - LEN)
 									_typer_right.text += " ";
 							}
-							_typer_right.text += string(GOLD)+"G - "+Item_GetName(ITEM);
+							_typer_right.text += string(GOLD)+"G - "+ITEM._name;
 						}
 						_typer_right.text+="&";
 					}
@@ -142,7 +143,7 @@ switch(_state)
 				if(_typer_left_refresh)
 				{
 					_typer_left.text = _pre_inst;
-					_typer_left.text += "Sell it for "+string(Item_GetSellGold(Item_Get(_index)))+"G?&&";
+					_typer_left.text += "Sell it for "+string(Item_GetInventoryItems().GetItem(_index)._price_sell)+"G?&&";
 					_typer_left.text += "  Yes      No";
 				}
 			}

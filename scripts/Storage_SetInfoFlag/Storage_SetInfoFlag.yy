@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Storage_SetInfoFlag",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Storage_SetInfoFlag",
+  "parent":{
+    "name":"Storage",
+    "path":"folders/Scripts/Storage.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,3 +1,7 @@
+draw_set_alpha(1);
+surface_set_target(application_surface);
+draw_surface(global.surface_gui,0,0)
+surface_reset_target();
 if (_enabled) {
     var SW = (window_get_fullscreen() ? display_get_width() : window_get_width());
     var SH = (window_get_fullscreen() ? display_get_height() : window_get_height());
@@ -22,13 +26,14 @@ if (_enabled) {
         surface_set_target(_surface);
         draw_clear_alpha(c_black, 0);
         draw_surface(application_surface, 0, 0);
+		draw_surface(global.surface_gui,0,0);
         surface_reset_target();
         _kawase.Blur(4);
         draw_surface_ext(_surface, (SW - 960 * SF) / 2 + SF * 32, (SH - 540 * SF) / 2 - SF * 48, SF * 1.4, SF * 1.4, 0, c_white, 0.5 * _alpha);
         _sprite = spr_border_simple;
     }
     if (round(global.blur_amount)) {
-        show_debug_message(1) var _surface = _kawase.GetSurface();
+        var _surface = _kawase.GetSurface();
         surface_set_target(_surface);
         draw_clear_alpha(c_black, 0);
         draw_set_alpha(1);
@@ -57,3 +62,6 @@ if (_enabled) {
         draw_surface_ext(_surface, (SW - 640 * SF) / 2, (SH - 480 * SF) / 2, SF, SF, 0, c_white, 1);
     } else draw_surface_ext(application_surface, (SW - 640 * SF) / 2, (SH - 480 * SF) / 2, SF, SF, 0, c_white, 1);
 }
+surface_set_target(global.surface_gui);
+draw_clear_alpha(c_white, 0);
+surface_reset_target();

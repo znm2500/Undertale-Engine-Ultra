@@ -2,7 +2,7 @@ face_id=-1;
 emotion=0;
 gui=false;
 talking=false;
-
+surface_target=noone;
 _emotion_previous=-1;
 _talking_previous=false;
 

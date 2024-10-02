@@ -6,10 +6,10 @@ menu_text = "* LOL";
 
 host_sprite = spr_shopkeeper
 
-shop_item[0] = item_tml;
-shop_item[1] = item_stick;
-shop_item[2] = item_tml;
-shop_item[3] = item_tml;
+shop_item[0] = ITEM_TOY_KNIFE;
+shop_item[1] = ITEM_STICK;
+shop_item[2] = ITEM_BANDAGE;
+shop_item[3] = ITEM_FADED_RIBBON;
 buy_before_text = "Buy&something?";
 //buy_choice_text = "Are&you&ready?";
 buy_after_text = "Oh,&that's&good.";

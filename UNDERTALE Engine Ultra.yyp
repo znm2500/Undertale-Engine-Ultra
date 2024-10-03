@@ -227,6 +227,7 @@
     {"id":{"name":"text_single","path":"objects/text_single/text_single.yy",},},
     {"id":{"name":"text_typer","path":"objects/text_typer/text_typer.yy",},},
     {"id":{"name":"trigger_shop","path":"objects/trigger_shop/trigger_shop.yy",},},
+    {"id":{"name":"trigger_warp","path":"objects/trigger_warp/trigger_warp.yy",},},
     {"id":{"name":"trigger","path":"objects/trigger/trigger.yy",},},
     {"id":{"name":"turn_test","path":"objects/turn_test/turn_test.yy",},},
     {"id":{"name":"ui_box","path":"objects/ui_box/ui_box.yy",},},

@@ -55,6 +55,8 @@
     {"name":"logo","order":8,"path":"objects/logo/logo.yy",},
     {"name":"menu","order":9,"path":"objects/menu/menu.yy",},
     {"name":"shaker","order":3,"path":"objects/shaker/shaker.yy",},
+    {"name":"trigger_warp","order":2,"path":"objects/trigger_warp/trigger_warp.yy",},
+    {"name":"trigger","order":1,"path":"objects/trigger/trigger.yy",},
     {"name":"world","order":22,"path":"objects/world/world.yy",},
     {"name":"Battle_CallBulletEventSoulCollision","order":1,"path":"scripts/Battle_CallBulletEventSoulCollision/Battle_CallBulletEventSoulCollision.yy",},
     {"name":"Battle_CallEnemyEvent","order":1,"path":"scripts/Battle_CallEnemyEvent/Battle_CallEnemyEvent.yy",},
@@ -250,5 +252,6 @@
     {"name":"spr_char_sans_right","order":3,"path":"sprites/spr_char_sans_right/spr_char_sans_right.yy",},
     {"name":"spr_char_sans_up","order":2,"path":"sprites/spr_char_sans_up/spr_char_sans_up.yy",},
     {"name":"spr_gb","order":1,"path":"sprites/spr_gb/spr_gb.yy",},
+    {"name":"spr_trigger","order":1,"path":"sprites/spr_trigger/spr_trigger.yy",},
   ],
 }

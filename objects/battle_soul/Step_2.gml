@@ -1,6 +1,7 @@
 if (Player_GetHp() <= 0) {
-	var z=Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);
-    z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, y - camera.y)
+    var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);
+    z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, y - camera.y);
+    z.Set(FLAG_TEMP_GAMEOVER_SOUL_COLOR, image_blend);
     room_goto(room_gameover);
 }
 var STATE = Battle_GetState();

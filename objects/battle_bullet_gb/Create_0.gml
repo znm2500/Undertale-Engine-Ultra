@@ -18,5 +18,6 @@ _beam_scale=0;
 _beam_alpha=1;
 _beam_sin=0;
 _exit_speed=0;
+out=1;
 _inst=instance_create_depth(0,0,0,battle_bullet_gb_beam);
 alarm[0]=1;

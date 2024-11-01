@@ -1,0 +1,1 @@
+_moveable_shop=1;

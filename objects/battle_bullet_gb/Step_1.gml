@@ -42,5 +42,4 @@ if (follow) {
 } else {
     xx = x;
     yy = y;
-    angle += rotate;
 }

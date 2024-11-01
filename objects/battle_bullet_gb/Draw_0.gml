@@ -1,3 +1,4 @@
+event_inherited();
 var color=c_white;
 if(type==1){
 	color=make_color_rgb(20,169,255);

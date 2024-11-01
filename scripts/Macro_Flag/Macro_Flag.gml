@@ -46,6 +46,7 @@
 #macro FLAG_TEMP_BATTLE_ROOM_RETURN "battle_room_return"
 #macro FLAG_TEMP_GAMEOVER_SOUL_X "gameover_soul_x"
 #macro FLAG_TEMP_GAMEOVER_SOUL_Y "gameover_soul_y"
+#macro FLAG_TEMP_GAMEOVER_SOUL_COLOR "gameover_soul_color"
 #macro FLAG_TEMP_TRIGGER_WARP_LANDMARK "trigger_warp_landmark"
 #macro FLAG_TEMP_TRIGGER_WARP_DIR "trigger_warp_dir"
 #macro FLAG_TEMP_TEXT_TYPER_CHOICE "text_typer_choice"

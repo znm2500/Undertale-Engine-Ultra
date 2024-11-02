@@ -95,40 +95,26 @@ function limit(_x, _y, _listVertex = cover ? listVertex_Outline: listVertex) {
         var vertex = _listVertex[| 0];
         return [vertex[0] + x, vertex[1] + y];
     }
-
     _x -= x;
     _y -= y;
     var vsin = dsin( - angle),
     vcos = dcos( - angle);
     var xx = _x * vcos + _y * vsin,
     yy = -_x * vsin + _y * vcos;
-
     var nearestPos, nearestDis = -1;
-    var prev = _listVertex[| size - 1],
-    cur;
     for (var i = 0; i < size; i++) {
-        cur = _listVertex[| i];
-        if ((prev[0] - xx) * (prev[0] - cur[0]) + (prev[1] - yy) * (prev[1] - cur[1]) < 0) {
-            var dis = point_distance(xx, yy, prev[0], prev[1]);
-            if (dis < nearestDis || nearestDis == -1) {
-                nearestDis = dis;
-                nearestPos = prev;
-            }
-        } else if ((cur[0] - xx) * (cur[0] - prev[0]) + (cur[1] - yy) * (cur[1] - prev[1]) < 0) {
-            var dis = point_distance(xx, yy, cur[0], cur[1]);
-            if (dis < nearestDis || nearestDis == -1) {
-                nearestDis = dis;
-                nearestPos = cur;
-            }
-        } else {
-            var k = ((yy - prev[1]) * (cur[0] - prev[0]) - (xx - prev[0]) * (cur[1] - prev[1])) / (sqr(cur[1] - prev[1]) + sqr(cur[0] - prev[0]));
-            var dis = abs(k) * point_distance(prev[0], prev[1], cur[0], cur[1]);
-            if (dis < nearestDis || nearestDis == -1) {
-                nearestDis = dis;
-                nearestPos = [xx + k * (cur[1] - prev[1]), yy + k * (prev[0] - cur[0])];
-            }
+        var a = _listVertex[| i],
+        b = _listVertex[| (i + 1) % size];
+        var v = [b[0] - a[0], b[1] - a[1]],
+        u = [xx - a[0], yy - a[1]];
+        var dot1 = v[0] * u[0] + v[1] * u[1],
+        dot2 = v[0] * v[0] + v[1] * v[1];
+        var pos = [a[0] + v[0] * (dot1 / dot2), a[1] + v[1] * (dot1 / dot2)];
+        var dis = point_distance(xx, yy, pos[0], pos[1]);
+        if (nearestDis = -1 || dis <= nearestDis) {
+            nearestPos = pos;
+            nearestDis = dis;
         }
-        prev = cur;
     }
     var resultx = nearestPos[0] * vcos - nearestPos[1] * vsin;
     var resulty = nearestPos[0] * vsin + nearestPos[1] * vcos;

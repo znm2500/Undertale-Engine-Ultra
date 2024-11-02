@@ -3,7 +3,7 @@ if (bounce) {
     var limit_index = array_create(4, 0);
     var platform_position = [x, y];
     var offset_pos = [RotateAround(0, 0, width / 2, sprite_height / 2, 0, 0, angle), RotateAround(0, 0, width / 2, -sprite_height / 2, 0, 0, angle)];
-    var distance = [ - 1, -1];
+    var distance = -1;
     var bounced = false;
     var boardcount = array_length(global.boards_array);
     for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
@@ -48,7 +48,7 @@ if (bounce) {
         }
         platform_position[0] = nearestPos[0] + offset_pos[0][0];
         platform_position[1] = nearestPos[1] + offset_pos[0][1];
-        distance[0] = nearestDis;
+        distance = nearestDis;
         bounced = true;
     }
 
@@ -65,7 +65,8 @@ if (bounce) {
                 nearestDis = dis;
             }
         }
-        if (distance[0] < nearestDis) {
+        if (distance < nearestDis) {
+            distance = nearestDis;
             platform_position[0] = nearestPos[0] - offset_pos[0][0];
             platform_position[1] = nearestPos[1] - offset_pos[0][1];
         }
@@ -85,10 +86,12 @@ if (bounce) {
                 nearestDis = dis;
             }
         }
-
-        platform_position[0] = nearestPos[0] + offset_pos[1][0];
-        platform_position[1] = nearestPos[1] + offset_pos[1][1];
-        distance[1] = nearestDis;
+        if (distance < nearestDis) {
+            distance = nearestDis;
+            platform_position[0] = nearestPos[0] + offset_pos[1][0];
+            platform_position[1] = nearestPos[1] + offset_pos[1][1];
+            distance = nearestDis;
+        }
         bounced = true;
     }
 
@@ -105,7 +108,8 @@ if (bounce) {
                 nearestDis = dis;
             }
         }
-        if (distance[1] < nearestDis) {
+        if (distance < nearestDis) {
+            distance = nearestDis;
             platform_position[0] = nearestPos[0] - offset_pos[1][0];
             platform_position[1] = nearestPos[1] - offset_pos[1][1];
         }
@@ -113,7 +117,7 @@ if (bounce) {
     }
     x = platform_position[0];
     y = platform_position[1];
-    distance = [ - 1, -1];
+    distance = -1;
     if (!isInside[0][0]) {
         var nearestPos, nearestDis = -1; // 最近位置和最近距离
         for (var i = 0; i < boardcount; i++) { // 遍历所有框
@@ -130,7 +134,7 @@ if (bounce) {
         }
         platform_position[0] = nearestPos[0] + offset_pos[0][0];
         platform_position[1] = nearestPos[1] + offset_pos[0][1];
-        distance[0] = nearestDis;
+        distance = nearestDis;
         bounced = true;
     }
 
@@ -148,7 +152,8 @@ if (bounce) {
                 }
             }
         }
-        if (distance[0] < nearestDis) {
+        if (distance < nearestDis) {
+            distance = nearestDis;
             platform_position[0] = nearestPos[0] - offset_pos[0][0];
             platform_position[1] = nearestPos[1] - offset_pos[0][1];
         }
@@ -170,10 +175,12 @@ if (bounce) {
                 }
             }
         }
-
-        platform_position[0] = nearestPos[0] + offset_pos[1][0];
-        platform_position[1] = nearestPos[1] + offset_pos[1][1];
-        distance[1] = nearestDis;
+        if (distance < nearestDis) {
+            distance = nearestDis;
+            platform_position[0] = nearestPos[0] + offset_pos[1][0];
+            platform_position[1] = nearestPos[1] + offset_pos[1][1];
+            distance = nearestDis;
+        }
         bounced = true;
     }
 
@@ -191,7 +198,8 @@ if (bounce) {
                 }
             }
         }
-        if (distance[1] < nearestDis) {
+        if (distance < nearestDis) {
+            distance = nearestDis;
             platform_position[0] = nearestPos[0] - offset_pos[1][0];
             platform_position[1] = nearestPos[1] - offset_pos[1][1];
         }

@@ -122,7 +122,8 @@ if (!global.classic_ui) {
             if (Input_IsPressed(INPUT.CONFIRM)) {
                 audio_play_sound(snd_menu_confirm, 0, false);
                 Battle_SetMenu(BATTLE_MENU.FIGHT_AIM);
-                Anim_Destroy(battle_soul) Anim_Create(battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20);
+                Anim_Destroy(battle_soul);
+				Anim_Create(battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20);
             }
         } else
 

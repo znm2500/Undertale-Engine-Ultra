@@ -8,7 +8,7 @@ var STATE = Battle_GetState();
 if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     var isInside = array_create(2, array_create(4, false));
     var limit_index = array_create(4, 0);
-    var distance = [ - 1, -1];
+    var distance = -1;
     var boardcount = array_length(global.boards_array);
     for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
         global.boards_array[i].isCollide[0] = global.boards_array[i].contains(x - sprite_width / 2, y);

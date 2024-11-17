@@ -1,8 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-
-// Inherit the parent event
 event_inherited();
 type=1
 a=instance_create_depth(x,y,DEPTH_BATTLE.BULLET,soul_block)

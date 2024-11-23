@@ -1,5 +1,6 @@
 function CustomItem_ToyKnife() : ItemTypeSimple("Toy Knife","* Toy Knife - Weapon AT 3&* Made of plastic.&* A rarity nowadays.") constructor{
 	price =1145;
+	_shop_description = "Toyknife"
 	function OnUse(inventory,index){
 		Dialog_Add(Item_GetTextEquip(GetName()));
 		Dialog_Start();

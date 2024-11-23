@@ -21,7 +21,7 @@ switch(_state)
 	case SHOP_STATE.BUY:
 		if(instance_exists(_typer_info)&&_typer_info_refresh)
 		{
-			var item=items.GetOrUndefined(_host.shop_item[_index]);
+			var item=items.GetOrUndefined(_host.shop_item[_pre_index]);
 			_typer_info.text = _pre_inst_2 + item._shop_description;
 		}
 		if(_typer_left_refresh)
@@ -61,7 +61,7 @@ switch(_state)
 					_typer_right.text = _pre + _host.buy_before_text;
 					break;
 				case 1:
-					_typer_right.text = _pre_inst_3 + "Buy it for&" + string(items.GetOrUndefined(_item[_index])._price_buy)+"G?& Yes& No";
+					_typer_right.text = _pre_inst_3 + "Buy it for&" + string(items.GetOrUndefined(_item[_pre_index])._price_buy)+"G?& Yes& No";
 					break;
 				case 2:
 					_typer_right.text = _pre + _host.buy_after_text;
@@ -143,7 +143,7 @@ switch(_state)
 				if(_typer_left_refresh)
 				{
 					_typer_left.text = _pre_inst;
-					_typer_left.text += "Sell it for "+string(Item_GetInventoryItems().GetItem(_index)._price_sell)+"G?&&";
+					_typer_left.text += "Sell it for "+string(Item_GetInventoryItems().GetItem(_pre_index)._price_sell)+"G?&&";
 					_typer_left.text += "  Yes      No";
 				}
 			}

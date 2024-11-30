@@ -56,12 +56,15 @@ case SHOP_STATE.BUY:
     case 3:
     default:
         if (Input_IsPressed(INPUT.UP)) {
-            if (_pre_index <= 0) _pre_index = 4;
-            else _pre_index -= 1;
+            if (_pre_index <= 0) {
+                _pre_index = 4;
+                _exit_index = 0;
+            } else _pre_index -= 1;
             Shop_RefreshTyper(false, false, false, true);
             Anim_Create(id, "_index", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _index, _pre_index - _index, 15 * !global.classic_ui, , , , 1);
         }
         if (Input_IsPressed(INPUT.DOWN)) {
+            _exit_index = 3;
             if (_pre_index >= 4) _pre_index = 0;
             else _pre_index += 1;
             Shop_RefreshTyper(false, false, false, true);
@@ -69,7 +72,7 @@ case SHOP_STATE.BUY:
         }
         if (Input_IsPressed(INPUT.CONFIRM)) {
             if (_pre_index < 4) {
-                var ITEM = Item_GetTypeManager().GetOrUndefined(_item[_pre_index]);				
+                var ITEM = Item_GetTypeManager().GetOrUndefined(_item[_pre_index]);
                 if (Item_GetInventoryItems().GetCount() < 8 && Storage_GetStaticFlag(FLAG_STATIC_GOLD) >= ITEM._price_buy) {
                     _choice_state = 1;
                 } else if (Item_GetInventoryItems().GetCount() < 8 && Storage_GetStaticFlag(FLAG_STATIC_GOLD) < ITEM._price_buy) {
@@ -100,7 +103,7 @@ case SHOP_STATE.BUY:
         if (Input_IsPressed(INPUT.CONFIRM)) {
             if (_index_buy == 0) {
                 Anim_Destroy(id);
-                var ITEM = Item_GetTypeManager().GetOrUndefined(_item[_pre_index]);	
+                var ITEM = Item_GetTypeManager().GetOrUndefined(_item[_pre_index]);
                 Item_GetInventoryItems().Add(_item[_pre_index]);
                 Player_SetGold(Player_GetGold() - ITEM._price_buy);
                 _choice_state = 2;

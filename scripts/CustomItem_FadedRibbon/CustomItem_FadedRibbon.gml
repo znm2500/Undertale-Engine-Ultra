@@ -1,4 +1,5 @@
 function CustomItem_FadedRibbon() : ItemTypeSimple("Faded Ribbon","* Faded Ribbon - Armor DF 3&* If you're cuter,{sleep 20} monsters&  won't hit you as hard.") constructor{
+	_shop_description="Faded&Ribbon";
 	function OnUse(inventory,index){
 		Dialog_Add(Item_GetTextEquip(GetName()));
 		Dialog_Start();

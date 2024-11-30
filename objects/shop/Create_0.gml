@@ -29,7 +29,7 @@ _choice_state = 0;
 _pre_index = 0;
 _pre_index_buy = 0;
 _pre_index_sell = 0;
-
+_exit_index = 0;
 
 _host = instance_create_depth(160,border_y1,-100,Shop_GetHost(SHOP));
 

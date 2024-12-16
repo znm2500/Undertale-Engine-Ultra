@@ -15,8 +15,8 @@ if (!processed) {
     _dir = _direction;
     if (follow) {
         _angle = _direction;
-        vs = vspeed;
-        hs = hspeed;
+        vsin = vspeed;
+        _hspeed = hspeed;
         vspeed = 0;
         hspeed = 0;
         if (follow_board) {
@@ -40,8 +40,8 @@ if (!processed) {
     }
 }
 if (follow) {
-    xx += hs;
-    yy += vs;
+    _x += _hspeed;
+    _y += vsin;
     if (follow_board && follow_target != battle_board) {
         follow_target = battle_board;
     }
@@ -52,12 +52,12 @@ if (follow) {
         else follow_angle = follow_target.image_angle;
     }
 
-    var pos = RotateAround(center_x, center_y, xx, yy, follow_x, follow_y, follow_angle);
+    var pos = RotateAround(center_x, center_y, _x, _y, follow_x, follow_y, follow_angle);
     x = pos[0];
     y = pos[1];
 
 } else {
-    xx = x;
-    yy = y;
+    _x = x;
+    _y = y;
     angle += rotate;
 }

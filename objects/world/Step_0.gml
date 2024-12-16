@@ -1,6 +1,6 @@
 Anim_Step();
 BGM_Step();
-Bezier_Step();
+
 if(_time>=60){
 	var z=Storage_GetStaticGeneral();
 	var time=z.Get(FLAG_STATIC_TIME,0);

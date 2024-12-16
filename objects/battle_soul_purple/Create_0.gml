@@ -7,7 +7,7 @@ cross_start = noone;
 cross_target = noone;
 point = [];
 moving_direction = 0;
-Purplesoul_Addpoint(320, 320, 0);
+Purplesoul_Addpoint(320, 320, 0,1);
 
 x_index = 0;
 y_index = 0;

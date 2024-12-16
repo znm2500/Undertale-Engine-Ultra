@@ -1,4 +1,4 @@
 block_enabled=true;
 
-pushSoulEnabled=false;
-pushSoulDirection=DIR.DOWN;
+pus_hspeedoulEnabled=false;
+pus_hspeedoulDirection=DIR.DOWN;

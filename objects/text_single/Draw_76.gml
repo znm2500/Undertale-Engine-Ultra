@@ -27,14 +27,14 @@ case 2:
 }
 if (rainbow) {
     color++;
-    color_text[0] = make_color_hsv((x + color) % 255, 255, 255);
-    color_text[1] = make_color_hsv((x + color + string_width(text)) % 255, 255, 255);
-    color_text[2] = make_color_hsv((y + color) % 255, 255, 255);
-    color_text[3] = make_color_hsv((y + color + string_height(text)) % 255, 255, 255);
-    color_shadow[0] = make_color_hsv((x + color) % 255, 128, 128);
-    color_shadow[1] = make_color_hsv((x + color + string_width(text)) % 255, 128, 128);
-    color_shadow[2] = make_color_hsv((y + color) % 255, 128, 128);
-    color_shadow[3] = make_color_hsv((y + color + string_height(text)) % 255, 128, 128);
+    color_text[0] = make_color__hspeedv((x + color) % 255, 255, 255);
+    color_text[1] = make_color__hspeedv((x + color + string_width(text)) % 255, 255, 255);
+    color_text[2] = make_color__hspeedv((y + color) % 255, 255, 255);
+    color_text[3] = make_color__hspeedv((y + color + string_height(text)) % 255, 255, 255);
+    color_shadow[0] = make_color__hspeedv((x + color) % 255, 128, 128);
+    color_shadow[1] = make_color__hspeedv((x + color + string_width(text)) % 255, 128, 128);
+    color_shadow[2] = make_color__hspeedv((y + color) % 255, 128, 128);
+    color_shadow[3] = make_color__hspeedv((y + color + string_height(text)) % 255, 128, 128);
 }
 if (show_item && !_processed) {
     alpha = (round(y) >= battle_board.y - battle_board.up - 5 + 20 - 16 && round(y) <= battle_board.y - battle_board.up - 5 + 20 + 64 + 16);

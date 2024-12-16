@@ -18,11 +18,11 @@ function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow = 0
             a = instance_create_depth(0, 0, 0, shaker);
 
             if (follow) {
-                a.var_name = "xx";
-                Anim_Create(id, "yy", 0, 0, yy, ( - length), 8, pause);
+                a.var_name = "_x";
+                Anim_Create(id, "_y", 0, 0, _y, ( - length), 8, pause);
 
                 if (duration != -1) {
-                    Anim_Create(id, "yy", 0, 0, (yy - length), (length * 2), 16, ((16 + pause) + duration));
+                    Anim_Create(id, "_y", 0, 0, (_y - length), (length * 2), 16, ((16 + pause) + duration));
                 }
             } else {
                 a.var_name = "x";
@@ -81,11 +81,11 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
                     Anim_Create(id, "x", 0, 0, (x + length), (( - length) * 2), 16, ((16 + pause) + duration));
                 }
             } else {
-                a.var_name = "yy";
-                Anim_Create(id, "xx", 0, 0, xx, length, 8, pause);
+                a.var_name = "_y";
+                Anim_Create(id, "_x", 0, 0, _x, length, 8, pause);
 
                 if (duration != -1) {
-                    Anim_Create(id, "xx", 0, 0, (xx + length), (( - length) * 2), 16, ((16 + pause) + duration));
+                    Anim_Create(id, "_x", 0, 0, (_x + length), (( - length) * 2), 16, ((16 + pause) + duration));
                 }
             }
 
@@ -134,10 +134,10 @@ function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = fa
                     Anim_Create(id, "x", 0, 0, (x - length), (length * 2), 16, ((16 + pause) + duration));
                 }
             } else {
-                a.var_name = "yy";
-                Anim_Create(id, "xx", 0, 0, xx, ( - length), 8, pause);
+                a.var_name = "_y";
+                Anim_Create(id, "_x", 0, 0, _x, ( - length), 8, pause);
                 if (duration != -1) {
-                    Anim_Create(id, "xx", 0, 0, (xx - length), (length * 2), 16, ((16 + pause) + duration));
+                    Anim_Create(id, "_x", 0, 0, (_x - length), (length * 2), 16, ((16 + pause) + duration));
                 }
             }
 
@@ -185,10 +185,10 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
                     Anim_Create(id, "y", 0, 0, (y + length), (( - length) * 2), 16, ((16 + pause) + duration));
                 }
             } else {
-                a.var_name = "xx";
-                Anim_Create(id, "yy", 0, 0, yy, length, 8, pause);
+                a.var_name = "_x";
+                Anim_Create(id, "_y", 0, 0, _y, length, 8, pause);
                 if (duration != -1) {
-                    Anim_Create(id, "yy", 0, 0, (yy + length), (( - length) * 2), 16, ((16 + pause) + duration));
+                    Anim_Create(id, "_y", 0, 0, (_y + length), (( - length) * 2), 16, ((16 + pause) + duration));
                 }
             }
 

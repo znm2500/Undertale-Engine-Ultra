@@ -41,11 +41,11 @@ case SHOP_STATE.MENU:
     break;
 case SHOP_STATE.BUY:
     if (_index < 4) {
-        buy_info_inst_y -= min(buy_info_vspeed, buy_info_inst_y - buy_info_y);
+        buy_info_inst_y -= min(buy_info__vspeedpeed, buy_info_inst_y - buy_info_y);
         if (!instance_exists(_typer_info)) Shop_RefreshTyper(false, false, false, true);
         _typer_info.y = buy_info_inst_y + height_text;
     } else {
-        buy_info_inst_y += min(buy_info_vspeed, border_y1 - buy_info_inst_y);
+        buy_info_inst_y += min(buy_info__vspeedpeed, border_y1 - buy_info_inst_y);
         if (instance_exists(_typer_info)) {
             instance_destroy(_typer_info);
         }

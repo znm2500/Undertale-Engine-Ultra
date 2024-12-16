@@ -82,12 +82,12 @@ function Kawase(_width, _height, _maxIterations) constructor {
 
         var _i = 1;
         repeat(_iterations) {
-            var _prevStruct = __surfaceArray[_i - 1];
+            var _pre_vspeedtruct = __surfaceArray[_i - 1];
             var _nextStruct = __surfaceArray[_i];
 
             surface_set_target(_nextStruct.__surface);
-            shader_set_uniform_f(_shd_kawase_down_vTexel, _prevStruct.__texelWidth, _prevStruct.__texelHeight);
-            draw_surface_stretched(_prevStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
+            shader_set_uniform_f(_shd_kawase_down_vTexel, _pre_vspeedtruct.__texelWidth, _pre_vspeedtruct.__texelHeight);
+            draw_surface_stretched(_pre_vspeedtruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
 
             ++_i;
@@ -97,12 +97,12 @@ function Kawase(_width, _height, _maxIterations) constructor {
 
         var _i = _iterations;
         repeat(_iterations) {
-            var _prevStruct = __surfaceArray[_i];
+            var _pre_vspeedtruct = __surfaceArray[_i];
             var _nextStruct = __surfaceArray[_i - 1];
 
             surface_set_target(_nextStruct.__surface);
-            shader_set_uniform_f(_shd_kawase_up_vTexel, _prevStruct.__texelWidth, _prevStruct.__texelHeight);
-            draw_surface_stretched(_prevStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
+            shader_set_uniform_f(_shd_kawase_up_vTexel, _pre_vspeedtruct.__texelWidth, _pre_vspeedtruct.__texelHeight);
+            draw_surface_stretched(_pre_vspeedtruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
 
             --_i;

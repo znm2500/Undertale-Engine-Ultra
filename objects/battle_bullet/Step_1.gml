@@ -1,8 +1,8 @@
 if (!processed) {
     alarm[0] = duration;
     if (follow) {
-        vs = vspeed;
-        hs = hspeed;
+        direction = 0;
+        speed = 0;
         vspeed = 0;
         hspeed = 0;
         if (follow_board) {
@@ -24,8 +24,12 @@ if (!processed) {
     }
 }
 if (follow) {
-    xx += hs;
-    yy += vs;
+    _x += _hspeed;
+    _y += vsin;
+    if (_speed) {
+        x += lengthdir_x(_speed, _direction);
+        y += lengthdir_y(_speed, _direction);
+    }
     if (follow_board && follow_target != battle_board) {
         follow_target = battle_board;
     }
@@ -36,11 +40,15 @@ if (follow) {
         else follow_angle = follow_target.image_angle;
     }
 
-    var pos = RotateAround(center_x, center_y, xx, yy, follow_x, follow_y, follow_angle);
+    var pos = RotateAround(center_x, center_y, _x, _y, follow_x, follow_y, follow_angle);
     x = pos[0];
     y = pos[1];
 
 } else {
-    xx = x;
-    yy = y;
+    _x = x;
+    _y = y;
+    vsin = vspeed;
+    _hspeed = hspeed;
+    _speed = speed;
+    _direction = direction;
 }

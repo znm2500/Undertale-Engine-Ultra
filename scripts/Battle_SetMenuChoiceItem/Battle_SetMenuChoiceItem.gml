@@ -21,7 +21,7 @@ function Battle_SetMenuChoiceItem() {
 		//更新文字
 		var text="{depth "+string(DEPTH_BATTLE.BULLET)+"}{show_item true}";
 		var proc=battle._menu_choice_item_first;
-		repeat(min(3,count)){
+		repeat(min(global.classic_ui?3:8,count)){
 			text+="* "+items.GetItemName(proc)+"&";
 			proc+=1;
 		}

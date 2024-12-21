@@ -14,7 +14,9 @@ function Player_CustomInitialData(){
 	items.Add(ITEM_TOY_KNIFE);
 	items.Add(ITEM_FADED_RIBBON);
 	items.Add(ITEM_DICE);
-	
+	items.Add(ITEM_DICE);
+	items.Add(ITEM_DICE);
+	items.Add(ITEM_DICE);
 	var phones=Item_GetInventoryPhones();
 	phones.Add(ITEM_PHONE_TML);
 	

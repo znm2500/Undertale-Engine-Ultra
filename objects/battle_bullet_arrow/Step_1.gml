@@ -41,7 +41,7 @@ if (!processed) {
 }
 if (follow) {
     _x += _hspeed;
-    _y += vsin;
+    _y += _vspeed;
     if (follow_board && follow_target != battle_board) {
         follow_target = battle_board;
     }

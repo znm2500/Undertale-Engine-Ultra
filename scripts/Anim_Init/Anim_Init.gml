@@ -879,23 +879,25 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
                     if (argument[i][0] < 0 || argument[i][0] > 1) continue;
                     if (array_length(argument[i]) == 2) array_push(argument[i], tween_default);
                     if (array_length(argument[i]) == 3) array_push(argument[i], ease_default);
-                    var _index = -1,
-                    d_index = -1;
-                    repeat(array_length(item.keyframes)) {
-                        if (item.keyframes[++_index][0] == argument[i][0]) {
-                            d_index = _index;
+                    var l = 0,
+                    r = array_length(item.keyframes) - 1,
+                    mid = l;
+                    while (l <= r) {
+                        mid = (r + l) >> 1;
+                        if (item.keyframes[mid][0] < argument[i][0]) {
+                            l = mid + 1;
+                        } else if (item.keyframes[mid][0] > argument[i][0]) {
+                            r = mid - 1;
+                        } else {
+                            array_delete(item.keyframes, mid, 1);
+                            l = mid;
                             break;
                         }
                     }
-                    if (d_index != -1) array_delete(item.keyframes, d_index, 1);
-                    array_push(item.keyframes, argument[i]);
+                    array_insert(item.keyframes, l, argument[i]);
                     success = true;
                 }
             }
-            if (success) array_sort(item.keyframes,
-            function(a, b) {
-                return a[0] > b[0];
-            });
         } else {
             item = {
                 target: target,
@@ -937,29 +939,42 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
             item.type = type;
             while (argument[++i] != undefined) {
                 if (is_array(argument[i])) {
+                    if (argument[i][0] < 0 || argument[i][0] > 1) continue;
                     if (array_length(argument[i]) == 2) array_push(argument[i], tween_default);
                     if (array_length(argument[i]) == 3) array_push(argument[i], ease_default);
-                    var _index = -1,
-                    d_index = -1;
-                    repeat(array_length(item.keyframes)) {
-                        if (item.keyframes[++_index][0] == argument[i][0]) {
-                            d_index = _index;
+                    var l = 0,
+                    r = array_length(item.keyframes) - 1,
+                    mid = l;
+                    if (r == 0) {
+                        if (argument[i][0] == item.keyframes[l][0]) {
+                            array_delete(item.keyframes, 0, 1);
+                            continue;
+                        } else if (argument[i][0] > item.keyframes[l][0]) array_push(item.keyframes, argument[i]);
+                        else array_insert(item.keyframes, 0, argument[i]);
+                        success = true;
+                        continue;
+                    }
+                    while (l <= r) {
+                        mid = (r + l) >> 1;
+                        if (item.keyframes[mid][0] < argument[i][0]) {
+                            l = mid + 1;
+                        } else if (item.keyframes[mid][0] > argument[i][0]) {
+                            r = mid - 1;
+                        } else {
+                            array_delete(item.keyframes, mid, 1);
+                            l = mid;
                             break;
                         }
                     }
-                    if (d_index != -1) array_delete(item.keyframes, d_index, 1);
-                    array_push(item.keyframes, argument[i]);
+                    array_insert(item.keyframes, l, argument[i]);
                     success = true;
                 }
             }
             if (success) {
-                array_sort(item.keyframes,
-                function(a, b) {
-                    return a[0] > b[0];
-                });
                 array_push(patterns, item);
             }
         }
+        return success;
     }
     function Play(duration, delay = 0, play_speed = 1, play_direction = ANIMATOR_PLAY_DIREATION.NORMAL, play_count = 1, play_interval = 0, auto_destroy = 0) {
         self.duration = round(abs(duration));
@@ -991,15 +1006,18 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
                         if (!pl) continue;
                         var _stage, l = 0,
                         r = pl - 1;
-                        while (r - l > 1) {
-                            var _stage = int64((r + l) / 2);
-                            if (patterns[i].keyframes[_stage][0] > progress) {
-                                r = _stage;
+                        while (l <= r) {
+                            _stage = (r + l) >> 1;
+                            if (patterns[i].keyframes[_stage][0] < progress) {
+                                l = _stage + 1;
+                            } else if (patterns[i].keyframes[_stage][0] > progress) {
+                                r = _stage - 1;
                             } else {
                                 l = _stage;
+                                break;
                             }
                         }
-                        _stage = r;
+                        _stage = l;
                         if (progress <= patterns[i].keyframes[0][0]) value = patterns[i].keyframes[0][1];
                         else if (progress >= patterns[i].keyframes[pl - 1][0]) value = patterns[i].keyframes[pl - 1][1];
                         else {
@@ -1168,21 +1186,24 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
     function DeleteKeyFrame() {
         var item = GetPattern(argument[0], argument[1]);
         if (!item) return false;
-        var success = false,
-        i = 1;
+        var i = 1;
         while (argument[i++] != undefined) {
-            var p = 0;
-            repeat(array_length(item.keyframes)) {
-                if (item.keyframes[p][0] > argument[i]) break;
-                if (item.keyframes[p][0] == argument[i]) {
-                    array_delete(item.keyframes, p, 1);
-                    success = true;
+            var l = 0,
+            r = array_length(item.keyframes) - 1,
+            mid = l;
+            while (l <= r) {
+                mid = (r + l) >> 1;
+                if (item.keyframes[mid][0] < argument[i][0]) {
+                    l = mid + 1;
+                } else if (item.keyframes[mid][0] > argument[i][0]) {
+                    r = mid - 1;
+                } else {
+                    return true;
                     break;
                 }
-                p++;
             }
         }
-        return success;
+        return false;
     }
     function DeletePattern(target, varname) {
         var _index = 0;
@@ -1210,6 +1231,24 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
                 return true;
             }
             i++
+        }
+        return false;
+    }
+    function IsKeyFrameExists(pattern, progress) {
+        var l = 0,
+        r = array_length(pattern.keyframes) - 1,
+        mid = l;
+        while (r - l > 1) {
+            mid = (r + l) >> 1;
+            if (pattern.keyframes[l][0] == progress) {
+                return true;
+            } else if (pattern.keyframes[r][0] == progress) {
+                return true;
+            } else if (pattern.keyframes[mid][0] > progress) {
+                r = mid;
+            } else {
+                l = mid;
+            }
         }
         return false;
     }

@@ -1,4 +1,5 @@
-event_inherited() depth = DEPTH_BATTLE.BULLET_OUTSIDE_HIGH;
+event_inherited();
+depth = DEPTH_BATTLE.BULLET_OUTSIDE_HIGH;
 image_speed = 0;
 type = 0;
 x_target = x;

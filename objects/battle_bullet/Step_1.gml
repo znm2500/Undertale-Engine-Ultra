@@ -25,7 +25,7 @@ if (!processed) {
 }
 if (follow) {
     _x += _hspeed;
-    _y += vsin;
+    _y += _vspeed;
     if (_speed) {
         x += lengthdir_x(_speed, _direction);
         y += lengthdir_y(_speed, _direction);
@@ -47,7 +47,7 @@ if (follow) {
 } else {
     _x = x;
     _y = y;
-    vsin = vspeed;
+    _vspeed = vspeed;
     _hspeed = hspeed;
     _speed = speed;
     _direction = direction;

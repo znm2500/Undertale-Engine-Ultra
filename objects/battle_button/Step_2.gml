@@ -15,5 +15,6 @@ if(STATUS==BATTLE_STATE.MENU && MENU!=BATTLE_MENU.FIGHT_AIM && MENU!=BATTLE_MENU
 	image_index=0;
 	
 }
-alpha += ((image_index - alpha) * 0.2)
-alpha = abs(alpha)
+if(!global.classic_ui){
+alpha += ((image_index - alpha) * 0.2);
+alpha = abs(alpha);}

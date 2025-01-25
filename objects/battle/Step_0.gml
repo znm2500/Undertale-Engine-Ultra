@@ -77,6 +77,7 @@ if (!global.classic_ui) {
                     if (Item_GetNumber() > 0) {
                         Battle_SetMenu(BATTLE_MENU.ITEM);
                     } else {
+						Anim_Destroy(battle_soul, "image_angle");
                         audio_stop_sound(snd_menu_confirm);
                     }
                     break;

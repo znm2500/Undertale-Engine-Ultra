@@ -8,7 +8,6 @@ var STATE = Battle_GetState();
 if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     var isInside = array_create(2, array_create(4, false));
     var limit_index = array_create(4, 0);
-    var soul_position = [x, y];
     var distance = -1;
     var boardcount = array_length(global.boards_array);
     for (var i = 0; i < boardcount; i++) { //遍历所有框,判断是否出框
@@ -51,8 +50,8 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             }
 
         }
-        soul_position[0] = nearestPos[0] + sprite_width / 2;
-        soul_position[1] = nearestPos[1];
+        x = nearestPos[0] + sprite_width / 2;
+        y = nearestPos[1];
         distance = nearestDis;
     }
 
@@ -69,9 +68,9 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 nearestDis = dis;
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0] - sprite_width / 2;
-            soul_position[1] = nearestPos[1];
+        if (distance <= nearestDis) {
+            x = nearestPos[0] - sprite_width / 2;
+            y = nearestPos[1];
             distance = nearestDis;
         }
     }
@@ -88,9 +87,9 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 nearestDis = dis;
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0];
-            soul_position[1] = nearestPos[1] + sprite_height / 2;
+        if (distance <= nearestDis) {
+            x = nearestPos[0];
+            y = nearestPos[1] + sprite_height / 2;
             distance = nearestDis;
         }
     }
@@ -108,13 +107,12 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 nearestDis = dis;
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0];
-            soul_position[1] = nearestPos[1] - sprite_height / 2;
+        if (distance <= nearestDis) {
+            x = nearestPos[0];
+            y = nearestPos[1] - sprite_height / 2;
         }
     }
-    x = soul_position[0];
-    y = soul_position[1];
+
     distance = -1;
     if (!isInside[0][0]) {
         var nearestPos, nearestDis = -1; // 最近位置和最近距离
@@ -130,8 +128,8 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-        soul_position[0] = nearestPos[0] + sprite_width / 2;
-        soul_position[1] = nearestPos[1];
+        x = nearestPos[0] + sprite_width / 2;
+        y = nearestPos[1];
         distance = nearestDis;
     }
 
@@ -149,9 +147,9 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0] - sprite_width / 2;
-            soul_position[1] = nearestPos[1];
+        if (distance <= nearestDis) {
+            x = nearestPos[0] - sprite_width / 2;
+            y = nearestPos[1];
             distance = nearestDis;
         }
 
@@ -171,9 +169,9 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0];
-            soul_position[1] = nearestPos[1] + sprite_height / 2;
+        if (distance <= nearestDis) {
+            x = nearestPos[0];
+            y = nearestPos[1] + sprite_height / 2;
             distance = nearestDis;
         }
     }
@@ -192,13 +190,12 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
                 }
             }
         }
-        if (distance < nearestDis) {
-            soul_position[0] = nearestPos[0];
-            soul_position[1] = nearestPos[1] - sprite_height / 2;
+        if (distance <= nearestDis) {
+            x = nearestPos[0];
+            y = nearestPos[1] - sprite_height / 2;
         }
     }
-    x = soul_position[0];
-    y = soul_position[1];
+
 }
 
 if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {

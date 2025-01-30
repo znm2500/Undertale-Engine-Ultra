@@ -24,13 +24,15 @@ if (global.kr) {
             else _temp_local_var_1 = 0;
             if _temp_local_var_1 {
                 var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);
-                z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, y - camera.y) room_goto(room_gameover);
+				z.Set(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);				
+                z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, y - camera.y);
+				room_goto(room_gameover);
 
             }
             audio_play_sound(snd_hurt, 0, false);
         }
 
-        global.krtime += 1
+        global.krtime += 1;
         if (global.krtime = 2) {
             global.krtime = 0;
         }

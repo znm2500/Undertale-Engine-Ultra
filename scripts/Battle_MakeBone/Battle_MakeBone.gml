@@ -340,7 +340,7 @@ function Battle_MakeBone3D() {
     var scale_y = argument[9];
     var scale_z = argument[10];
     var VSPEED = argument[11];
-    var _hspeed = argument[12];
+    var HSPEED = argument[12];
     var shape = argument[13];
     var type = argument[14];
     var out = argument[15];

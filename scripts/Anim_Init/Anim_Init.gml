@@ -32,6 +32,7 @@ function Anim_Init() {
     }
     global._anim_data = [];
     global._animators = [];
+    global.anim_speed = 1;
 }
 
 function Anim_Uninit() {
@@ -1067,13 +1068,14 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
                                 break;
                             }
                         }
-                        if (_step == duration) {
-                            _played_times++;
-                            play_count--;
-                            delay = play_interval;
-                            if (play_direction == ANIMATOR_PLAY_DIREATION.NORMAL) _step = 0;
-                            if (!play_count && auto_destroy) Destroy();
-                        }
+                        i++;
+                    }
+                    if (_step == duration) {
+                        _played_times++;
+                        play_count--;
+                        delay = play_interval;
+                        if (play_direction == ANIMATOR_PLAY_DIREATION.NORMAL) _step = 0;
+                        if (!play_count && auto_destroy) Destroy();
                     }
                 } else {
                     _step += delay;
@@ -1145,14 +1147,15 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
                                 break;
                             }
                         }
-                        if (_step == 0) {
-                            _played_times++;
-                            play_count--;
-                            delay = play_interval;
-                            if (play_direction == ANIMATOR_PLAY_DIREATION.RESERVE) _step = duration;
-                            if (!play_count && auto_destroy) Destroy();
-                        }
+                        i++;
                     }
+                }
+                if (_step == 0) {
+                    _played_times++;
+                    play_count--;
+                    delay = play_interval;
+                    if (play_direction == ANIMATOR_PLAY_DIREATION.RESERVE) _step = duration;
+                    if (!play_count && auto_destroy) Destroy();
                 }
             }
         }

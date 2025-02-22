@@ -115,7 +115,7 @@
     {"$GMFolder":"","%Name":"PS4","folderPath":"folders/Sprites/Gamepad/PS4.yy","name":"PS4","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Large","folderPath":"folders/Sprites/Gamepad/PS4/Large.yy","name":"Large","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Small","folderPath":"folders/Sprites/Gamepad/PS4/Small.yy","name":"Small","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"shop","folderPath":"folders/Sprites/shop.yy","name":"shop","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Shop","folderPath":"folders/Sprites/Shop.yy","name":"Shop","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],

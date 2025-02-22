@@ -6,10 +6,8 @@ if (_heal != 0) {
 if (global.kr) {
     if (damage) {
         var _temp_local_var_1, time = 0;
-
         time += 1;
         if (time = 2) time = 0;
-
         if (time = 1) {
             if (Player_GetHp() > 1) {
                 Player_Hurt(1);

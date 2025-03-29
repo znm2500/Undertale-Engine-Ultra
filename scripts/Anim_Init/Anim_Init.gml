@@ -789,60 +789,56 @@ function Anim_GetValue(TWEEN, EASE, TIME) {
         break;
     case ANIM_TWEEN.BEZIER:
         var bezier = EASE[0];
-        var bezier_value = Bezier_GetValue(bezier, TIME);
-        var bezier = bezier[EASE[1]];
+        var bezier_value = bezier.GetValue(TIME);
+        var r = bezier_value[EASE[1]];
         break;
     }
 
     return r;
 
 }
-function Bezier_CreateStruct(start_x, start_y, last_x, last_y) {
-    var bezier = {};
-    bezier[$ "startPoint"] = [start_x, start_y];
-    bezier[$ "lastPoint"] = [last_x, last_y];
-    bezier[$ "points"] = [];
-    return bezier;
-}
-
-function Bezier_PointNumber(bezier) {
-    return (array_length(bezier[$ "points"]) + 2);
-}
-
-function Bezier_AddPoint(bezier, x, y) {
-    return (array_push(bezier[$ "points"], [x, y]));
-}
-
-function Bezier_GetValue(bezier, step) {
-    var startPoint = bezier[$ "startPoint"];
-    var lastPoint = bezier[$ "lastPoint"];
-    var points = bezier[$ "points"];
-    // 获取数据
-    var allPoints = [];
-    allPoints[0] = startPoint; // 添加第一个点的位置
-    allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
-    array_push(allPoints, lastPoint); // 添加第末尾点的位置
-    // 得到要计算的所有点位置
-    var normalization = step / 100; // 计算归一化百分比
-    var tempPoints = allPoints; // 临时点数组
-    var nextTempPoints = []; // 下一维度临时点数组
-    var tempPointsNumber = array_length(tempPoints); // 临时点数量
-    while (tempPointsNumber > 1) {
-        nextTempPoints = [];
-        for (var i = 0; i < tempPointsNumber - 1; i++) {
-            var point1 = tempPoints[i];
-            var point2 = tempPoints[i + 1];
-            // 得到点和下一个点的位置
-            var nextPoint = [];
-            nextPoint[0] = lerp(point1[0], point2[0], normalization);
-            nextPoint[1] = lerp(point1[1], point2[1], normalization);
-            // 计算两点连线下一维度的点的位置
-            nextTempPoints[i] = nextPoint;
+function Bezier_Struct(start_x, start_y, last_x, last_y) constructor {
+    start_point = [start_x, start_y];
+    last_point = [last_x, last_y];
+    points = [];
+    function GetValue(step) {
+        // 获取数据
+        var allPoints = [];
+        allPoints[0] = start_point; // 添加第一个点的位置
+        allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
+        array_push(allPoints, last_point); // 添加第末尾点的位置
+        // 得到要计算的所有点位置
+        var normalization = step; // 计算归一化百分比
+        var tempPoints = allPoints; // 临时点数组
+        var nextTempPoints = []; // 下一维度临时点数组
+        var tempPointsNumber = array_length(tempPoints); // 临时点数量
+        while (tempPointsNumber > 1) {
+            nextTempPoints = [];
+            for (var i = 0; i < tempPointsNumber - 1; i++) {
+                var point1 = tempPoints[i];
+                var point2 = tempPoints[i + 1];
+                // 得到点和下一个点的位置
+                var nextPoint = [];
+                nextPoint[0] = lerp(point1[0], point2[0], normalization);
+                nextPoint[1] = lerp(point1[1], point2[1], normalization);
+                // 计算两点连线下一维度的点的位置
+                nextTempPoints[i] = nextPoint;
+            }
+            tempPointsNumber = array_length(nextTempPoints); // 得到临时点数量
+            tempPoints = nextTempPoints;
         }
-        tempPointsNumber = array_length(nextTempPoints); // 得到临时点数量
-        tempPoints = nextTempPoints;
+        return (tempPoints[0]);
     }
-    return (tempPoints[0]);
+    function GetPointNumber() {
+        return array_length(points) + 2;
+    }
+    function AddPoint(x, y) {
+        return array_push(points, [x, y]);
+    }
+    function DeletePoint(index) {
+        if (index <= array_length(point)) return - 1;
+        return array_delete(point, index, 1);
+    }
 }
 function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN_OUT) constructor {
     array_push(global._animators, self);

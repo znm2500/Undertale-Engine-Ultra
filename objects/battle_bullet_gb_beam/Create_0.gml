@@ -1,4 +1,5 @@
-_type=0;
-image_index=1;
-image_xscale=0;
-image_yscale=0;
+event_inherited();
+depth = DEPTH_BATTLE.BULLET_OUTSIDE_HIGH;
+out = 1;
+hurtable = 0;
+auto_destroy = 0;

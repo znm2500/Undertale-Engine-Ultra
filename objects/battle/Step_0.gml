@@ -20,11 +20,11 @@ if (global.kr) {
             } else Player_SetKr(Player_GetKr() - 1);
             if (Player_GetHp() == 1) _temp_local_var_1 = (Player_GetKr() <= 0);
             else _temp_local_var_1 = 0;
-            if _temp_local_var_1 {
-                var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);
-				z.Set(FLAG_TEMP_GAMEOVER_SOUL_X, x - camera.x);				
-                z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, y - camera.y);
-				room_goto(room_gameover);
+            if (_temp_local_var_1) {
+                var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, battle_soul.x - camera.x);
+                z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, battle_soul.y - camera.y);
+                z.Set(FLAG_TEMP_GAMEOVER_SOUL_COLOR, battle_soul.image_blend);
+                room_goto(room_gameover);
 
             }
             audio_play_sound(snd_hurt, 0, false);
@@ -38,7 +38,6 @@ if (global.kr) {
     }
 }
 //菜单
-
 if (!global.classic_ui) {
     if (_state == BATTLE_STATE.MENU) {
         //按钮
@@ -77,7 +76,7 @@ if (!global.classic_ui) {
                     if (Item_GetNumber() > 0) {
                         Battle_SetMenu(BATTLE_MENU.ITEM);
                     } else {
-						Anim_Destroy(battle_soul, "image_angle");
+                        Anim_Destroy(battle_soul, "image_angle");
                         audio_stop_sound(snd_menu_confirm);
                     }
                     break;
@@ -124,7 +123,7 @@ if (!global.classic_ui) {
                 audio_play_sound(snd_menu_confirm, 0, false);
                 Battle_SetMenu(BATTLE_MENU.FIGHT_AIM);
                 Anim_Destroy(battle_soul);
-				Anim_Create(battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20);
+                Anim_Create(battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20);
             }
         } else
 

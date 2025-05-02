@@ -1,4 +1,4 @@
-_exit_speed = _exit_speed + 1
+_exit_speed++;
 if (!follow) {
     x -= lengthdir_x(_exit_speed, image_angle);
     y -= lengthdir_y(_exit_speed, image_angle);

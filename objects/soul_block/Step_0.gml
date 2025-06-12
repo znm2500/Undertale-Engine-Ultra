@@ -25,23 +25,21 @@ if (battle_soul.moveable) {
             }
         }
     } else {
-        while (image_angle < 0) image_angle += 360;
+        if (image_angle > 180) image_angle -= 360;
+        if (image_angle < -180) image_angle += 360;
         if (Input_IsHeld(INPUT.LEFT)) {
             if (abs(image_angle % 360 - 180) < 4 / SPD) image_angle = 180;
-            else image_angle += sign(180 - image_angle % 360) * 4 / SPD;
-        }
-		if (Input_IsHeld(INPUT.UP)) {
+            else image_angle += sign( - (image_angle - 180) * image_angle) * 4 / SPD;
+        } else if (Input_IsHeld(INPUT.UP)) {
             if (abs(image_angle % 360 - 90) < 4 / SPD) image_angle = 90;
-            else image_angle += sign(90 - image_angle % 360) * 4 / SPD * (image_angle > 270 ? -1 : 1);
-        }
-		if (Input_IsHeld(INPUT.RIGHT)) {
+            else image_angle += sign( - (image_angle - 90) * (image_angle + 90)) * 4 / SPD * (image_angle > 270 ? -1 : 1);
+        } else if (Input_IsHeld(INPUT.RIGHT)) {
             if (abs(image_angle % 360) < 4 / SPD) image_angle = 0;
-            else image_angle += sign(360 - (image_angle + 180) % 360) * 4 / SPD;
+            else image_angle += sign( - image_angle) * 4 / SPD;
+        } else if (Input_IsHeld(INPUT.DOWN)) {
+            if (abs(image_angle % 360 + 90) < 4 / SPD) image_angle = -90;
+            else image_angle += sign((image_angle - 90) * (image_angle + 90)) * 4 / SPD;
         }
-		if (Input_IsHeld(INPUT.DOWN)) {
-            if (abs(image_angle % 360 - 270) < 4 / SPD) image_angle = 270;
-            else image_angle += sign(270 - image_angle % 360) * 4 / SPD * (image_angle < 90 ? -1 : 1);
-        } 
     }
     var bulletInstance = noone;
 

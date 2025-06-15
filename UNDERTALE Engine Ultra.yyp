@@ -1,5 +1,5 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"UNDERTALE Engine Ultra",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
@@ -119,11 +119,12 @@
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"UNDERTALE Engine Ultra",
   "resources":[
@@ -677,9 +678,9 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"room_init","path":"rooms/room_init/room_init.yy",},},
     {"roomId":{"name":"room_logo","path":"rooms/room_logo/room_logo.yy",},},
+    {"roomId":{"name":"room_area_0","path":"rooms/room_area_0/room_area_0.yy",},},
     {"roomId":{"name":"room_battle","path":"rooms/room_battle/room_battle.yy",},},
     {"roomId":{"name":"room_shop","path":"rooms/room_shop/room_shop.yy",},},
-    {"roomId":{"name":"room_area_0","path":"rooms/room_area_0/room_area_0.yy",},},
     {"roomId":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},},
     {"roomId":{"name":"room_gameover","path":"rooms/room_gameover/room_gameover.yy",},},
     {"roomId":{"name":"room_settings","path":"rooms/room_settings/room_settings.yy",},},

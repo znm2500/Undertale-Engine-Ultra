@@ -21,3 +21,4 @@ with(char_player){
 	}
 }
 _triggered=false
+char_player._moveable_shop=1;

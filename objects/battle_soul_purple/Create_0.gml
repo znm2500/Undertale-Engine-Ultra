@@ -11,7 +11,7 @@ Purplesoul_Addpoint(320, 320, 0,1);
 
 x_index = 0;
 y_index = 0;
-moving = 0;
+
 _crossable = function(xx, yy) {
     var able = 0;
 	var boardcount = array_length(global.boards_array);

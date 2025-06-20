@@ -13,4 +13,4 @@ gravity_jump = 0.15;
 gravity_fall = 0.15;
 jump_speed = 4.8;
 max_speed = 20;
-moving = 0;
+

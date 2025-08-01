@@ -22,7 +22,9 @@ function Camera_Shake(shake_x, shake_y, shake_speed_x = 0, shake_speed_y = 0, sh
     camera._shake_time_y = 0;
     camera._shake_positive_x = true;
     camera._shake_positive_y = true;
-    if (blur) Anim_Create(global, "blur_amount", 0, 0, 2, -2, 20);
+    if (blur) {Anim_Create(global, "blur_amount", 0, 0, 2, -2, 20);
+		Anim_Create(global, "blur_strength", 0, 0, 1.2, -1.2, 20);
+		}
     return true;
 
 }

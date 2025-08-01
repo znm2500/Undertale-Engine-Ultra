@@ -39,7 +39,7 @@ if (_enabled) {
         draw_set_alpha(1);
         draw_surface(application_surface, 0, 0);
         surface_reset_target();
-        _kawase.Blur(round(global.blur_amount));
+        _kawase.Blur(round(global.blur_amount),global.blur_strength);
         draw_set_color(c_white);
         draw_surface_ext(_surface, (SW - 960 * SF) / 2 + 160 * SF, (SH - 540 * SF) / 2 + 30 * SF, SF, SF, 0, c_white, 1);
     } else draw_surface_ext(application_surface, (SW - 960 * SF) / 2 + 160 * SF, (SH - 540 * SF) / 2 + 30 * SF, SF, SF, 0, c_white, 1);
@@ -57,7 +57,7 @@ if (_enabled) {
         draw_set_alpha(1);
         draw_surface(application_surface, 0, 0);
         surface_reset_target();
-        _kawase.Blur(round(global.blur_amount));
+        _kawase.Blur(round(global.blur_amount),global.blur_strength);
         draw_set_color(c_white);
         draw_surface_ext(_surface, (SW - 640 * SF) / 2, (SH - 480 * SF) / 2, SF, SF, 0, c_white, 1);
     } else draw_surface_ext(application_surface, (SW - 640 * SF) / 2, (SH - 480 * SF) / 2, SF, SF, 0, c_white, 1);

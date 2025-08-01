@@ -51,7 +51,8 @@ function Kawase(_width, _height, _maxIterations) constructor {
         return __CheckSurface(__surfaceArray[0]);
     }
 
-    static Blur = function(_iterations = __maxIterations) {
+    // 增强 Blur 方法，加入模糊强度控制
+    static Blur = function(_iterations = __maxIterations, _strength = 1.0) {
         static _shd_kawase_down_vTexel = shader_get_uniform(shd_KawaseDown, "u_vTexel");
         static _shd_kawase_up_vTexel = shader_get_uniform(shd_KawaseUp, "u_vTexel");
         static _identityMatrix = matrix_build_identity();
@@ -82,12 +83,16 @@ function Kawase(_width, _height, _maxIterations) constructor {
 
         var _i = 1;
         repeat(_iterations) {
-            var _pre_vspeedtruct = __surfaceArray[_i - 1];
+            var _preStruct = __surfaceArray[_i - 1];
             var _nextStruct = __surfaceArray[_i];
 
+            // 修改 texel 计算，增加模糊强度
+            var texelWidth = _preStruct.__texelWidth * _strength;
+            var texelHeight = _preStruct.__texelHeight * _strength;
+
             surface_set_target(_nextStruct.__surface);
-            shader_set_uniform_f(_shd_kawase_down_vTexel, _pre_vspeedtruct.__texelWidth, _pre_vspeedtruct.__texelHeight);
-            draw_surface_stretched(_pre_vspeedtruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
+            shader_set_uniform_f(_shd_kawase_down_vTexel, texelWidth, texelHeight);
+            draw_surface_stretched(_preStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
 
             ++_i;
@@ -97,12 +102,16 @@ function Kawase(_width, _height, _maxIterations) constructor {
 
         var _i = _iterations;
         repeat(_iterations) {
-            var _pre_vspeedtruct = __surfaceArray[_i];
+            var _preStruct = __surfaceArray[_i];
             var _nextStruct = __surfaceArray[_i - 1];
 
+            // 修改 texel 计算，增加模糊强度
+            var texelWidth = _preStruct.__texelWidth * _strength;
+            var texelHeight = _preStruct.__texelHeight * _strength;
+
             surface_set_target(_nextStruct.__surface);
-            shader_set_uniform_f(_shd_kawase_up_vTexel, _pre_vspeedtruct.__texelWidth, _pre_vspeedtruct.__texelHeight);
-            draw_surface_stretched(_pre_vspeedtruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
+            shader_set_uniform_f(_shd_kawase_up_vTexel, texelWidth, texelHeight);
+            draw_surface_stretched(_preStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
 
             --_i;

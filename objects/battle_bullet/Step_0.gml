@@ -7,3 +7,6 @@ if (place_meeting(x, y, battle_soul_yellow_bullet) && type == 4) {
     instance_destroy(obj);
     instance_destroy();
 }
+if(path_function!=noone){
+path_function();
+}

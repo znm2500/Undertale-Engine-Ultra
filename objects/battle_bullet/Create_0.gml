@@ -24,3 +24,4 @@ _angle = 0;
 point_at = 0;
 angle_offset = 180;
 processed = 0;
+path_function = noone;

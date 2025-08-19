@@ -171,13 +171,13 @@ if (!global.classic_ui) {
             }
             //返回
             if (Input_IsPressed(INPUT.CANCEL)) {
-                Anim_Destroy(battle_soul);
+                Anim_Skip(battle_soul);
                 Anim_Create(battle_soul, "image_angle", ANIM_TWEEN.CIRC, ANIM_EASE.OUT, battle_soul.image_angle, -battle_soul.image_angle, 20);
                 Battle_SetMenu(BATTLE_MENU.BUTTON);
             }
             //确定
             if (Input_IsPressed(INPUT.CONFIRM)) {
-                Anim_Destroy(battle_soul);
+                Anim_Skip(battle_soul);
                 battle_soul.x = battle_board.x - battle_board.left - 5 + 40 + 256 * (_menu_choice_action % 2);
                 battle_soul.y = battle_board.y - battle_board.up - 5 + 36 + 32 * floor(_menu_choice_action / 2);
                 audio_play_sound(snd_menu_confirm, 0, false);

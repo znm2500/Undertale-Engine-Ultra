@@ -146,7 +146,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
 
     if (on_platform) {
-        while (place_meeting(x + xx, y + xx, inst_plat)) {
+        while (place_meeting(x-xx, y-yy, inst_plat)) {
             x -= xx;
             y -= yy;
         }

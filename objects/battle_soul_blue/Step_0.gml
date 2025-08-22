@@ -35,25 +35,6 @@ case 270:
 }
 
 if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
-
-    switch (dir) {
-    case 0:
-        x += move;
-        break;
-
-    case 90:
-        y -= move;
-        break;
-
-    case 180:
-        x -= move;
-        break;
-
-    case 270:
-        y += move;
-        break;
-    }
-
     var SPD = Player_GetSpdTotal() var SPD = (Input_IsHeld(INPUT.CANCEL) ? SPD / 2 : SPD);
     if (Input_IsHeld(INPUT.LEFT)) {
         switch (dir) {
@@ -154,6 +135,23 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
             }
             break;
         }
+    }
+	switch (dir) {
+    case 0:
+        x += move;
+        break;
+
+    case 90:
+        y -= move;
+        break;
+
+    case 180:
+        x -= move;
+        break;
+
+    case 270:
+        y += move;
+        break;
     }
     //移动和开始跳跃
 }

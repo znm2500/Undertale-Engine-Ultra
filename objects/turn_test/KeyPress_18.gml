@@ -1,2 +1,2 @@
-Player_SetHp(99999)
-Battle_MakeGB(320,320,320,320,0,irandom(360),2,2,0,,30)
+Battle_MakePlatform(320-50
+,320+30,30,0,2,0,1)

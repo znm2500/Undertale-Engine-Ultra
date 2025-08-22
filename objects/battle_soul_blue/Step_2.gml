@@ -151,6 +151,17 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
             y -= yy;
         }
     }
+	if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
+    if (jump_state == 0) {
+        if (on_platform == 1) {
+            if (instance_exists(inst_plat)) {
+                if (inst_plat.sticky == 1) {
+                    x += inst_plat.x - inst_plat.xprevious;
+                    y += inst_plat.y - inst_plat.yprevious;
+                }
+            }
+        }
+    } // 随板子移动
     if (isInside[1][0]) {
         var nearestPos, nearestDis = -1; // 最近位置和最近距离
         for (var i = limit_index[0]; i < boardcount; i++) { // 遍历所有框
@@ -311,17 +322,7 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
 }
 
-if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
-    if (jump_state == 0) {
-        if (on_platform == 1) {
-            if (instance_exists(inst_plat)) {
-                if (inst_plat.sticky == 1) {
-                    x += inst_plat.x - inst_plat.xprevious;
-                    y += inst_plat.y - inst_plat.yprevious;
-                }
-            }
-        }
-    } // 随板子移动
+
     if (jump_state == 0) {
         if (xprevious != x || yprevious != y) {
             global.moving = 1;

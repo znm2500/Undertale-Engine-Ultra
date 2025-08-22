@@ -5,4 +5,4 @@ Battle_CreateBoardRect(320-65,320-65,25,25,25,25)
 Battle_CreateBoardRect(320-65,320+65,25,25,25,25)
 Battle_CreateBoardRect(320+65,320+65,25,25,25,25)
 Battle_CreateBoardRect(320+65,320-65,25,25,25,25)
-
+Battle_SetSoul(battle_soul_blue)

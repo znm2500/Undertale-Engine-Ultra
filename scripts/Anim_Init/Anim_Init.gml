@@ -244,7 +244,7 @@ function Anim_Destroy(target, var_name = undefined) {
     return (success);
 }
 
-function Anim_SetSingleSpeed(target, var_name, single_speed) {
+function Anim_SetSingleSpeed(target, var_name = undefined, single_speed) {
     var ease_list = global._anim_data;
     var success = false;
     for (var i = 0; i < array_length(ease_list); i++) {
@@ -332,7 +332,7 @@ function Anim_Step() {
     return (true);
 }
 
-function Anim_Skip(target, var_name) {
+function Anim_Skip(target, var_name = undefined) {
     var ease_list = global._anim_data;
     var success = false;
     for (var i = 0; i < array_length(ease_list); i++) {

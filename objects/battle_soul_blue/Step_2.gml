@@ -6,7 +6,7 @@ if (Player_GetHp() <= 0) {
 }
 var STATE = Battle_GetState();
 if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
-    var isInside = array_create(2, array_create(4, false));
+    var isInside = [array_create(4, false), array_create(4, false)];
     var limit_index = array_create(4, 0);
     var distance = -1;
     var boardcount = array_length(global.boards_array);

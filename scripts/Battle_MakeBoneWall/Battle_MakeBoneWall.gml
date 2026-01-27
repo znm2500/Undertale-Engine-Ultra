@@ -1,4 +1,4 @@
-function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow = 0) {
+function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow_board = 0) {
 
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
@@ -7,17 +7,15 @@ function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow = 0
         ii += 1;
 
         if (duration != -1) {
-            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y + battle_board.down) + (length / 2)) + 5), length, 0, 0, type, 0,90, 0, 0, ((duration + (pause * 2)) + 24));
+            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y + battle_board.down) + (length / 2)) + 5), length, 0, 0, type, 0, 90, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
         } else {
-            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y + battle_board.down) + (length / 2)) + 5), length, 0, 0, type, 0,90, 0, 0, duration);
+            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y + battle_board.down) + (length / 2)) + 5), length, 0, 0, type, 0, 90, 0, 0, duration, follow_board, follow_board);
         }
 
-        b[ii].follow = follow;
-        b[ii].follow_board = follow;
         with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
 
-            if (follow) {
+            if (follow_board) {
                 a.var_name = "_x";
                 Anim_Create(id, "_y", 0, 0, _y, ( - length), 8, pause);
 
@@ -48,13 +46,13 @@ function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow = 0
     a.y1 = (((battle_board.y + battle_board.down) - length) + 1);
     a.x2 = ((battle_board.x + battle_board.right) - 1);
     a.y2 = ((battle_board.y + battle_board.down) - 1);
-    a.follow = follow;
+    a.follow_board = follow_board;
     audio_stop_sound(snd_exclamation);
     audio_play_sound(snd_exclamation, 0, false);
     return b;
 }
 
-function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = false) {
+function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow_board = false) {
 
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
@@ -63,17 +61,14 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
         ii += 1;
 
         if (duration != -1) {
-            b[ii] = Battle_MakeBone((((battle_board.x - battle_board.left) - (length / 2)) - 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0,0, 0, 0, ((duration + (pause * 2)) + 24));
+            b[ii] = Battle_MakeBone((((battle_board.x - battle_board.left) - (length / 2)) - 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 0, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
         } else {
-            b[ii] = Battle_MakeBone((((battle_board.x - battle_board.left) - (length / 2)) - 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 0, 0, duration);
+            b[ii] = Battle_MakeBone((((battle_board.x - battle_board.left) - (length / 2)) - 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 0, 0, duration, follow_board, follow_board);
         }
-
-        b[ii].follow = follow;
-        b[ii].follow_board = follow;
         with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
 
-            if (!follow) {
+            if (!follow_board) {
                 a.var_name = "y";
                 Anim_Create(id, "x", 0, 0, x, length, 8, pause);
 
@@ -100,7 +95,7 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
 
     a = instance_create_depth(0, 0, 0, bone_box);
     a.duration = pause;
-    a.follow = follow;
+    a.follow_board = follow_board;
     a.x1 = ((battle_board.x - battle_board.left));
     a.y1 = ((battle_board.y - battle_board.up));
     a.x2 = (((battle_board.x - battle_board.left) + length));
@@ -110,7 +105,7 @@ function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow = fal
     return b;
 }
 
-function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = false) {
+function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow_board = false) {
 
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
@@ -118,16 +113,13 @@ function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = fa
     for (i = 0; i < ((battle_board.up + battle_board.down) + SPR_HEIGHT); i += SPR_HEIGHT) {
         ii += 1;
         if (duration != -1) {
-            b[ii] = Battle_MakeBone((((battle_board.x + battle_board.right) + (length / 2)) + 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0,180, 0, 0, ((duration + (pause * 2)) + 24));
+            b[ii] = Battle_MakeBone((((battle_board.x + battle_board.right) + (length / 2)) + 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 180, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
         } else {
-            b[ii] = Battle_MakeBone((((battle_board.x + battle_board.right) + (length / 2)) + 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0,180, 0, 0, duration);
+            b[ii] = Battle_MakeBone((((battle_board.x + battle_board.right) + (length / 2)) + 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 180, 0, 0, duration, follow_board, follow_board);
         }
-
-        b[ii].follow = follow;
-        b[ii].follow_board = follow;
         with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
-            if (!follow) {
+            if (!follow_board) {
                 a.var_name = "y";
                 Anim_Create(id, "x", 0, 0, x, ( - length), 8, pause);
                 if (duration != -1) {
@@ -156,13 +148,13 @@ function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow = fa
     a.y1 = ((battle_board.y - battle_board.up));
     a.x2 = ((battle_board.x + battle_board.right) - length - 1);
     a.y2 = ((battle_board.y + battle_board.down) - 1);
-    a.follow = follow;
+    a.follow_board = follow_board;
     audio_stop_sound(snd_exclamation);
     audio_play_sound(snd_exclamation, 0, false);
     return b;
 }
 
-function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = false) {
+function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow_board = false) {
 
     var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
     var ii = 0;
@@ -170,15 +162,13 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
     for (i = -3; i < ((battle_board.left + battle_board.right) + SPR_HEIGHT); i += SPR_HEIGHT) {
         ii += 1;
         if (duration != -1) {
-            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y - battle_board.up) - (length / 2)) - 5), length, 0, 0, type, 0,-90, 0, 0, ((duration + (pause * 2)) + 24));
+            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y - battle_board.up) - (length / 2)) - 5), length, 0, 0, type, 0, -90, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
         } else {
-            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y - battle_board.up) - (length / 2)) - 5), length, 0, 0, type, 0, -90,0, 0, duration);
+            b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y - battle_board.up) - (length / 2)) - 5), length, 0, 0, type, 0, -90, 0, 0, duration, follow_board, follow_board);
         }
-        b[ii].follow = follow;
-        b[ii].follow_board = follow;
         with(b[ii]) {
             a = instance_create_depth(0, 0, 0, shaker);
-            if (!follow) {
+            if (!follow_board) {
                 a.var_name = "x";
                 Anim_Create(id, "y", 0, 0, y, length, 8, pause);
                 if (duration != -1) {
@@ -207,7 +197,7 @@ function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow = fals
     a.y1 = (((battle_board.y - battle_board.up) + length));
     a.x2 = ((battle_board.x + battle_board.right) - 1);
     a.y2 = (battle_board.y - battle_board.up);
-    a.follow = follow;
+    a.follow_board = follow_board;
     audio_stop_sound(snd_exclamation);
     audio_play_sound(snd_exclamation, 0, false);
     return b;
@@ -224,7 +214,7 @@ function Battle_MakeBoneWallRound(rotatespeed, radius, type, pause, duration = -
     }
 
     var boneBox = instance_create_depth(0, 0, 0, bone_box_round);
-	boneBox.circle = true;
+    boneBox.circle = true;
     boneBox.duration = pause;
     boneBox.gap = radius;
 

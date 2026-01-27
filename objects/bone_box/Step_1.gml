@@ -1,4 +1,4 @@
-if (follow) {
+if (follow_board) {
     angle = battle_board.angle;
 
     var pos = [];

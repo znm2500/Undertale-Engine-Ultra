@@ -38,5 +38,3 @@ else{
 	depth = DEPTH_BATTLE.BULLET_OUTSIDE_LOW;
 	draw_self();
 }
-
-

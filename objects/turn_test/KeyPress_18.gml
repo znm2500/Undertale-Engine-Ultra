@@ -1,1 +1,1 @@
-Battle_MakeBoneWallBottom(100,40,60,,1)
+Camera_Shake(8, 8, 1, 1, 1, 1);

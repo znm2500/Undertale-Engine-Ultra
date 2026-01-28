@@ -25,6 +25,8 @@ function Kawase(_width, _height, _maxIterations) constructor {
         _h = _h div 2; ++_i;
     }
 
+    // --- 基础方法保持不变 ---
+
     static Destroy = function() {
         if (__destroyed) return;
         __destroyed = true;
@@ -51,14 +53,17 @@ function Kawase(_width, _height, _maxIterations) constructor {
         return __CheckSurface(__surfaceArray[0]);
     }
 
-    // 增强 Blur 方法，加入模糊强度控制
-    static Blur = function(_iterations = __maxIterations, _strength = 1.0) {
+    // --- 增强版 Blur 方法：支持强度控制和亮度传递 ---
+    static Blur = function(_iterations = __maxIterations, _strength = [1,1], _light = 1.1) {
+        // 静态获取 Uniform，提升性能
         static _shd_kawase_down_vTexel = shader_get_uniform(shd_KawaseDown, "u_vTexel");
-        static _shd_kawase_up_vTexel = shader_get_uniform(shd_KawaseUp, "u_vTexel");
+        static _shd_kawase_down_light  = shader_get_uniform(shd_KawaseDown, "u_light");
+        static _shd_kawase_up_vTexel   = shader_get_uniform(shd_KawaseUp, "u_vTexel");
+        static _shd_kawase_up_light    = shader_get_uniform(shd_KawaseUp, "u_light");
         static _identityMatrix = matrix_build_identity();
 
         if (__destroyed) return;
-
+        if (_strength[0] <= 0 && _strength[1] <= 0) return;
         _iterations = clamp(_iterations, 0, __maxIterations);
 
         var _i = 0;
@@ -66,6 +71,7 @@ function Kawase(_width, _height, _maxIterations) constructor {
             __CheckSurface(__surfaceArray[_i]); ++_i;
         }
 
+        // 渲染状态备份
         var _oldBlendEnable = gpu_get_blendenable();
         var _oldTexFilter = gpu_get_tex_filter();
         var _oldTexRepeat = gpu_get_tex_repeat();
@@ -79,44 +85,46 @@ function Kawase(_width, _height, _maxIterations) constructor {
         gpu_set_tex_repeat(false);
         gpu_set_blendmode_ext(bm_one, bm_zero);
         matrix_set(matrix_world, _identityMatrix);
+
+        // --- Downsampling Pass (降采样) ---
         shader_set(shd_KawaseDown);
+        shader_set_uniform_f(_shd_kawase_down_light, _light); // 设置默认亮度 1.1
 
         var _i = 1;
         repeat(_iterations) {
             var _preStruct = __surfaceArray[_i - 1];
             var _nextStruct = __surfaceArray[_i];
 
-            // 修改 texel 计算，增加模糊强度
-            var texelWidth = _preStruct.__texelWidth * _strength;
-            var texelHeight = _preStruct.__texelHeight * _strength;
+            var texelWidth = _preStruct.__texelWidth * _strength[0];
+            var texelHeight = _preStruct.__texelHeight * _strength[1];
 
             surface_set_target(_nextStruct.__surface);
             shader_set_uniform_f(_shd_kawase_down_vTexel, texelWidth, texelHeight);
             draw_surface_stretched(_preStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
-
             ++_i;
         }
 
+        // --- Upsampling Pass (升采样) ---
         shader_set(shd_KawaseUp);
+        shader_set_uniform_f(_shd_kawase_up_light, _light); // 设置默认亮度 1.1
 
         var _i = _iterations;
         repeat(_iterations) {
             var _preStruct = __surfaceArray[_i];
             var _nextStruct = __surfaceArray[_i - 1];
 
-            // 修改 texel 计算，增加模糊强度
-            var texelWidth = _preStruct.__texelWidth * _strength;
-            var texelHeight = _preStruct.__texelHeight * _strength;
+            var texelWidth = _preStruct.__texelWidth * _strength[0];
+            var texelHeight = _preStruct.__texelHeight * _strength[1];
 
             surface_set_target(_nextStruct.__surface);
             shader_set_uniform_f(_shd_kawase_up_vTexel, texelWidth, texelHeight);
             draw_surface_stretched(_preStruct.__surface, 0, 0, _nextStruct.__width, _nextStruct.__height);
             surface_reset_target();
-
             --_i;
         }
 
+        // 渲染状态恢复
         gpu_set_blendenable(_oldBlendEnable);
         gpu_set_tex_filter(_oldTexFilter);
         gpu_set_tex_repeat(_oldTexRepeat);
@@ -125,13 +133,13 @@ function Kawase(_width, _height, _maxIterations) constructor {
         matrix_set(matrix_world, _oldMatrixWorld);
     }
 
+    // --- 内部辅助方法 ---
     static __CheckSurface = function(_struct) {
         if (__destroyed) return;
 
         var _width = _struct.__width;
         var _height = _struct.__height;
         var _surface = _struct.__surface;
-
         var _newSurface = false;
 
         if (!surface_exists(_surface)) {
@@ -147,8 +155,8 @@ function Kawase(_width, _height, _maxIterations) constructor {
 
         if (_newSurface) {
             _struct.__surface = _surface;
-
             var _texture = surface_get_texture(_surface);
+            // 这里乘以 0.5 是因为 Kawase 算法采样点通常位于像素中心偏移处
             _struct.__texelWidth = 0.5 * texture_get_texel_width(_texture);
             _struct.__texelHeight = 0.5 * texture_get_texel_height(_texture);
         }

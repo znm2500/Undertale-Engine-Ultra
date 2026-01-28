@@ -1,12 +1,10 @@
 ///@desc Clear
 _char_x = 0;
 _char_y = 0;
-var proc = 0;
-repeat(ds_list_size(_list_inst)) {
-    var INST = ds_list_find_value(_list_inst, proc);
-    if (instance_exists(INST)) {
-        instance_destroy(INST);
-    }
-    proc += 1;
-}
-ds_list_clear(_list_inst);
+_line = 0;   // 建议重置行号
+_order = 0;  // 建议重置排序权重
+
+// --- 如果你使用的是纯数据渲染 (Structs in Array) ---
+// 直接重新初始化数组即可，旧的内存会被垃圾回收自动处理
+_char_data_list = [];
+

@@ -221,7 +221,6 @@
     {"id":{"name":"shop","path":"objects/shop/shop.yy",},},
     {"id":{"name":"soul_auxiliary","path":"objects/soul_auxiliary/soul_auxiliary.yy",},},
     {"id":{"name":"soul_block","path":"objects/soul_block/soul_block.yy",},},
-    {"id":{"name":"text_single","path":"objects/text_single/text_single.yy",},},
     {"id":{"name":"text_typer","path":"objects/text_typer/text_typer.yy",},},
     {"id":{"name":"trigger_shop","path":"objects/trigger_shop/trigger_shop.yy",},},
     {"id":{"name":"trigger_warp","path":"objects/trigger_warp/trigger_warp.yy",},},

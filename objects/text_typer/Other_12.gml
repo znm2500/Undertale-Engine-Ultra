@@ -1,18 +1,25 @@
 ///@desc Command
 var cmd = _list_cmd;
 
-switch (cmd[| 0]) {
+switch (cmd[ 0]) {
+case "fun":
+   if (is_real(cmd[ 1])) {
+
+           education.alarm[real(cmd[ 1])]=1;
+        
+    }
+break
 case "speed":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] >= 0) {
-            _speed = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] >= 0) {
+            _speed = cmd[ 1];
         }
     }
     break;
 
 case "color":
-    if (is_string(cmd[| 1])) {
-        var color = GetColorFromString(cmd[| 1]);
+    if (is_string(cmd[ 1])) {
+        var color = GetColorFromString(cmd[ 1]);
         if (!global.classic_ui) {
             switch (color) {
             case c_white:
@@ -132,15 +139,15 @@ case "color":
     break;
 
 case "color_text":
-    var ARGC = ds_list_size(cmd) - 1;
+    var ARGC = array_length(cmd) - 1;
     if (ARGC == 1 || ARGC == 4) {
         var proc = 0;
         repeat(ARGC) {
             var color = c_white;
-            if (is_string(cmd[| proc + 1])) {
-                color = GetColorFromString(cmd[| proc + 1]);
-            } else if (is_real(cmd[| proc + 1])) {
-                color = cmd[| proc + 1];
+            if (is_string(cmd[ proc + 1])) {
+                color = GetColorFromString(cmd[ proc + 1]);
+            } else if (is_real(cmd[ proc + 1])) {
+                color = cmd[ proc + 1];
             }
             if (ARGC == 1) {
                 _color_text[0] = color;
@@ -156,15 +163,15 @@ case "color_text":
     break;
 
 case "color_shadow":
-    var ARGC = ds_list_size(cmd) - 1;
+    var ARGC = array_length(cmd) - 1;
     if (ARGC == 1 || ARGC == 4) {
         var proc = 0;
         repeat(ARGC) {
             var color = c_white;
-            if (is_string(cmd[| proc + 1])) {
-                color = GetColorFromString(cmd[| proc + 1]);
-            } else if (is_real(cmd[| proc + 1])) {
-                color = cmd[| proc + 1];
+            if (is_string(cmd[ proc + 1])) {
+                color = GetColorFromString(cmd[ proc + 1]);
+            } else if (is_real(cmd[ proc + 1])) {
+                color = cmd[ proc + 1];
             }
             if (ARGC == 1) {
                 _color_shadow[0] = color;
@@ -180,15 +187,15 @@ case "color_shadow":
     break;
 
 case "color_outline":
-    var ARGC = ds_list_size(cmd) - 1;
+    var ARGC = array_length(cmd) - 1;
     if (ARGC == 1 || ARGC == 4) {
         var proc = 0;
         repeat(ARGC) {
             var color = c_white;
-            if (is_string(cmd[| proc + 1])) {
-                color = GetColorFromString(cmd[| proc + 1]);
-            } else if (is_real(cmd[| proc + 1])) {
-                color = cmd[| proc + 1];
+            if (is_string(cmd[ proc + 1])) {
+                color = GetColorFromString(cmd[ proc + 1]);
+            } else if (is_real(cmd[ proc + 1])) {
+                color = cmd[ proc + 1];
             }
             if (ARGC == 1) {
                 _color_outline[0] = color;
@@ -204,70 +211,70 @@ case "color_outline":
     break;
 
 case "shadow":
-    if (is_bool(cmd[| 1])) {
-        _shadow = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _shadow = cmd[ 1];
     }
     break;
 
 case "outline":
-    if (is_bool(cmd[| 1])) {
-        _outline = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _outline = cmd[ 1];
     }
     break;
 
 case "shadow_pos":
-    if (is_real(cmd[| 1])) {
-        _shadow_x = cmd[| 1];
-        _shadow_y = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _shadow_x = cmd[ 1];
+        _shadow_y = cmd[ 1];
     }
     break;
 
 case "shadow_x":
-    if (is_real(cmd[| 1])) {
-        _shadow_x = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _shadow_x = cmd[ 1];
     }
     break;
 
 case "shadow_y":
-    if (is_real(cmd[| 1])) {
-        _shadow_y = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _shadow_y = cmd[ 1];
     }
     break;
 
 case "alpha":
-    if (is_real(cmd[| 1])) {
-        _alpha = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _alpha = cmd[ 1];
     }
     break;
 case "angle":
-    if (is_real(cmd[| 1])) {
-        _angle = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _angle = cmd[ 1];
     }
     break;
 case "headd":
 
 case "alpha_text":
-    if (is_real(cmd[| 1])) {
-        _alpha_text = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _alpha_text = cmd[ 1];
     }
     break;
 
 case "alpha_shadow":
-    if (is_real(cmd[| 1])) {
-        _alpha_shadow = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _alpha_shadow = cmd[ 1];
     }
     break;
 
 case "alpha_outline":
-    if (is_real(cmd[| 1])) {
-        _alpha_outline = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _alpha_outline = cmd[ 1];
     }
     break;
 
 case "sleep":
-    if (is_real(cmd[| 1]) && !_skipping && !_instant) {
-        if (cmd[| 1] >= 0) {
-            _sleep = cmd[| 1];
+    if (is_real(cmd[ 1]) && !_skipping && !_instant) {
+        if (cmd[ 1] >= 0) {
+            _sleep = cmd[ 1];
         }
     }
     break;
@@ -280,37 +287,37 @@ case "pause":
     break;
 
 case "instant":
-    if (is_bool(cmd[| 1])) {
-        _instant = bool(cmd[| 1]);
+    if (is_bool(cmd[ 1])) {
+        _instant = bool(cmd[ 1]);
     }
     break;
 
 case "skippable":
-    if (is_bool(cmd[| 1])) {
-        _skippable = bool(cmd[| 1]);
+    if (is_bool(cmd[ 1])) {
+        _skippable = bool(cmd[ 1]);
     }
     break;
 
 case "voice":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] == -1 || (cmd[| 1] >= 0 && cmd[| 1] < array_height_2d(_group_voice))) {
-            _voice = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] == -1 || (cmd[ 1] >= 0 && cmd[ 1] < array_height_2d(_group_voice))) {
+            _voice = cmd[ 1];
         }
     }
     break;
 
 case "voice_single":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] == -1 || cmd[| 1] >= 0 && cmd[| 1] < array_length_2d(_group_voice, _voice)) {
-            _voice_single = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] == -1 || cmd[ 1] >= 0 && cmd[ 1] < array_length_2d(_group_voice, _voice)) {
+            _voice_single = cmd[ 1];
         }
     }
     break;
 
 case "font":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] >= 0 && cmd[| 1] < array_height_2d(_group_font)) {
-            _font = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] >= 0 && cmd[ 1] < array_height_2d(_group_font)) {
+            _font = cmd[ 1];
         }
     }
     break;
@@ -324,75 +331,75 @@ case "end":
     break;
 
 case "scale":
-    if (is_real(cmd[| 1])) {
-        _scale_x = cmd[| 1];
-        _scale_y = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _scale_x = cmd[ 1];
+        _scale_y = cmd[ 1];
     }
     break;
 
 case "scale_x":
-    if (is_real(cmd[| 1])) {
-        _scale_x = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _scale_x = cmd[ 1];
     }
     break;
 
 case "scale_y":
-    if (is_real(cmd[| 1])) {
-        _scale_y = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _scale_y = cmd[ 1];
     }
     break;
 
 case "space_x":
-    if (is_real(cmd[| 1])) {
-        _space_x = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _space_x = cmd[ 1];
     }
     break;
 
 case "space_y":
-    if (is_real(cmd[| 1])) {
-        _space_y = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _space_y = cmd[ 1];
     }
     break;
 
 case "define":
-    if (is_string(cmd[| 1]) && (is_real(cmd[| 2]) || is_string(cmd[| 2]))) {
-        ds_map_delete(_map_macro, cmd[| 1]);
-        ds_map_add(_map_macro, cmd[| 1], cmd[| 2]);
+    if (is_string(cmd[ 1]) && (is_real(cmd[ 2]) || is_string(cmd[ 2]))) {
+       struct_remove(_map_macro, cmd[ 1]);
+        struct_set(_map_macro, cmd[ 1], cmd[ 2]);
     }
     break;
 
 case "undefine":
-    if (is_string(cmd[| 1])) {
-        ds_map_delete(_map_macro, cmd[| 1]);
+    if (is_string(cmd[ 1])) {
+       struct_remove(_map_macro, cmd[ 1]);
     }
     break;
 
 case "insert":
-    if (is_real(cmd[| 1]) || is_string(cmd[| 1])) {
-        text = string_insert(string(cmd[| 1]), text, _char_proc + 1);
+    if (is_real(cmd[ 1]) || is_string(cmd[ 1])) {
+        text = string_insert(string(cmd[ 1]), text, _char_proc + 1);
     }
     break;
 
 case "choice":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] >= 0 && cmd[| 1] <= 1) {
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] >= 0 && cmd[ 1] <= 1) {
             draw_set_font(_group_font[_font, 0]);
-            _choice_x[cmd[| 1]] = _char_x - string_width(" ") * _group_font_scale_x[_font, 0] * _scale_x;
-            _choice_y[cmd[| 1]] = _char_y + string_height(" ") / 2 * _group_font_scale_y[_font, 0] * _scale_y;
+            _choice_x[cmd[ 1]] = _char_x - string_width(" ") * _group_font_scale_x[_font, 0] * _scale_x;
+            _choice_y[cmd[ 1]] = _char_y + string_height(" ") / 2 * _group_font_scale_y[_font, 0] * _scale_y;
         }
-    } else if (is_string(cmd[| 1]) || is_undefined(cmd[| 1])) {
-        _choice_macro = cmd[| 1];
+    } else if (is_string(cmd[ 1]) || is_undefined(cmd[ 1])) {
+        _choice_macro = cmd[ 1];
         _choice = 0;
     }
     break;
 
 case "if":
-    var target_0 = cmd[| 1];
-    var operator = cmd[| 2];
-    var target_1 = cmd[| 3];
-    var insert_0 = cmd[| 4];
-    var else_indicator = cmd[| 5];
-    var insert_1 = cmd[| 6];
+    var target_0 = cmd[ 1];
+    var operator = cmd[ 2];
+    var target_1 = cmd[ 3];
+    var insert_0 = cmd[ 4];
+    var else_indicator = cmd[ 5];
+    var insert_1 = cmd[ 6];
     var result = true;
 
     target_0 = (is_bool(target_0) ? real(target_0) : target_0);
@@ -426,8 +433,8 @@ case "if":
     break;
 
 case "face":
-    if (is_real(cmd[| 1])) {
-        var fface = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        var fface = cmd[ 1];
         if (fface == -1) {
             if (instance_exists(_face)) {
                 instance_destroy(_face);
@@ -452,8 +459,8 @@ case "face":
     break;
 
 case "face_emotion":
-    if (is_real(cmd[| 1])) {
-        var femotion = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        var femotion = cmd[ 1];
 
         if (instance_exists(_face)) {
             _face.emotion = femotion;
@@ -473,8 +480,8 @@ case "face_emotion":
     break;
 
 case "face_link":
-    if (is_real(cmd[| 1])) {
-        _face_linked = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _face_linked = cmd[ 1];
     }
     break;
 
@@ -483,31 +490,31 @@ case "face_unlink":
     break;
 
 case "effect":
-    if (is_real(cmd[| 1])) {
-        if (cmd[| 1] >= -1) {
-            _effect = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        if (cmd[ 1] >= -1) {
+            _effect = cmd[ 1];
         }
     }
     break;
 
 case "depth":
-    if (is_real(cmd[| 1])) {
-        depth = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        depth = cmd[ 1];
     }
     break;
 
 case "gui":
-    if (is_bool(cmd[| 1])) {
-        _gui = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _gui = cmd[ 1];
     }
     break;
 
 case "sound":
     var target = -1;
-    if (is_real(cmd[| 1])) {
-        target = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        target = cmd[ 1];
     } else {
-        target = asset_get_index(cmd[| 1]);
+        target = asset_get_index(cmd[ 1]);
     }
     if (audio_exists(target)) {
         audio_play_sound(target, 0, false);
@@ -516,68 +523,68 @@ case "sound":
 
 case "script":
     var target = -1;
-    if (is_real(cmd[| 1])) {
-        target = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        target = cmd[ 1];
     } else {
-        target = asset_get_index(cmd[| 1]);
+        target = asset_get_index(cmd[ 1]);
     }
     if (script_exists(target)) {
-        switch (ds_list_size(cmd) - 2) {
+        switch (array_length(cmd) - 2) {
         case 0:
             script_execute(target);
             break;
         case 1:
-            script_execute(target, cmd[| 2]);
+            script_execute(target, cmd[ 2]);
             break;
         case 2:
-            script_execute(target, cmd[| 2], cmd[| 3]);
+            script_execute(target, cmd[ 2], cmd[ 3]);
             break;
         case 3:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4]);
             break;
         case 4:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5]);
             break;
         case 5:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6]);
             break;
         case 6:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7]);
             break;
         case 7:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8]);
             break;
         case 8:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9]);
             break;
         case 9:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10]);
             break;
         case 10:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11]);
             break;
         case 11:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11], cmd[| 12]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11], cmd[ 12]);
             break;
         case 12:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11], cmd[| 12], cmd[| 13]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11], cmd[ 12], cmd[ 13]);
             break;
         case 13:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11], cmd[| 12], cmd[| 13], cmd[| 14]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11], cmd[ 12], cmd[ 13], cmd[ 14]);
             break;
         case 14:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11], cmd[| 12], cmd[| 13], cmd[| 14], cmd[| 15]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11], cmd[ 12], cmd[ 13], cmd[ 14], cmd[ 15]);
             break;
         case 15:
-            script_execute(target, cmd[| 2], cmd[| 3], cmd[| 4], cmd[| 5], cmd[| 6], cmd[| 7], cmd[| 8], cmd[| 9], cmd[| 10], cmd[| 11], cmd[| 12], cmd[| 13], cmd[| 14], cmd[| 15], cmd[| 16]);
+            script_execute(target, cmd[ 2], cmd[ 3], cmd[ 4], cmd[ 5], cmd[ 6], cmd[ 7], cmd[ 8], cmd[ 9], cmd[ 10], cmd[ 11], cmd[ 12], cmd[ 13], cmd[ 14], cmd[ 15], cmd[ 16]);
             break;
         }
     }
     break;
 
 case "char_link":
-    if (is_real(cmd[| 1])) {
-        _char_linked = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _char_linked = cmd[ 1];
     }
     break;
 
@@ -586,10 +593,10 @@ case "char_unlink":
     break;
 
 case "char_dir":
-    if (is_real(cmd[| 1]) && is_real(cmd[| 2])) {
+    if (is_real(cmd[ 1]) && is_real(cmd[ 2])) {
         if (instance_exists(char)) {
-            var cid = cmd[| 1];
-            var cdir = cmd[| 2];
+            var cid = cmd[ 1];
+            var cdir = cmd[ 2];
             with(char) {
                 if (char_id == cid) {
                     dir = cdir;
@@ -600,11 +607,11 @@ case "char_dir":
     break;
 
 case "char_move":
-    if (is_real(cmd[| 1]) && is_real(cmd[| 2]) && is_real(cmd[| 3])) {
+    if (is_real(cmd[ 1]) && is_real(cmd[ 2]) && is_real(cmd[ 3])) {
         if (instance_exists(char)) {
-            var cid = cmd[| 1];
-            var cdir = cmd[| 2];
-            var cmove = cmd[| 3];
+            var cid = cmd[ 1];
+            var cdir = cmd[ 2];
+            var cmove = cmd[ 3];
             with(char) {
                 if (char_id == cid) {
                     move[cdir] = cmove;
@@ -614,7 +621,7 @@ case "char_move":
     }
     break;
 case "char_player_moveable":
-    if (is_real(cmd[| 1])) {
+    if (is_real(cmd[ 1])) {
         if (instance_exists(char_player)) {
             char_player.moveable = cmd[1];
         }
@@ -622,15 +629,15 @@ case "char_player_moveable":
     break;
 
 case "sprite":
-    var spr = cmd[| 1];
+    var spr = cmd[ 1];
     if (is_string(spr)) {
         spr = asset_get_index(spr);
     }
     if (is_real(spr)) {
         if (sprite_exists(spr)) {
             var img = 0;
-            if (is_real(cmd[| 2])) {
-                img = cmd[| 2];
+            if (is_real(cmd[ 2])) {
+                img = cmd[ 2];
             }
             _char_sprite = spr;
             _char_sprite_image = img;
@@ -642,72 +649,75 @@ case "sprite":
     }
     break;
 case "surface":
-    if (is_real(cmd[| 1])) _surface_target = cmd[| 1]
+    if (is_real(cmd[ 1])) _surface_target = cmd[ 1]
     break
 case "skip_space":
-    if (is_bool(cmd[| 1])) {
-        _skip_space = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _skip_space = cmd[ 1];
     }
     break;
 case "show_item":
-    if (is_bool(cmd[| 1])) {
-        _show_item = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _show_item = cmd[ 1];
     }
     break;
 case "angle_follow":
-    if (is_bool(cmd[| 1])) {
-        _angle_follow = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _angle_follow = cmd[ 1];
     }
     break;
 
 case "position_follow":
-    if (is_bool(cmd[| 1])) {
-        _position_follow = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _position_follow = cmd[ 1];
     }
     //warning:disable this will break the typing function so you should disable this after the typer ended typing
     break;
 
 case "align":
-    if (is_real(cmd[| 1])) {
-        _halign = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _halign = cmd[ 1];
     }
-    if (is_real(cmd[| 2])) {
-        _valign = cmd[| 2];
+    if (is_real(cmd[ 2])) {
+        _valign = cmd[ 2];
     }
     break
 
 case "type_dir":
-    if (is_real(cmd[| 1])) {
-        _type_dir = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        _type_dir = cmd[ 1];
     }
     //maybe cause strange result when halign is 2
     break;
 
 case "audio_clear":
-    if (is_bool(cmd[| 1])) {
-        _audio_clear = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _audio_clear = cmd[ 1];
     }
     //if the text sound is too long(such as Altertale Torile's voice), disable this may be helpful
     break;
 
 case "auto_end":
-    if (is_real(cmd[| 1])) {
-        alarm[0] = cmd[| 1];
+    if (is_real(cmd[ 1])) {
+        alarm[0] = cmd[ 1];
     }
     //if you are making a minions battle, add {autoend [duration]} after their dialogs may be helpful
     break;
 
 case "choice_switch_direction":
-    if (is_bool(cmd[| 1])) {
-        _choice_switch_direction = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _choice_switch_direction = cmd[ 1];
     }
     //0 for left and right, 1 for up and down
     break;
 
 case "choice_switch_sound":
-    if (is_bool(cmd[| 1])) {
-        _choice_switch_sound = cmd[| 1];
+    if (is_bool(cmd[ 1])) {
+        _choice_switch_sound = cmd[ 1];
     }
     //enable or disable switch sound, not much to say
     break;
+default:
+	show_debug_message("Command\""+cmd[0]+"\"Not Exist! ");
+	break;
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Border_SetEnabled",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Border_SetEnabled",
+  "parent":{
+    "name":"Border",
+    "path":"folders/Scripts/Border.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

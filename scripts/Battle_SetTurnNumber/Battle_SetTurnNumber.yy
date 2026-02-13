@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_SetTurnNumber",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_SetTurnNumber",
+  "parent":{
+    "name":"Turn",
+    "path":"folders/Scripts/Battle/Turn.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

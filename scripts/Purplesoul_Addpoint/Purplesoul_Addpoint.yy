@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Purplesoul_Addpoint",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Purplesoul_Addpoint",
+  "parent":{
+    "name":"Soul",
+    "path":"folders/Scripts/Battle/Soul.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

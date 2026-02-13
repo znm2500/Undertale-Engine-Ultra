@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_SetMenuChoiceButton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_SetMenuChoiceButton",
+  "parent":{
+    "name":"Choice",
+    "path":"folders/Scripts/Battle/Menu/Choice.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

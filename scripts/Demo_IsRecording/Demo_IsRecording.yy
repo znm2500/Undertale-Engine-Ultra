@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Demo_IsRecording",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Demo_IsRecording",
+  "parent":{
+    "name":"Demo",
+    "path":"folders/Scripts/Demo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Demo_ClearInput",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Demo_ClearInput",
+  "parent":{
+    "name":"Demo",
+    "path":"folders/Scripts/Demo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

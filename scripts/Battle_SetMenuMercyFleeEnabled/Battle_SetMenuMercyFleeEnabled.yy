@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_SetMenuMercyFleeEnabled",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_SetMenuMercyFleeEnabled",
+  "parent":{
+    "name":"Flee",
+    "path":"folders/Scripts/Battle/Menu/Flee.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

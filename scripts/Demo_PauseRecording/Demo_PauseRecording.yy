@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Demo_PauseRecording",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Demo_PauseRecording",
+  "parent":{
+    "name":"Demo",
+    "path":"folders/Scripts/Demo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

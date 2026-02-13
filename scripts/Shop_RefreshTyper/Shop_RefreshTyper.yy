@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Shop_RefreshTyper",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Shop_RefreshTyper",
+  "parent":{
+    "name":"Shop",
+    "path":"folders/Scripts/Shop.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

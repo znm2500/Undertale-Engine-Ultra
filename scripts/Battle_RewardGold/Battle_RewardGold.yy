@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_RewardGold",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_RewardGold",
+  "parent":{
+    "name":"Reward",
+    "path":"folders/Scripts/Battle/Reward.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

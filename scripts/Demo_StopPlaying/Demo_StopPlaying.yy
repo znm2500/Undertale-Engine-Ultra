@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Demo_StopPlaying",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Demo_StopPlaying",
+  "parent":{
+    "name":"Demo",
+    "path":"folders/Scripts/Demo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

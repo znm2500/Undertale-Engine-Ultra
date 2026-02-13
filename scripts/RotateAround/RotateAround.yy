@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"RotateAround",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"RotateAround",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

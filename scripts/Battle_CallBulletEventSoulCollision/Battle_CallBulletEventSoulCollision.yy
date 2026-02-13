@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_CallBulletEventSoulCollision",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_CallBulletEventSoulCollision",
+  "parent":{
+    "name":"Bullet",
+    "path":"folders/Scripts/Battle/Bullet.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

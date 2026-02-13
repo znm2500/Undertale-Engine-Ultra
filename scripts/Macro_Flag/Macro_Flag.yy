@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Macro_Flag",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Macro_Flag",
+  "parent":{
+    "name":"Macro",
+    "path":"folders/Scripts/Macro.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

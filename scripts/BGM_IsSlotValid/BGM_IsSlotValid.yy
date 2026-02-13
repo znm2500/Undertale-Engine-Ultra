@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BGM_IsSlotValid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BGM_IsSlotValid",
+  "parent":{
+    "name":"BGM",
+    "path":"folders/Scripts/BGM.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

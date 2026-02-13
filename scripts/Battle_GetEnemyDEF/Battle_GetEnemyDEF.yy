@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_GetEnemyDEF",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_GetEnemyDEF",
+  "parent":{
+    "name":"DEF",
+    "path":"folders/Scripts/Battle/Enemy/DEF.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

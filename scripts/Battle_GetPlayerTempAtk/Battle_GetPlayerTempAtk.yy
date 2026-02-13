@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Battle_GetPlayerTempAtk",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Battle_GetPlayerTempAtk",
+  "parent":{
+    "name":"Player",
+    "path":"folders/Scripts/Battle/Player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Shop_CreateTyper",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Shop_CreateTyper",
+  "parent":{
+    "name":"Shop",
+    "path":"folders/Scripts/Shop.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

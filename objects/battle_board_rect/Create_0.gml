@@ -1,0 +1,10 @@
+angle = 0;
+up = 30;
+down = 30;
+left = 30;
+right = 30;
+rotate = 0;
+cover = 0; 
+board_depth = 0;
+rect = noone;
+alarm[0] = 1;

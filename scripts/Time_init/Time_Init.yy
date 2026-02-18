@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Purplesoul_Addpoint",
+  "%Name":"Time_Init",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Purplesoul_Addpoint",
+  "name":"Time_Init",
   "parent":{
-    "name":"Soul",
-    "path":"folders/Scripts/Battle/Soul.yy",
+    "name":"Time",
+    "path":"folders/Scripts/GMU/Time.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

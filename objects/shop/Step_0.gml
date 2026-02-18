@@ -266,7 +266,7 @@ case SHOP_STATE.EXIT:
             BGM_Resume(0);
             BGM_SetVolume(0, 1);
             BGM_Fade(0, 0, 50);
-            alarm[0] = 50;
+            alarm[0] = 50 / global.delta_time_factor;
             _state = SHOP_STATE.CLOSE;
         }
     }

@@ -19,7 +19,7 @@ state_info_y = 200;
 buy_info_x = menu_divide_x;
 buy_info_y = border_y1 - 80;
 buy_info_inst_y = border_y1;
-buy_info__vspeedpeed = 8;
+buy_info__vspeedpeed = 8 * global.delta_time_factor;
 
 _index = 0;
 _indexy = 0;

@@ -31,9 +31,9 @@ if (STATE = BATTLE_STATE.IN_TURN && !global.classic_ui) {
 
 //无敌时间闪烁
 if (_inv > 0) {
-    _inv -= 1;
+    _inv -= 1 * global.delta_time_factor;
     if (image_speed == 0) {
-        image_speed = 1 / 2;
+        image_speed = (1 / 2) * global.delta_time_factor;
         image_index = 1;
     }
 } else {

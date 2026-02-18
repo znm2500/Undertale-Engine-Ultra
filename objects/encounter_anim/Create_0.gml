@@ -18,3 +18,4 @@ if(instance_exists(char_player)){
 }
 
 alarm[0]=1;
+

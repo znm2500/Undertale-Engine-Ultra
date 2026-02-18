@@ -7,23 +7,29 @@ if (_state == -1) {
     if (Input_IsPressed(INPUT.UP)) {
         if (_choice_item > 0) {
             _choice_item -= 1;
-            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15 * !global.classic_ui);
-
+            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15);
+            // 统一改为 Anim_Skip 逻辑
+            if (global.classic_ui) Anim_Skip(id, "_choice_item_soul");
         }
     } else if (Input_IsPressed(INPUT.DOWN)) {
         if ((_choice_mode == 0 && _choice_item < 7) || (_choice_mode == 1 && _choice_item < 9)) {
             _choice_item += 1;
-            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15 * !global.classic_ui);
+            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15);
+            if (global.classic_ui) Anim_Skip(id, "_choice_item_soul");
         }
     } else if (Input_IsPressed(INPUT.RIGHT)) {
         _choice_mode = 1;
-        Anim_Create(id, "_choice_mode_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_mode_soul, _choice_mode - _choice_mode_soul, 15 * !global.classic_ui);
+        Anim_Create(id, "_choice_mode_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_mode_soul, _choice_mode - _choice_mode_soul, 15);
+        if (global.classic_ui) Anim_Skip(id, "_choice_mode_soul");
     } else if (Input_IsPressed(INPUT.LEFT)) {
         _choice_mode = 0;
-        Anim_Create(id, "_choice_mode_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_mode_soul, _choice_mode - _choice_mode_soul, 15 * !global.classic_ui);
+        Anim_Create(id, "_choice_mode_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_mode_soul, _choice_mode - _choice_mode_soul, 15);
+        if (global.classic_ui) Anim_Skip(id, "_choice_mode_soul");
+        
         if (_choice_item > 7) {
             _choice_item = 7;
-            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15 * !global.classic_ui);
+            Anim_Create(id, "_choice_item_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_item_soul, _choice_item - _choice_item_soul, 15);
+            if (global.classic_ui) Anim_Skip(id, "_choice_item_soul");
         }
     } else if (Input_IsPressed(INPUT.CONFIRM)) {
         var items = Item_GetInventoryItems();
@@ -44,9 +50,10 @@ if (_state == -1) {
             }
         }
     } else if (Input_IsPressed(INPUT.CANCEL)) {
-        alarm[0] = 30;
-        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 30 * !global.classic_ui);
-        char_player.moveable = true
+        alarm[0] = 30 / global.delta_time_factor;
+        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 30);
+        if (global.classic_ui) Anim_Skip(id, "_show_width");
+        char_player.moveable = true;
     }
 }
 if (instance_exists(_inst_inventory)) {

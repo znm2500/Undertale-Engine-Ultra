@@ -7,3 +7,4 @@ global.classic_ui = 0;
 global.Panel = battle_menu_fight_knife;
 global.kr = 1;
 global.surface_gui = surface_create(640, 480);
+game_set_speed(120,gamespeed_fps)

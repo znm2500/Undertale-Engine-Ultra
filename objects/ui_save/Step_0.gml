@@ -1,6 +1,9 @@
 if (_state == -1) {
     if (!instance_exists(ui_dialog)) {
-        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.IN, _show_width, 212 - _show_width, 20 * !global.classic_ui);
+        // 开启 UI 窗口
+        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.IN, _show_width, 212 - _show_width, 20);
+        if (global.classic_ui) Anim_Skip(id, "_show_width");
+        
         _state = 0;
         event_user(0);
     }
@@ -8,13 +11,15 @@ if (_state == -1) {
     if (Input_IsPressed(INPUT.LEFT)) {
         if (_choice == 1) {
             _choice = 0;
-            Anim_Create(id, "_choice_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_soul, _choice - _choice_soul, 15 * !global.classic_ui);
+            Anim_Create(id, "_choice_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_soul, _choice - _choice_soul, 15);
+            if (global.classic_ui) Anim_Skip(id, "_choice_soul");
             audio_play_sound(snd_menu_switch, 0, false);
         }
     } else if (Input_IsPressed(INPUT.RIGHT)) {
         if (_choice == 0) {
             _choice = 1;
-            Anim_Create(id, "_choice_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_soul, _choice - _choice_soul, 15 * !global.classic_ui);
+            Anim_Create(id, "_choice_soul", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _choice_soul, _choice - _choice_soul, 15);
+            if (global.classic_ui) Anim_Skip(id, "_choice_soul");
             audio_play_sound(snd_menu_switch, 0, false);
         }
     } else if (Input_IsPressed(INPUT.CONFIRM)) {
@@ -22,17 +27,21 @@ if (_state == -1) {
             _state = 1;
             event_user(0);
         } else {
-            alarm[0] = 20;
-            Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20 * !global.classic_ui);
+            // 选择“否”或取消
+            alarm[0] = global.classic_ui ? 1 : 20 / global.delta_time_factor;
+            Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20);
+            if (global.classic_ui) Anim_Skip(id, "_show_width");
         }
     } else if (Input_IsPressed(INPUT.CANCEL)) {
-        alarm[0] = 20;
-        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20 * !global.classic_ui);
+        alarm[0] = global.classic_ui ? 1 : 20 / global.delta_time_factor;
+        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20);
+        if (global.classic_ui) Anim_Skip(id, "_show_width");
     }
 } else if (_state == 1) {
     if (Input_IsPressed(INPUT.CONFIRM) || Input_IsPressed(INPUT.CANCEL)) {
-        alarm[0] = 20;
-        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20 * !global.classic_ui);
+        alarm[0] = global.classic_ui ? 1 : 20 / global.delta_time_factor;
+        Anim_Create(id, "_show_width", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _show_width, 0 - _show_width, 20);
+        if (global.classic_ui) Anim_Skip(id, "_show_width");
     }
 }
 if (instance_exists(_inst_name)) {

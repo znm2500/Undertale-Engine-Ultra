@@ -2,13 +2,6 @@
 var cmd = _list_cmd;
 
 switch (cmd[ 0]) {
-case "fun":
-   if (is_real(cmd[ 1])) {
-
-           education.alarm[real(cmd[ 1])]=1;
-        
-    }
-break
 case "speed":
     if (is_real(cmd[ 1])) {
         if (cmd[ 1] >= 0) {
@@ -699,7 +692,7 @@ case "audio_clear":
 
 case "auto_end":
     if (is_real(cmd[ 1])) {
-        alarm[0] = cmd[ 1];
+        alarm[0] = cmd[ 1] / global.delta_time_factor;
     }
     //if you are making a minions battle, add {autoend [duration]} after their dialogs may be helpful
     break;

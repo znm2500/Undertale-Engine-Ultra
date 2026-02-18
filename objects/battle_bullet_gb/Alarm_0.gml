@@ -9,4 +9,4 @@ if (!follow) {
 }
 audio_stop_sound(snd_gb_charge);
 audio_play_sound(snd_gb_charge, 0, 0);
-alarm[1] = time_move + time_release_delay + 1;
+alarm[1] = (time_move + time_release_delay)/global.delta_time_factor + 1;

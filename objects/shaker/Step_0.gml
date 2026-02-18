@@ -1,5 +1,5 @@
 if(delay > 0){
-	delay -= 1;
+	delay -= 1 * global.delta_time_factor;
 }
 else{
 	if(object_exists(target) && instance_exists(target)){
@@ -27,7 +27,7 @@ else{
 		}
 	
 		if(_shake_time>0){
-			_shake_time-=1;
+			_shake_time-=1 * global.delta_time_factor;
 		}else{
 			if(!shake_random){
 				if(_shake_positive){

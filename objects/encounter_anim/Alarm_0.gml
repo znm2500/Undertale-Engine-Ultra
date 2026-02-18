@@ -6,10 +6,12 @@ if(Encounter_IsExists(_encounter)&&instance_exists(char_player)){
 		var time=30+irandom(10);
 		inst.time=time;
 		audio_play_sound(snd_exclamation,0,false);
-		alarm[1]=time;
+		alarm[1]=time / global.delta_time_factor;
 	}else{
 		alarm[1]=1;
 	}
 }else{
 	instance_destroy();
 }
+
+

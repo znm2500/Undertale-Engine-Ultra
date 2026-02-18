@@ -113,7 +113,7 @@ if (_menu == 0) {
             event_user(3);
         } else if (Input_IsPressed(INPUT.CONFIRM)) {
             if (string_length(_naming_name) < 6) {
-                var inst = _inst_naming_letters._list_inst[| _choice_naming_letter];
+                var inst = _inst_naming_letters._char_data_list[_choice_naming_letter];
                 _naming_name += inst.text;
             }
         } else if (Input_IsPressed(INPUT.CANCEL)) {

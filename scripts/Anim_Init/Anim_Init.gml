@@ -270,11 +270,13 @@ function Anim_Step() {
     var ease_list = global._anim_data;
     for (i = 0; i < array_length(ease_list); i++) {
         var anim_item = ease_list[i];
-        anim_item[$ "time"] += anim_item[$ "single_speed"] * global.anim_speed;
+        anim_item[$ "time"] += (anim_item[$ "single_speed"] * global.anim_speed) * global.delta_time_factor;
         if ((anim_item[$ "time"] > anim_item[$ "duration"] + anim_item[$ "delay"] || anim_item[$ "time"] < 0) && anim_item[$ "auto_destroy"]) {
             array_delete(ease_list, i--, 1);
             continue;
         }
+		if(anim_item[$ "delay"]==200)
+		show_debug_message(anim_item[$ "time"])
         if (anim_item[$ "time"] - anim_item[$ "delay"] >= 0) {
             var anim_value = Anim_GetValue(anim_item[$ "tween_type"], anim_item[$ "ease_type"], min((anim_item[$ "time"] - anim_item[$ "delay"]) / anim_item[$ "duration"], 1));
             switch (anim_item[$ "target_type"]) {
@@ -989,7 +991,7 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
     function Step() {
         if (play_speed < 0) show_error("Cannot set play_speed negative directly!", true);
         if (play_speed && play_count > 0) {
-            delay -= play_speed;
+            delay -= play_speed * global.delta_time_factor;
             if (delay < 0) {
                 if (play_direction == 0 || (play_direction == 2 && !(_played_times & 1)) || (play_direction == 3 && _played_times & 1)) {
                     _step -= delay;

@@ -23,11 +23,11 @@ if (!processed) {
     }
 }
 if (follow) {
-    _x += _hspeed;
-    _y += _vspeed;
+    _x += _hspeed * global.delta_time_factor;
+    _y += _vspeed * global.delta_time_factor;
     if (_speed) {
-        x += lengthdir_x(_speed, _direction);
-        y += lengthdir_y(_speed, _direction);
+        x += lengthdir_x(_speed * global.delta_time_factor, _direction);
+        y += lengthdir_y(_speed * global.delta_time_factor, _direction);
     }
     if (follow_board && follow_target != battle_board) {
         follow_target = battle_board;

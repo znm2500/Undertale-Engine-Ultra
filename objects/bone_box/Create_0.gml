@@ -17,5 +17,5 @@ follow_board = 0;
 circle = 0;
 center_x = battle_board.x;
 center_y = battle_board.y;
-alarm[0] = duration;
+alarm[0] = duration / global.delta_time_factor;
 depth = DEPTH_BATTLE.BULLET;

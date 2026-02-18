@@ -34,4 +34,5 @@ _destroy_time = array_create(3, 0);
 _inst_menu = instance_create_depth(32 + 6 + 46, 168 + 6 + 14, 0, text_typer);
 _inst_menu.text = _prefix + "{space_y 1}" + (Item_GetNumber() <= 0 ? "{color_text `gray`}": "") + "ITEM" + (Item_GetNumber() <= 0 ? "{color_text `white`}": "") + "&" + "STAT" + (Phone_GetNumber() > 0 ? "&" + "CELL": "");
 audio_play_sound(snd_menu_switch, 0, false);
-Anim_Create(id, "_offset", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _offset, -_offset, 20 * !global.classic_ui);
+Anim_Create(id, "_offset", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT, _offset, -_offset, 20);
+if (global.classic_ui) Anim_Skip(id, "_offset");

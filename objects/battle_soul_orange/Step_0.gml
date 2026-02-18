@@ -22,8 +22,8 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
     var SPD = (Input_IsHeld(INPUT.CANCEL) ? SPD / 2 : SPD);
     repeat(SPD * 15) {
         if ((!(position_meeting(x, (y - (sprite_height / 2)), block))) && (!(position_meeting(x, (y + (sprite_height / 2)), block))) && (!(position_meeting((x - (sprite_width / 2)), y, block))) && (!(position_meeting((x + (sprite_width / 2)), y, block)))) {
-            x += lengthdir_x(0.1, dir)
-            y += lengthdir_y(0.1, dir)
+            x += lengthdir_x(0.1*global.delta_time_factor, dir)
+            y += lengthdir_y(0.1*global.delta_time_factor, dir)
         }
     }
 }

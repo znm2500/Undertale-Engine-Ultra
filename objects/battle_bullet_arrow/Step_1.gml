@@ -1,5 +1,5 @@
 if (!processed) {
-    alarm[0] = duration;
+    alarm[0] = duration / global.delta_time_factor;
 
     if (!type) {
         image_index = 0;
@@ -15,7 +15,7 @@ if (!processed) {
     _dir = _direction;
     if (follow) {
         _angle = _direction;
-        vsin = vspeed;
+        _vspeed = vspeed;
         _hspeed = hspeed;
         vspeed = 0;
         hspeed = 0;
@@ -40,8 +40,8 @@ if (!processed) {
     }
 }
 if (follow) {
-    _x += _hspeed;
-    _y += _vspeed;
+    _x += _hspeed * global.delta_time_factor;
+    _y += _vspeed * global.delta_time_factor;
     if (follow_board && follow_target != battle_board) {
         follow_target = battle_board;
     }

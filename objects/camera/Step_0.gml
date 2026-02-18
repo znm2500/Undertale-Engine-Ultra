@@ -1,6 +1,8 @@
+Time_Step();
+
 if(shake_x>0){
 	if(_shake_time_x>0){
-		_shake_time_x-=1;
+		_shake_time_x-=1 * global.delta_time_factor;
 	}else{
 		if(!shake_random_x){
 			if(_shake_positive_x){
@@ -26,7 +28,7 @@ if(shake_x>0){
 }
 if(shake_y>0){
 	if(_shake_time_y>0){
-		_shake_time_y-=1;
+		_shake_time_y-=1 * global.delta_time_factor;
 	}else{
 		if(!shake_random_y){
 			if(_shake_positive_y){

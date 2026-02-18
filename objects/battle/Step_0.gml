@@ -5,38 +5,52 @@ if (_heal != 0) {
 
 if (global.kr) {
     if (damage) {
-        var _temp_local_var_1, time = 0;
-        time += 1;
-        if (time = 2) time = 0;
-        if (time = 1) {
+        // 1. 累加伤害计时器
+        hurt_timer += 1 * global.delta_time_factor;
+
+        while (hurt_timer >= 1) {
+            hurt_timer--;
+
+            // --- 处理受击逻辑 ---
             if (Player_GetHp() > 1) {
+                // 正常扣血并增加 KR
                 Player_Hurt(1);
                 Player_SetKr(Player_GetKr() + 1);
-                if (Player_GetKr() >= 5) {
-                    if (global.krtime = 1) {
-                        Player_SetKr(Player_GetKr() - 1);
-                    }
+                if (Player_GetKr() > 5 && Player_GetHp() % 2) {
+                    Player_SetKr(Player_GetKr() - 1);
                 }
-            } else Player_SetKr(Player_GetKr() - 1);
-            if (Player_GetHp() == 1) _temp_local_var_1 = (Player_GetKr() <= 0);
-            else _temp_local_var_1 = 0;
-            if (_temp_local_var_1) {
-                var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, battle_soul.x - camera.x);
-                z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, battle_soul.y - camera.y);
-                z.Set(FLAG_TEMP_GAMEOVER_SOUL_COLOR, battle_soul.image_blend);
-                room_goto(room_gameover);
+                // 注意：这里不需要在受击瞬间去减掉 KR，KR 的自然衰减应该独立处理
+            } else {
+                // HP 已经是 1 了，开始扣除 KR
+                Player_SetKr(Player_GetKr() - 1);
 
+                // 检查死亡
+                if (Player_GetKr() <= 0) {
+                    var z = Storage_SetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X, battle_soul.x - camera.x);
+                    z.Set(FLAG_TEMP_GAMEOVER_SOUL_Y, battle_soul.y - camera.y);
+                    z.Set(FLAG_TEMP_GAMEOVER_SOUL_COLOR, battle_soul.image_blend);
+                    room_goto(room_gameover);
+                    break; // 死亡了就跳出循环
+                }
             }
             audio_play_sound(snd_hurt, 0, false);
+
         }
 
-        global.krtime += 1;
-        if (global.krtime = 2) {
-            global.krtime = 0;
+        damage = 0;
+    }
+    // --- 独立的 KR 衰减逻辑 (通常放在 Step 事件的末尾) ---
+    // 这部分处理 KR 随时间慢慢变成 HP 损耗的过程
+    if (Player_GetKr() > 0) {
+        kr_timer += 1 * global.delta_time_factor;
+        while (kr_timer >= 25) { // 衰减速度
+            kr_timer -= 25;
+            Player_SetKr(Player_GetKr() - 1);
+
         }
-        damage = 0
     }
 }
+
 //菜单
 if (!global.classic_ui) {
     if (_state == BATTLE_STATE.MENU) {
@@ -130,8 +144,8 @@ if (!global.classic_ui) {
         //战斗动画
         if (_menu == BATTLE_MENU.FIGHT_ANIM) {
             if (_menu_fight_anim_time > 0) {
-                _menu_fight_anim_time -= 1;
-            } else if (_menu_fight_anim_time == 0) {
+                _menu_fight_anim_time -= 1 * global.delta_time_factor;
+            } else if (_menu_fight_anim_time <= 0) {
                 Battle_EndMenuFightAnim();
             }
         } else
@@ -139,8 +153,8 @@ if (!global.classic_ui) {
         //战斗伤害
         if (_menu == BATTLE_MENU.FIGHT_DAMAGE) {
             if (_menu_fight_damage_time > 0) {
-                _menu_fight_damage_time -= 1;
-            } else if (_menu_fight_damage_time == 0) {
+                _menu_fight_damage_time -= 1 * global.delta_time_factor;
+            } else if (_menu_fight_damage_time <= 0) {
                 Battle_EndMenuFightDamage();
             }
         } else
@@ -417,7 +431,7 @@ if (!global.classic_ui) {
         //战斗动画
         if (_menu == BATTLE_MENU.FIGHT_ANIM) {
             if (_menu_fight_anim_time > 0) {
-                _menu_fight_anim_time -= 1;
+                _menu_fight_anim_time -= 1 * global.delta_time_factor;
             } else if (_menu_fight_anim_time == 0) {
                 Battle_EndMenuFightAnim();
             }
@@ -426,7 +440,7 @@ if (!global.classic_ui) {
         //战斗伤害
         if (_menu == BATTLE_MENU.FIGHT_DAMAGE) {
             if (_menu_fight_damage_time > 0) {
-                _menu_fight_damage_time -= 1;
+                _menu_fight_damage_time -= 1 * global.delta_time_factor;
             } else if (_menu_fight_damage_time == 0) {
                 Battle_EndMenuFightDamage();
             }
@@ -594,7 +608,7 @@ if (_state == BATTLE_STATE.TURN_PREPARATION) {
 //回合内
 if (_state == BATTLE_STATE.IN_TURN) {
     if (_turn_time > 0) {
-        _turn_time -= 1;
+        _turn_time -= 1 * global.delta_time_factor;
     } else if (_turn_time == 0) {
         Battle_EndTurn();
     }

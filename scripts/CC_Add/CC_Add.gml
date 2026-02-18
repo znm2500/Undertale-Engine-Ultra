@@ -2,7 +2,7 @@
 ///@arg time*
 function CC_Add() {
 	var TEXT=argument[0];
-	var TIME=60;
+	var TIME=GAME_FPS;
 	if(argument_count>=2){
 		TIME=argument[1];
 	}

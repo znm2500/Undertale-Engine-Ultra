@@ -11,7 +11,7 @@ audio_sound_pitch(sid,1.2);
 
 Camera_Shake(5,5,1,1,1,1);
 gamepad_set_vibration(0,0.5,0.5);
-alarm[11]=10;
-alarm[3]=6;
-alarm[4]=8;
-alarm[5]=time_release_stay+1;
+alarm[11] = 10 / global.delta_time_factor; // 修正：除法而不是乘法
+alarm[3] = 6 / global.delta_time_factor;   // 修正：除法而不是乘法
+alarm[4] = 8 / global.delta_time_factor;   // 修正：除法而不是乘法
+alarm[5] = time_release_stay / global.delta_time_factor + 1;

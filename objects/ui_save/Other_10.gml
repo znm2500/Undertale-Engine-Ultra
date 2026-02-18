@@ -11,9 +11,10 @@ if (_state == 0) {
     _inst_lv.text = _prefix + "{surface " + string(real(_surface_text)) + "}" + $"LV {z.Get(FLAG_INFO_LV,0)}";
 
     _inst_time = instance_create_depth((108 + 6 + 338), (118 + 6 + 16), 0, text_typer);
-    var time = z.Get(FLAG_INFO_TIME, 0);
-    var minute = time div 60;
-    var second = time mod 60;
+    var time_in_steps = z.Get(FLAG_INFO_TIME, 0);
+    var time_in_seconds = time_in_steps / GAME_FPS;
+    var minute = floor(time_in_seconds / 60);
+    var second = floor(time_in_seconds mod 60);
     _inst_time.text = _prefix + "{surface " + string(real(_surface_text)) + "}" + string(minute) + ":" + (second < 10 ? "0": "") + string(second);
 
     _inst_room = instance_create_depth((108 + 6 + 26), (118 + 6 + 56), 0, text_typer);
@@ -60,9 +61,10 @@ if (_state == 1) {
     _inst_lv.text = _prefix + "{color `yellow`}" + $"LV {z.Get(FLAG_INFO_LV,0)}";
 
     _inst_time = instance_create_depth((108 + 6 + 338), (118 + 6 + 16), 0, text_typer);
-    var time = z.Get(FLAG_INFO_TIME, 0);
-    var minute = time div 60;
-    var second = time mod 60;
+    var time_in_steps = z.Get(FLAG_INFO_TIME, 0);
+    var time_in_seconds = time_in_steps / GAME_FPS;
+    var minute = floor(time_in_seconds / 60);
+    var second = floor(time_in_seconds mod 60);
     _inst_time.text = _prefix + "{color `yellow`}" + string(minute) + ":" + (second < 10 ? "0": "") + string(second);
     var roomIndex = asset_get_index(z.Get(FLAG_INFO_ROOM, ""));
     if (!room_exists(roomIndex)) {

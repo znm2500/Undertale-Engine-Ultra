@@ -41,14 +41,14 @@ if (_choice != -1) {
 if (_char_proc < string_length(text) + 1) {
     if (!_paused) {
         if (_sleep > 0) {
-            _sleep -= 1;
+            _sleep -= 1 * global.delta_time_factor;
         } else {
             if (_char_frame_remain > 0) {
-                _char_frame_remain -= 1;
+                _char_frame_remain -= 1 * global.delta_time_factor;
             } else {
                 do {
                     repeat(_char_per_frame) {
-                        // 检查特殊符号 {指令, &换行, 空格
+                       
                         while ((string_char_at(text, _char_proc) == "{" || string_char_at(text, _char_proc) == "&" || (_skip_space && (string_char_at(text, _char_proc) == " " || string_char_at(text, _char_proc) == "　"))) && ((_sleep == 0 || _skipping || _instant) && !_paused && _char_proc <= string_length(text))) {
                             
                             // 解析指令 {command arg1 arg2}
@@ -68,12 +68,12 @@ if (_char_proc < string_length(text) + 1) {
                                     
                                     if ((cmd_char == " " || cmd_char == "}") && !str_input) {
                                         if (!str_mode) {
-                                            // --- 修改：检查数组是否为空及从 Struct 获取宏 ---
+                                            // --- 修改：检查数组是否为空及�?Struct 获取�?---
                                             if (array_length(_list_cmd) != 0) {
                                                 if (variable_struct_exists(_map_macro, cmd)) {
                                                     cmd = _map_macro[$ cmd];
                                                 } else {
-                                                    // 尝试转为数字，如果不是数字则保持字符串
+                                                    // 尝试转为数字，如果不是数字则保持字符�?
                                                     var val = string_digits(cmd);
                                                     if (val != "" || cmd == "0") cmd = real(cmd);
                                                 }
@@ -105,7 +105,7 @@ if (_char_proc < string_length(text) + 1) {
                                 }
                             }
                             
-                            // 换行符 &
+                            // 换行�?&
                             while (string_char_at(text, _char_proc) == "&" && ((_sleep == 0 || _skipping || _instant) && !_paused && _char_proc <= string_length(text))) {
                                 event_user(1);
                                 _char_proc += 1;
@@ -119,7 +119,7 @@ if (_char_proc < string_length(text) + 1) {
                             }
                         }
                         
-                        // 打印普通字符
+                        // 打印普通字�?
                         if ((_sleep == 0 || _skipping || _instant) && !_paused && _char_proc <= string_length(text)) {
                             _char = string_char_at(text, _char_proc);
                             if (_char == "\\") {
@@ -144,7 +144,7 @@ if (instance_exists(_face)) {
     _face.talking = (!_sleep && !_paused && _char_proc <= string_length(text));
 }
 
-// 关联对象（Face/Char）的 Talking 状态更新
+// 关联对象（Face/Char）的 Talking 状态更�?
 var is_currently_talking = (!_sleep && !_paused && _char_proc <= string_length(text));
 
 if (_face_linked != -1 && instance_exists(face)) {
@@ -161,7 +161,7 @@ if (_char_linked != -1 && instance_exists(char)) {
     }
 }
 
-// 覆盖属性应用
+
 if (override_alpha_enabled || override_color_text_enabled) {
     for (var i = 0; i < array_length(_char_data_list); i++) {
         var char_data = _char_data_list[i];
@@ -176,8 +176,11 @@ if (override_alpha_enabled || override_color_text_enabled) {
     }
 }
 
-// 时间与波浪效果参数更新
-_time += 9;
+
+_time += 9 * global.delta_time_factor;
 for (var i = 0; i < 10; i += 1) {
     torder[i] = _time + i * 36;
 }
+
+
+

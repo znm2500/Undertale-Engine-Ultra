@@ -25,4 +25,4 @@ if (!global.classic_ui) {
         yy[i] = y - 10 * floor(NUMBER / 2) + 10 * i;
     }
 }
-alarm[0] = 21;
+alarm[0] = 21 * global.delta_time_factor;

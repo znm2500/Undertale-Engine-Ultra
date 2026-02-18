@@ -18,4 +18,4 @@ fast=false;
 
 _inst=instance_create_depth(x-left+text_offset_x,y-up+text_offset_y,0,text_typer);
 
-alarm[0]=1;
+alarm[0]=1 / global.delta_time_factor;

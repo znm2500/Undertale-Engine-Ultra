@@ -164,8 +164,6 @@ if (!enable) {
             add_edge(9, 11);
             break;
     }
-    
-    alarm[1] = duration; // 设置警报
     update_vert();       // 更新顶点
     enable = 1;         // 启用标志
 }

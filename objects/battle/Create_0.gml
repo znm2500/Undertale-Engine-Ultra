@@ -1,5 +1,3 @@
-var i=Item_GetInventoryItems()
-i.Set(3,ITEM_DICE)
 _encounter=Storage_GetTempFlag(FLAG_TEMP_ENCOUNTER);
 _enemy_object[0]=Encounter_GetEnemy(_encounter,0);
 _enemy_object[1]=Encounter_GetEnemy(_encounter,1);
@@ -16,7 +14,7 @@ _enemy[2]=noone;
 _enemy_name[0]="";
 _enemy_name[1]="";
 _enemy_name[2]="";
-//敌人可饶恕状态
+//敌人可饶恕状�?
 _enemy_spareable[0]=false;
 _enemy_spareable[1]=false;
 _enemy_spareable[2]=false;
@@ -49,12 +47,12 @@ _enemy_center_pos_x[1]=0;
 _enemy_center_pos_y[1]=0;
 _enemy_center_pos_x[2]=0;
 _enemy_center_pos_y[2]=0;
-//敌人属性
+//敌人属�?
 _enemy_def[0]=0;
 _enemy_def[1]=0;
 _enemy_def[2]=0;
 
-//状态
+//状�?
 _state=-1;
 _state_next=-1;
 //菜单
@@ -96,6 +94,6 @@ _player_temp_def=0;
 _player_temp_spd=0;
 _player_temp_inv=0;
 
-global.krtime=0;
-if(global.kr)
-alarm[0]=1;
+kr_timer=0;
+hurt_timer=0;
+

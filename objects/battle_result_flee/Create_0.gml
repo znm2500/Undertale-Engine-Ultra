@@ -1,5 +1,5 @@
 depth=DEPTH_BATTLE.SOUL;
-image_speed=1/2;
+image_speed=(1/2) * global.delta_time_factor;
 x=battle_soul.x;
 y=battle_soul.y;
 

@@ -180,4 +180,5 @@ for (var i = 0; i < list_size; i++) {
 }
 
 // 翻转震动标志，确保下一帧产生随机位移
-_effect_shook = !_effect_shook;
+_effect_shook +=global.delta_time_factor;
+if(_effect_shook>=2)_effect_shook=0;

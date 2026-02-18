@@ -20,12 +20,14 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         return a.y > b.y;
     });
 
-    if (cross_step) {
+    if (cross_step>0) {
         if (is_struct(cross_start) && is_struct(cross_target) && !cross_start.destroyed && !cross_start.destroyed) {
             if (moving_direction) {
-                y = lerp(cross_target.y, cross_start.y, --cross_step / 10);
+                cross_step -= global.delta_time_factor;
+                y = lerp(cross_target.y, cross_start.y, (cross_step < 0 ? 0 : cross_step) / 10);
             } else {
-                x = lerp(cross_target.x, cross_start.x, --cross_step / 10);
+                cross_step -= global.delta_time_factor;
+                x = lerp(cross_target.x, cross_start.x, (cross_step < 0 ? 0 : cross_step) / 10);
             }
         } else {
             cross_start = noone;
@@ -60,7 +62,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
                 repeat(SPD * 10) {
                     if (Input_IsHeld(INPUT.UP)) {
                         if (!position_meeting(x, y - sprite_height / 2, block)) {
-                            y -= 0.1;
+                            y -= 0.1 * global.delta_time_factor;
                             x = x_on.x;
                             moving_direction = 1;
                         }
@@ -68,7 +70,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
 
                     if (Input_IsHeld(INPUT.DOWN)) {
                         if (!position_meeting(x, y + sprite_height / 2, block)) {
-                            y += 0.1;
+                            y += 0.1 * global.delta_time_factor;
                             x = x_on.x;
                             moving_direction = 1;
                         }
@@ -82,7 +84,6 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
                             cross_step = 10;
                             cross_start = y_on;
                             cross_target = py[y_index - 1];
-
                         }
                     }
                 } else if (Input_IsPressed(INPUT.DOWN)) {
@@ -98,7 +99,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
                 repeat(SPD * 10) {
                     if (Input_IsHeld(INPUT.LEFT)) {
                         if (!position_meeting(x - sprite_width / 2, y, block)) {
-                            x -= 0.1;
+                            x -= 0.1 * global.delta_time_factor;
                             y = y_on.y;
                             if (!cross_step) moving_direction = 0;
                         }
@@ -106,7 +107,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
 
                     if (Input_IsHeld(INPUT.RIGHT)) {
                         if (!position_meeting(x + sprite_width / 2, y, block)) {
-                            x += 0.1;
+                            x += 0.1 * global.delta_time_factor;
                             y = y_on.y;
                             if (!cross_step) moving_direction = 0;
                         }
@@ -132,10 +133,10 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         }
     }
     for (var i = 0; i < ps; i++) {
-        point[i].x += point[i].hspeed;
-        point[i].y += point[i].vspeed;
+        point[i].x += point[i].hspeed * global.delta_time_factor;
+        point[i].y += point[i].vspeed * global.delta_time_factor;
         if (point[i].duration == 0) point[i].destroyed = 1;
-        else if (point[i] > 0) point[i].duration--;
+        else if (point[i] > 0) point[i].duration -= 1 * global.delta_time_factor;
         if (point[i].auto_destroy && (point[i].y < 0 || point[i].y > room_height || point[i].x < 0 || point[i].x > room_width)) point[i].destroyed = 1;
         if (point[i].destroyed) {
             delete point[i];

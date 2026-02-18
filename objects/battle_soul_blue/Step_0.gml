@@ -40,7 +40,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         switch (dir) {
         case 0:
             if (move < 0) {
-                move += gravity_jump;
+                move += gravity_jump*global.delta_time_factor;
             }
             if (jump_state = 0) {
                 move = -jump_speed;
@@ -53,7 +53,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         case 270:
             repeat(5 * SPD) {
                 if ! (position_meeting(x - sprite_width / 2, y, block)) {
-                    x -= Player_GetSpdTotal() / 10;
+                    x -= Player_GetSpdTotal() / 10*global.delta_time_factor;
                 } else {
                     x = xprevious;
                 }
@@ -65,7 +65,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         switch (dir) {
         case 180:
             if (move < 0) {
-                move += gravity_jump;
+                move += gravity_jump*global.delta_time_factor;
             }
             if (jump_state = 0) {
                 move = -jump_speed;
@@ -78,7 +78,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         case 270:
             repeat(5 * SPD) {
                 if ! (position_meeting(x + sprite_width / 2, y, block)) {
-                    x += Player_GetSpdTotal() / 10;
+                    x += Player_GetSpdTotal() / 10*global.delta_time_factor;
                 } else {
                     x = xprevious;
                 }
@@ -90,7 +90,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         switch (dir) {
         case 270:
             if (move < 0) {
-                move += gravity_jump;
+                move += gravity_jump*global.delta_time_factor;
             }
             if (jump_state = 0) {
                 move = -jump_speed;
@@ -103,7 +103,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         case 180:
             repeat(5 * SPD) {
                 if ! (position_meeting(x, y - sprite_height / 2, block)) {
-                    y -= Player_GetSpdTotal() / 10;
+                    y -= Player_GetSpdTotal() / 10*global.delta_time_factor;
                 } else {
                     y = yprevious;
                 }
@@ -115,7 +115,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         switch (dir) {
         case 90:
             if (move < 0) {
-                move += gravity_jump;
+                move += gravity_jump*global.delta_time_factor;
             }
             if (jump_state = 0) {
                 move = -jump_speed;
@@ -128,7 +128,7 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         case 180:
             repeat(5 * SPD) {
                 if ! (position_meeting(x, y + sprite_height / 2, block)) {
-                    y += Player_GetSpdTotal() / 10;
+                    y += Player_GetSpdTotal() / 10*global.delta_time_factor;
                 } else {
                     y = yprevious;
                 }
@@ -138,19 +138,19 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
     }
 	switch (dir) {
     case 0:
-        x += move;
+        x += move*global.delta_time_factor;
         break;
 
     case 90:
-        y -= move;
+        y -= move*global.delta_time_factor;
         break;
 
     case 180:
-        x -= move;
+        x -= move*global.delta_time_factor;
         break;
 
     case 270:
-        y += move;
+        y += move*global.delta_time_factor;
         break;
     }
     //移动和开始跳跃

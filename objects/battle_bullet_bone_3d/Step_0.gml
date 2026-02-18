@@ -1,8 +1,8 @@
 if (enable) {
-    angle += rotate;
-    anglex += angxs;  
-    angley += angys;  
-    anglez += angzs;
+    angle += rotate * global.delta_time_factor;
+    anglex += angxs * global.delta_time_factor;  
+    angley += angys * global.delta_time_factor;  
+    anglez += angzs * global.delta_time_factor;
     update_vert();
     
     for (var i = 0; i < array_length(edge_list); i++) {

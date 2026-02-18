@@ -4,7 +4,7 @@
 function Border_SetSprite() {
 	var SPRITE=argument[0];
 	var FADE=true;
-	var TIME=60;
+	var TIME=GAME_FPS;
 	if(argument_count>=2){
 		FADE=argument[1];
 	}
@@ -23,7 +23,7 @@ function Border_SetSprite() {
 
 	if(FADE){
 		border._alpha=0;
-		Anim_Create(border,"_alpha",0,0,0,1,TIME);
+		Anim_Create(border,"_alpha",0,0,0,1,TIME * global.delta_time_factor);
 	}
 
 	return true;

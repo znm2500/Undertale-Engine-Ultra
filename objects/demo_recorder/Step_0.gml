@@ -1,8 +1,8 @@
 if(!_paused){
-	if(_icon_show_tick>60){
+	if(_icon_show_tick>GAME_FPS){
 		_icon_show_tick=0;
 	}else{
-		_icon_show_tick+=1;
+		_icon_show_tick+=global.delta_time_factor;
 	}
 }else{
 	_icon_show_tick=0;

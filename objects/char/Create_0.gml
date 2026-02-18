@@ -16,7 +16,7 @@ move[DIR.RIGHT]=0;
 
 collision=true;
 
-_collision_list=ds_list_create();
+_collision_list=[];
 
 var proc=0;
 repeat(4){

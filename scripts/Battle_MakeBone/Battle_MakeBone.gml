@@ -19,8 +19,8 @@ function Battle_MakeBone() {
 
     var bone = instance_create_depth(X, Y, 0, battle_bullet_bone);
     bone.length = LENGTH;
-    bone.hspeed = HSPEED;
-    bone.vspeed = VSPEED;
+    bone.hspeed = HSPEED * global.delta_time_factor;
+    bone.vspeed = VSPEED * global.delta_time_factor;
     bone.type = COLOR;
     bone.out = OUT;
     bone.rotate = ROT;
@@ -356,8 +356,8 @@ function Battle_MakeBone3D() {
     inst.scalex = scale_x;
     inst.scaley = scale_y;
     inst.scalez = scale_z;
-    inst.vspeed = VSPEED;
-    inst.hspeed = HSPEED;
+    inst.vspeed = VSPEED * global.delta_time_factor;
+    inst.hspeed = HSPEED * global.delta_time_factor;
     inst.shape = shape;
     inst.type = type;
     inst.out = out;
@@ -388,8 +388,8 @@ function Battle_MakeBoneArrow() {
 
     var bone = instance_create_depth(X, Y, 0, bone_arrow);
     bone.length = LENGTH;
-    bone.hspeed = HSPEED;
-    bone.vspeed = VSPEED;
+    bone.hspeed = HSPEED * global.delta_time_factor;
+    bone.vspeed = VSPEED * global.delta_time_factor;
     bone.type = COLOR;
     bone.out = OUT;
     bone.rotate = ROT;

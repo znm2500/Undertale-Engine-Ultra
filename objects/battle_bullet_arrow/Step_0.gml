@@ -1,6 +1,6 @@
 event_inherited();
 
-_distance -= _speed;
+_distance -= _speed * global.delta_time_factor;
 if (!follow) {
     x = battle_soul.x + lengthdir_x(_distance, _direction);
     y = battle_soul.y + lengthdir_y(_distance, _direction);

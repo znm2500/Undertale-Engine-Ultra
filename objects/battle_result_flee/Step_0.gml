@@ -1,1 +1,1 @@
-x-=3/2;
+x-=(3/2) * global.delta_time_factor;

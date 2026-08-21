@@ -17,11 +17,13 @@ angle = 0;
 color_bg = c_black;
 alpha_bg = 1;
 color_frame = c_white;
-
+mainboard = noone;
 edge = !global.classic_ui;
 alpha_frame = 1;
 _angle = 0;
 global.boards_array = array_create(0);
+global.boards_controller_array = array_create(0);
+global.board_uid = 0;
 func_boardsort = function(a, b) {
     if (a.board_depth == b.board_depth) return a.board_number > b.board_number;
     return a.board_depth < b.board_depth;

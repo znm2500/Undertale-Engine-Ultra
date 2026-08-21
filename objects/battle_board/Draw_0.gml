@@ -1,7 +1,8 @@
 for (var i = 0; i < array_length(global.boards_array); i++) {
-    if (instance_exists(global.boards_array[i])) {
-        global.boards_array[i].drawBorder();
-        global.boards_array[i].replaceSurfaceAlpha();
+    var board = global.boards_array[i];
+    if (is_struct(board) && !board._destroyed) {
+        board.drawBorder();
+        board.replaceSurfaceAlpha();
     }
 }
 draw_set_alpha(1);

@@ -63,18 +63,19 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
         break;
     case 270:
         yy = 1;
-        ii = isInside[0][3] && !isInside[1][3];
+        ii = isInside[0][3] && !isInside[1][3]&&((abs(y-yprevious)>=1)||!(isInside[0][0] && !isInside[1][0])||!(isInside[0][1] && !isInside[1][1]));
         jump_input = INPUT.UP;
         opposite_dir = isInside[0][2] && !isInside[1][2];
         break;
     }
-
     if ! (instance_position(x + xx * (sprite_width / 2 + 1), y + yy * (sprite_height / 2 + 1), block)) {
         on_block = 0;
     }
     if ! (ii = 0) {
         on_board = 0;
     }
+	show_debug_message(string(y)+"   "+string(yprevious))
+	show_debug_message(string(ii)+string(on_board));
     if ! (place_meeting(x + xx, y + yy, battle_platform)) {
         on_platform = 0;
         inst_plat = noone;

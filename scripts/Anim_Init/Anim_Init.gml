@@ -30,6 +30,13 @@ function Anim_Init() {
         ALTERNATE = 2,
         RESERVE_ALTERNATE = 3
     }
+    enum ANIM_MODE {
+        ONCE,
+        BOUNCE,
+        PATROL,
+        LOOP,
+        REPEAT
+    }
     global._anim_data = [];
     global._animators = [];
     global.anim_speed = 1;
@@ -56,7 +63,7 @@ function Anim_IsExists(target, var_name = undefined) {
     return false;
 }
 
-function Anim_Create(target, var_name, tween_type, ease_type, start, change, duration, delay = 0, auto_destroy = 1, single_speed = 1, alone_exist = 0) {
+function Anim_Create(target, var_name, tween_type, ease_type, start, change, duration, delay = 0, auto_destroy = 1, single_speed = 1, alone_exist = 0, mode = ANIM_MODE.ONCE, repeat_count = -1) {
     if (duration < 0) {
         duration = -duration;
     } else if (duration == 0) {
@@ -87,7 +94,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
             delay: delay,
             auto_destroy: auto_destroy,
             single_speed: single_speed,
-            time: 0
+            time: 0,
+            mode: mode,
+            repeat_count: repeat_count,
+            played_times: 0,
+            direction: 1,
+            frozen: 0
         });
     } else if (is_struct(target)) {
         if (variable_struct_exists(target, var_name)) {
@@ -103,7 +115,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
             return (true);
         }
@@ -121,7 +138,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
             return (true);
         }
@@ -139,7 +161,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
         }
         return (true);
@@ -158,7 +185,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
             return (true);
         }
@@ -178,7 +210,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
             return (true);
         }
@@ -198,7 +235,12 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
             return (true);
         }
@@ -217,13 +259,23 @@ function Anim_Create(target, var_name, tween_type, ease_type, start, change, dur
                 delay: delay,
                 auto_destroy: auto_destroy,
                 single_speed: single_speed,
-                time: 0
+                time: 0,
+                mode: mode,
+                repeat_count: repeat_count,
+                played_times: 0,
+                direction: 1,
+                frozen: 0
             });
         }
         return (true);
     }
 
     return (false);
+}
+
+function Anim_CreateTarget(target, var_name, tween_type, ease_type, start, target_value, duration, delay = 0, auto_destroy = 1, single_speed = 1, alone_exist = 0, mode = ANIM_MODE.ONCE, repeat_count = -1){
+	var anim = Anim_Create(target, var_name, tween_type, ease_type, start, target_value-start, duration, delay, auto_destroy, single_speed, alone_exist, mode, repeat_count);
+	return anim;
 }
 
 function Anim_Destroy(target, var_name = undefined) {
@@ -244,7 +296,7 @@ function Anim_Destroy(target, var_name = undefined) {
     return (success);
 }
 
-function Anim_SetSingleSpeed(target, var_name = undefined, single_speed) {
+function Anim_SetSingleSpeed(target, var_name, single_speed) {
     var ease_list = global._anim_data;
     var success = false;
     for (var i = 0; i < array_length(ease_list); i++) {
@@ -270,15 +322,12 @@ function Anim_Step() {
     var ease_list = global._anim_data;
     for (i = 0; i < array_length(ease_list); i++) {
         var anim_item = ease_list[i];
-        anim_item[$ "time"] += (anim_item[$ "single_speed"] * global.anim_speed) * global.delta_time_factor;
-        if ((anim_item[$ "time"] > anim_item[$ "duration"] + anim_item[$ "delay"] || anim_item[$ "time"] < 0) && anim_item[$ "auto_destroy"]) {
-            array_delete(ease_list, i--, 1);
-            continue;
-        }
-		if(anim_item[$ "delay"]==200)
-		show_debug_message(anim_item[$ "time"])
+        if (anim_item[$ "frozen"]) continue;
+        anim_item[$ "time"] += anim_item[$ "single_speed"] * global.anim_speed;
         if (anim_item[$ "time"] - anim_item[$ "delay"] >= 0) {
-            var anim_value = Anim_GetValue(anim_item[$ "tween_type"], anim_item[$ "ease_type"], min((anim_item[$ "time"] - anim_item[$ "delay"]) / anim_item[$ "duration"], 1));
+            var _raw_progress = min((anim_item[$ "time"] - anim_item[$ "delay"]) / anim_item[$ "duration"], 1);
+            if (anim_item[$ "direction"] == -1) _raw_progress = 1 - _raw_progress;
+            var anim_value = Anim_GetValue(anim_item[$ "tween_type"], anim_item[$ "ease_type"], _raw_progress);
             switch (anim_item[$ "target_type"]) {
             case 0:
                 {
@@ -328,13 +377,96 @@ function Anim_Step() {
                     break;
                 }
             }
+
+            var _raw = (anim_item[$ "time"] - anim_item[$ "delay"]) / anim_item[$ "duration"];
+            if (_raw >= 1) {
+                anim_item[$ "played_times"]++;
+                var _dead = false;
+
+                switch (anim_item[$ "mode"]) {
+
+                case ANIM_MODE.ONCE:
+                    if (anim_item[$ "repeat_count"] > 0) {
+                        anim_item[$ "repeat_count"]--;
+                        if (anim_item[$ "repeat_count"] <= 0) _dead = true;
+                        else anim_item[$ "time"] = anim_item[$ "delay"];
+                    } else {
+                        _dead = true;
+                    }
+                    break;
+
+                case ANIM_MODE.BOUNCE:
+                    if (anim_item[$ "direction"] == 1) {
+                        anim_item[$ "direction"] = -1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                    } else {
+                        anim_item[$ "direction"] = 1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                        if (anim_item[$ "repeat_count"] > 0) {
+                            anim_item[$ "repeat_count"]--;
+                            if (anim_item[$ "repeat_count"] <= 0) _dead = true;
+                        } else if (anim_item[$ "repeat_count"] != -1) {
+                            _dead = true;
+                        }
+                    }
+                    break;
+
+                case ANIM_MODE.PATROL:
+                    anim_item[$ "direction"] *= -1;
+                    anim_item[$ "time"] = anim_item[$ "delay"];
+                    if (anim_item[$ "direction"] == 1) {
+                        if (anim_item[$ "repeat_count"] > 0) {
+                            anim_item[$ "repeat_count"]--;
+                            if (anim_item[$ "repeat_count"] <= 0) _dead = true;
+                        }
+                    }
+                    break;
+
+                case ANIM_MODE.LOOP:
+                    if (anim_item[$ "direction"] == 1) {
+                        anim_item[$ "direction"] = -1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                    } else {
+                        anim_item[$ "direction"] = 1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                        if (anim_item[$ "repeat_count"] > 0) {
+                            anim_item[$ "repeat_count"]--;
+                            if (anim_item[$ "repeat_count"] <= 0) _dead = true;
+                        }
+                    }
+                    break;
+
+                case ANIM_MODE.REPEAT:
+                    if (anim_item[$ "direction"] == 1) {
+                        anim_item[$ "direction"] = -1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                    } else {
+                        anim_item[$ "direction"] = 1;
+                        anim_item[$ "time"] = anim_item[$ "delay"];
+                        if (anim_item[$ "repeat_count"] > 0) {
+                            anim_item[$ "repeat_count"]--;
+                            if (anim_item[$ "repeat_count"] <= 0) _dead = true;
+                        }
+                    }
+                    break;
+                }
+
+                if (_dead) {
+                    if (anim_item[$ "auto_destroy"]) {
+                        array_delete(ease_list, i--, 1);
+                    } else {
+                        anim_item[$ "frozen"] = 1;
+                    }
+                    continue;
+                }
+            }
         }
 
     }
     return (true);
 }
 
-function Anim_Skip(target, var_name = undefined) {
+function Anim_Skip(target, var_name) {
     var ease_list = global._anim_data;
     var success = false;
     for (var i = 0; i < array_length(ease_list); i++) {
@@ -791,56 +923,60 @@ function Anim_GetValue(TWEEN, EASE, TIME) {
         break;
     case ANIM_TWEEN.BEZIER:
         var bezier = EASE[0];
-        var bezier_value = bezier.GetValue(TIME);
-        var r = bezier_value[EASE[1]];
+        var bezier_value = Bezier_GetValue(bezier, TIME);
+        var bezier = [EASE[1]];
         break;
     }
 
     return r;
 
 }
-function Bezier_Struct(start_x, start_y, last_x, last_y) constructor {
-    start_point = [start_x, start_y];
-    last_point = [last_x, last_y];
-    points = [];
-    function GetValue(step) {
-        // 获取数据
-        var allPoints = [];
-        allPoints[0] = start_point; // 添加第一个点的位置
-        allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
-        array_push(allPoints, last_point); // 添加第末尾点的位置
-        // 得到要计算的所有点位置
-        var normalization = step; // 计算归一化百分比
-        var tempPoints = allPoints; // 临时点数组
-        var nextTempPoints = []; // 下一维度临时点数组
-        var tempPointsNumber = array_length(tempPoints); // 临时点数量
-        while (tempPointsNumber > 1) {
-            nextTempPoints = [];
-            for (var i = 0; i < tempPointsNumber - 1; i++) {
-                var point1 = tempPoints[i];
-                var point2 = tempPoints[i + 1];
-                // 得到点和下一个点的位置
-                var nextPoint = [];
-                nextPoint[0] = lerp(point1[0], point2[0], normalization);
-                nextPoint[1] = lerp(point1[1], point2[1], normalization);
-                // 计算两点连线下一维度的点的位置
-                nextTempPoints[i] = nextPoint;
-            }
-            tempPointsNumber = array_length(nextTempPoints); // 得到临时点数量
-            tempPoints = nextTempPoints;
+function Bezier_CreateStruct(start_x, start_y, last_x, last_y) {
+    var bezier = {};
+    bezier[$ "startPoint"] = [start_x, start_y];
+    bezier[$ "lastPoint"] = [last_x, last_y];
+    bezier[$ "points"] = [];
+    return bezier;
+}
+
+function Bezier_PointNumber(bezier) {
+    return (array_length(bezier[$ "points"]) + 2);
+}
+
+function Bezier_AddPoint(bezier, x, y) {
+    return (array_push(bezier[$ "points"], [x, y]));
+}
+
+function Bezier_GetValue(bezier, step) {
+    var startPoint = bezier[$ "startPoint"];
+    var lastPoint = bezier[$ "lastPoint"];
+    var points = bezier[$ "points"];
+    // 获取数据
+    var allPoints = [];
+    allPoints[0] = startPoint; // 添加第一个点的位置
+    allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
+    array_push(allPoints, lastPoint); // 添加第末尾点的位置
+    // 得到要计算的所有点位置
+    var normalization = step / 100; // 计算归一化百分比
+    var tempPoints = allPoints; // 临时点数组
+    var nextTempPoints = []; // 下一维度临时点数组
+    var tempPointsNumber = array_length(tempPoints); // 临时点数量
+    while (tempPointsNumber > 1) {
+        nextTempPoints = [];
+        for (var i = 0; i < tempPointsNumber - 1; i++) {
+            var point1 = tempPoints[i];
+            var point2 = tempPoints[i + 1];
+            // 得到点和下一个点的位置
+            var nextPoint = [];
+            nextPoint[0] = lerp(point1[0], point2[0], normalization);
+            nextPoint[1] = lerp(point1[1], point2[1], normalization);
+            // 计算两点连线下一维度的点的位置
+            nextTempPoints[i] = nextPoint;
         }
-        return (tempPoints[0]);
+        tempPointsNumber = array_length(nextTempPoints); // 得到临时点数量
+        tempPoints = nextTempPoints;
     }
-    function GetPointNumber() {
-        return array_length(points) + 2;
-    }
-    function AddPoint(x, y) {
-        return array_push(points, [x, y]);
-    }
-    function DeletePoint(index) {
-        if (index <= array_length(point)) return - 1;
-        return array_delete(point, index, 1);
-    }
+    return (tempPoints[0]);
 }
 function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN_OUT) constructor {
     array_push(global._animators, self);
@@ -991,7 +1127,7 @@ function Animator(tween_default = ANIM_TWEEN.LINEAR, ease_default = ANIM_EASE.IN
     function Step() {
         if (play_speed < 0) show_error("Cannot set play_speed negative directly!", true);
         if (play_speed && play_count > 0) {
-            delay -= play_speed * global.delta_time_factor;
+            delay -= play_speed;
             if (delay < 0) {
                 if (play_direction == 0 || (play_direction == 2 && !(_played_times & 1)) || (play_direction == 3 && _played_times & 1)) {
                     _step -= delay;

@@ -1,6 +1,5 @@
-event_inherited();  // 保留父事件
+event_inherited();
 
-// ---- 角色朝向动画（未改动） ----
 if (!global.classic_ui) {
     switch (dir) {
         case 0:
@@ -25,22 +24,21 @@ if (!global.classic_ui) {
     }
 }
 
-// ---- 移动与跳跃逻辑（核心修正） ----
 if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
     var SPD = Player_GetSpdTotal();
     SPD = (Input_IsHeld(INPUT.CANCEL) ? SPD / 2 : SPD);
 
-    // ★ 重力累积：每帧强制执行，与按键无关（修复手感奇怪的关键）
+    var dtf = delta_time / 1000000 * GAME_FPS;
+
     if (move < 0) {
-        move += gravity_jump * global.delta_time_factor;
+        move += gravity_jump * dtf;
     }
 
-    // ---- 方向按键处理（跳跃初速度不再乘 delta） ----
     if (Input_IsHeld(INPUT.LEFT)) {
         switch (dir) {
             case 0:
                 if (jump_state == 0) {
-                    move = -jump_speed;          // 正确！初速度为速度值，不乘 delta
+                    move = -jump_speed;
                     jump_state = 1;
                 }
                 break;
@@ -120,11 +118,10 @@ if (Battle_GetState() == BATTLE_STATE.IN_TURN && moveable) {
         }
     }
 
-    // ---- 根据朝向应用位移（move 已包含速度，乘以 delta 得像素位移） ----
     switch (dir) {
-        case 0:   x += move * global.delta_time_factor; break;
-        case 90:  y -= move * global.delta_time_factor; break;
-        case 180: x -= move * global.delta_time_factor; break;
-        case 270: y += move * global.delta_time_factor; break;
+        case 0:   x += move * dtf; break;
+        case 90:  y -= move * dtf; break;
+        case 180: x -= move * dtf; break;
+        case 270: y += move * dtf; break;
     }
 }

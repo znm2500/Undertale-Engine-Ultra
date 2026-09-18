@@ -1,17 +1,27 @@
-image_xscale=scale_x;
-image_yscale=scale_y;
-if (instance_exists(_inst)) {
-    _inst.type = type;
-    var LEN = 20 * scale_y;
-    var X = x + lengthdir_x(LEN, image_angle);
-    var Y = y + lengthdir_y(LEN, image_angle);
-    _inst.x = X;
-    _inst.y = Y;
-    _inst.image_angle = image_angle;
-	_inst.image_alpha = _beam_alpha;
-	_inst.image_xscale = 999*image_xscale;
-    _inst.image_yscale = scale_y * _beam_scale;
-    _inst.hurtable = (_beam_scale > 1.2) && (_beam_alpha > 0.8);
+switch(type)
+{
+    case 0:
+        image_blend = c_white;
+        break;
+    case 1:
+        image_blend = make_color_rgb(20,196,255);
+        break;
+    case 2:
+        image_blend = make_color_rgb(248,148,29);
+        break;
+    case 3:
+        image_blend = make_color_rgb(0, 255, 0);
+        break;
+    case 4:
+        image_blend = c_yellow;
+        break;
 }
 
-event_inherited();
+
+if (state == 4)
+{
+
+	draw_sprite_ext(spr_gb_beam, 0, x, y, 800, image_yscale*(1+(sin((timer_blast / pi)) / 4)), image_angle, image_blend, image_alpha);	
+}
+
+draw_sprite_ext(blaster.sprite_index, blaster.image_index, blaster.x, blaster.y, blaster.image_xscale, blaster.image_yscale, blaster.image_angle, image_blend, blaster.image_alpha);

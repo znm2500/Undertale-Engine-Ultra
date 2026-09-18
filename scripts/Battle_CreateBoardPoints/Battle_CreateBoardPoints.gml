@@ -16,7 +16,7 @@ function __Battle_RemoveBoard(_board) {
 }
 
 function __Battle_RemoveBoardController(_controller){
-	if (!variable_global_exists("boards_controlle_array")) return;
+	if (!variable_global_exists("boards_controller_array")) return;
     var idx = array_find_index(global.boards_controller_array, function(a, index) {
         return a == _controller;
     });
@@ -491,75 +491,64 @@ function Battle_CreateBoardEllipse(x, y, radius_x, radius_y, board_depth = 0, an
 
 //创建一个圆角矩形的框
 //Create a Board that is roundrect
-function Battle_CreateBoardRoundrect(x, y, size, precision, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
+function Battle_CreateBoardRoundrect(x, y, size, corner_radius, board_depth = 0, angle = 0, rotate = 0, cover = 0) {
     if (!variable_global_exists("boards_controller_array")) global.boards_controller_array = [];
     var roundrect = {
         _destroyed: false,
         x: x,
         y: y,
         size: size,
-        precision: precision,
+        corner_radius: corner_radius,
         board_depth: board_depth,
         angle: angle,
         rotate: rotate,
         cover: cover,
-        hrect: Battle_CreateBoardRect(x, y, size / 2, size / 2, (size - precision * 2) / 2, (size - precision * 2) / 2, board_depth, angle, 0, cover),
-        vrect: Battle_CreateBoardRect(x, y, (size - precision * 2) / 2, (size - precision * 2) / 2, size / 2, size / 2, board_depth, angle, 0, cover),
-        circle_0: Battle_CreateBoardCircle(x + (size - precision * 2) / 2 - 1, y - (size - precision * 2) / 2 - 1, precision, board_depth, cover),
-        circle_1: Battle_CreateBoardCircle(x - (size - precision * 2) / 2 - 1, y - (size - precision * 2) / 2 - 1, precision, board_depth, cover),
-        circle_2: Battle_CreateBoardCircle(x - (size - precision * 2) / 2 - 1, y + (size - precision * 2) / 2 - 1, precision, board_depth, cover),
-        circle_3: Battle_CreateBoardCircle(x + (size - precision * 2) / 2 - 1, y + (size - precision * 2) / 2 - 1, precision, board_depth, cover),
+        hrect: Battle_CreateBoardRect(x, y, size / 2, size / 2, (size - corner_radius * 2) / 2, (size - corner_radius * 2) / 2, board_depth, angle, 0, cover),
+        vrect: Battle_CreateBoardRect(x, y, (size - corner_radius * 2) / 2, (size - corner_radius * 2) / 2, size / 2, size / 2, board_depth, angle, 0, cover),
+        circle_0: Battle_CreateBoardCircle(x + (size - corner_radius * 2) / 2 - 1, y - (size - corner_radius * 2) / 2 - 1, corner_radius, board_depth, cover),
+        circle_1: Battle_CreateBoardCircle(x - (size - corner_radius * 2) / 2 - 1, y - (size - corner_radius * 2) / 2 - 1, corner_radius, board_depth, cover),
+        circle_2: Battle_CreateBoardCircle(x - (size - corner_radius * 2) / 2 - 1, y + (size - corner_radius * 2) / 2 - 1, corner_radius, board_depth, cover),
+        circle_3: Battle_CreateBoardCircle(x + (size - corner_radius * 2) / 2 - 1, y + (size - corner_radius * 2) / 2 - 1, corner_radius, board_depth, cover),
 
         update: function() {
             angle += rotate;
 
+            var half = size / 2;
+            var inner_half = (size - corner_radius * 2) / 2;
+            // 四个角圆心的对角距离（inner_half * sqrt(2)）
+            var corner_dist = inner_half * sqrt(2);
+
             hrect.angle = angle;
-            hrect.up = size / 2;
-            hrect.down = size / 2;
-            hrect.left = (size - precision * 2) / 2;
-            hrect.right = (size - precision * 2) / 2;
+            hrect.up = half;
+            hrect.down = half;
+            hrect.left = inner_half;
+            hrect.right = inner_half;
             hrect.x = x;
             hrect.y = y;
             hrect.cover = cover;
             hrect.board_depth = board_depth;
 
             vrect.angle = angle;
-            vrect.up = (size - precision * 2) / 2;
-            vrect.down = (size - precision * 2) / 2;
-            vrect.left = size / 2;
-            vrect.right = size / 2;
+            vrect.up = inner_half;
+            vrect.down = inner_half;
+            vrect.left = half;
+            vrect.right = half;
             vrect.x = x;
             vrect.y = y;
             vrect.cover = cover;
             vrect.board_depth = board_depth;
 
-            circle_0.radius_x = precision;
-            circle_0.radius_y = precision;
-            circle_0.x = x + lengthdir_x(((size - precision * 2) / 2) * 1.414, angle + 45) - 1;
-            circle_0.y = y + lengthdir_y(((size - precision * 2) / 2) * 1.414, angle + 45) - 1;
-            circle_0.cover = cover;
-            circle_0.board_depth = board_depth;
-
-            circle_1.radius_x = precision;
-            circle_1.radius_y = precision;
-            circle_1.x = x + lengthdir_x(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 1) - 1;
-            circle_1.y = y + lengthdir_y(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 1) - 1;
-            circle_1.cover = cover;
-            circle_1.board_depth = board_depth;
-
-            circle_2.radius_x = precision;
-            circle_2.radius_y = precision;
-            circle_2.x = x + lengthdir_x(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 2) - 1;
-            circle_2.y = y + lengthdir_y(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 2) - 1;
-            circle_2.cover = cover;
-            circle_2.board_depth = board_depth;
-
-            circle_3.radius_x = precision;
-            circle_3.radius_y = precision;
-            circle_3.x = x + lengthdir_x(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 3) - 1;
-            circle_3.y = y + lengthdir_y(((size - precision * 2) / 2) * 1.414, angle + 45 + 90 * 3) - 1;
-            circle_3.cover = cover;
-            circle_3.board_depth = board_depth;
+            // -1 是补偿边框厚度的经验偏移，使圆与矩形边缘贴合
+            var circles = [circle_0, circle_1, circle_2, circle_3];
+            for (var i = 0; i < 4; i++) {
+                var c = circles[i];
+                c.radius_x = corner_radius;
+                c.radius_y = corner_radius;
+                c.x = x + lengthdir_x(corner_dist, angle + 45 + 90 * i) - 1;
+                c.y = y + lengthdir_y(corner_dist, angle + 45 + 90 * i) - 1;
+                c.cover = cover;
+                c.board_depth = board_depth;
+            }
         },
 
         destroy: function() {

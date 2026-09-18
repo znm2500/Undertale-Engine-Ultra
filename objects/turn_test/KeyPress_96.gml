@@ -1,0 +1,1 @@
+Battle_MakeGB(random(640),random(480),random(640),random(480),random(360),random(360),2,2,1)

@@ -125,7 +125,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2026.0.0.16",
   },
   "name":"UNDERTALE Engine Ultra",
   "resources":[
@@ -141,7 +141,6 @@
     {"id":{"name":"battle_bullet_arrow","path":"objects/battle_bullet_arrow/battle_bullet_arrow.yy",},},
     {"id":{"name":"battle_bullet_bone_3d","path":"objects/battle_bullet_bone_3d/battle_bullet_bone_3d.yy",},},
     {"id":{"name":"battle_bullet_bone","path":"objects/battle_bullet_bone/battle_bullet_bone.yy",},},
-    {"id":{"name":"battle_bullet_gb_beam","path":"objects/battle_bullet_gb_beam/battle_bullet_gb_beam.yy",},},
     {"id":{"name":"battle_bullet_gb","path":"objects/battle_bullet_gb/battle_bullet_gb.yy",},},
     {"id":{"name":"battle_bullet_test","path":"objects/battle_bullet_test/battle_bullet_test.yy",},},
     {"id":{"name":"battle_bullet","path":"objects/battle_bullet/battle_bullet.yy",},},
@@ -673,10 +672,10 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"room_init","path":"rooms/room_init/room_init.yy",},},
+    {"roomId":{"name":"room_logo","path":"rooms/room_logo/room_logo.yy",},},
     {"roomId":{"name":"room_battle","path":"rooms/room_battle/room_battle.yy",},},
     {"roomId":{"name":"room_area_0","path":"rooms/room_area_0/room_area_0.yy",},},
     {"roomId":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},},
-    {"roomId":{"name":"room_logo","path":"rooms/room_logo/room_logo.yy",},},
     {"roomId":{"name":"room_shop","path":"rooms/room_shop/room_shop.yy",},},
     {"roomId":{"name":"room_gameover","path":"rooms/room_gameover/room_gameover.yy",},},
     {"roomId":{"name":"room_settings","path":"rooms/room_settings/room_settings.yy",},},

@@ -6,11 +6,11 @@ impact = 0;
 on_block = 0;
 on_platform = 0;
 on_board = 0;
-jump_state = 0;
+jump_state = 1;
 inst_plat = noone;
 image_blend=c_blue;
 gravity_jump = 0.15;
 gravity_fall = 0.15;
 jump_speed = 4.8;
 max_speed = 20;
-physics_accumulator = 0;
+

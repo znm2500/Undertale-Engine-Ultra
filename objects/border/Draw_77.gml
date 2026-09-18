@@ -46,10 +46,12 @@ if (_enabled) {
 } else {
     var SW = (window_get_fullscreen() ? display_get_width() : window_get_width());
     var SH = (window_get_fullscreen() ? display_get_height() : window_get_height());
+	
     var SX = SW / 640;
     var SY = SH / 480;
     var SF = min(SX, SY);
     display_set_gui_maximize(SF, SF, (SW - 640 * SF) / 2, (SH - 480 * SF) / 2);
+	
     if (round(global.blur_amount)) {
         var _surface = _kawase.GetSurface();
         surface_set_target(_surface);

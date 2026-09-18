@@ -105,8 +105,9 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
     //松开跳跃键时改变状态
     if (jump_state = 2) {
+        var dtf = delta_time / 1000000 * GAME_FPS;
         if (move <= max_speed) {
-            move += gravity_fall;
+            move += gravity_fall * dtf;
         } else {
             move = max_speed;
         }
@@ -322,6 +323,13 @@ if (STATE == BATTLE_STATE.TURN_PREPARATION || STATE == BATTLE_STATE.IN_TURN) {
     }
 }
 
+   if (jump_state == 2 && move > 0) {
+    if (xx != 0) {
+        if (x == xprevious && move > gravity_fall * 2) move = 0;
+    } else {
+        if (y == yprevious && move > gravity_fall * 2) move = 0;
+    }
+}
 
     if (jump_state == 0) {
         if (xprevious != x || yprevious != y) {

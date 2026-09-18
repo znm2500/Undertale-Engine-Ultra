@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.057959,
+  "duration":1.0579592,
   "exportDir":"",
   "name":"snd_gb_charge",
   "parent":{

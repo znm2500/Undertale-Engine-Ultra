@@ -2,6 +2,7 @@ global.boards_controller_array = [];
 global.boards_array = [];
 
 surface_free(_surface);
+surface_free(_surface_bg);
 surface_free(_surface_board_cover);
 surface_free(_surface_board_extra);
 surface_free(_surface_mask);

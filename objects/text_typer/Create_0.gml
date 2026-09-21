@@ -1,7 +1,7 @@
 // text_typer args
 text = "";
-_line = 0; //目前所在行�?
-_type_dir = 0; //打字方向 0为水�?1为垂�?
+_line = 0; // 目前所在行
+_type_dir = 0; // 打字方向：0 为水平，1 为垂直
 _halign = 0;
 _valign = 0;
 _speed = 0;
@@ -32,7 +32,7 @@ _char_data_list = [];
 _list_cmd = [];       
 // ----------------------------------
 
-_map_macro = {}; // 如果需要，map 也可以改�?struct，此处暂保留
+_map_macro = {}; // 如果需要，map 也可以改成 struct，此处暂保留
 _face = noone;
 _face_linked = -1;
 _char_linked = -1;
@@ -43,7 +43,7 @@ _choice_y[0] = 0;
 _choice_x[1] = 0;
 _choice_y[0] = 0;
 _choice_macro = "";
-_choice_switch_direction = 0; //0为左�?1为上�?
+_choice_switch_direction = 0; // 0 为左右，1 为上下
 _choice_switch_key = [INPUT.LEFT, INPUT.RIGHT];
 _choice_switch_sound = true;
 _show_item = 0;
@@ -134,12 +134,12 @@ function ChangeText(text) {
     _char_proc = 1;
     _voice_played = false;
 
-    // --- 修改部分：移�?ds_list_destroy，直接赋值为空数�?---
+    // --- 修改部分：移除 ds_list_destroy，直接赋值为空数组 ---
     _char_data_list = []; 
     _list_cmd = [];       
     // ----------------------------------------------------
 
-    // 假设 _map_macro 仍使�?DS Map，需先清空（或改�?struct {}�?
+    // 假设 _map_macro 仍使用 DS Map，需先清空（或改成 struct {}）
     ds_map_clear(_map_macro); 
 
     _face = noone;

@@ -15,11 +15,11 @@ repeat(4) {
             var cmove = true;
             if (collision) {
                 var list = _collision_list;
-                array_clear(list);
+                ds_list_clear(list);
                 var num = instance_place_list(x + move_x, y + move_y, block, list, false);
                 var procl = 0;
                 repeat(num) {
-                    var inst = list[procl];
+                    var inst = list[| procl];
                     if (instance_exists(inst)) {
                         if (inst.block_enabled) {
                             cmove = false;

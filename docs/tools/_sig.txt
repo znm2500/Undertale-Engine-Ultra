@@ -1,0 +1,923 @@
+全局函数总数: 378
+有真实参数: 90
+无参数: 288
+有 @arg 说明: 127
+
+### __Battle_Iloop  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: _index, _list
+  注释: 直接创建一个框，创建后需要手动添加顶点
+### __Battle_RegisterBoard  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: _board
+### __Battle_RemoveBoard  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: _board
+  注释: 直接创建一个框，创建后需要手动添加顶点
+### __Battle_RemoveBoardController  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: _controller
+  注释: 直接创建一个框，创建后需要手动添加顶点
+### Anim_Create  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name, tween_type, ease_type, start, change, duration, delay, auto_destroy, single_speed, alone_exist, mode, repeat_count
+### Anim_CreateTarget  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name, tween_type, ease_type, start, target_value, duration, delay, auto_destroy, single_speed, alone_exist, mode, repeat_count
+### Anim_Destroy  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Anim_GetValue  [Anim_Init/Anim_Init.gml]
+  参数: TWEEN, EASE, TIME
+### Anim_Init  [Anim_Init/Anim_Init.gml]
+  参数: (无)
+### Anim_IsExists  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Anim_SetSingleSpeed  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name, single_speed
+### Anim_Skip  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Anim_Step  [Anim_Init/Anim_Init.gml]
+  参数: (无)
+### Anim_Uninit  [Anim_Init/Anim_Init.gml]
+  参数: (无)
+### Animator  [Anim_Init/Anim_Init.gml]
+  参数: tween_default, ease_default
+  注释: @arg target,var_name,keyframe...
+### Animator_Delete  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Animator_Destroy  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Animator_IsExist  [Anim_Init/Anim_Init.gml]
+  参数: target, var_name
+### Battle_AddBoardVertex  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: board, vertex_x, vertex_y
+### Battle_CallBulletEventSoulCollision  [Battle_CallBulletEventSoulCollision/Battle_CallBulletEventSoulCollision.gml]
+  参数: (无)
+### Battle_CallEnemyEvent  [Battle_CallEnemyEvent/Battle_CallEnemyEvent.gml]
+  参数: (无)
+  @arg: event | enemy_slot*
+  注释: 全局调用
+### Battle_CallSoulEventBulletCollision  [Battle_CallSoulEventBulletCollision/Battle_CallSoulEventBulletCollision.gml]
+  参数: (无)
+### Battle_CallSoulEventHurt  [Battle_CallSoulEventHurt/Battle_CallSoulEventHurt.gml]
+  参数: (无)
+### Battle_ConvertEnemySlotToMenuChoiceEnemy  [Battle_ConvertEnemySlotToMenuChoiceEnemy/Battle_ConvertEnemySlotToMenuChoiceEnemy.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_ConvertMenuChoiceEnemyToEnemySlot  [Battle_ConvertMenuChoiceEnemyToEnemySlot/Battle_ConvertMenuChoiceEnemyToEnemySlot.gml]
+  参数: (无)
+  @arg: menu_choice_enemy
+### Battle_CreateBoardCircle  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: x, y, radius, board_depth, cover
+  注释: 创建一个椭圆的框
+### Battle_CreateBoardEllipse  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: x, y, radius_x, radius_y, board_depth, angle, rotate, cover
+### Battle_CreateBoardPoints  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: x, y, board_depth, angle, rotate, cover
+### Battle_CreateBoardRect  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: x, y, up, down, left, right, board_depth, angle, rotate, cover
+  注释: 创建一个圆形的框
+### Battle_CreateBoardRoundrect  [Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml]
+  参数: x, y, size, corner_radius, board_depth, angle, rotate, cover
+### Battle_Dialog_Enemy_Add  [Battle_Dialog_Enemy_Add/Battle_Dialog_Enemy_Add.gml]
+  参数: x, y, depth, text, template
+### Battle_End  [Battle_End/Battle_End.gml]
+  参数: (无)
+### Battle_EndDialog  [Battle_EndDialog/Battle_EndDialog.gml]
+  参数: (无)
+### Battle_EndMenu  [Battle_EndMenu/Battle_EndMenu.gml]
+  参数: (无)
+  注释: 使用物品
+### Battle_EndMenuFightAim  [Battle_EndMenuFightAim/Battle_EndMenuFightAim.gml]
+  参数: (无)
+### Battle_EndMenuFightAnim  [Battle_EndMenuFightAnim/Battle_EndMenuFightAnim.gml]
+  参数: (无)
+### Battle_EndMenuFightDamage  [Battle_EndMenuFightDamage/Battle_EndMenuFightDamage.gml]
+  参数: (无)
+### Battle_EndTurn  [Battle_EndTurn/Battle_EndTurn.gml]
+  参数: (无)
+### Battle_EndTurnPreparation  [Battle_EndTurnPreparation/Battle_EndTurnPreparation.gml]
+  参数: (无)
+### Battle_FadeFader  [Battle_FadeFader/Battle_FadeFader.gml]
+  参数: (无)
+  @arg: alpha | time
+### Battle_GetBoardSurface  [Battle_GetBoardSurface/Battle_GetBoardSurface.gml]
+  参数: (无)
+### Battle_GetEnemy  [Battle_GetEnemy/Battle_GetEnemy.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyActionName  [Battle_GetEnemyActionName/Battle_GetEnemyActionName.gml]
+  参数: (无)
+  @arg: enemy_slot | action_slot
+### Battle_GetEnemyActionNumber  [Battle_GetEnemyActionNumber/Battle_GetEnemyActionNumber.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyCenterPosX  [Battle_GetEnemyCenterPosX/Battle_GetEnemyCenterPosX.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyCenterPosY  [Battle_GetEnemyCenterPosY/Battle_GetEnemyCenterPosY.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyDEF  [Battle_GetEnemyDEF/Battle_GetEnemyDEF.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyName  [Battle_GetEnemyName/Battle_GetEnemyName.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_GetEnemyNumber  [Battle_GetEnemyNumber/Battle_GetEnemyNumber.gml]
+  参数: (无)
+### Battle_GetMenu  [Battle_GetMenu/Battle_GetMenu.gml]
+  参数: (无)
+### Battle_GetMenuChoiceAction  [Battle_GetMenuChoiceAction/Battle_GetMenuChoiceAction.gml]
+  参数: (无)
+### Battle_GetMenuChoiceButton  [Battle_GetMenuChoiceButton/Battle_GetMenuChoiceButton.gml]
+  参数: (无)
+### Battle_GetMenuChoiceEnemy  [Battle_GetMenuChoiceEnemy/Battle_GetMenuChoiceEnemy.gml]
+  参数: (无)
+### Battle_GetMenuChoiceItem  [Battle_GetMenuChoiceItem/Battle_GetMenuChoiceItem.gml]
+  参数: (无)
+### Battle_GetMenuChoiceMercy  [Battle_GetMenuChoiceMercy/Battle_GetMenuChoiceMercy.gml]
+  参数: (无)
+### Battle_GetMenuChoiceMercyOverrideName  [Battle_GetMenuChoiceMercyOverrideName/Battle_GetMenuChoiceMercyOverrideName.gml]
+  参数: (无)
+  @arg: choice_mercy_slot
+### Battle_GetMenuChoiceMercyOverrideNumber  [Battle_GetMenuChoiceMercyOverrideNumber/Battle_GetMenuChoiceMercyOverrideNumber.gml]
+  参数: (无)
+### Battle_GetMenuDialog  [Battle_GetMenuDialog/Battle_GetMenuDialog.gml]
+  参数: (无)
+### Battle_GetMenuFightAnimTime  [Battle_GetMenuFightAnimTime/Battle_GetMenuFightAnimTime.gml]
+  参数: (无)
+### Battle_GetMenuFightDamage  [Battle_GetMenuFightDamage/Battle_GetMenuFightDamage.gml]
+  参数: (无)
+### Battle_GetMenuFightDamageTime  [Battle_GetMenuFightDamageTime/Battle_GetMenuFightDamageTime.gml]
+  参数: (无)
+### Battle_GetMenuFightPanel  [Battle_GetMenuFightPanel/Battle_GetMenuFightPanel.gml]
+  参数: (无)
+### Battle_GetMenuItemUsedLast  [Battle_GetMenuItemUsedLast/Battle_GetMenuItemUsedLast.gml]
+  参数: (无)
+### Battle_GetNextState  [Battle_GetNextState/Battle_GetNextState.gml]
+  参数: (无)
+### Battle_GetPlayerTempAtk  [Battle_GetPlayerTempAtk/Battle_GetPlayerTempAtk.gml]
+  参数: (无)
+### Battle_GetPlayerTempDef  [Battle_GetPlayerTempDef/Battle_GetPlayerTempDef.gml]
+  参数: (无)
+### Battle_GetPlayerTempInv  [Battle_GetPlayerTempInv/Battle_GetPlayerTempInv.gml]
+  参数: (无)
+### Battle_GetPlayerTempSpd  [Battle_GetPlayerTempSpd/Battle_GetPlayerTempSpd.gml]
+  参数: (无)
+### Battle_GetRewardExp  [Battle_GetRewardExp/Battle_GetRewardExp.gml]
+  参数: (无)
+### Battle_GetRewardGold  [Battle_GetRewardGold/Battle_GetRewardGold.gml]
+  参数: (无)
+### Battle_GetState  [Battle_GetState/Battle_GetState.gml]
+  参数: (无)
+### Battle_GetTurnInfo  [Battle_GetTurnInfo/Battle_GetTurnInfo.gml]
+  参数: (无)
+  @arg: info | default*
+### Battle_GetTurnNumber  [Battle_GetTurnNumber/Battle_GetTurnNumber.gml]
+  参数: (无)
+### Battle_GetTurnTime  [Battle_GetTurnTime/Battle_GetTurnTime.gml]
+  参数: (无)
+### Battle_GotoNextState  [Battle_GotoNextState/Battle_GotoNextState.gml]
+  参数: (无)
+### Battle_IsBoardTransforming  [Battle_IsBoardTransforming/Battle_IsBoardTransforming.gml]
+  参数: (无)
+### Battle_IsBulletValid  [Battle_IsBulletValid/Battle_IsBulletValid.gml]
+  参数: (无)
+  @arg: bullet_obj/inst
+### Battle_IsDialogAutoEnd  [Battle_IsDialogAutoEnd/Battle_IsDialogAutoEnd.gml]
+  参数: (无)
+### Battle_IsEnemySlotValid  [Battle_IsEnemySlotValid/Battle_IsEnemySlotValid.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_IsEnemySpareable  [Battle_IsEnemySpareable/Battle_IsEnemySpareable.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_IsEnemyValid  [Battle_IsEnemyValid/Battle_IsEnemyValid.gml]
+  参数: (无)
+  @arg: enemy_obj/inst
+### Battle_IsFleeable  [Battle_IsFleeable/Battle_IsFleeable.gml]
+  参数: (无)
+### Battle_IsMenuChoiceMercyOverride  [Battle_IsMenuChoiceMercyOverride/Battle_IsMenuChoiceMercyOverride.gml]
+  参数: (无)
+### Battle_IsMenuMercyFleeEnabled  [Battle_IsMenuMercyFleeEnabled/Battle_IsMenuMercyFleeEnabled.gml]
+  参数: (无)
+### Battle_IsSoulValid  [Battle_IsSoulValid/Battle_IsSoulValid.gml]
+  参数: (无)
+  @arg: soul_obj/inst
+### Battle_IsTurnPreparationAutoEnd  [Battle_IsTurnPreparationAutoEnd/Battle_IsTurnPreparationAutoEnd.gml]
+  参数: (无)
+### Battle_IsTurnValid  [Battle_IsTurnValid/Battle_IsTurnValid.gml]
+  参数: (无)
+  @arg: turn_obj/inst
+### Battle_MakeBone  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_target,follow_angle,point,point_at,follow_x,follow_y
+### Battle_MakeBone3D  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap
+### Battle_MakeBoneArrow  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,*duration,*scale,*extra_angle,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneBottom  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneLeft  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneRight  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneTop  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneTwoH  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneTwoV  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: x,y,hspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y
+### Battle_MakeBoneWallBottom  [Battle_MakeBoneWall/Battle_MakeBoneWall.gml]
+  参数: pause, length, duration, type, follow_board
+### Battle_MakeBoneWallLeft  [Battle_MakeBoneWall/Battle_MakeBoneWall.gml]
+  参数: pause, length, duration, type, follow_board
+### Battle_MakeBoneWallRight  [Battle_MakeBoneWall/Battle_MakeBoneWall.gml]
+  参数: pause, length, duration, type, follow_board
+### Battle_MakeBoneWallRound  [Battle_MakeBoneWall/Battle_MakeBoneWall.gml]
+  参数: rotatespeed, radius, type, pause, duration
+### Battle_MakeBoneWallTop  [Battle_MakeBoneWall/Battle_MakeBoneWall.gml]
+  参数: pause, length, duration, type, follow_board
+### Battle_MakeGB  [Battle_MakeGB/Battle_MakeGB.gml]
+  参数: x, y, x_target, y_target, angle_start, angle_target, scale_x, scale_y, type, pause, duration, time_move
+### Battle_MakePlatform  [Battle_MakePlatform/Battle_MakePlatform.gml]
+  参数: x, y, width, angle, hspeed, vspeed, sticky, bounce, duration, auto_destroy
+### Battle_RemoveEnemy  [Battle_RemoveEnemy/Battle_RemoveEnemy.gml]
+  参数: (无)
+  @arg: enemy_slot
+### Battle_RewardExp  [Battle_RewardExp/Battle_RewardExp.gml]
+  参数: (无)
+  @arg: reward_exp
+### Battle_RewardGold  [Battle_RewardGold/Battle_RewardGold.gml]
+  参数: (无)
+  @arg: reward_gold
+### Battle_SetBoardSize  [Battle_SetBoardSize/Battle_SetBoardSize.gml]
+  参数: (无)
+  @arg: up | down | left | right | time*
+### Battle_SetDialog  [Battle_SetDialog/Battle_SetDialog.gml]
+  参数: (无)
+  @arg: text* | choice* | line2*
+  注释: 销毁原实例
+### Battle_SetDialogAutoEnd  [Battle_SetDialogAutoEnd/Battle_SetDialogAutoEnd.gml]
+  参数: (无)
+  @arg: enabled
+### Battle_SetEnemy  [Battle_SetEnemy/Battle_SetEnemy.gml]
+  参数: (无)
+  @arg: enemy_obj/inst | enemy_slot
+### Battle_SetEnemyActionName  [Battle_SetEnemyActionName/Battle_SetEnemyActionName.gml]
+  参数: (无)
+  @arg: enemy_slot | action_slot | text
+### Battle_SetEnemyActionNumber  [Battle_SetEnemyActionNumber/Battle_SetEnemyActionNumber.gml]
+  参数: (无)
+  @arg: enemy_slot | action_number
+### Battle_SetEnemyCenterPos  [Battle_SetEnemyCenterPos/Battle_SetEnemyCenterPos.gml]
+  参数: (无)
+  @arg: enemy_slot | x | y
+### Battle_SetEnemyDEF  [Battle_SetEnemyDEF/Battle_SetEnemyDEF.gml]
+  参数: (无)
+  @arg: enemy_slot | def
+### Battle_SetEnemyName  [Battle_SetEnemyName/Battle_SetEnemyName.gml]
+  参数: (无)
+  @arg: enemy_slot | name
+### Battle_SetEnemySpareable  [Battle_SetEnemySpareable/Battle_SetEnemySpareable.gml]
+  参数: (无)
+  @arg: enemy_slot | spareable
+### Battle_SetFleeable  [Battle_SetFleeable/Battle_SetFleeable.gml]
+  参数: (无)
+  @arg: fleeable
+### Battle_SetMenu  [Battle_SetMenu/Battle_SetMenu.gml]
+  参数: (无)
+  @arg: menu | call_event*
+### Battle_SetMenuChoiceAction  [Battle_SetMenuChoiceAction/Battle_SetMenuChoiceAction.gml]
+  参数: (无)
+  @arg: action_choice | call_event*
+### Battle_SetMenuChoiceButton  [Battle_SetMenuChoiceButton/Battle_SetMenuChoiceButton.gml]
+  参数: (无)
+  @arg: button_choice | call_event*
+### Battle_SetMenuChoiceEnemy  [Battle_SetMenuChoiceEnemy/Battle_SetMenuChoiceEnemy.gml]
+  参数: (无)
+  @arg: enemy_choice | call_event*
+### Battle_SetMenuChoiceItem  [Battle_SetMenuChoiceItem/Battle_SetMenuChoiceItem.gml]
+  参数: slot, call
+  注释: 更新文字
+### Battle_SetMenuChoiceMercy  [Battle_SetMenuChoiceMercy/Battle_SetMenuChoiceMercy.gml]
+  参数: (无)
+  @arg: mercy_choice | call_event*
+### Battle_SetMenuChoiceMercyOverride  [Battle_SetMenuChoiceMercyOverride/Battle_SetMenuChoiceMercyOverride.gml]
+  参数: (无)
+  @arg: override
+### Battle_SetMenuChoiceMercyOverrideName  [Battle_SetMenuChoiceMercyOverrideName/Battle_SetMenuChoiceMercyOverrideName.gml]
+  参数: (无)
+  @arg: choice_mercy_slot | name
+### Battle_SetMenuChoiceMercyOverrideNumber  [Battle_SetMenuChoiceMercyOverrideNumber/Battle_SetMenuChoiceMercyOverrideNumber.gml]
+  参数: (无)
+  @arg: number
+### Battle_SetMenuDialog  [Battle_SetMenuDialog/Battle_SetMenuDialog.gml]
+  参数: (无)
+  @arg: text
+### Battle_SetMenuFightAnimTime  [Battle_SetMenuFightAnimTime/Battle_SetMenuFightAnimTime.gml]
+  参数: (无)
+  @arg: time
+### Battle_SetMenuFightDamage  [Battle_SetMenuFightDamage/Battle_SetMenuFightDamage.gml]
+  参数: (无)
+  @arg: damage
+### Battle_SetMenuFightDamageTime  [Battle_SetMenuFightDamageTime/Battle_SetMenuFightDamageTime.gml]
+  参数: (无)
+  @arg: time
+### Battle_SetMenuFightPanel  [Battle_SetMenuFightPanel/Battle_SetMenuFightPanel.gml]
+  参数: (无)
+  @arg: Object
+### Battle_SetMenuMercyFleeEnabled  [Battle_SetMenuMercyFleeEnabled/Battle_SetMenuMercyFleeEnabled.gml]
+  参数: (无)
+  @arg: flee_enabled
+### Battle_SetNextState  [Battle_SetNextState/Battle_SetNextState.gml]
+  参数: (无)
+  @arg: next_state
+### Battle_SetPlayerTempAtk  [Battle_SetPlayerTempAtk/Battle_SetPlayerTempAtk.gml]
+  参数: (无)
+  @arg: atk
+### Battle_SetPlayerTempDef  [Battle_SetPlayerTempDef/Battle_SetPlayerTempDef.gml]
+  参数: (无)
+  @arg: def
+### Battle_SetPlayerTempInv  [Battle_SetPlayerTempInv/Battle_SetPlayerTempInv.gml]
+  参数: (无)
+  @arg: inv
+### Battle_SetPlayerTempSpd  [Battle_SetPlayerTempSpd/Battle_SetPlayerTempSpd.gml]
+  参数: (无)
+  @arg: spd
+### Battle_SetSoul  [Battle_SetSoul/Battle_SetSoul.gml]
+  参数: SOUL
+### Battle_SetState  [Battle_SetState/Battle_SetState.gml]
+  参数: (无)
+  @arg: state
+  注释: 菜单
+### Battle_SetTurnInfo  [Battle_SetTurnInfo/Battle_SetTurnInfo.gml]
+  参数: (无)
+  @arg: info | value
+### Battle_SetTurnNumber  [Battle_SetTurnNumber/Battle_SetTurnNumber.gml]
+  参数: (无)
+  @arg: turn_number
+### Battle_SetTurnPreparationAutoEnd  [Battle_SetTurnPreparationAutoEnd/Battle_SetTurnPreparationAutoEnd.gml]
+  参数: (无)
+  @arg: enabled
+### Battle_SetTurnTime  [Battle_SetTurnTime/Battle_SetTurnTime.gml]
+  参数: (无)
+  @arg: time
+### Bezier_AddPoint  [Anim_Init/Anim_Init.gml]
+  参数: bezier, x, y
+  注释: 获取数据
+### Bezier_CreateStruct  [Anim_Init/Anim_Init.gml]
+  参数: start_x, start_y, last_x, last_y
+  注释: 获取数据
+### Bezier_GetValue  [Anim_Init/Anim_Init.gml]
+  参数: bezier, step
+  注释: 获取数据
+### Bezier_PointNumber  [Anim_Init/Anim_Init.gml]
+  参数: bezier
+  注释: 获取数据
+### BGM_Fade  [BGM_Fade/BGM_Fade.gml]
+  参数: (无)
+  @arg: bgm_slot | volume | TIME
+### BGM_GetAudio  [BGM_GetAudio/BGM_GetAudio.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_GetID  [BGM_GetID/BGM_GetID.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_Init  [BGM_Init/BGM_Init.gml]
+  参数: (无)
+### BGM_IsPaused  [BGM_IsPaused/BGM_IsPaused.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_IsPlaying  [BGM_IsPlaying/BGM_IsPlaying.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_IsSlotValid  [BGM_IsSlotValid/BGM_IsSlotValid.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_Pause  [BGM_Pause/BGM_Pause.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_Play  [BGM_Play/BGM_Play.gml]
+  参数: (无)
+  @arg: bgm_slot | audio | loop* | loop_start* | loop_end*
+### BGM_Resume  [BGM_Resume/BGM_Resume.gml]
+  参数: (无)
+  @arg: bgm_slot
+### BGM_SetPitch  [BGM_SetPitch/BGM_SetPitch.gml]
+  参数: (无)
+  @arg: bgm_slot | pitch
+### BGM_SetVolume  [BGM_SetVolume/BGM_SetVolume.gml]
+  参数: (无)
+  @arg: bgm_slot | volume | time*
+### BGM_Step  [BGM_Step/BGM_Step.gml]
+  参数: (无)
+### BGM_Stop  [BGM_Stop/BGM_Stop.gml]
+  参数: (无)
+  @arg: bgm_slot
+### Blend_Color  [GetColorFromString/GetColorFromString.gml]
+  参数: (无)
+  @arg: col1,col2
+### BlueSoulControl  [BlueSoulControl/BlueSoulControl.gml]
+  参数: dir, impact_speed
+### Border_GetSprite  [Border_GetSprite/Border_GetSprite.gml]
+  参数: (无)
+### Border_IsEnabled  [Border_IsEnabled/Border_IsEnabled.gml]
+  参数: (无)
+### Border_SetEnabled  [Border_SetEnabled/Border_SetEnabled.gml]
+  参数: (无)
+  @arg: enabled,blur
+### Border_SetSprite  [Border_SetSprite/Border_SetSprite.gml]
+  参数: (无)
+  @arg: sprite | fade* | time*
+### Camera_Shake  [Camera_Shake/Camera_Shake.gml]
+  参数: shake_x, shake_y, shake_speed_x, shake_speed_y, shake_random_x, shake_random_y, shake_decrease_x, shake_decrease_y, blur
+### CC_Add  [CC_Add/CC_Add.gml]
+  参数: (无)
+  @arg: text | time*
+### CustomItem_Bandage  [CustomItem_Bandage/CustomItem_Bandage.gml]
+  参数: (无)
+### CustomItem_Dice  [CustomItem_Dice/CustomItem_Dice.gml]
+  参数: (无)
+  注释: You can override several functions to customize your item.
+### CustomItem_FadedRibbon  [CustomItem_FadedRibbon/CustomItem_FadedRibbon.gml]
+  参数: (无)
+### CustomItem_Phone_TML  [CustomItem_PhoneToriel/CustomItem_PhoneToriel.gml]
+  参数: (无)
+  注释: You can check what room it currently is, and display different dialogs.
+### CustomItem_Stick  [CustomItem_Stick/CustomItem_Stick.gml]
+  参数: (无)
+### CustomItem_ToyKnife  [CustomItem_ToyKnife/CustomItem_ToyKnife.gml]
+  参数: (无)
+### Demo_AddInput  [Demo_AddInput/Demo_AddInput.gml]
+  参数: (无)
+  @arg: input
+### Demo_ClearInput  [Demo_ClearInput/Demo_ClearInput.gml]
+  参数: (无)
+### Demo_GetInput  [Demo_GetInput/Demo_GetInput.gml]
+  参数: (无)
+  @arg: pos
+### Demo_GetInputNumber  [Demo_GetInputNumber/Demo_GetInputNumber.gml]
+  参数: (无)
+### Demo_Init  [Demo_Init/Demo_Init.gml]
+  参数: (无)
+### Demo_IsPlaying  [Demo_IsPlaying/Demo_IsPlaying.gml]
+  参数: (无)
+### Demo_IsPlayingPaused  [Demo_IsPlayingPaused/Demo_IsPlayingPaused.gml]
+  参数: (无)
+### Demo_IsRecording  [Demo_IsRecording/Demo_IsRecording.gml]
+  参数: (无)
+### Demo_IsRecordingPaused  [Demo_IsRecordingPaused/Demo_IsRecordingPaused.gml]
+  参数: (无)
+### Demo_PausePlaying  [Demo_PausePlaying/Demo_PausePlaying.gml]
+  参数: (无)
+### Demo_PauseRecording  [Demo_PauseRecording/Demo_PauseRecording.gml]
+  参数: (无)
+### Demo_RemoveInput  [Demo_RemoveInput/Demo_RemoveInput.gml]
+  参数: (无)
+  @arg: input
+### Demo_ResumePlaying  [Demo_ResumePlaying/Demo_ResumePlaying.gml]
+  参数: (无)
+### Demo_ResumeRecording  [Demo_ResumeRecording/Demo_ResumeRecording.gml]
+  参数: (无)
+### Demo_StartPlaying  [Demo_StartPlaying/Demo_StartPlaying.gml]
+  参数: (无)
+### Demo_StartRecording  [Demo_StartRecording/Demo_StartRecording.gml]
+  参数: (无)
+### Demo_StopPlaying  [Demo_StopPlaying/Demo_StopPlaying.gml]
+  参数: (无)
+### Demo_StopRecording  [Demo_StopRecording/Demo_StopRecording.gml]
+  参数: (无)
+### Demo_Uninit  [Demo_Uninit/Demo_Uninit.gml]
+  参数: (无)
+### Dialog_Add  [Dialog_Add/Dialog_Add.gml]
+  参数: (无)
+  @arg: text
+### Dialog_Clear  [Dialog_Clear/Dialog_Clear.gml]
+  参数: (无)
+### Dialog_Get  [Dialog_Get/Dialog_Get.gml]
+  参数: (无)
+### Dialog_Init  [Dialog_Init/Dialog_Init.gml]
+  参数: (无)
+### Dialog_IsEmpty  [Dialog_IsEmpty/Dialog_IsEmpty.gml]
+  参数: (无)
+### Dialog_Start  [Dialog_Start/Dialog_Start.gml]
+  参数: choose_enable, choice1, choice2
+### Dialog_Uninit  [Dialog_Uninit/Dialog_Uninit.gml]
+  参数: (无)
+### Encounter_Custom  [Encounter_Custom/Encounter_Custom.gml]
+  参数: (无)
+### Encounter_GetBGM  [Encounter_GetBGM/Encounter_GetBGM.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_GetEnemy  [Encounter_GetEnemy/Encounter_GetEnemy.gml]
+  参数: (无)
+  @arg: encounter_id | enemy_slot
+### Encounter_GetMenuDialog  [Encounter_GetMenuDialog/Encounter_GetMenuDialog.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_GetSoulX  [Encounter_GetSoulX/Encounter_GetSoulX.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_GetSoulY  [Encounter_GetSoulY/Encounter_GetSoulY.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_Init  [Encounter_Init/Encounter_Init.gml]
+  参数: (无)
+### Encounter_IsExists  [Encounter_IsExists/Encounter_IsExists.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_IsMenuMercyFleeEnabled  [Encounter_IsMenuMercyFleeEnabled/Encounter_IsMenuMercyFleeEnabled.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_IsPauseBGM  [Encounter_IsPauseBGM/Encounter_IsPauseBGM.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_IsQuick  [Encounter_IsQuick/Encounter_IsQuick.gml]
+  参数: (无)
+  @arg: encounter_id
+### Encounter_Set  [Encounter_Set/Encounter_Set.gml]
+  参数: (无)
+  @arg: id | enemy_0 | enemy_1 | enemy_2 | menu_dialog | bgm* | menu_mercy_flee_enabled* | pause_bgm* | quick* | soul_x* | soul_y*
+### Encounter_Start  [Encounter_Start/Encounter_Start.gml]
+  参数: encounter, anim, exclam
+### Encounter_Uninit  [Encounter_Uninit/Encounter_Uninit.gml]
+  参数: (无)
+### Fader_Fade  [Fader_Fade/Fader_Fade.gml]
+  参数: (无)
+  @arg: start | target | time | delay*
+### File_ReadAllText  [FileUtils/FileUtils.gml]
+  参数: path
+  注释: Try write all text into a file.
+### File_WriteAllText  [FileUtils/FileUtils.gml]
+  参数: path, text
+### Game_GetFrameSkip  [Game_GetFrameSkip/Game_GetFrameSkip.gml]
+  参数: (无)
+### Game_SetFrameSkip  [Game_SetFrameSkip/Game_SetFrameSkip.gml]
+  参数: amount
+### GetColorFromString  [GetColorFromString/GetColorFromString.gml]
+  参数: (无)
+  @arg: string
+### GetObjectBase  [GetObjectBase/GetObjectBase.gml]
+  参数: obj
+### Input_Bind  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input | type | device | button
+### Input_GetState  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+### Input_Init  [Input_Init/Input_Init.gml]
+  参数: (无)
+  注释: GMU_Input v1.1.0
+### Input_IsHeld  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+  注释: @arg input
+### Input_IsPressed  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+  注释: @arg input
+### Input_IsReleased  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+  注释: @arg input
+### Input_RemoveStateOverride  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+  注释: @arg input
+### Input_SetStateOverride  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input | state
+  注释: @arg input
+### Input_Unbind  [Input_Init/Input_Init.gml]
+  参数: (无)
+  @arg: input
+  注释: @arg input
+### Input_Uninit  [Input_Init/Input_Init.gml]
+  参数: (无)
+  注释: @arg input
+### Inventory  [Inventory/Inventory.gml]
+  参数: itemTypeManager, capacity
+### Item_Custom  [Item_Custom/Item_Custom.gml]
+  参数: (无)
+  注释: Register item types here.
+### Item_GetInventoryBoxes  [Item_Custom/Item_Custom.gml]
+  参数: index
+### Item_GetInventoryItems  [Item_Custom/Item_Custom.gml]
+  参数: (无)
+### Item_GetInventoryManager  [Item_InitUninit/Item_InitUninit.gml]
+  参数: (无)
+### Item_GetInventoryPhones  [Item_Custom/Item_Custom.gml]
+  参数: (无)
+### Item_GetNumber  [Item_GetNumber/Item_GetNumber.gml]
+  参数: (无)
+### Item_GetTextEat  [Item_GetTextEat/Item_GetTextEat.gml]
+  参数: (无)
+  @arg: item_name
+### Item_GetTextEquip  [Item_GetTextEquip/Item_GetTextEquip.gml]
+  参数: (无)
+  @arg: item_name
+### Item_GetTextHeal  [Item_GetTextHeal/Item_GetTextHeal.gml]
+  参数: (无)
+  @arg: heal_hp | new_line*
+### Item_GetTypeManager  [Item_InitUninit/Item_InitUninit.gml]
+  参数: (无)
+### Item_Init  [Item_InitUninit/Item_InitUninit.gml]
+  参数: (无)
+### Item_Uninit  [Item_InitUninit/Item_InitUninit.gml]
+  参数: (无)
+### ItemType  [ItemType/ItemType.gml]
+  参数: (无)
+### ItemTypeManager  [ItemType/ItemType.gml]
+  参数: (无)
+### ItemTypeSimple  [ItemType/ItemType.gml]
+  参数: name, info
+### Kawase  [Kawase/Kawase.gml]
+  参数: _width, _height, _maxIterations
+### Macro_Battle  [Macro_Battle/Macro_Battle.gml]
+  参数: (无)
+### Macro_Depth  [Macro_Depth/Macro_Depth.gml]
+  参数: (无)
+### Macro_Direction  [Macro_Direction/Macro_Direction.gml]
+  参数: (无)
+### Macro_Engine  [Macro_Engine/Macro_Engine.gml]
+  参数: (无)
+### Macro_Game  [Macro_Game/Macro_Game.gml]
+  参数: (无)
+  注释: Anything you want, must be a string.
+### Macro_Input  [Macro_Input/Macro_Input.gml]
+  参数: (无)
+### Macro_Item  [Macro_Item/Macro_Item.gml]
+  参数: (无)
+### Macro_Phone  [Macro_Phone/Macro_Phone.gml]
+  参数: (无)
+### Macro_Plot  [Macro_Plot/Macro_Plot.gml]
+  参数: (无)
+### Macro_Shop  [Macro_Shop/Macro_Shop.gml]
+  参数: (无)
+### Makebonecircle  [Battle_MakeBone/Battle_MakeBone.gml]
+  参数: (无)
+  @arg: number,angle,type,x,y,size_x,size_y,length,out,*roting,*rot,*extra_angle,*rotate,*duration,*rott
+### Phone_GetNumber  [Item_GetNumber/Item_GetNumber.gml]
+  参数: (无)
+### Player_CalculateDamage  [Player_CalculateDamage/Player_CalculateDamage.gml]
+  参数: baseDamage, minDamage, maxDamage
+### Player_CustomInitialData  [Player_CustomInitialData/Player_CustomInitialData.gml]
+  参数: (无)
+### Player_GetAtk  [Player_GetAtk/Player_GetAtk.gml]
+  参数: (无)
+### Player_GetAtkItem  [Player_GetAtkItem/Player_GetAtkItem.gml]
+  参数: (无)
+### Player_GetAtkTotal  [Player_GetAtkTotal/Player_GetAtkTotal.gml]
+  参数: (无)
+### Player_GetBattleFightMenuObj  [Player_GetBattleFightMenuObj/Player_GetBattleFightMenuObj.gml]
+  参数: (无)
+### Player_GetDef  [Player_GetDef/Player_GetDef.gml]
+  参数: (无)
+### Player_GetDefItem  [Player_GetDefItem/Player_GetDefItem.gml]
+  参数: (无)
+### Player_GetDefTotal  [Player_GetDefTotal/Player_GetDefTotal.gml]
+  参数: (无)
+### Player_GetExp  [Player_GetExp/Player_GetExp.gml]
+  参数: (无)
+### Player_GetGold  [Player_GetGold/Player_GetGold.gml]
+  参数: (无)
+### Player_GetHp  [Player_GetHp/Player_GetHp.gml]
+  参数: (无)
+### Player_GetHpMax  [Player_GetHpMax/Player_GetHpMax.gml]
+  参数: (无)
+### Player_GetInv  [Player_GetInv/Player_GetInv.gml]
+  参数: (无)
+### Player_GetInvItem  [Player_GetInvItem/Player_GetInvItem.gml]
+  参数: (无)
+### Player_GetInvTotal  [Player_GetInvTotal/Player_GetInvTotal.gml]
+  参数: (无)
+### Player_GetItemArmor  [Player_GetItemArmor/Player_GetItemArmor.gml]
+  参数: (无)
+### Player_GetItemWeapon  [Player_GetItemWeapon/Player_GetItemWeapon.gml]
+  参数: (无)
+### Player_GetKills  [Player_GetKills/Player_GetKills.gml]
+  参数: (无)
+### Player_GetKr  [Player_GetKr/Player_GetKr.gml]
+  参数: (无)
+### Player_GetLv  [Player_GetLv/Player_GetLv.gml]
+  参数: (无)
+### Player_GetLvAtk  [Player_GetLvAtk/Player_GetLvAtk.gml]
+  参数: (无)
+  @arg: lv
+### Player_GetLvDef  [Player_GetLvDef/Player_GetLvDef.gml]
+  参数: (无)
+  @arg: lv
+### Player_GetLvExp  [Player_GetLvExp/Player_GetLvExp.gml]
+  参数: (无)
+  @arg: lv
+### Player_GetLvHpMax  [Player_GetLvHpMax/Player_GetLvHpMax.gml]
+  参数: (无)
+  @arg: lv
+### Player_GetName  [Player_GetName/Player_GetName.gml]
+  参数: (无)
+### Player_GetPlot  [Player_GetPlot/Player_GetPlot.gml]
+  参数: (无)
+### Player_GetRoomName  [Player_GetRoomName/Player_GetRoomName.gml]
+  参数: (无)
+  @arg: room
+### Player_GetSpd  [Player_GetSpd/Player_GetSpd.gml]
+  参数: (无)
+### Player_GetSpdItem  [Player_GetSpdItem/Player_GetSpdItem.gml]
+  参数: (无)
+### Player_GetSpdTotal  [Player_GetSpdTotal/Player_GetSpdTotal.gml]
+  参数: (无)
+### Player_GetTextTyperChoice  [Player_GetTextTyperChoice/Player_GetTextTyperChoice.gml]
+  参数: (无)
+### Player_Heal  [Player_Heal/Player_Heal.gml]
+  参数: heal
+### Player_Hurt  [Player_Hurt/Player_Hurt.gml]
+  参数: damage
+### Player_HurtKr  [Player_HurtKR/Player_HurtKR.gml]
+  参数: (无)
+### Player_IsInBattle  [Player_IsInBattle/Player_IsInBattle.gml]
+  参数: (无)
+### Player_LvUp  [Player_LvUp/Player_LvUp.gml]
+  参数: (无)
+  @arg: lv
+### Player_SetAtk  [Player_SetAtk/Player_SetAtk.gml]
+  参数: atk
+### Player_SetAtkItem  [Player_SetAtkItem/Player_SetAtkItem.gml]
+  参数: atk
+### Player_SetBattleFightMenuObj  [Player_SetBattleFightMenuObj/Player_SetBattleFightMenuObj.gml]
+  参数: obj
+### Player_SetDef  [Player_SetDef/Player_SetDef.gml]
+  参数: def
+### Player_SetDefItem  [Player_SetDefItem/Player_SetDefItem.gml]
+  参数: def
+### Player_SetExp  [Player_SetExp/Player_SetExp.gml]
+  参数: experience
+### Player_SetGold  [Player_SetGold/Player_SetGold.gml]
+  参数: gold
+### Player_SetHp  [Player_SetHp/Player_SetHp.gml]
+  参数: hp
+### Player_SetHpMax  [Player_SetHpMax/Player_SetHpMax.gml]
+  参数: hpMax
+### Player_SetInv  [Player_SetInv/Player_SetInv.gml]
+  参数: inv
+### Player_SetInvItem  [Player_SetInvItem/Player_SetInvItem.gml]
+  参数: inv
+### Player_SetItemArmor  [Player_SetItemArmor/Player_SetItemArmor.gml]
+  参数: item
+### Player_SetItemWeapon  [Player_SetItemWeapon/Player_SetItemWeapon.gml]
+  参数: item
+### Player_SetKills  [Player_SetKills/Player_SetKills.gml]
+  参数: kills
+### Player_SetKr  [Player_SetKr/Player_SetKr.gml]
+  参数: (无)
+### Player_SetLv  [Player_SetLv/Player_SetLv.gml]
+  参数: lv
+### Player_SetName  [Player_SetName/Player_SetName.gml]
+  参数: name
+### Player_SetPlot  [Player_SetPlot/Player_SetPlot.gml]
+  参数: plot
+### Player_SetSpd  [Player_SetSpd/Player_SetSpd.gml]
+  参数: spd
+### Player_SetSpdItem  [Player_SetSpdItem/Player_SetSpdItem.gml]
+  参数: spd
+### Player_UpdateLv  [Player_UpdateLv/Player_UpdateLv.gml]
+  参数: (无)
+### RegisterManager  [RegisterManager/RegisterManager.gml]
+  参数: (无)
+### RotateAround  [RotateAround/RotateAround.gml]
+  参数: x_center, y_center, x_around, y_around, x_present, y_present, angle
+  注释: center是初始中心位置
+### Shake_Create  [Shake_Create/Shake_Create.gml]
+  参数: target, var_name, shake_distance, shake_speed, shake_random, shake_decrease, delay
+### Shop_CallDialog  [Shop_CallDialog/Shop_CallDialog.gml]
+  参数: (无)
+  @arg: index
+### Shop_CallEvent  [Shop_CallEvent/Shop_CallEvent.gml]
+  参数: (无)
+  @arg: event
+### Shop_ClearTyper  [Shop_ClearTyper/Shop_ClearTyper.gml]
+  参数: (无)
+### Shop_CreateTyper  [Shop_CreateTyper/Shop_CreateTyper.gml]
+  参数: (无)
+### Shop_Custom  [Shop_Custom/Shop_Custom.gml]
+  参数: (无)
+### Shop_DialogStart  [Shop_DialogStart/Shop_DialogStart.gml]
+  参数: (无)
+  @arg: text
+### Shop_End  [Shop_End/Shop_End.gml]
+  参数: (无)
+### Shop_GetBackground  [Shop_GetBackground/Shop_GetBackground.gml]
+  参数: (无)
+  @arg: shop_id
+### Shop_GetBGM  [Shop_GetBGM/Shop_GetBGM.gml]
+  参数: (无)
+  @arg: shop_id
+### Shop_GetDialogTitle  [Shop_GetDialogTitle/Shop_GetDialogTitle.gml]
+  参数: (无)
+  @arg: index
+### Shop_GetHost  [Shop_GetHost/Shop_GetHost.gml]
+  参数: (无)
+  @arg: shop_id
+### Shop_GoState  [Shop_GoState/Shop_GoState.gml]
+  参数: (无)
+  @arg: state
+### Shop_Init  [Shop_Init/Shop_Init.gml]
+  参数: (无)
+### Shop_IsExists  [Shop_IsExists/Shop_IsExists.gml]
+  参数: (无)
+  @arg: shop_id
+### Shop_RefreshTyper  [Shop_RefreshTyper/Shop_RefreshTyper.gml]
+  参数: (无)
+  @arg: *left | *right | *state | *info
+### Shop_Set  [Shop_Set/Shop_Set.gml]
+  参数: (无)
+  @arg: id | host | background | bgm* | pause_bgm* | quick*
+### Shop_SetDialog  [Shop_SetDialog/Shop_SetDialog.gml]
+  参数: title, title_blend, text, next_dialog
+### Shop_Start  [Shop_Start/Shop_Start.gml]
+  参数: shop_id
+### Shop_Uninit  [Shop_Uninit/Shop_Uninit.gml]
+  参数: (无)
+### Storage  [Storage/Storage.gml]
+  参数: funcGetFilePath
+  注释: Storage data won't be cleared if json is failed to be deserilized.
+### Storage_Custom  [Storage_Custom/Storage_Custom.gml]
+  参数: (无)
+### Storage_Custom_Dynamic  [Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml]
+  参数: storages
+### Storage_Custom_Info  [Storage_Custom_Info/Storage_Custom_Info.gml]
+  参数: storages
+### Storage_Custom_Settings  [Storage_Custom_Settings/Storage_Custom_Settings.gml]
+  参数: storages
+### Storage_Custom_Static  [Storage_Custom_Static/Storage_Custom_Static.gml]
+  参数: storages
+  注释: General zone is for common player stats.
+### Storage_Custom_Temp  [Storage_Custom_Temp/Storage_Custom_Temp.gml]
+  参数: storages
+  注释: Make a cache to make accessing faster since we use it a lot.
+### Storage_GetDynamic  [Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml]
+  参数: (无)
+### Storage_GetInfo  [Storage_Custom_Info/Storage_Custom_Info.gml]
+  参数: (无)
+### Storage_GetInfoFlag  [Storage_GetInfoFlag/Storage_GetInfoFlag.gml]
+  参数: flag, defaultValue
+### Storage_GetInfoGeneral  [Storage_Custom_Info/Storage_Custom_Info.gml]
+  参数: (无)
+### Storage_GetManager  [Storage_InitUninit/Storage_InitUninit.gml]
+  参数: (无)
+### Storage_GetSaveSlot  [Storage_Custom/Storage_Custom.gml]
+  参数: (无)
+### Storage_GetSettings  [Storage_Custom_Settings/Storage_Custom_Settings.gml]
+  参数: (无)
+### Storage_GetStatic  [Storage_Custom_Static/Storage_Custom_Static.gml]
+  参数: (无)
+### Storage_GetStaticFlag  [Storage_GetStaticFlag/Storage_GetStaticFlag.gml]
+  参数: flag, defaultValue
+### Storage_GetStaticGeneral  [Storage_Custom_Static/Storage_Custom_Static.gml]
+  参数: (无)
+### Storage_GetTemp  [Storage_Custom_Temp/Storage_Custom_Temp.gml]
+  参数: (无)
+### Storage_GetTempFlag  [Storage_GetTempFlag/Storage_GetTempFlag.gml]
+  参数: flag, defaultValue
+### Storage_GetTempGeneral  [Storage_Custom_Temp/Storage_Custom_Temp.gml]
+  参数: (无)
+### Storage_Init  [Storage_InitUninit/Storage_InitUninit.gml]
+  参数: (无)
+### Storage_LoadGame  [Storage_Custom_Info/Storage_Custom_Info.gml]
+  参数: (无)
+### Storage_MakeGetFilePathFunc  [Storage_Custom/Storage_Custom.gml]
+  参数: useSlots, fileName
+### Storage_SaveDynamic  [Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml]
+  参数: (无)
+### Storage_SaveGame  [Storage_Custom_Info/Storage_Custom_Info.gml]
+  参数: (无)
+### Storage_SetInfoFlag  [Storage_SetInfoFlag/Storage_SetInfoFlag.gml]
+  参数: flag, value
+### Storage_SetSaveSlot  [Storage_Custom/Storage_Custom.gml]
+  参数: slot
+### Storage_SetStaticFlag  [Storage_SetStaticFlag/Storage_SetStaticFlag.gml]
+  参数: flag, value
+### Storage_SetTempFlag  [Storage_SetTempFlag/Storage_SetTempFlag.gml]
+  参数: flag, value
+### Storage_Uninit  [Storage_InitUninit/Storage_InitUninit.gml]
+  参数: (无)
+### StorageZone  [Storage/Storage.gml]
+  参数: (无)
+  注释: A storage unit with a sturct to hold the data.
+### StorageZoneInventories  [Storage/Storage.gml]
+  参数: inventoryManager
+### StorageZoneStruct  [Storage/Storage.gml]
+  参数: (无)
+### TextTyper_Add  [TextTyper_Add/TextTyper_Add.gml]
+  参数: x, y, depth, text
+### Time_Init  [Time_init/Time_Init.gml]
+  参数: (无)
+  注释: 可以在这里设置其他时间相关变量
+### Time_Step  [Time_init/Time_Init.gml]
+  参数: (无)
+  注释: 计算时间缩放因子
+### Vector3  [Vector3/Vector3.gml]
+  参数: _x, _y, _z

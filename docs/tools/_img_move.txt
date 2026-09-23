@@ -1,0 +1,4 @@
+备份完成: _bak16-manual-examples.js
+原 img 块已删除（GIF data URI 已捕获）
+img 块已插入「进战斗后会发生什么」text 块之后（标题：进战斗后会发生什么 · 动图），重读断言通过
+ALL OK

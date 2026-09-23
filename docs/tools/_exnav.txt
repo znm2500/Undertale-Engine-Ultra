@@ -1,0 +1,4 @@
+备份完成: _bak19-...html / _verify.js.bak9
+HTML: .exitem 样式 + buildNav 逐篇标题渲染已插入，重读断言通过
+_verify.js: wiring 加「侧栏逐篇标题项 / 渲染 / CSS .exitem」3 条断言
+ALL OK

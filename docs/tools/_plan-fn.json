@@ -1,0 +1,6775 @@
+[
+ {
+  "name": "__Battle_Iloop",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "_index",
+   "_list"
+  ],
+  "sigParams": [
+   "_index",
+   "_list"
+  ],
+  "cat": "board",
+  "desc": "内部函数。把数组下标按长度取模并修正负数，让点集面板的顶点索引能够首尾循环而不越界。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "__Battle_Iloop"
+ },
+ {
+  "name": "__Battle_RegisterBoard",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "_board"
+  ],
+  "sigParams": [
+   "_board"
+  ],
+  "cat": "board",
+  "desc": "内部函数。把自绘面板登记进全局面板表，并分配一个唯一编号（board_number），供后续遍历与拾取。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "__Battle_RegisterBoard"
+ },
+ {
+  "name": "__Battle_RemoveBoard",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "_board"
+  ],
+  "sigParams": [
+   "_board"
+  ],
+  "cat": "board",
+  "desc": "内部函数。从全局面板表里摘除指定面板，一般在面板销毁时调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "__Battle_RemoveBoard"
+ },
+ {
+  "name": "__Battle_RemoveBoardController",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "_controller"
+  ],
+  "sigParams": [
+   "_controller"
+  ],
+  "cat": "board",
+  "desc": "内部函数。把面板控制器从全局控制器表里摘除。控制器负责驱动面板的位移与形变。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "__Battle_RemoveBoardController"
+ },
+ {
+  "name": "Anim_Create",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name",
+   "tween_type",
+   "ease_type",
+   "start",
+   "change",
+   "duration",
+   "delay",
+   "auto_destroy",
+   "single_speed",
+   "alone_exist",
+   "mode",
+   "repeat_count"
+  ],
+  "sigParams": [
+   "target",
+   "var_name",
+   "tween_type",
+   "ease_type",
+   "start",
+   "change",
+   "duration",
+   "delay",
+   "auto_destroy",
+   "single_speed",
+   "alone_exist",
+   "mode",
+   "repeat_count"
+  ],
+  "cat": "anim",
+  "desc": "给任意变量创建一条补间动画。target 可以是 global / 实例 / 结构体 / 数组 / ds_map / ds_grid。",
+  "ex": "// 2秒内把面板高度从 65 拉到 200（30帧缓出）\nAnim_Create(battle_board, \"up\", ANIM_TWEEN.CUBIC, ANIM_EASE.OUT,\n            65, 200 - 65, 30);\n\n// 全局模糊量归零\nAnim_Create(global, \"blur_amount\", 0, 0, 2, -2, 1, 20);\n\n// 死亡粒子：同时淡出+缩小\nAnim_Create(inst, \"image_alpha\", ANIM_TWEEN.LINEAR, ANIM_EASE.OUT, 1, -1, 40);\nAnim_Create(inst, \"image_xscale\", ANIM_TWEEN.QUAD, ANIM_EASE.OUT, 1, -1, 40);",
+  "hadEntry": true,
+  "fromEntry": "Anim_Create"
+ },
+ {
+  "name": "Anim_CreateTarget",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name",
+   "tween_type",
+   "ease_type",
+   "start",
+   "target_value",
+   "duration",
+   "delay",
+   "auto_destroy",
+   "single_speed",
+   "alone_exist",
+   "mode",
+   "repeat_count"
+  ],
+  "sigParams": [
+   "target",
+   "var_name",
+   "tween_type",
+   "ease_type",
+   "start",
+   "target_value",
+   "duration",
+   "delay",
+   "auto_destroy",
+   "single_speed",
+   "alone_exist",
+   "mode",
+   "repeat_count"
+  ],
+  "cat": "anim",
+  "desc": "同上，但第 6 个参数直接写【目标值】而不是变化量，更直观。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_CreateTarget"
+ },
+ {
+  "name": "Anim_Destroy",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "销毁动画。不给 var_name 会销毁该 target 上所有动画。做「打断/重置」时必用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_Destroy"
+ },
+ {
+  "name": "Anim_GetValue",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "TWEEN",
+   "EASE",
+   "TIME"
+  ],
+  "sigParams": [
+   "TWEEN",
+   "EASE",
+   "TIME"
+  ],
+  "cat": "anim",
+  "desc": "读取某条补间当前算出的值，用于外部逻辑引用动画进度。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_GetValue"
+ },
+ {
+  "name": "Anim_Init",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": "初始化补间系统。会在此处注册 ANIM_TWEEN（缓动曲线）与 ANIM_EASE 两组枚举，并建好全局补间列表。游戏启动时调用一次即可。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_Init"
+ },
+ {
+  "name": "Anim_IsExists",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "查询某个「目标 + 变量」上是否还有补间在跑。重复起动画前先判断可以避免叠加。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_IsExists"
+ },
+ {
+  "name": "Anim_SetSingleSpeed",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name",
+   "single_speed"
+  ],
+  "sigParams": [
+   "target",
+   "var_name",
+   "single_speed"
+  ],
+  "cat": "anim",
+  "desc": "调整某条补间的播放速度倍率，可以中途变快或变慢。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_SetSingleSpeed"
+ },
+ {
+  "name": "Anim_Skip",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "立刻跳到补间的终点并结束它。做「跳过动画」功能时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_Skip"
+ },
+ {
+  "name": "Anim_Step",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": "每帧推进所有补间。内部已按 delta_time_factor 做帧率补偿，所以放在任意 Step 事件里调一次就够，不必自己乘速度。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_Step"
+ },
+ {
+  "name": "Anim_Uninit",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": "卸载补间系统，释放全局补间列表与 Animator 数组。一般只在游戏退出或热重载时调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Anim_Uninit"
+ },
+ {
+  "name": "Animator",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "tween_default",
+   "ease_default"
+  ],
+  "sigParams": [
+   "tween_default",
+   "ease_default"
+  ],
+  "cat": "anim",
+  "desc": "关键帧动画器。比 Anim_Create 更适合做多段复杂运动（如先上后右再下）。",
+  "ex": "var a = new Animator(ANIM_TWEEN.CUBIC, ANIM_EASE.IN_OUT);\n\na.SetKeyframe(obj_enemy, \"x\",\n    [0.0, 320],              // 0% 处 x = 320\n    [0.5, 480],              // 50% 处 x = 480\n    [1.0, 320]);             // 100% 处回到 320\n\na.Play(90, 0, 1, ANIMATOR_PLAY_DIREATION.NORMAL, 1, 0, 0);",
+  "hadEntry": true,
+  "fromEntry": "Animator"
+ },
+ {
+  "name": "Animator_Delete",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "从匹配的 Animator 上删除某条属性通道，Animator 本身保留、仍可继续加新关键帧。参数 var_name 省略时删掉该目标下所有通道。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Animator_Delete"
+ },
+ {
+  "name": "Animator_Destroy",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "删掉整个 Animator 实例并从全局动画列表里摘掉它。与 Animator_Delete 的区别：Delete 只清通道，Destroy 连容器一起移除。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Animator_Destroy"
+ },
+ {
+  "name": "Animator_IsExist",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": "查询是否存在匹配的 Animator。省略 var_name 时只按目标对象判断，给了就再比对该属性通道。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Animator_IsExist"
+ },
+ {
+  "name": "Animator.Continue",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "Continue",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.DeleteKeyFrame",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "DeleteKeyFrame",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target,var_name,progress..."
+  ],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.DeletePattern",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "DeletePattern",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "varname"
+  ],
+  "sigParams": [
+   "target",
+   "varname"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.Destroy",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "Destroy",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.GetPattern",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "GetPattern",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target",
+   "var_name"
+  ],
+  "sigParams": [
+   "target",
+   "var_name"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.IsKeyFrameExists",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "IsKeyFrameExists",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "pattern",
+   "progress"
+  ],
+  "sigParams": [
+   "pattern",
+   "progress"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.Pause",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "Pause",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.Play",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "Play",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "duration",
+   "delay",
+   "play_speed",
+   "play_direction",
+   "play_count",
+   "play_interval",
+   "auto_destroy"
+  ],
+  "sigParams": [
+   "duration",
+   "delay",
+   "play_speed",
+   "play_direction",
+   "play_count",
+   "play_interval",
+   "auto_destroy"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.SetKeyframe",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "SetKeyframe",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "target,var_name,keyframe..."
+  ],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.SetPlaySpeed",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "SetPlaySpeed",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "play_speed"
+  ],
+  "sigParams": [
+   "play_speed"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.SetProgress",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "SetProgress",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "progress"
+  ],
+  "sigParams": [
+   "progress"
+  ],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Animator.Step",
+  "kind": "method",
+  "owner": "Animator",
+  "memName": "Step",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "anim",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Battle_AddBoardVertex",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "board",
+   "vertex_x",
+   "vertex_y"
+  ],
+  "sigParams": [
+   "board",
+   "vertex_x",
+   "vertex_y"
+  ],
+  "cat": "battlecore",
+  "desc": "给 Battle_CreateBoardPoints 创建的面板加顶点。⚠ 顺序必须顺时针。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_AddBoardVertex"
+ },
+ {
+  "name": "Battle_CallBulletEventSoulCollision",
+  "kind": "global",
+  "file": "Battle_CallBulletEventSoulCollision/Battle_CallBulletEventSoulCollision.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "让弹幕主动触发一次「撞到灵魂」的回调。通常由引擎在检测到碰撞时调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CallBulletEventSoulCollision"
+ },
+ {
+  "name": "Battle_CallEnemyEvent",
+  "kind": "global",
+  "file": "Battle_CallEnemyEvent/Battle_CallEnemyEvent.gml",
+  "params": [
+   "event",
+   "enemy_slot*"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "主动触发敌人的事件回调。省略 enemy_slot 则对所有敌人广播。你自己的攻击代码里很少需要调它，但理解事件流必须知道它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CallEnemyEvent"
+ },
+ {
+  "name": "Battle_CallSoulEventBulletCollision",
+  "kind": "global",
+  "file": "Battle_CallSoulEventBulletCollision/Battle_CallSoulEventBulletCollision.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "让灵魂主动触发一次「被弹幕撞到」的事件回调。一般只在调试或做特殊判定时手动调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CallSoulEventBulletCollision"
+ },
+ {
+  "name": "Battle_CallSoulEventHurt",
+  "kind": "global",
+  "file": "Battle_CallSoulEventHurt/Battle_CallSoulEventHurt.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "soul",
+  "desc": "让灵魂触发一次受伤回调，会走完整的扣血与无敌帧流程。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CallSoulEventHurt"
+ },
+ {
+  "name": "Battle_ConvertEnemySlotToMenuChoiceEnemy",
+  "kind": "global",
+  "file": "Battle_ConvertEnemySlotToMenuChoiceEnemy/Battle_ConvertEnemySlotToMenuChoiceEnemy.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "把敌人槽位号（0~2）换算成菜单里的目标序号。两套编号在 UI 与数据层之间转换时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_ConvertEnemySlotToMenuChoiceEnemy"
+ },
+ {
+  "name": "Battle_ConvertMenuChoiceEnemyToEnemySlot",
+  "kind": "global",
+  "file": "Battle_ConvertMenuChoiceEnemyToEnemySlot/Battle_ConvertMenuChoiceEnemyToEnemySlot.gml",
+  "params": [
+   "menu_choice_enemy"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "把菜单里的目标序号换算回敌人槽位号。与上一个函数互为反向。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_ConvertMenuChoiceEnemyToEnemySlot"
+ },
+ {
+  "name": "Battle_CreateBoardCircle",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "x",
+   "y",
+   "radius",
+   "board_depth",
+   "cover"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "radius",
+   "board_depth",
+   "cover"
+  ],
+  "cat": "battlecore",
+  "desc": "创建一个圆形自绘面板。参数与矩形版类似，常用于圆形审判场或环形弹幕区域。返回 board 结构体，需要自己移除。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CreateBoardCircle"
+ },
+ {
+  "name": "Battle_CreateBoardEllipse",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "x",
+   "y",
+   "radius_x",
+   "radius_y",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "radius_x",
+   "radius_y",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "cat": "battlecore",
+  "desc": "创建一个椭圆自绘面板。radius_x / radius_y 是横竖半径，后面依次是绘制深度、旋转角、是否旋转、是否遮挡。返回 board 结构体，用完需要自己移除。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CreateBoardEllipse"
+ },
+ {
+  "name": "Battle_CreateBoardPoints",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "x",
+   "y",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "cat": "battlecore",
+  "desc": "创建一个空面板，之后用 Battle_AddBoardVertex 手动加顶点。⚠ 顶点必须按顺时针排列，否则画面出问题。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CreateBoardPoints"
+ },
+ {
+  "name": "Battle_CreateBoardRect",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "x",
+   "y",
+   "up",
+   "down",
+   "left",
+   "right",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "up",
+   "down",
+   "left",
+   "right",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "cat": "battlecore",
+  "desc": "创建一个矩形自绘面板。返回 board 结构体，需要自己移除。用于非矩形战斗框（如 Sans 的骨墙斜切面板）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CreateBoardRect"
+ },
+ {
+  "name": "Battle_CreateBoardRoundrect",
+  "kind": "global",
+  "file": "Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml",
+  "params": [
+   "x",
+   "y",
+   "size",
+   "corner_radius",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "size",
+   "corner_radius",
+   "board_depth",
+   "angle",
+   "rotate",
+   "cover"
+  ],
+  "cat": "battlecore",
+  "desc": "创建一个圆角矩形自绘面板。size 是边长，corner_radius 是圆角半径。适合做边缘柔化的战斗框。返回 board 结构体。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_CreateBoardRoundrect"
+ },
+ {
+  "name": "Battle_Dialog_Enemy_Add",
+  "kind": "global",
+  "file": "Battle_Dialog_Enemy_Add/Battle_Dialog_Enemy_Add.gml",
+  "params": [
+   "x",
+   "y",
+   "depth",
+   "text",
+   "template"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "depth",
+   "text",
+   "template"
+  ],
+  "cat": "dialog",
+  "desc": "在敌人身上弹出一个气泡对话框。参数是显示坐标、深度与文本内容。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_Dialog_Enemy_Add"
+ },
+ {
+  "name": "Battle_End",
+  "kind": "global",
+  "file": "Battle_End/Battle_End.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束整场战斗，退出战斗状态并返回地图。胜利、逃跑、死亡三条路径最终都会走到它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_End"
+ },
+ {
+  "name": "Battle_EndDialog",
+  "kind": "global",
+  "file": "Battle_EndDialog/Battle_EndDialog.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束对话状态，状态机回到 MENU。配合 Battle_SetDialog 用，控制台词播完后往哪走。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndDialog"
+ },
+ {
+  "name": "Battle_EndMenu",
+  "kind": "global",
+  "file": "Battle_EndMenu/Battle_EndMenu.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束菜单选择状态。玩家确认选项后由它收尾，把控制权交回状态机。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndMenu"
+ },
+ {
+  "name": "Battle_EndMenuFightAim",
+  "kind": "global",
+  "file": "Battle_EndMenuFightAim/Battle_EndMenuFightAim.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束 FIGHT 的**瞄准**阶段，进入挥刀。一般由攻击条自己在玩家按确认时调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndMenuFightAim"
+ },
+ {
+  "name": "Battle_EndMenuFightAnim",
+  "kind": "global",
+  "file": "Battle_EndMenuFightAnim/Battle_EndMenuFightAnim.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束 FIGHT 的**挥刀动画**阶段，开始结算命中。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndMenuFightAnim"
+ },
+ {
+  "name": "Battle_EndMenuFightDamage",
+  "kind": "global",
+  "file": "Battle_EndMenuFightDamage/Battle_EndMenuFightDamage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束 FIGHT 的**伤害结算**阶段，整个 FIGHT 流程到此收尾。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndMenuFightDamage"
+ },
+ {
+  "name": "Battle_EndTurn",
+  "kind": "global",
+  "file": "Battle_EndTurn/Battle_EndTurn.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "结束当前回合，回到菜单。这是敌人回合结束的标准出口 —— 把回合时间设为有限，或用计时器调用它。",
+  "ex": "// 方式一：回合限时 300 帧\nBattle_SetTurnTime(300);\n\n// 方式二：自己计时结束\n// 在敌人 TURN_START 事件里\nalarm[0] = 60 * 5;   // 5 秒后\n// Alarm 0 里：\nBattle_EndTurn();",
+  "hadEntry": true,
+  "fromEntry": "Battle_EndTurn"
+ },
+ {
+  "name": "Battle_EndTurnPreparation",
+  "kind": "global",
+  "file": "Battle_EndTurnPreparation/Battle_EndTurnPreparation.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "提前结束回合准备阶段，立刻进入敌人回合。做「玩家一点就开打」的速攻型敌人时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_EndTurnPreparation"
+ },
+ {
+  "name": "Battle_FadeFader",
+  "kind": "global",
+  "file": "Battle_FadeFader/Battle_FadeFader.gml",
+  "params": [
+   "alpha",
+   "time"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "战斗场景专用的黑幕。与通用的 Fader_Fade 区别在于深度层级，会盖在战斗 UI 之上。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_FadeFader"
+ },
+ {
+  "name": "Battle_GetBoardSurface",
+  "kind": "global",
+  "file": "Battle_GetBoardSurface/Battle_GetBoardSurface.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "取出面板的绘制表面（surface）。需要直接往面板上画东西时用它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetBoardSurface"
+ },
+ {
+  "name": "Battle_GetEnemy",
+  "kind": "global",
+  "file": "Battle_GetEnemy/Battle_GetEnemy.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "按槽位号取出敌人实例。配合 Battle_IsEnemyValid 使用更稳。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemy"
+ },
+ {
+  "name": "Battle_GetEnemyActionName",
+  "kind": "global",
+  "file": "Battle_GetEnemyActionName/Battle_GetEnemyActionName.gml",
+  "params": [
+   "enemy_slot",
+   "action_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取敌人某个行动的名字。用 action_slot 指定第几个行动。",
+  "ex": "Battle_SetEnemyActionName(0, 0, \"Check\");\nBattle_SetEnemyActionName(0, 1, \"Joke\");\nBattle_SetEnemyActionName(0, 2, \"Plead\");",
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyActionName"
+ },
+ {
+  "name": "Battle_GetEnemyActionNumber",
+  "kind": "global",
+  "file": "Battle_GetEnemyActionNumber/Battle_GetEnemyActionNumber.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取敌人当前执行到第几个行动。配合 Battle_CallEnemyEvent 可以知道敌人行动推进到哪一步了。",
+  "ex": "Battle_SetEnemyActionNumber(0, 3);  // Sans 有3个可调查行动",
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyActionNumber"
+ },
+ {
+  "name": "Battle_GetEnemyCenterPosX",
+  "kind": "global",
+  "file": "Battle_GetEnemyCenterPosX/Battle_GetEnemyCenterPosX.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取敌人立绘中心的 X 坐标。攻击指向敌人、计算命中范围时会用到。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyCenterPosX"
+ },
+ {
+  "name": "Battle_GetEnemyCenterPosY",
+  "kind": "global",
+  "file": "Battle_GetEnemyCenterPosY/Battle_GetEnemyCenterPosY.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取敌人立绘中心的 Y 坐标。计算攻击落点、判断是否命中时会用到。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyCenterPosY"
+ },
+ {
+  "name": "Battle_GetEnemyDEF",
+  "kind": "global",
+  "file": "Battle_GetEnemyDEF/Battle_GetEnemyDEF.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取敌人的防御力，用于计算玩家攻击造成的伤害。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyDEF"
+ },
+ {
+  "name": "Battle_GetEnemyName",
+  "kind": "global",
+  "file": "Battle_GetEnemyName/Battle_GetEnemyName.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取槽位上敌人的显示名。这个名字会出现在 ACT / FIGHT 等菜单与血条上。",
+  "ex": "Battle_SetEnemyName(0, \"Sans\");\nBattle_SetEnemyName(1, \"Papyrus\");",
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyName"
+ },
+ {
+  "name": "Battle_GetEnemyNumber",
+  "kind": "global",
+  "file": "Battle_GetEnemyNumber/Battle_GetEnemyNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "读取当前场上还活着的敌人数量。用于判断战斗是否该结束、或按人数调整弹幕强度。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetEnemyNumber"
+ },
+ {
+  "name": "Battle_GetMenu",
+  "kind": "global",
+  "file": "Battle_GetMenu/Battle_GetMenu.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取当前所处的菜单子状态，返回 BATTLE_MENU 枚举值（BUTTON / FIGHT_TARGET / ACT_TARGET / ITEM / MERCY 等）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenu"
+ },
+ {
+  "name": "Battle_GetMenuChoiceAction",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceAction/Battle_GetMenuChoiceAction.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取战斗菜单当前选中的按钮或选项索引。菜单光标停在哪一项（例如 ACT 里选中的某个行动），返回的就是那一项在列表中的位置。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceAction"
+ },
+ {
+  "name": "Battle_GetMenuChoiceButton",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceButton/Battle_GetMenuChoiceButton.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "当前光标在哪个主按钮上。返回 BATTLE_MENU_CHOICE_BUTTON（FIGHT / ACT / ITEM / MERCY）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceButton"
+ },
+ {
+  "name": "Battle_GetMenuChoiceEnemy",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceEnemy/Battle_GetMenuChoiceEnemy.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取当前选中的目标敌人（菜单侧编号，不是敌人槽位）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceEnemy"
+ },
+ {
+  "name": "Battle_GetMenuChoiceItem",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceItem/Battle_GetMenuChoiceItem.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 ITEM 菜单当前选中的物品槽位。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceItem"
+ },
+ {
+  "name": "Battle_GetMenuChoiceMercy",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceMercy/Battle_GetMenuChoiceMercy.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 MERCY 菜单当前选中的项（饶恕 / 逃跑等）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceMercy"
+ },
+ {
+  "name": "Battle_GetMenuChoiceMercyOverrideName",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceMercyOverrideName/Battle_GetMenuChoiceMercyOverrideName.gml",
+  "params": [
+   "choice_mercy_slot"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 MERCY 覆盖模式下某个槽位的自定义名字。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceMercyOverrideName"
+ },
+ {
+  "name": "Battle_GetMenuChoiceMercyOverrideNumber",
+  "kind": "global",
+  "file": "Battle_GetMenuChoiceMercyOverrideNumber/Battle_GetMenuChoiceMercyOverrideNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 MERCY 覆盖模式下当前有多少个自定义选项。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuChoiceMercyOverrideNumber"
+ },
+ {
+  "name": "Battle_GetMenuDialog",
+  "kind": "global",
+  "file": "Battle_GetMenuDialog/Battle_GetMenuDialog.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取菜单下方当前的敌人台词（遭遇注册时设置的那句）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuDialog"
+ },
+ {
+  "name": "Battle_GetMenuFightAnimTime",
+  "kind": "global",
+  "file": "Battle_GetMenuFightAnimTime/Battle_GetMenuFightAnimTime.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 FIGHT 挥刀动画的持续帧数。也就是按下确认后，刀子从出现到砍完一共占用多少帧。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuFightAnimTime"
+ },
+ {
+  "name": "Battle_GetMenuFightDamage",
+  "kind": "global",
+  "file": "Battle_GetMenuFightDamage/Battle_GetMenuFightDamage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 FIGHT 这一刀结算出的伤害值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuFightDamage"
+ },
+ {
+  "name": "Battle_GetMenuFightDamageTime",
+  "kind": "global",
+  "file": "Battle_GetMenuFightDamageTime/Battle_GetMenuFightDamageTime.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取伤害数字在屏幕上停留的帧数。数值越大，敌人头顶那个红色数字挂得越久。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuFightDamageTime"
+ },
+ {
+  "name": "Battle_GetMenuFightPanel",
+  "kind": "global",
+  "file": "Battle_GetMenuFightPanel/Battle_GetMenuFightPanel.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取 FIGHT 攻击条所使用的界面实例。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuFightPanel"
+ },
+ {
+  "name": "Battle_GetMenuItemUsedLast",
+  "kind": "global",
+  "file": "Battle_GetMenuItemUsedLast/Battle_GetMenuItemUsedLast.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取最后一次使用的物品编号。做「重复上次道具」这类便捷功能时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetMenuItemUsedLast"
+ },
+ {
+  "name": "Battle_GetNextState",
+  "kind": "global",
+  "file": "Battle_GetNextState/Battle_GetNextState.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取下一个将要切换到的战斗状态。配合 Battle_SetNextState 使用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetNextState"
+ },
+ {
+  "name": "Battle_GetPlayerTempAtk",
+  "kind": "global",
+  "file": "Battle_GetPlayerTempAtk/Battle_GetPlayerTempAtk.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本回合临时攻击加成。只在本回合有效，回合结束自动失效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetPlayerTempAtk"
+ },
+ {
+  "name": "Battle_GetPlayerTempDef",
+  "kind": "global",
+  "file": "Battle_GetPlayerTempDef/Battle_GetPlayerTempDef.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本回合的临时防御加成，数值只在本回合有效，回合结束自动归零。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetPlayerTempDef"
+ },
+ {
+  "name": "Battle_GetPlayerTempInv",
+  "kind": "global",
+  "file": "Battle_GetPlayerTempInv/Battle_GetPlayerTempInv.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本回合的临时无敌帧加成，只在本回合有效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetPlayerTempInv"
+ },
+ {
+  "name": "Battle_GetPlayerTempSpd",
+  "kind": "global",
+  "file": "Battle_GetPlayerTempSpd/Battle_GetPlayerTempSpd.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本回合的临时速度加成，只在本回合有效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetPlayerTempSpd"
+ },
+ {
+  "name": "Battle_GetRewardExp",
+  "kind": "global",
+  "file": "Battle_GetRewardExp/Battle_GetRewardExp.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本场战斗胜利后准备结算给玩家的经验值（EXP）。只读接口，不会改动奖励数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetRewardExp"
+ },
+ {
+  "name": "Battle_GetRewardGold",
+  "kind": "global",
+  "file": "Battle_GetRewardGold/Battle_GetRewardGold.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取本场战斗胜利后准备结算给玩家的金币数（GOLD）。只读接口，不会改动奖励数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetRewardGold"
+ },
+ {
+  "name": "Battle_GetState",
+  "kind": "global",
+  "file": "Battle_GetState/Battle_GetState.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取当前战斗主状态（MENU / DIALOG / TURN_PREPARATION / IN_TURN / BOARD_RESETTING / RESULT）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetState"
+ },
+ {
+  "name": "Battle_GetTurnInfo",
+  "kind": "global",
+  "file": "Battle_GetTurnInfo/Battle_GetTurnInfo.gml",
+  "params": [
+   "info",
+   "default*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取「回合信息」。回合信息是本回合的参数表，在回合准备阶段被消费。用 BATTLE_TURN 枚举作 key。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetTurnInfo"
+ },
+ {
+  "name": "Battle_GetTurnNumber",
+  "kind": "global",
+  "file": "Battle_GetTurnNumber/Battle_GetTurnNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取当前回合数。第几个回合从 1 开始计。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetTurnNumber"
+ },
+ {
+  "name": "Battle_GetTurnTime",
+  "kind": "global",
+  "file": "Battle_GetTurnTime/Battle_GetTurnTime.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "读取当前回合已经进行了多少帧。常用来做「这一回合持续多久」的判断或计时器显示。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GetTurnTime"
+ },
+ {
+  "name": "Battle_GotoNextState",
+  "kind": "global",
+  "file": "Battle_GotoNextState/Battle_GotoNextState.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "按正常流程切换到下一个战斗状态。这是引擎推进流程的标准方式，比 Battle_SetState 更安全。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_GotoNextState"
+ },
+ {
+  "name": "Battle_IsBoardTransforming",
+  "kind": "global",
+  "file": "Battle_IsBoardTransforming/Battle_IsBoardTransforming.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询面板是否正在变形中。做「变形动画播完再放弹幕」这类串接时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsBoardTransforming"
+ },
+ {
+  "name": "Battle_IsBulletValid",
+  "kind": "global",
+  "file": "Battle_IsBulletValid/Battle_IsBulletValid.gml",
+  "params": [
+   "bullet_obj/inst"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "判断弹幕实例是否有效。弹幕撞到灵魂或超时后会销毁，操作前先检查可避免报错。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsBulletValid"
+ },
+ {
+  "name": "Battle_IsDialogAutoEnd",
+  "kind": "global",
+  "file": "Battle_IsDialogAutoEnd/Battle_IsDialogAutoEnd.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询对话是否开启自动结束。开启后台词播完自动收场，不需要玩家按键。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsDialogAutoEnd"
+ },
+ {
+  "name": "Battle_IsEnemySlotValid",
+  "kind": "global",
+  "file": "Battle_IsEnemySlotValid/Battle_IsEnemySlotValid.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "判断槽位号（0~2）是否有效。越界返回 false，查敌人属性前先过一道可避免报错。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsEnemySlotValid"
+ },
+ {
+  "name": "Battle_IsEnemySpareable",
+  "kind": "global",
+  "file": "Battle_IsEnemySpareable/Battle_IsEnemySpareable.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "查询敌人当前是否可以被饶恕（SPARE）。MERCY 菜单会读这个来决定是否放行。",
+  "ex": "// 玩家已经饶恕过 → 名字变黄\nBattle_SetEnemySpareable(0, true);",
+  "hadEntry": true,
+  "fromEntry": "Battle_IsEnemySpareable"
+ },
+ {
+  "name": "Battle_IsEnemyValid",
+  "kind": "global",
+  "file": "Battle_IsEnemyValid/Battle_IsEnemyValid.gml",
+  "params": [
+   "enemy_obj/inst"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "判断传入的敌人物体名或实例是否有效。比 IsEnemySlotValid 更底层，接受对象而非槽位号。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsEnemyValid"
+ },
+ {
+  "name": "Battle_IsFleeable",
+  "kind": "global",
+  "file": "Battle_IsFleeable/Battle_IsFleeable.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询本场战斗能否逃跑。MERCY 的逃跑项会读它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsFleeable"
+ },
+ {
+  "name": "Battle_IsMenuChoiceMercyOverride",
+  "kind": "global",
+  "file": "Battle_IsMenuChoiceMercyOverride/Battle_IsMenuChoiceMercyOverride.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询 MERCY 菜单是否处于「覆盖模式」。覆盖模式下选项不用默认那套，而是显示你自定义的名字。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsMenuChoiceMercyOverride"
+ },
+ {
+  "name": "Battle_IsMenuMercyFleeEnabled",
+  "kind": "global",
+  "file": "Battle_IsMenuMercyFleeEnabled/Battle_IsMenuMercyFleeEnabled.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询 MERCY 菜单里的「逃跑」这一项是否显示。与 IsFleeable 的区别：这个控制**菜单是否列出**，那个控制**能否真的跑掉**。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsMenuMercyFleeEnabled"
+ },
+ {
+  "name": "Battle_IsSoulValid",
+  "kind": "global",
+  "file": "Battle_IsSoulValid/Battle_IsSoulValid.gml",
+  "params": [
+   "soul_obj/inst"
+  ],
+  "sigParams": [],
+  "cat": "soul",
+  "desc": "判断灵魂实例是否有效。切换灵魂、灵魂被销毁或战斗结束时灵魂会失效，操作前先检查一下。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsSoulValid"
+ },
+ {
+  "name": "Battle_IsTurnPreparationAutoEnd",
+  "kind": "global",
+  "file": "Battle_IsTurnPreparationAutoEnd/Battle_IsTurnPreparationAutoEnd.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "查询「回合准备阶段是否自动结束」。为 true 时引擎在准备完成后自动进入敌人回合。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsTurnPreparationAutoEnd"
+ },
+ {
+  "name": "Battle_IsTurnValid",
+  "kind": "global",
+  "file": "Battle_IsTurnValid/Battle_IsTurnValid.gml",
+  "params": [
+   "turn_obj/inst"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "判断当前回合是否有效（战斗已开始且未结束）。操作回合数据前先检查一下。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_IsTurnValid"
+ },
+ {
+  "name": "Battle_MakeBone",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,duration,follow,follow_board,follow_target,follow_angle,point,point_at,follow_x,follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "最底层的骨骼生成函数，其余 MakeBone* 都调用它。返回 bone 实例。",
+  "ex": "// 从屏幕下方升起一根骨头\nBattle_MakeBone(320, 520, 80, 0, -3, 0, 1, 90, 0, 1);\n\n// 一根缓慢旋转的长骨\nBattle_MakeBone(320, 240, 160, 0, 0, 0, 0, 0, 2, 1, 120);",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBone"
+ },
+ {
+  "name": "Battle_MakeBone3D",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,y,angle_x,angle_y,angle_z,rotate_x,rotate_y,rotate_z,scale_x,scale_y,scale_z,vspeed,hspeed,shape,type,out,*duration,*gap"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "生成 3D 骨头（伪 3D，用 shader 绘制）。做立体运镜的骨头，比如 Papyrus 的立体骨阵。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBone3D"
+ },
+ {
+  "name": "Battle_MakeBoneArrow",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,y,length,hspeed,vspeed,type,out,angle,rotate,auto_destroy,*duration,*scale,*extra_angle,*follow,*follow_board,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "生成箭头骨。带 scale 缩放、extra_angle 张开角、range 射程三个专属参数。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneArrow"
+ },
+ {
+  "name": "Battle_MakeBoneBottom",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "从面板【下边缘】生成骨头，自动对齐面板。参数是 MakeBone 的子集（去掉 y 和 vspeed）。",
+  "ex": "// 从面板底部冒出 3 根骨头\nrepeat (3) {\n    var xx = 120 + 160 * (3 - 1 - (irandom(2)));  // 随机位置\n    Battle_MakeBoneBottom(xx, 60, 0, 0, 1, 0, 1, 90);\n}",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneBottom"
+ },
+ {
+  "name": "Battle_MakeBoneLeft",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "从面板【左边缘】生成骨头，自动对齐面板。参数是 MakeBone 的子集。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneLeft"
+ },
+ {
+  "name": "Battle_MakeBoneRight",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "y,length,vspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "从面板【右边缘】生成骨头，自动对齐面板。参数是 MakeBone 的子集。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneRight"
+ },
+ {
+  "name": "Battle_MakeBoneTop",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,length,hspeed,type,out,rotate,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "从面板【上边缘】生成骨头，自动对齐面板。参数是 MakeBone 的子集。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneTop"
+ },
+ {
+  "name": "Battle_MakeBoneTwoH",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,y,vspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "在指定 x 处同时生成左右两根「水平骨墙」，中间留 gap 缺口让玩家钻过。返回数组 [boneLeft, boneRight]。",
+  "ex": "// 经典骨墙：中间留 80px 缺口\nBattle_MakeBoneTwoH(320, 240, -4, 0, 1, 0, 80, 0);",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneTwoH"
+ },
+ {
+  "name": "Battle_MakeBoneTwoV",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "x,y,hspeed,type,out,rotate,gap,auto_destroy,*duration,*follow,*follow_board,*follow_target,*follow_angle,*point,*point_at,*follow_x,*follow_y"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "在指定 y 处同时生成上下两根「垂直骨墙」，中间留 gap 缺口让玩家钻过。返回数组 [boneUp, boneDown]。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneTwoV"
+ },
+ {
+  "name": "Battle_MakeBoneWallBottom",
+  "kind": "global",
+  "file": "Battle_MakeBoneWall/Battle_MakeBoneWall.gml",
+  "params": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "sigParams": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "cat": "bullet",
+  "desc": "从面板**下边**生成一整面横向骨墙。骨头整齐排列并长出来，是「封底」型攻击的常用做法。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneWallBottom"
+ },
+ {
+  "name": "Battle_MakeBoneWallLeft",
+  "kind": "global",
+  "file": "Battle_MakeBoneWall/Battle_MakeBoneWall.gml",
+  "params": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "sigParams": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "cat": "bullet",
+  "desc": "从面板**左边**生成一整面纵向骨墙，从侧面推进压缩空间。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneWallLeft"
+ },
+ {
+  "name": "Battle_MakeBoneWallRight",
+  "kind": "global",
+  "file": "Battle_MakeBoneWall/Battle_MakeBoneWall.gml",
+  "params": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "sigParams": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "cat": "bullet",
+  "desc": "从面板**右边**生成一整面纵向骨墙。与左右侧墙配合可做夹击。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneWallRight"
+ },
+ {
+  "name": "Battle_MakeBoneWallRound",
+  "kind": "global",
+  "file": "Battle_MakeBoneWall/Battle_MakeBoneWall.gml",
+  "params": [
+   "rotatespeed",
+   "radius",
+   "type",
+   "pause",
+   "duration"
+  ],
+  "sigParams": [
+   "rotatespeed",
+   "radius",
+   "type",
+   "pause",
+   "duration"
+  ],
+  "cat": "bullet",
+  "desc": "生成一圈环绕推进的骨头墙，从四周同时向内收缩。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneWallRound"
+ },
+ {
+  "name": "Battle_MakeBoneWallTop",
+  "kind": "global",
+  "file": "Battle_MakeBoneWall/Battle_MakeBoneWall.gml",
+  "params": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "sigParams": [
+   "pause",
+   "length",
+   "duration",
+   "type",
+   "follow_board"
+  ],
+  "cat": "bullet",
+  "desc": "从面板**上边**生成一整面横向骨墙，自上而下截断玩家的活动空间。",
+  "ex": "// 从顶部不断落下骨头墙\nBattle_MakeBoneWallTop(20, 40, 90, 0, 1);\n\n// 两侧夹击\nBattle_MakeBoneWallLeft(15, 50, 60);\nBattle_MakeBoneWallRight(15, 50, 60);",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeBoneWallTop"
+ },
+ {
+  "name": "Battle_MakeGB",
+  "kind": "global",
+  "file": "Battle_MakeGB/Battle_MakeGB.gml",
+  "params": [
+   "x",
+   "y",
+   "x_target",
+   "y_target",
+   "angle_start",
+   "angle_target",
+   "scale_x",
+   "scale_y",
+   "type",
+   "pause",
+   "duration",
+   "time_move"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "x_target",
+   "y_target",
+   "angle_start",
+   "angle_target",
+   "scale_x",
+   "scale_y",
+   "type",
+   "pause",
+   "duration",
+   "time_move"
+  ],
+  "cat": "bullet",
+  "desc": "生成加斯特冲击波（Gaster Blaster）。返回 blaster 实例。",
+  "ex": "// 从左上角射向玩家\nBattle_MakeGB(80, 60, battle_soul.x, battle_soul.y,\n              0, point_direction(80, 60, battle_soul.x, battle_soul.y),\n              1, 1, 0);",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakeGB"
+ },
+ {
+  "name": "Battle_MakePlatform",
+  "kind": "global",
+  "file": "Battle_MakePlatform/Battle_MakePlatform.gml",
+  "params": [
+   "x",
+   "y",
+   "width",
+   "angle",
+   "hspeed",
+   "vspeed",
+   "sticky",
+   "bounce",
+   "duration",
+   "auto_destroy"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "width",
+   "angle",
+   "hspeed",
+   "vspeed",
+   "sticky",
+   "bounce",
+   "duration",
+   "auto_destroy"
+  ],
+  "cat": "bullet",
+  "desc": "生成一块平台（蓝魂跳跃关卡用）。返回平台实例。",
+  "ex": "// 一块会移动的粘性平台\nBattle_MakePlatform(240, 360, 64, 0, 1.5, 0, 1, 0, -1, 1);",
+  "hadEntry": true,
+  "fromEntry": "Battle_MakePlatform"
+ },
+ {
+  "name": "Battle_RemoveEnemy",
+  "kind": "global",
+  "file": "Battle_RemoveEnemy/Battle_RemoveEnemy.gml",
+  "params": [
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "把敌人从指定槽位移除并销毁其实例。用于「敌人中途逃跑」或「召唤物消失」。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_RemoveEnemy"
+ },
+ {
+  "name": "Battle_RewardExp",
+  "kind": "global",
+  "file": "Battle_RewardExp/Battle_RewardExp.gml",
+  "params": [
+   "reward_exp"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "给本场战斗的胜利奖励追加经验值。注意是累加而非覆盖，反复调用会把 EXP 越加越多。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_RewardExp"
+ },
+ {
+  "name": "Battle_RewardGold",
+  "kind": "global",
+  "file": "Battle_RewardGold/Battle_RewardGold.gml",
+  "params": [
+   "reward_gold"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "给本场战斗的胜利奖励追加金币。注意是累加而非覆盖，反复调用会把结算金币越加越多。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_RewardGold"
+ },
+ {
+  "name": "Battle_SetBoardSize",
+  "kind": "global",
+  "file": "Battle_SetBoardSize/Battle_SetBoardSize.gml",
+  "params": [
+   "up",
+   "down",
+   "left",
+   "right",
+   "time*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "直接改面板四边尺寸。time 省略时默认 25 帧补间；time = 0 立即生效。做战斗中面板突变（如骨墙收缩）时很方便。",
+  "ex": "Battle_SetBoardSize(90, 90, 180, 180, 30);  // 30帧内变成大面板\nBattle_SetBoardSize(65, 65, 283, 283, 0);   // 瞬间还原",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetBoardSize"
+ },
+ {
+  "name": "Battle_SetDialog",
+  "kind": "global",
+  "file": "Battle_SetDialog/Battle_SetDialog.gml",
+  "params": [
+   "text*",
+   "choice*",
+   "line2*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置战斗中的打字机对话框。text 传空字符串则清除。choice = true 时文字变大居中（用于选项）。line2 = true 使用第二行文本框。",
+  "ex": "Battle_SetDialog(\"* You're gonna have a bad time.\");\nBattle_SetDialog();  // 清除",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetDialog"
+ },
+ {
+  "name": "Battle_SetDialogAutoEnd",
+  "kind": "global",
+  "file": "Battle_SetDialogAutoEnd/Battle_SetDialogAutoEnd.gml",
+  "params": [
+   "enabled"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "开关对话自动结束。适合做不可交互的旁白段。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetDialogAutoEnd"
+ },
+ {
+  "name": "Battle_SetEnemy",
+  "kind": "global",
+  "file": "Battle_SetEnemy/Battle_SetEnemy.gml",
+  "params": [
+   "enemy_obj/inst",
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "把一个敌人放进指定槽位（0~2）。传物体名会自动创建实例；传已存在的实例则直接接管。同时会触发敌人的 INIT 事件。",
+  "ex": "Battle_SetEnemy(obj_sans, 0);   // Sans 站中间\nBattle_SetEnemy(obj_papyrus, 1);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemy"
+ },
+ {
+  "name": "Battle_SetEnemyActionName",
+  "kind": "global",
+  "file": "Battle_SetEnemyActionName/Battle_SetEnemyActionName.gml",
+  "params": [
+   "enemy_slot",
+   "action_slot",
+   "text"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "给敌人的某个行动命名。名字可用于界面显示，也方便自己写行动表时索引。",
+  "ex": "Battle_SetEnemyActionName(0, 0, \"Check\");\nBattle_SetEnemyActionName(0, 1, \"Joke\");\nBattle_SetEnemyActionName(0, 2, \"Plead\");",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemyActionName"
+ },
+ {
+  "name": "Battle_SetEnemyActionNumber",
+  "kind": "global",
+  "file": "Battle_SetEnemyActionNumber/Battle_SetEnemyActionNumber.gml",
+  "params": [
+   "enemy_slot",
+   "action_number"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "设置敌人的行动序号。一般由引擎在行动切换时自行维护。",
+  "ex": "Battle_SetEnemyActionNumber(0, 3);  // Sans 有3个可调查行动",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemyActionNumber"
+ },
+ {
+  "name": "Battle_SetEnemyCenterPos",
+  "kind": "global",
+  "file": "Battle_SetEnemyCenterPos/Battle_SetEnemyCenterPos.gml",
+  "params": [
+   "enemy_slot",
+   "x",
+   "y"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "设置敌人立绘的中心位置。默认会按槽位自动排布，只有特殊构图才需要手动改。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemyCenterPos"
+ },
+ {
+  "name": "Battle_SetEnemyDEF",
+  "kind": "global",
+  "file": "Battle_SetEnemyDEF/Battle_SetEnemyDEF.gml",
+  "params": [
+   "enemy_slot",
+   "def"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "设置敌人的防御力。防御力越高，玩家这一刀造成的伤害越低。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemyDEF"
+ },
+ {
+  "name": "Battle_SetEnemyName",
+  "kind": "global",
+  "file": "Battle_SetEnemyName/Battle_SetEnemyName.gml",
+  "params": [
+   "enemy_slot",
+   "name"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "设置敌人的显示名。这个名字会出现在血条与菜单上。",
+  "ex": "Battle_SetEnemyName(0, \"Sans\");\nBattle_SetEnemyName(1, \"Papyrus\");",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemyName"
+ },
+ {
+  "name": "Battle_SetEnemySpareable",
+  "kind": "global",
+  "file": "Battle_SetEnemySpareable/Battle_SetEnemySpareable.gml",
+  "params": [
+   "enemy_slot",
+   "spareable"
+  ],
+  "sigParams": [],
+  "cat": "enemy",
+  "desc": "设置敌人是否可被饶恕。当玩家满足了饶恕条件（比如反复 ACT）时置 true。",
+  "ex": "// 玩家已经饶恕过 → 名字变黄\nBattle_SetEnemySpareable(0, true);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetEnemySpareable"
+ },
+ {
+  "name": "Battle_SetFleeable",
+  "kind": "global",
+  "file": "Battle_SetFleeable/Battle_SetFleeable.gml",
+  "params": [
+   "fleeable"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置本场战斗能否逃跑。剧情战一般置 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetFleeable"
+ },
+ {
+  "name": "Battle_SetMenu",
+  "kind": "global",
+  "file": "Battle_SetMenu/Battle_SetMenu.gml",
+  "params": [
+   "menu",
+   "call_event*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置当前菜单子状态，传入 BATTLE_MENU 枚举值（BUTTON / ACT_TARGET / ITEM 等），用来跳转到指定菜单页。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenu"
+ },
+ {
+  "name": "Battle_SetMenuChoiceAction",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceAction/Battle_SetMenuChoiceAction.gml",
+  "params": [
+   "action_choice",
+   "call_event*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 ACT 菜单的选中项并可选触发选择事件。call_event 传 true 会立刻跑一次回调。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceAction"
+ },
+ {
+  "name": "Battle_SetMenuChoiceButton",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceButton/Battle_SetMenuChoiceButton.gml",
+  "params": [
+   "button_choice",
+   "call_event*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置主菜单（FIGHT / ACT / ITEM / MERCY）当前选中的按钮，常用于从代码里强制移动光标。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceButton"
+ },
+ {
+  "name": "Battle_SetMenuChoiceEnemy",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceEnemy/Battle_SetMenuChoiceEnemy.gml",
+  "params": [
+   "enemy_choice",
+   "call_event*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置当前选中的目标敌人，用于从代码里强制切换攻击目标。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceEnemy"
+ },
+ {
+  "name": "Battle_SetMenuChoiceItem",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceItem/Battle_SetMenuChoiceItem.gml",
+  "params": [
+   "slot",
+   "call"
+  ],
+  "sigParams": [
+   "slot",
+   "call"
+  ],
+  "cat": "battlecore",
+  "desc": "设置 ITEM 菜单选中的物品槽位并可触发选择事件。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceItem"
+ },
+ {
+  "name": "Battle_SetMenuChoiceMercy",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceMercy/Battle_SetMenuChoiceMercy.gml",
+  "params": [
+   "mercy_choice",
+   "call_event*"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 MERCY 菜单的选中项并可触发选择事件。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceMercy"
+ },
+ {
+  "name": "Battle_SetMenuChoiceMercyOverride",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceMercyOverride/Battle_SetMenuChoiceMercyOverride.gml",
+  "params": [
+   "override"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "把 MERCY 菜单里的「Spare」（黄字）替换成自定义文字，例如 Sans 战的「Spare」。number 取值范围 1~3，slot 取值范围 0~2。",
+  "ex": "Battle_SetMenuChoiceMercyOverride(true);\nBattle_SetMenuChoiceMercyOverrideNumber(1);            // 覆盖 1 项\nBattle_SetMenuChoiceMercyOverrideName(0, \"Spare\");     // 第0项显示为 Spare",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceMercyOverride"
+ },
+ {
+  "name": "Battle_SetMenuChoiceMercyOverrideName",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceMercyOverrideName/Battle_SetMenuChoiceMercyOverrideName.gml",
+  "params": [
+   "choice_mercy_slot",
+   "name"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 MERCY 覆盖模式下某个槽位的名字，用来做剧情专属的 MERCY 选项（如「SAVE」「饶恕 Flowey」）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceMercyOverrideName"
+ },
+ {
+  "name": "Battle_SetMenuChoiceMercyOverrideNumber",
+  "kind": "global",
+  "file": "Battle_SetMenuChoiceMercyOverrideNumber/Battle_SetMenuChoiceMercyOverrideNumber.gml",
+  "params": [
+   "number"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 MERCY 覆盖模式下的选项数量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuChoiceMercyOverrideNumber"
+ },
+ {
+  "name": "Battle_SetMenuDialog",
+  "kind": "global",
+  "file": "Battle_SetMenuDialog/Battle_SetMenuDialog.gml",
+  "params": [
+   "text"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "改菜单下方的敌人台词（战斗中动态变台词，比如嘲讽递增）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuDialog"
+ },
+ {
+  "name": "Battle_SetMenuFightAnimTime",
+  "kind": "global",
+  "file": "Battle_SetMenuFightAnimTime/Battle_SetMenuFightAnimTime.gml",
+  "params": [
+   "time"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 FIGHT 挥刀动画的帧数，用来加快或放慢攻击节奏。",
+  "ex": "// 用自制刀光动画替换默认攻击面板\nPlayer_SetBattleFightMenuObj(obj_my_knife_anim);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuFightAnimTime"
+ },
+ {
+  "name": "Battle_SetMenuFightDamage",
+  "kind": "global",
+  "file": "Battle_SetMenuFightDamage/Battle_SetMenuFightDamage.gml",
+  "params": [
+   "damage"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置 FIGHT 攻击的伤害倍数。调高会让这一刀更疼。",
+  "ex": "// 用自制刀光动画替换默认攻击面板\nPlayer_SetBattleFightMenuObj(obj_my_knife_anim);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuFightDamage"
+ },
+ {
+  "name": "Battle_SetMenuFightDamageTime",
+  "kind": "global",
+  "file": "Battle_SetMenuFightDamageTime/Battle_SetMenuFightDamageTime.gml",
+  "params": [
+   "time"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置伤害数字停留的帧数。只有在 FIGHT 的瞄准、挥刀、伤害三个阶段之一才会生效，其他状态直接返回 false。",
+  "ex": "// 用自制刀光动画替换默认攻击面板\nPlayer_SetBattleFightMenuObj(obj_my_knife_anim);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuFightDamageTime"
+ },
+ {
+  "name": "Battle_SetMenuFightPanel",
+  "kind": "global",
+  "file": "Battle_SetMenuFightPanel/Battle_SetMenuFightPanel.gml",
+  "params": [
+   "Object"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "指定 FIGHT 攻击条要用的界面实例，换掉默认的攻击条外观。",
+  "ex": "// 用自制刀光动画替换默认攻击面板\nPlayer_SetBattleFightMenuObj(obj_my_knife_anim);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuFightPanel"
+ },
+ {
+  "name": "Battle_SetMenuMercyFleeEnabled",
+  "kind": "global",
+  "file": "Battle_SetMenuMercyFleeEnabled/Battle_SetMenuMercyFleeEnabled.gml",
+  "params": [
+   "flee_enabled"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "开关 MERCY 菜单中「逃跑」项的显示。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetMenuMercyFleeEnabled"
+ },
+ {
+  "name": "Battle_SetNextState",
+  "kind": "global",
+  "file": "Battle_SetNextState/Battle_SetNextState.gml",
+  "params": [
+   "next_state"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "预设状态机的下一个状态。当前状态结束时引擎会跳到它，用来编排非线性的流程。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetNextState"
+ },
+ {
+  "name": "Battle_SetPlayerTempAtk",
+  "kind": "global",
+  "file": "Battle_SetPlayerTempAtk/Battle_SetPlayerTempAtk.gml",
+  "params": [
+   "atk"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置本回合临时攻击加成。适合做「本回合攻击力提升」这类 BUFF。",
+  "ex": "// 本回合内玩家防御 +10\nBattle_SetPlayerTempDef(Battle_GetPlayerTempDef() + 10);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetPlayerTempAtk"
+ },
+ {
+  "name": "Battle_SetPlayerTempDef",
+  "kind": "global",
+  "file": "Battle_SetPlayerTempDef/Battle_SetPlayerTempDef.gml",
+  "params": [
+   "def"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置本回合的临时防御加成，回合结束后自动失效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetPlayerTempDef"
+ },
+ {
+  "name": "Battle_SetPlayerTempInv",
+  "kind": "global",
+  "file": "Battle_SetPlayerTempInv/Battle_SetPlayerTempInv.gml",
+  "params": [
+   "inv"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置本回合的临时无敌帧加成，回合结束后自动失效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetPlayerTempInv"
+ },
+ {
+  "name": "Battle_SetPlayerTempSpd",
+  "kind": "global",
+  "file": "Battle_SetPlayerTempSpd/Battle_SetPlayerTempSpd.gml",
+  "params": [
+   "spd"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置本回合的临时速度加成，回合结束后自动失效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetPlayerTempSpd"
+ },
+ {
+  "name": "Battle_SetSoul",
+  "kind": "global",
+  "file": "Battle_SetSoul/Battle_SetSoul.gml",
+  "params": [
+   "SOUL"
+  ],
+  "sigParams": [
+   "SOUL"
+  ],
+  "cat": "soul",
+  "desc": "切换灵魂模式。会自动销毁旧灵魂、创建新灵魂，并承接位置与角度。",
+  "ex": "// 切蓝魂打跳跃关\nBattle_SetSoul(battle_soul_blue);\n\n// 打完切回红魂\nBattle_SetSoul(battle_soul_red);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetSoul"
+ },
+ {
+  "name": "Battle_SetState",
+  "kind": "global",
+  "file": "Battle_SetState/Battle_SetState.gml",
+  "params": [
+   "state"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置战斗主状态，传入 BATTLE_STATE 枚举值。会立即生效，跳过正常的流程过渡。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetState"
+ },
+ {
+  "name": "Battle_SetTurnInfo",
+  "kind": "global",
+  "file": "Battle_SetTurnInfo/Battle_SetTurnInfo.gml",
+  "params": [
+   "info",
+   "value"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "写入回合信息。你控制面板变形、回合时长、灵魂位置的核心手段 —— 在敌人 TURN_PREPARATION_START 事件里调用。",
+  "ex": "// 敌人在回合准备阶段设置本回合参数\n// event_user(BATTLE_ENEMY_EVENT.TURN_PREPARATION_START) 内：\n\nBattle_SetTurnInfo(BATTLE_TURN.TIME, 60 * 8);        // 本回合 8 秒\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_X, 320);        // 面板移到画面中央\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_Y, 240);\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_UP, 100);       // 面板变成大方块\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_DOWN, 100);\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_LEFT, 200);\nBattle_SetTurnInfo(BATTLE_TURN.BOARD_RIGHT, 200);\nBattle_SetTurnInfo(BATTLE_TURN.SOUL_X, 0);           // 灵魂放中间\nBattle_SetTurnInfo(BATTLE_TURN.SOUL_Y, 0);",
+  "hadEntry": true,
+  "fromEntry": "Battle_SetTurnInfo"
+ },
+ {
+  "name": "Battle_SetTurnNumber",
+  "kind": "global",
+  "file": "Battle_SetTurnNumber/Battle_SetTurnNumber.gml",
+  "params": [
+   "turn_number"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置当前回合数。跳回合或做特殊编排时会用到。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetTurnNumber"
+ },
+ {
+  "name": "Battle_SetTurnPreparationAutoEnd",
+  "kind": "global",
+  "file": "Battle_SetTurnPreparationAutoEnd/Battle_SetTurnPreparationAutoEnd.gml",
+  "params": [
+   "enabled"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置回合准备阶段是否自动结束。true 时引擎在准备完成后自动开打，false 则需要手动结束。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetTurnPreparationAutoEnd"
+ },
+ {
+  "name": "Battle_SetTurnTime",
+  "kind": "global",
+  "file": "Battle_SetTurnTime/Battle_SetTurnTime.gml",
+  "params": [
+   "time"
+  ],
+  "sigParams": [],
+  "cat": "battlecore",
+  "desc": "设置/重置本回合计时。把回合时长归零可以立刻开始新回合。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Battle_SetTurnTime"
+ },
+ {
+  "name": "Bezier_AddPoint",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "bezier",
+   "x",
+   "y"
+  ],
+  "sigParams": [
+   "bezier",
+   "x",
+   "y"
+  ],
+  "cat": "misc",
+  "desc": "往贝塞尔曲线上追加一个控制点。加的点越多曲线越复杂。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Bezier_AddPoint"
+ },
+ {
+  "name": "Bezier_CreateStruct",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "start_x",
+   "start_y",
+   "last_x",
+   "last_y"
+  ],
+  "sigParams": [
+   "start_x",
+   "start_y",
+   "last_x",
+   "last_y"
+  ],
+  "cat": "misc",
+  "desc": "创建一个贝塞尔曲线结构体。给起点与终点坐标，之后再逐点添加控制点。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Bezier_CreateStruct"
+ },
+ {
+  "name": "Bezier_GetValue",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "bezier",
+   "step"
+  ],
+  "sigParams": [
+   "bezier",
+   "step"
+  ],
+  "cat": "misc",
+  "desc": "取曲线上某个步进位置（0~1）的坐标。逐帧推进 step 就能让物体沿曲线运动。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Bezier_GetValue"
+ },
+ {
+  "name": "Bezier_PointNumber",
+  "kind": "global",
+  "file": "Anim_Init/Anim_Init.gml",
+  "params": [
+   "bezier"
+  ],
+  "sigParams": [
+   "bezier"
+  ],
+  "cat": "misc",
+  "desc": "返回这条贝塞尔曲线上已经加了多少个控制点。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Bezier_PointNumber"
+ },
+ {
+  "name": "BGM_Fade",
+  "kind": "global",
+  "file": "BGM_Fade/BGM_Fade.gml",
+  "params": [
+   "bgm_slot",
+   "volume",
+   "TIME"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "把指定槽位的 BGM 在给定帧数内渐变到目标音量，用来做战斗切入、场景转换的音乐过渡。",
+  "ex": "BGM_SetVolume(BGM_SLOT.MAIN, 0, 60);   // 60帧内淡出\nBGM_SetPitch(BGM_SLOT.MAIN, 0.8);        // 降调",
+  "hadEntry": true,
+  "fromEntry": "BGM_Fade"
+ },
+ {
+  "name": "BGM_GetAudio",
+  "kind": "global",
+  "file": "BGM_GetAudio/BGM_GetAudio.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "取回槽位当前播放的音频资源 ID。拿到后可继续用底层 audio_* 函数做更细的操作（如改声道、加效果）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_GetAudio"
+ },
+ {
+  "name": "BGM_GetID",
+  "kind": "global",
+  "file": "BGM_GetID/BGM_GetID.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "读取槽位上登记的 BGM ID，也就是 BGM_Play 时传进去的那个名字。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_GetID"
+ },
+ {
+  "name": "BGM_Init",
+  "kind": "global",
+  "file": "BGM_Init/BGM_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "初始化 BGM 槽位系统，建好内部音频表。启动时调用一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_Init"
+ },
+ {
+  "name": "BGM_IsPaused",
+  "kind": "global",
+  "file": "BGM_IsPaused/BGM_IsPaused.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "查询该槽位是否处于暂停状态。槽位无效时返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_IsPaused"
+ },
+ {
+  "name": "BGM_IsPlaying",
+  "kind": "global",
+  "file": "BGM_IsPlaying/BGM_IsPlaying.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "查询该槽位是否正在播放。可用来判断换曲前是否需要先停。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_IsPlaying"
+ },
+ {
+  "name": "BGM_IsSlotValid",
+  "kind": "global",
+  "file": "BGM_IsSlotValid/BGM_IsSlotValid.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "判断槽位号是否在合法范围内。越界查询前先过一道这个函数可以避免报错。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_IsSlotValid"
+ },
+ {
+  "name": "BGM_Pause",
+  "kind": "global",
+  "file": "BGM_Pause/BGM_Pause.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "暂停槽位播放，播放位置保留，之后用 BGM_Resume 可从原处继续。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_Pause"
+ },
+ {
+  "name": "BGM_Play",
+  "kind": "global",
+  "file": "BGM_Play/BGM_Play.gml",
+  "params": [
+   "bgm_slot",
+   "audio",
+   "loop*",
+   "loop_start*",
+   "loop_end*"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "在指定槽位播放BGM。槽位是抽象的通道号，可以多首同时播放再交叉淡入。",
+  "ex": "BGM_Play(BGM_SLOT.MAIN, mus_megalovania, true);",
+  "hadEntry": true,
+  "fromEntry": "BGM_Play"
+ },
+ {
+  "name": "BGM_Resume",
+  "kind": "global",
+  "file": "BGM_Resume/BGM_Resume.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "从暂停处继续播放，播放位置不会重置。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_Resume"
+ },
+ {
+  "name": "BGM_SetPitch",
+  "kind": "global",
+  "file": "BGM_SetPitch/BGM_SetPitch.gml",
+  "params": [
+   "bgm_slot",
+   "pitch"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "调整音高，1.0 为原速。低于 1 会变低沉、并把整体拖慢。",
+  "ex": "BGM_SetVolume(BGM_SLOT.MAIN, 0, 60);   // 60帧内淡出\nBGM_SetPitch(BGM_SLOT.MAIN, 0.8);        // 降调",
+  "hadEntry": true,
+  "fromEntry": "BGM_SetPitch"
+ },
+ {
+  "name": "BGM_SetVolume",
+  "kind": "global",
+  "file": "BGM_SetVolume/BGM_SetVolume.gml",
+  "params": [
+   "bgm_slot",
+   "volume",
+   "time*"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "设置槽位音量。给了 time 就在这段时间内渐变，否则立即生效。",
+  "ex": "BGM_SetVolume(BGM_SLOT.MAIN, 0, 60);   // 60帧内淡出\nBGM_SetPitch(BGM_SLOT.MAIN, 0.8);        // 降调",
+  "hadEntry": true,
+  "fromEntry": "BGM_SetVolume"
+ },
+ {
+  "name": "BGM_Step",
+  "kind": "global",
+  "file": "BGM_Step/BGM_Step.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "每帧更新 BGM 槽状态：推进音量渐变、处理播放结束等。放在 Step 事件里调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_Step"
+ },
+ {
+  "name": "BGM_Stop",
+  "kind": "global",
+  "file": "BGM_Stop/BGM_Stop.gml",
+  "params": [
+   "bgm_slot"
+  ],
+  "sigParams": [],
+  "cat": "audio",
+  "desc": "停止播放并释放该槽位。之后再播同槽位需要重新调用 BGM_Play。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BGM_Stop"
+ },
+ {
+  "name": "Blend_Color",
+  "kind": "global",
+  "file": "GetColorFromString/GetColorFromString.gml",
+  "params": [
+   "col1,col2"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "按比例混合两个颜色并返回结果。做渐变、受击闪白时用。",
+  "ex": "// 用白色底色乘以主题色\nvar c = Blend_Color(c_white, c_red);",
+  "hadEntry": true,
+  "fromEntry": "Blend_Color"
+ },
+ {
+  "name": "BlueSoulControl",
+  "kind": "global",
+  "file": "BlueSoulControl/BlueSoulControl.gml",
+  "params": [
+   "dir",
+   "impact_speed"
+  ],
+  "sigParams": [
+   "dir",
+   "impact_speed"
+  ],
+  "cat": "soul",
+  "desc": "蓝魂的重力跳跃控制函数，处理起跳、落地与平台碰撞。蓝魂子物体在 Step 里调用它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "BlueSoulControl"
+ },
+ {
+  "name": "Border_GetSprite",
+  "kind": "global",
+  "file": "Border_GetSprite/Border_GetSprite.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "读取面板边框当前使用的精灵，-1 表示用的是默认边框。",
+  "ex": "Border_SetEnabled(true, false);\nBorder_SetSprite(spr_sans_border, true, 20);",
+  "hadEntry": true,
+  "fromEntry": "Border_GetSprite"
+ },
+ {
+  "name": "Border_IsEnabled",
+  "kind": "global",
+  "file": "Border_IsEnabled/Border_IsEnabled.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "查询战斗面板四周那圈边框当前是否开启显示。返回 true 或 false，常用于判断边框相关演出是否在运行。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Border_IsEnabled"
+ },
+ {
+  "name": "Border_SetEnabled",
+  "kind": "global",
+  "file": "Border_SetEnabled/Border_SetEnabled.gml",
+  "params": [
+   "enabled,blur"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "开关战斗面板的边框显示。边框就是战斗时围住弹幕区的那圈白线。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Border_SetEnabled"
+ },
+ {
+  "name": "Border_SetSprite",
+  "kind": "global",
+  "file": "Border_SetSprite/Border_SetSprite.gml",
+  "params": [
+   "sprite",
+   "fade*",
+   "time*"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "把面板边框换成自定义精灵。可分别设置上下边与左右边用的图，做出非矩形边框。",
+  "ex": "Border_SetEnabled(true, false);\nBorder_SetSprite(spr_sans_border, true, 20);",
+  "hadEntry": true,
+  "fromEntry": "Border_SetSprite"
+ },
+ {
+  "name": "Camera_Shake",
+  "kind": "global",
+  "file": "Camera_Shake/Camera_Shake.gml",
+  "params": [
+   "shake_x",
+   "shake_y",
+   "shake_speed_x",
+   "shake_speed_y",
+   "shake_random_x",
+   "shake_random_y",
+   "shake_decrease_x",
+   "shake_decrease_y",
+   "blur"
+  ],
+  "sigParams": [
+   "shake_x",
+   "shake_y",
+   "shake_speed_x",
+   "shake_speed_y",
+   "shake_random_x",
+   "shake_random_y",
+   "shake_decrease_x",
+   "shake_decrease_y",
+   "blur"
+  ],
+  "cat": "ui",
+  "desc": "让镜头按指定强度与时长震动。配合面板变形与黑幕就是完整的演出三件套。",
+  "ex": "Camera_Shake(2, 2, 4, 4);         // 轻微震动\nCamera_Shake(12, 12, 8, 8);       // 强烈震屏",
+  "hadEntry": true,
+  "fromEntry": "Camera_Shake"
+ },
+ {
+  "name": "CC_Add",
+  "kind": "global",
+  "file": "CC_Add/CC_Add.gml",
+  "params": [
+   "text",
+   "time*"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "往闭路字幕栏追加一行文字，会按顺序排布并自动淡出。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CC_Add"
+ },
+ {
+  "name": "CustomItem_Bandage",
+  "kind": "global",
+  "file": "CustomItem_Bandage/CustomItem_Bandage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：绷带。一个最简单的回复类道具，可当作写自己物品的起点。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_Bandage"
+ },
+ {
+  "name": "CustomItem_Dice",
+  "kind": "global",
+  "file": "CustomItem_Dice/CustomItem_Dice.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：骰子。每次使用随机掷出 1~6 并报给玩家，演示如何在 OnUse 里接战斗逻辑。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_Dice"
+ },
+ {
+  "name": "CustomItem_FadedRibbon",
+  "kind": "global",
+  "file": "CustomItem_FadedRibbon/CustomItem_FadedRibbon.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：褪色缎带。纯装饰性装备物品，没有实际效果。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_FadedRibbon"
+ },
+ {
+  "name": "CustomItem_Phone_TML",
+  "kind": "global",
+  "file": "CustomItem_PhoneToriel/CustomItem_PhoneToriel.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：TML 版手机。演示带自定义名字与使用效果的特殊道具。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_Phone_TML"
+ },
+ {
+  "name": "CustomItem_Stick",
+  "kind": "global",
+  "file": "CustomItem_Stick/CustomItem_Stick.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：树枝。低伤害武器，用于演示装备类物品的写法。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_Stick"
+ },
+ {
+  "name": "CustomItem_ToyKnife",
+  "kind": "global",
+  "file": "CustomItem_ToyKnife/CustomItem_ToyKnife.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "示例物品：玩具刀。可装备武器，静态数据在 Player_SetItemWeapon 处生效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "CustomItem_ToyKnife"
+ },
+ {
+  "name": "Demo_AddInput",
+  "kind": "global",
+  "file": "Demo_AddInput/Demo_AddInput.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "往录制数据里补记一个输入。只能在非录制状态下用（比如手动编辑一段录像）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_AddInput"
+ },
+ {
+  "name": "Demo_ClearInput",
+  "kind": "global",
+  "file": "Demo_ClearInput/Demo_ClearInput.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "清空全部录制数据，从零开始记一段新录像。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_ClearInput"
+ },
+ {
+  "name": "Demo_GetInput",
+  "kind": "global",
+  "file": "Demo_GetInput/Demo_GetInput.gml",
+  "params": [
+   "pos"
+  ],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "按序号读取录制数据里的一个输入，越界返回 -1。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_GetInput"
+ },
+ {
+  "name": "Demo_GetInputNumber",
+  "kind": "global",
+  "file": "Demo_GetInputNumber/Demo_GetInputNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "返回录制数据里一共记录了多少个输入。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_GetInputNumber"
+ },
+ {
+  "name": "Demo_Init",
+  "kind": "global",
+  "file": "Demo_Init/Demo_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "初始化录制回放系统，建好输入记录列表。启动时调用一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_Init"
+ },
+ {
+  "name": "Demo_IsPlaying",
+  "kind": "global",
+  "file": "Demo_IsPlaying/Demo_IsPlaying.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "查询当前是否正在回放录像。判断依据是回放器实例是否存在，返回 true 或 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_IsPlaying"
+ },
+ {
+  "name": "Demo_IsPlayingPaused",
+  "kind": "global",
+  "file": "Demo_IsPlayingPaused/Demo_IsPlayingPaused.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "查询回放是否处于暂停状态。当前根本没有在回放时，一律返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_IsPlayingPaused"
+ },
+ {
+  "name": "Demo_IsRecording",
+  "kind": "global",
+  "file": "Demo_IsRecording/Demo_IsRecording.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "查询当前是否正在录制操作录像。判断依据是录制器实例是否存在，返回 true 或 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_IsRecording"
+ },
+ {
+  "name": "Demo_IsRecordingPaused",
+  "kind": "global",
+  "file": "Demo_IsRecordingPaused/Demo_IsRecordingPaused.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "查询录制是否处于暂停状态。当前根本没有在录制时，一律返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_IsRecordingPaused"
+ },
+ {
+  "name": "Demo_PausePlaying",
+  "kind": "global",
+  "file": "Demo_PausePlaying/Demo_PausePlaying.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "暂停回放。已播放的进度会保留，可用 Demo_ResumePlaying 继续。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_PausePlaying"
+ },
+ {
+  "name": "Demo_PauseRecording",
+  "kind": "global",
+  "file": "Demo_PauseRecording/Demo_PauseRecording.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "暂停录制。已经录下的内容不会丢，可随时恢复。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_PauseRecording"
+ },
+ {
+  "name": "Demo_RemoveInput",
+  "kind": "global",
+  "file": "Demo_RemoveInput/Demo_RemoveInput.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "从录制数据里删掉某个输入记录，用于手动修正一段录像。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_RemoveInput"
+ },
+ {
+  "name": "Demo_ResumePlaying",
+  "kind": "global",
+  "file": "Demo_ResumePlaying/Demo_ResumePlaying.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "让暂停中的回放从中断处继续，已播进度不会重置。当前不在暂停状态时返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_ResumePlaying"
+ },
+ {
+  "name": "Demo_ResumeRecording",
+  "kind": "global",
+  "file": "Demo_ResumeRecording/Demo_ResumeRecording.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "从暂停处继续录制，之前录下的内容不会丢。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_ResumeRecording"
+ },
+ {
+  "name": "Demo_StartPlaying",
+  "kind": "global",
+  "file": "Demo_StartPlaying/Demo_StartPlaying.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "开始回放。会创建回放器实例，按录制数据重演输入。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_StartPlaying"
+ },
+ {
+  "name": "Demo_StartRecording",
+  "kind": "global",
+  "file": "Demo_StartRecording/Demo_StartRecording.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "开始录制。会在场景里创建一个录制器实例记录输入。正在录或正在放时调用会失败并返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_StartRecording"
+ },
+ {
+  "name": "Demo_StopPlaying",
+  "kind": "global",
+  "file": "Demo_StopPlaying/Demo_StopPlaying.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "停止回放并销毁回放器实例，回到正常游戏流程。当前没有在回放时返回 false。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_StopPlaying"
+ },
+ {
+  "name": "Demo_StopRecording",
+  "kind": "global",
+  "file": "Demo_StopRecording/Demo_StopRecording.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "停止录制，销毁录制器实例。录制数据会保留下来供回放。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_StopRecording"
+ },
+ {
+  "name": "Demo_Uninit",
+  "kind": "global",
+  "file": "Demo_Uninit/Demo_Uninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "卸载录制回放系统，销毁内部输入列表。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Demo_Uninit"
+ },
+ {
+  "name": "Dialog_Add",
+  "kind": "global",
+  "file": "Dialog_Add/Dialog_Add.gml",
+  "params": [
+   "text"
+  ],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "往对话队列里追加一条文字。必须配合 Dialog_Start 才会显示。地图与战斗通用。",
+  "ex": "Dialog_Add(\"* 你感觉背后一阵寒意。\");\nDialog_Add(\"* 你不敢回头。\");\nDialog_Start();",
+  "hadEntry": true,
+  "fromEntry": "Dialog_Add"
+ },
+ {
+  "name": "Dialog_Clear",
+  "kind": "global",
+  "file": "Dialog_Clear/Dialog_Clear.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "清空对话队列里的所有待播内容。做「打断当前对话」时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Dialog_Clear"
+ },
+ {
+  "name": "Dialog_Get",
+  "kind": "global",
+  "file": "Dialog_Get/Dialog_Get.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "按序号取出对话队列里的一条内容，用于自定义对话渲染。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Dialog_Get"
+ },
+ {
+  "name": "Dialog_Init",
+  "kind": "global",
+  "file": "Dialog_Init/Dialog_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "初始化对话队列。引擎启动流程里调用一次，之后所有对话都排进这条队列按顺序播放。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Dialog_Init"
+ },
+ {
+  "name": "Dialog_IsEmpty",
+  "kind": "global",
+  "file": "Dialog_IsEmpty/Dialog_IsEmpty.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "判断对话队列里还有没有待播放的内容。做「对话播完才允许操作」时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Dialog_IsEmpty"
+ },
+ {
+  "name": "Dialog_Start",
+  "kind": "global",
+  "file": "Dialog_Start/Dialog_Start.gml",
+  "params": [
+   "choose_enable",
+   "choice1",
+   "choice2"
+  ],
+  "sigParams": [
+   "choose_enable",
+   "choice1",
+   "choice2"
+  ],
+  "cat": "dialog",
+  "desc": "开始播放队列里的对话。choose_enable = 1 时出现二选一选项（最多两个选项）。",
+  "ex": "Dialog_Add(\"* 要接受这个挑战吗？\");\nDialog_Start(1, \"接受\", \"拒绝\");\n\n// 之后读玩家选择：\nvar c = Player_GetTextTyperChoice();",
+  "hadEntry": true,
+  "fromEntry": "Dialog_Start"
+ },
+ {
+  "name": "Dialog_Uninit",
+  "kind": "global",
+  "file": "Dialog_Uninit/Dialog_Uninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "销毁对话队列，释放对话系统占用的资源。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Dialog_Uninit"
+ },
+ {
+  "name": "Encounter_Custom",
+  "kind": "global",
+  "file": "Encounter_Custom/Encounter_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "引擎留给你的注册入口。所有 Encounter_Set 调用写在这里。该函数在游戏初始化时由 Encounter_Init 自动执行。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_Custom"
+ },
+ {
+  "name": "Encounter_GetBGM",
+  "kind": "global",
+  "file": "Encounter_GetBGM/Encounter_GetBGM.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "读取某个遭遇配置里指定的 BGM 资源。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_GetBGM"
+ },
+ {
+  "name": "Encounter_GetEnemy",
+  "kind": "global",
+  "file": "Encounter_GetEnemy/Encounter_GetEnemy.gml",
+  "params": [
+   "encounter_id",
+   "enemy_slot"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "读取某个遭遇配置里的敌人物体。属于内部与调试用途，写自己的遭遇逻辑时一般不需要。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_GetEnemy"
+ },
+ {
+  "name": "Encounter_GetMenuDialog",
+  "kind": "global",
+  "file": "Encounter_GetMenuDialog/Encounter_GetMenuDialog.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "读取某个遭遇配置的菜单对话文本，就是战斗中面板上方那句「* 你想干什么？」。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_GetMenuDialog"
+ },
+ {
+  "name": "Encounter_GetSoulX",
+  "kind": "global",
+  "file": "Encounter_GetSoulX/Encounter_GetSoulX.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "读取遭遇里配置的灵魂初始 X 坐标（相对战斗面板中心，不是屏幕坐标）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_GetSoulX"
+ },
+ {
+  "name": "Encounter_GetSoulY",
+  "kind": "global",
+  "file": "Encounter_GetSoulY/Encounter_GetSoulY.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "读取遭遇里配置的灵魂初始 Y 坐标（相对战斗面板中心）。默认 454，也就是面板底部附近。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_GetSoulY"
+ },
+ {
+  "name": "Encounter_Init",
+  "kind": "global",
+  "file": "Encounter_Init/Encounter_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "初始化遭遇配置表。启动时调用一次，之后 Encounter_Set 才有地方登记。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_Init"
+ },
+ {
+  "name": "Encounter_IsExists",
+  "kind": "global",
+  "file": "Encounter_IsExists/Encounter_IsExists.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "查询某个遭遇 id 是否已注册（是否存在于 Encounter_Custom 的注册表里）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_IsExists"
+ },
+ {
+  "name": "Encounter_IsMenuMercyFleeEnabled",
+  "kind": "global",
+  "file": "Encounter_IsMenuMercyFleeEnabled/Encounter_IsMenuMercyFleeEnabled.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "查询该遭遇的 MERCY 菜单里「逃跑」是否可用。有些剧情战会禁掉逃跑。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_IsMenuMercyFleeEnabled"
+ },
+ {
+  "name": "Encounter_IsPauseBGM",
+  "kind": "global",
+  "file": "Encounter_IsPauseBGM/Encounter_IsPauseBGM.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "查询进入该遭遇时是否暂停地图上的 BGM。默认 true，避免战斗曲和地图曲打架。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_IsPauseBGM"
+ },
+ {
+  "name": "Encounter_IsQuick",
+  "kind": "global",
+  "file": "Encounter_IsQuick/Encounter_IsQuick.gml",
+  "params": [
+   "encounter_id"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "查询该遭遇是否开启了 quick：开启后跳过「惊讶！→ 屏幕破碎」的遭遇动画，直接进战斗。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_IsQuick"
+ },
+ {
+  "name": "Encounter_Set",
+  "kind": "global",
+  "file": "Encounter_Set/Encounter_Set.gml",
+  "params": [
+   "id",
+   "enemy_0",
+   "enemy_1",
+   "enemy_2",
+   "menu_dialog",
+   "bgm*",
+   "menu_mercy_flee_enabled*",
+   "pause_bgm*",
+   "quick*",
+   "soul_x*",
+   "soul_y*"
+  ],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "注册一场遭遇战。必须在使用前调用（一般放在 room_init 里）。",
+  "ex": "#macro ENC_SANS \"sans_fight\"\n\nEncounter_Set(\n    ENC_SANS,           // 遭遇ID\n    obj_sans,           // 槽位0\n    noone, noone,       // 槽位1、2 空着\n    \"* Sans is judging you.\",  // 菜单对话\n    mus_megalovania,    // BGM\n    false,              // 不许逃跑\n    true,               // 暂停地图BGM\n    false,              // 播放遭遇动画\n    48, 454             // 灵魂初始位置\n);",
+  "hadEntry": true,
+  "fromEntry": "Encounter_Set"
+ },
+ {
+  "name": "Encounter_Start",
+  "kind": "global",
+  "file": "Encounter_Start/Encounter_Start.gml",
+  "params": [
+   "encounter",
+   "anim",
+   "exclam"
+  ],
+  "sigParams": [
+   "encounter",
+   "anim",
+   "exclam"
+  ],
+  "cat": "encounter",
+  "desc": "触发战斗。这是从地图进入战斗的唯一入口，通常在 trigger 或对话后调用。",
+  "ex": "// 触碰敌人触发带动画的战斗\nEncounter_Start(ENC_SANS);\n\n// 剧情直接进入战斗（无动画）\nEncounter_Start(ENC_SANS, false);",
+  "hadEntry": true,
+  "fromEntry": "Encounter_Start"
+ },
+ {
+  "name": "Encounter_Uninit",
+  "kind": "global",
+  "file": "Encounter_Uninit/Encounter_Uninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "encounter",
+  "desc": "释放遭遇配置表，清掉所有已注册的遭遇。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Encounter_Uninit"
+ },
+ {
+  "name": "Fader_Fade",
+  "kind": "global",
+  "file": "Fader_Fade/Fader_Fade.gml",
+  "params": [
+   "start",
+   "target",
+   "time",
+   "delay*"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "全屏黑幕淡入淡出。start 传 -1 表示从当前透明度开始（最常用）。",
+  "ex": "Fader_Fade(-1, 1, 30);        // 30帧淡出到全黑\nFader_Fade(1, 0, 30, 20);      // 等20帧后淡入",
+  "hadEntry": true,
+  "fromEntry": "Fader_Fade"
+ },
+ {
+  "name": "File_ReadAllText",
+  "kind": "global",
+  "file": "FileUtils/FileUtils.gml",
+  "params": [
+   "path"
+  ],
+  "sigParams": [
+   "path"
+  ],
+  "cat": "misc",
+  "desc": "一次性读取整个文本文件并返回字符串。读取失败时返回空值，用前先判断。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "File_ReadAllText"
+ },
+ {
+  "name": "File_WriteAllText",
+  "kind": "global",
+  "file": "FileUtils/FileUtils.gml",
+  "params": [
+   "path",
+   "text"
+  ],
+  "sigParams": [
+   "path",
+   "text"
+  ],
+  "cat": "misc",
+  "desc": "把字符串整体写入文本文件，会覆盖原内容。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "File_WriteAllText"
+ },
+ {
+  "name": "Game_GetFrameSkip",
+  "kind": "global",
+  "file": "Game_GetFrameSkip/Game_GetFrameSkip.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "读取当前的跳帧设置。返回 1 表示不跳帧、每帧都渲染；大于 1 表示每隔若干帧才渲染一次以减轻负担。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Game_GetFrameSkip"
+ },
+ {
+  "name": "Game_SetFrameSkip",
+  "kind": "global",
+  "file": "Game_SetFrameSkip/Game_SetFrameSkip.gml",
+  "params": [
+   "amount"
+  ],
+  "sigParams": [
+   "amount"
+  ],
+  "cat": "ui",
+  "desc": "设置跳帧幅度。调高可以显著加快游戏节奏，用于快速测试或做「加速演出」效果。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Game_SetFrameSkip"
+ },
+ {
+  "name": "GetColorFromString",
+  "kind": "global",
+  "file": "GetColorFromString/GetColorFromString.gml",
+  "params": [
+   "string"
+  ],
+  "sigParams": [],
+  "cat": "ui",
+  "desc": "把颜色字符串（如 \"white\" \"red\" \"#ff0000\"）转成 GameMaker 的颜色值。文本格式标签的颜色解析就靠它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "GetColorFromString"
+ },
+ {
+  "name": "GetObjectBase",
+  "kind": "global",
+  "file": "GetObjectBase/GetObjectBase.gml",
+  "params": [
+   "obj"
+  ],
+  "sigParams": [
+   "obj"
+  ],
+  "cat": "misc",
+  "desc": "取某个物体的最顶层父物体。做继承判断时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "GetObjectBase"
+ },
+ {
+  "name": "Input_Bind",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input",
+   "type",
+   "device",
+   "button"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "给逻辑输入绑定实体按键。可绑多个键（多次调用即叠加）。",
+  "ex": "// 键盘\nInput_Bind(INPUT.CONFIRM, INPUT_TYPE.KEYBOARD, 0, ord(\"Z\"));\nInput_Bind(INPUT.CONFIRM, INPUT_TYPE.KEYBOARD, 0, vk_enter);\nInput_Bind(INPUT.CANCEL,  INPUT_TYPE.KEYBOARD, 0, ord(\"X\"));\nInput_Bind(INPUT.UP,      INPUT_TYPE.KEYBOARD, 0, vk_up);\n\n// 手柄\nInput_Bind(INPUT.CONFIRM, INPUT_TYPE.GAMEPAD, 0, gp_face1);",
+  "hadEntry": true,
+  "fromEntry": "Input_Bind"
+ },
+ {
+  "name": "Input_GetState",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "读取某个逻辑输入的当前状态（按下 / 保持 / 松开）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Input_GetState"
+ },
+ {
+  "name": "Input_Init",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "初始化输入系统（内置 GMU_Input v1.1.0）。会建好按键表与状态覆盖表，并注册 INPUT_TYPE / INPUT_STATE 枚举。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Input_Init"
+ },
+ {
+  "name": "Input_IsHeld",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "是否按住（含刚按下那一帧）。做方向移动用这个。",
+  "ex": "var hsp = 0, vsp = 0;\nif (Input_IsHeld(INPUT.LEFT))  hsp -= 2;\nif (Input_IsHeld(INPUT.RIGHT)) hsp += 2;\nif (Input_IsHeld(INPUT.UP))    vsp -= 2;\nif (Input_IsHeld(INPUT.DOWN))  vsp += 2;",
+  "hadEntry": true,
+  "fromEntry": "Input_IsHeld"
+ },
+ {
+  "name": "Input_IsPressed",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "这一帧刚按下。做「确认」「取消」的触发器。",
+  "ex": "if (Input_IsPressed(INPUT.CONFIRM)) {\n    // 按下 Z / 回车\n}",
+  "hadEntry": true,
+  "fromEntry": "Input_IsPressed"
+ },
+ {
+  "name": "Input_IsReleased",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "这一帧刚从按下变为松开。适合做「松手才结算」的蓄力或确认操作。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Input_IsReleased"
+ },
+ {
+  "name": "Input_RemoveStateOverride",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "取消之前设的输入状态覆盖，让该按键恢复读取真实设备状态。",
+  "ex": "// 演出期间锁死移动\nInput_SetStateOverride(INPUT.LEFT,  INPUT_STATE.NULL);\nInput_SetStateOverride(INPUT.RIGHT, INPUT_STATE.NULL);\n// 演出结束恢复\nInput_RemoveStateOverride(INPUT.LEFT);\nInput_RemoveStateOverride(INPUT.RIGHT);",
+  "hadEntry": true,
+  "fromEntry": "Input_RemoveStateOverride"
+ },
+ {
+  "name": "Input_SetStateOverride",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input",
+   "state"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "强制指定输入的状态，屏蔽真实按键。用于剧情演出时锁定操作，或模拟一段输入。",
+  "ex": "// 演出期间锁死移动\nInput_SetStateOverride(INPUT.LEFT,  INPUT_STATE.NULL);\nInput_SetStateOverride(INPUT.RIGHT, INPUT_STATE.NULL);\n// 演出结束恢复\nInput_RemoveStateOverride(INPUT.LEFT);\nInput_RemoveStateOverride(INPUT.RIGHT);",
+  "hadEntry": true,
+  "fromEntry": "Input_SetStateOverride"
+ },
+ {
+  "name": "Input_Unbind",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [
+   "input"
+  ],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "解除某个逻辑输入的键位绑定。做自定义键位设置时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Input_Unbind"
+ },
+ {
+  "name": "Input_Uninit",
+  "kind": "global",
+  "file": "Input_Init/Input_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "input",
+  "desc": "卸载输入系统：逐个解绑所有按键，再销毁内部映射表。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Input_Uninit"
+ },
+ {
+  "name": "Inventory",
+  "kind": "global",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "itemTypeManager",
+   "capacity"
+  ],
+  "sigParams": [
+   "itemTypeManager",
+   "capacity"
+  ],
+  "cat": "item",
+  "desc": "背包容器（构造函数）。用物品类型管理器校验物品合法性，容量决定能放几件。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Inventory"
+ },
+ {
+  "name": "Inventory.Add",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Add",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "itemId"
+  ],
+  "sigParams": [
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Clear",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Clear",
+  "file": "Inventory/Inventory.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Get",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Get",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetCapacity",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetCapacity",
+  "file": "Inventory/Inventory.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetCount",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetCount",
+  "file": "Inventory/Inventory.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetItem",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetItem",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetItemName",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetItemName",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetItemOrUndefined",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetItemOrUndefined",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetOrEmpty",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetOrEmpty",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.GetRawArray",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "GetRawArray",
+  "file": "Inventory/Inventory.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Insert",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Insert",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index",
+   "itemId"
+  ],
+  "sigParams": [
+   "index",
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.InvokeItemDrop",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "InvokeItemDrop",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.InvokeItemInfo",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "InvokeItemInfo",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.InvokeItemUse",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "InvokeItemUse",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.IsItemTypeEmptyOrValid",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "IsItemTypeEmptyOrValid",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "itemId"
+  ],
+  "sigParams": [
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.IsItemTypeValid",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "IsItemTypeValid",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "itemId"
+  ],
+  "sigParams": [
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Normalize",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Normalize",
+  "file": "Inventory/Inventory.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Remove",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Remove",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.Set",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "Set",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "index",
+   "itemId"
+  ],
+  "sigParams": [
+   "index",
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Inventory.SetRawArray",
+  "kind": "method",
+  "owner": "Inventory",
+  "memName": "SetRawArray",
+  "file": "Inventory/Inventory.gml",
+  "params": [
+   "arr"
+  ],
+  "sigParams": [
+   "arr"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Item_Custom",
+  "kind": "global",
+  "file": "Item_Custom/Item_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "注册引擎自带的示例物品与全部背包容器（items / phones / box1 / box2）。",
+  "ex": "function Item_Custom() {\n    var itemTypes = Item_GetTypeManager();\n\n    #macro ITEM_DICE \"dice\"\n    itemTypes.Register(ITEM_DICE, new CustomItem_Dice());\n\n    var inventories = Item_GetInventoryManager();\n    inventories.Register(\"items\", new Inventory(itemTypes, 8));\n}",
+  "hadEntry": true,
+  "fromEntry": "Item_Custom"
+ },
+ {
+  "name": "Item_GetInventoryBoxes",
+  "kind": "global",
+  "file": "Item_Custom/Item_Custom.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [
+   "index"
+  ],
+  "cat": "item",
+  "desc": "按索引取回储物箱背包（0 = box1，1 = box2）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetInventoryBoxes"
+ },
+ {
+  "name": "Item_GetInventoryItems",
+  "kind": "global",
+  "file": "Item_Custom/Item_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "取回主物品背包（键名 \"items\"）。这是玩家在 ITEM 菜单里看到的那一栏。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetInventoryItems"
+ },
+ {
+  "name": "Item_GetInventoryManager",
+  "kind": "global",
+  "file": "Item_InitUninit/Item_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "取回全局背包管理器。背包都注册在它下面，用 \"items\"、\"box1\" 这样的键取。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetInventoryManager"
+ },
+ {
+  "name": "Item_GetInventoryPhones",
+  "kind": "global",
+  "file": "Item_Custom/Item_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "取回手机背包（键名 \"phones\"）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetInventoryPhones"
+ },
+ {
+  "name": "Item_GetNumber",
+  "kind": "global",
+  "file": "Item_GetNumber/Item_GetNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "读取主物品背包里当前一共装了多少件。堆叠物品会被逐件计数，返回一个整数。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetNumber"
+ },
+ {
+  "name": "Item_GetTextEat",
+  "kind": "global",
+  "file": "Item_GetTextEat/Item_GetTextEat.gml",
+  "params": [
+   "item_name"
+  ],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "生成「吃掉」物品时的那句台词。会按物品名套进模板文本里。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetTextEat"
+ },
+ {
+  "name": "Item_GetTextEquip",
+  "kind": "global",
+  "file": "Item_GetTextEquip/Item_GetTextEquip.gml",
+  "params": [
+   "item_name"
+  ],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "生成装备某件物品时弹出的那句台词文本，会按传入的物品名替换其中的占位符，返回可直接交给对话系统显示的字符串。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetTextEquip"
+ },
+ {
+  "name": "Item_GetTextHeal",
+  "kind": "global",
+  "file": "Item_GetTextHeal/Item_GetTextHeal.gml",
+  "params": [
+   "heal_hp",
+   "new_line*"
+  ],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "生成「回复 HP」的台词，自动填入回复数值。可选参数决定是否在句首换行。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetTextHeal"
+ },
+ {
+  "name": "Item_GetTypeManager",
+  "kind": "global",
+  "file": "Item_InitUninit/Item_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "取回全局物品类型管理器。用它 Register 注册新物品类型。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_GetTypeManager"
+ },
+ {
+  "name": "Item_Init",
+  "kind": "global",
+  "file": "Item_InitUninit/Item_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "初始化物品系统：建好物品类型管理器与背包管理器，并注册引擎自带的示例物品。启动时调用一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_Init"
+ },
+ {
+  "name": "Item_Uninit",
+  "kind": "global",
+  "file": "Item_InitUninit/Item_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "卸载物品系统，释放类型管理器与背包管理器。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Item_Uninit"
+ },
+ {
+  "name": "ItemType",
+  "kind": "global",
+  "file": "ItemType/ItemType.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "物品类型基类（构造函数）。定义 GetName / OnUse / OnInfo / OnDrop 四个接口，新物品要么继承它、要么用 ItemTypeSimple。",
+  "ex": "function CustomItem_Dice() : ItemType() constructor {\n    _price_buy = 4;\n    _price_sell = 0;\n\n    function GetName() {\n        return choose(\"Dice\", \"Dice?\", \"Dice!\");\n    }\n\n    function OnUse(inventory, index) {\n        var number = irandom_range(1, 6);\n        Dialog_Add($\"* You rolled the dice.&* It's a {number}!\");\n\n        if (number == 1) {\n            inventory.Add(ITEM_DICE);   // 再来一个\n        } else if (number == 6) {\n            inventory.Remove(index);    // 自己消失\n        }\n        Dialog_Start();\n    }\n\n    function OnInfo(inventory, index) {\n        Dialog_Add(\"* 一个六面骰子。\");\n        Dialog_Start();\n    }\n}",
+  "hadEntry": true,
+  "fromEntry": "ItemType"
+ },
+ {
+  "name": "ItemType.GetName",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "GetName",
+  "file": "ItemType/ItemType.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.GetNameOrFallback",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "GetNameOrFallback",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "id"
+  ],
+  "sigParams": [
+   "id"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.IsEmptyOrValid",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "IsEmptyOrValid",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "itemId"
+  ],
+  "sigParams": [
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.IsValid",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "IsValid",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "itemId"
+  ],
+  "sigParams": [
+   "itemId"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.OnDrop",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "OnDrop",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "inventory",
+   "index"
+  ],
+  "sigParams": [
+   "inventory",
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.OnInfo",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "OnInfo",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "inventory",
+   "index"
+  ],
+  "sigParams": [
+   "inventory",
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemType.OnUse",
+  "kind": "method",
+  "owner": "ItemType",
+  "memName": "OnUse",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "inventory",
+   "index"
+  ],
+  "sigParams": [
+   "inventory",
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemTypeManager",
+  "kind": "global",
+  "file": "ItemType/ItemType.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "物品类型管理器，继承自 RegisterManager。比基类多了 GetNameOrFallback，用于安全地取物品名。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "ItemTypeManager"
+ },
+ {
+  "name": "ItemTypeSimple",
+  "kind": "global",
+  "file": "ItemType/ItemType.gml",
+  "params": [
+   "name",
+   "info"
+  ],
+  "sigParams": [
+   "name",
+   "info"
+  ],
+  "cat": "item",
+  "desc": "简化版物品类型，用两个参数就能建一个物品：名字与说明。内部自动生成 OnUse / OnInfo，适合快速做道具。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "ItemTypeSimple"
+ },
+ {
+  "name": "ItemTypeSimple.GetName",
+  "kind": "method",
+  "owner": "ItemTypeSimple",
+  "memName": "GetName",
+  "file": "CustomItem_Dice/CustomItem_Dice.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemTypeSimple.OnInfo",
+  "kind": "method",
+  "owner": "ItemTypeSimple",
+  "memName": "OnInfo",
+  "file": "CustomItem_Dice/CustomItem_Dice.gml",
+  "params": [
+   "inventory",
+   "index"
+  ],
+  "sigParams": [
+   "inventory",
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "ItemTypeSimple.OnUse",
+  "kind": "method",
+  "owner": "ItemTypeSimple",
+  "memName": "OnUse",
+  "file": "CustomItem_Bandage/CustomItem_Bandage.gml",
+  "params": [
+   "inventory",
+   "index"
+  ],
+  "sigParams": [
+   "inventory",
+   "index"
+  ],
+  "cat": "item",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Kawase",
+  "kind": "global",
+  "file": "Kawase/Kawase.gml",
+  "params": [
+   "_width",
+   "_height",
+   "_maxIterations"
+  ],
+  "sigParams": [
+   "_width",
+   "_height",
+   "_maxIterations"
+  ],
+  "cat": "ui",
+  "desc": "Kawase 模糊后期特效，用来做画面失焦或受击反馈。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Kawase"
+ },
+ {
+  "name": "Macro_Battle",
+  "kind": "global",
+  "file": "Macro_Battle/Macro_Battle.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "战斗相关的宏容器函数。GML 的 #macro 必须写在函数体内才能全局生效，所以引擎用这些空函数来承载。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Battle"
+ },
+ {
+  "name": "Macro_Depth",
+  "kind": "global",
+  "file": "Macro_Depth/Macro_Depth.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "绘制深度常量的容器（DEPTH_UI / DEPTH_BATTLE 等）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Depth"
+ },
+ {
+  "name": "Macro_Direction",
+  "kind": "global",
+  "file": "Macro_Direction/Macro_Direction.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "方向相关的宏容器函数，承载上下左右等方向常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Direction"
+ },
+ {
+  "name": "Macro_Engine",
+  "kind": "global",
+  "file": "Macro_Engine/Macro_Engine.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "引擎级的宏容器函数，承载引擎全局配置类常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Engine"
+ },
+ {
+  "name": "Macro_Game",
+  "kind": "global",
+  "file": "Macro_Game/Macro_Game.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "游戏级的宏容器函数，承载游戏通用常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Game"
+ },
+ {
+  "name": "Macro_Input",
+  "kind": "global",
+  "file": "Macro_Input/Macro_Input.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "输入相关的宏容器函数，承载按键与输入类型常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Input"
+ },
+ {
+  "name": "Macro_Item",
+  "kind": "global",
+  "file": "Macro_Item/Macro_Item.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "物品相关的宏容器函数，承载物品类型与空槽等常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Item"
+ },
+ {
+  "name": "Macro_Phone",
+  "kind": "global",
+  "file": "Macro_Phone/Macro_Phone.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "手机相关的宏容器函数。GML 的 #macro 必须写在函数体内才能全局生效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Phone"
+ },
+ {
+  "name": "Macro_Plot",
+  "kind": "global",
+  "file": "Macro_Plot/Macro_Plot.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "剧情标记相关的宏容器函数，承载剧情进度类常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Plot"
+ },
+ {
+  "name": "Macro_Shop",
+  "kind": "global",
+  "file": "Macro_Shop/Macro_Shop.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "商店相关的宏容器函数，承载商店状态常量。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Macro_Shop"
+ },
+ {
+  "name": "Makebonecircle",
+  "kind": "global",
+  "file": "Battle_MakeBone/Battle_MakeBone.gml",
+  "params": [
+   "number,angle,type,x,y,size_x,size_y,length,out,*roting,*rot,*extra_angle,*rotate,*duration,*rott"
+  ],
+  "sigParams": [],
+  "cat": "bullet",
+  "desc": "生成一圈放射状排列的骨头（number 根，绕 angle 角度分布）。适合做环形弹幕。",
+  "ex": "// 12 根骨头从中心放射而出\nMakebonecircle(12, 0, 0, 320, 240, 1, 1, 60, 1);",
+  "hadEntry": true,
+  "fromEntry": "Makebonecircle"
+ },
+ {
+  "name": "Phone_GetNumber",
+  "kind": "global",
+  "file": "Item_GetNumber/Item_GetNumber.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "读取手机背包里当前装了多少件物品。手机与主背包分开计数，返回一个整数。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Phone_GetNumber"
+ },
+ {
+  "name": "Player_CalculateDamage",
+  "kind": "global",
+  "file": "Player_CalculateDamage/Player_CalculateDamage.gml",
+  "params": [
+   "baseDamage",
+   "minDamage",
+   "maxDamage"
+  ],
+  "sigParams": [
+   "baseDamage",
+   "minDamage",
+   "maxDamage"
+  ],
+  "cat": "player",
+  "desc": "玩家打敌人的伤害公式：基础伤害 + (HP≥20 时 (HP-20)/10 向上取整) - DEF/5，再四舍五入并 clamp。改战斗平衡就改这个函数。",
+  "ex": "var dmg = Player_CalculateDamage(Battle_GetMenuFightDamage());",
+  "hadEntry": true,
+  "fromEntry": "Player_CalculateDamage"
+ },
+ {
+  "name": "Player_CustomInitialData",
+  "kind": "global",
+  "file": "Player_CustomInitialData/Player_CustomInitialData.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "引擎留给你初始化玩家数据的地方。新开档时的初始 HP、装备与道具都写在这里。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_CustomInitialData"
+ },
+ {
+  "name": "Player_GetAtk",
+  "kind": "global",
+  "file": "Player_GetAtk/Player_GetAtk.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家基础攻击力（不含装备加成）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetAtk"
+ },
+ {
+  "name": "Player_GetAtkItem",
+  "kind": "global",
+  "file": "Player_GetAtkItem/Player_GetAtkItem.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取武器提供的攻击加成值，不含玩家自身的基础攻击。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetAtkItem"
+ },
+ {
+  "name": "Player_GetAtkTotal",
+  "kind": "global",
+  "file": "Player_GetAtkTotal/Player_GetAtkTotal.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家**最终**攻击力，也就是基础值加上武器加成后的结果。伤害计算用这个。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetAtkTotal"
+ },
+ {
+  "name": "Player_GetBattleFightMenuObj",
+  "kind": "global",
+  "file": "Player_GetBattleFightMenuObj/Player_GetBattleFightMenuObj.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取战斗中 FIGHT 攻击条所使用的界面实例。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetBattleFightMenuObj"
+ },
+ {
+  "name": "Player_GetDef",
+  "kind": "global",
+  "file": "Player_GetDef/Player_GetDef.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家基础防御力（不含装备加成）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetDef"
+ },
+ {
+  "name": "Player_GetDefItem",
+  "kind": "global",
+  "file": "Player_GetDefItem/Player_GetDefItem.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取护甲提供的防御加成值，不含玩家自身的基础防御。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetDefItem"
+ },
+ {
+  "name": "Player_GetDefTotal",
+  "kind": "global",
+  "file": "Player_GetDefTotal/Player_GetDefTotal.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家**最终**防御力，基础值加护甲加成。减伤计算用这个。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetDefTotal"
+ },
+ {
+  "name": "Player_GetExp",
+  "kind": "global",
+  "file": "Player_GetExp/Player_GetExp.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前经验值，升级判定会读它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetExp"
+ },
+ {
+  "name": "Player_GetGold",
+  "kind": "global",
+  "file": "Player_GetGold/Player_GetGold.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前持有的金币（G）数量。金币存放在静态存储里，尚无记录时返回 0。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetGold"
+ },
+ {
+  "name": "Player_GetHp",
+  "kind": "global",
+  "file": "Player_GetHp/Player_GetHp.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前 HP。战斗中血条、受伤判定都读这个值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetHp"
+ },
+ {
+  "name": "Player_GetHpMax",
+  "kind": "global",
+  "file": "Player_GetHpMax/Player_GetHpMax.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家 HP 上限。受 LV 与装备影响。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetHpMax"
+ },
+ {
+  "name": "Player_GetInv",
+  "kind": "global",
+  "file": "Player_GetInv/Player_GetInv.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家基础无敌帧（inv）长度。受伤后短暂无敵就靠它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetInv"
+ },
+ {
+  "name": "Player_GetInvItem",
+  "kind": "global",
+  "file": "Player_GetInvItem/Player_GetInvItem.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "item",
+  "desc": "读取玩家背包中指定槽位上的物品 ID，用于遍历背包内容。该槽为空时返回 0。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetInvItem"
+ },
+ {
+  "name": "Player_GetInvTotal",
+  "kind": "global",
+  "file": "Player_GetInvTotal/Player_GetInvTotal.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家**最终**无敌帧长度，含装备加成。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetInvTotal"
+ },
+ {
+  "name": "Player_GetItemArmor",
+  "kind": "global",
+  "file": "Player_GetItemArmor/Player_GetItemArmor.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前装备的护甲物品 ID。没有装备任何护甲时返回空字符串。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetItemArmor"
+ },
+ {
+  "name": "Player_GetItemWeapon",
+  "kind": "global",
+  "file": "Player_GetItemWeapon/Player_GetItemWeapon.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前装备的武器物品 ID。没有装备任何武器时返回空字符串。",
+  "ex": "Player_SetItemWeapon(ITEM_TOY_KNIFE);\nPlayer_SetAtkItem(5);   // 玩具刀 +5 ATK",
+  "hadEntry": true,
+  "fromEntry": "Player_GetItemWeapon"
+ },
+ {
+  "name": "Player_GetKills",
+  "kind": "global",
+  "file": "Player_GetKills/Player_GetKills.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家的击杀数。有些结局判定会看它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetKills"
+ },
+ {
+  "name": "Player_GetKr",
+  "kind": "global",
+  "file": "Player_GetKr/Player_GetKr.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前的 KR（Karma，业报）值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetKr"
+ },
+ {
+  "name": "Player_GetLv",
+  "kind": "global",
+  "file": "Player_GetLv/Player_GetLv.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家当前 LV（等级）。LV 会联动 HP 上限与攻防。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetLv"
+ },
+ {
+  "name": "Player_GetLvAtk",
+  "kind": "global",
+  "file": "Player_GetLvAtk/Player_GetLvAtk.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "按指定等级查出该等级的基础攻击力，升级动画里的数值滚动会用到。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetLvAtk"
+ },
+ {
+  "name": "Player_GetLvDef",
+  "kind": "global",
+  "file": "Player_GetLvDef/Player_GetLvDef.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "按传入的等级换算出该等级对应的基础防御力。公式为 10 + ceil((LV-4)/4)，等级越高这一项越厚。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetLvDef"
+ },
+ {
+  "name": "Player_GetLvExp",
+  "kind": "global",
+  "file": "Player_GetLvExp/Player_GetLvExp.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "按指定等级查出升到该等级所需的经验值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetLvExp"
+ },
+ {
+  "name": "Player_GetLvHpMax",
+  "kind": "global",
+  "file": "Player_GetLvHpMax/Player_GetLvHpMax.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "按指定等级查出该等级的 HP 上限。升级动画里常用来做数值滚动。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetLvHpMax"
+ },
+ {
+  "name": "Player_GetName",
+  "kind": "global",
+  "file": "Player_GetName/Player_GetName.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家名字。这个名字会出现在战斗中（比如「* 你充满了决心」里的称呼）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetName"
+ },
+ {
+  "name": "Player_GetPlot",
+  "kind": "global",
+  "file": "Player_GetPlot/Player_GetPlot.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取剧情标记（plot）。自定义剧情进度常挂在这个值上。",
+  "ex": "Player_SetPlot(3);          // 推进到第3章\nif (Player_GetPlot() >= 3) { … }",
+  "hadEntry": true,
+  "fromEntry": "Player_GetPlot"
+ },
+ {
+  "name": "Player_GetRoomName",
+  "kind": "global",
+  "file": "Player_GetRoomName/Player_GetRoomName.gml",
+  "params": [
+   "room"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取当前房间名。用于存档界面展示位置，或做「到达过哪些房间」的判定。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetRoomName"
+ },
+ {
+  "name": "Player_GetSpd",
+  "kind": "global",
+  "file": "Player_GetSpd/Player_GetSpd.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家的基础速度（不含装备加成）。基础速度参与战斗中的闪避与行动先后判定。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetSpd"
+ },
+ {
+  "name": "Player_GetSpdItem",
+  "kind": "global",
+  "file": "Player_GetSpdItem/Player_GetSpdItem.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取当前装备一共提供了多少速度加成。它是叠加在基础速度之外的那一部分。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetSpdItem"
+ },
+ {
+  "name": "Player_GetSpdTotal",
+  "kind": "global",
+  "file": "Player_GetSpdTotal/Player_GetSpdTotal.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "读取玩家**最终**速度，基础值加装备加成。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetSpdTotal"
+ },
+ {
+  "name": "Player_GetTextTyperChoice",
+  "kind": "global",
+  "file": "Player_GetTextTyperChoice/Player_GetTextTyperChoice.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "dialog",
+  "desc": "读取玩家在对话选项里选了第几项（0 或 1）。配合 Dialog_Start(n, \"选项A\", \"选项B\") 使用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_GetTextTyperChoice"
+ },
+ {
+  "name": "Player_Heal",
+  "kind": "global",
+  "file": "Player_Heal/Player_Heal.gml",
+  "params": [
+   "heal"
+  ],
+  "sigParams": [
+   "heal"
+  ],
+  "cat": "player",
+  "desc": "恢复玩家 HP，不会超过上限。传负数无效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_Heal"
+ },
+ {
+  "name": "Player_Hurt",
+  "kind": "global",
+  "file": "Player_Hurt/Player_Hurt.gml",
+  "params": [
+   "damage"
+  ],
+  "sigParams": [
+   "damage"
+  ],
+  "cat": "player",
+  "desc": "扣血。传负数会自动转为治疗。扣到 0 触发死亡流程。",
+  "ex": "Player_Hurt(5);    // 扣 5 点\nPlayer_Hurt(-5);   // 等于 Player_Heal(5)",
+  "hadEntry": true,
+  "fromEntry": "Player_Hurt"
+ },
+ {
+  "name": "Player_HurtKr",
+  "kind": "global",
+  "file": "Player_HurtKR/Player_HurtKR.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "弹幕专用伤害入口。会先检查 global.kr（业报模式），有 KR 时改为叠加 KR 伤害。骨头/GB 的 type 0/4 都用它。",
+  "ex": "// 自己的弹幕里造成伤害\nif (global.kr) {\n    Player_HurtKr();\n} else {\n    Player_Hurt(3);\n}",
+  "hadEntry": true,
+  "fromEntry": "Player_HurtKr"
+ },
+ {
+  "name": "Player_IsInBattle",
+  "kind": "global",
+  "file": "Player_IsInBattle/Player_IsInBattle.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "查询玩家当前是否处于战斗状态。做「地图上禁用什么操作」时用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_IsInBattle"
+ },
+ {
+  "name": "Player_LvUp",
+  "kind": "global",
+  "file": "Player_LvUp/Player_LvUp.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "执行一次升级：按等级曲线提升 HP 上限与各项属性。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_LvUp"
+ },
+ {
+  "name": "Player_SetAtk",
+  "kind": "global",
+  "file": "Player_SetAtk/Player_SetAtk.gml",
+  "params": [
+   "atk"
+  ],
+  "sigParams": [
+   "atk"
+  ],
+  "cat": "player",
+  "desc": "设置玩家的基础攻击力，不含武器加成。写入的是静态存储里的 ATK 数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetAtk"
+ },
+ {
+  "name": "Player_SetAtkItem",
+  "kind": "global",
+  "file": "Player_SetAtkItem/Player_SetAtkItem.gml",
+  "params": [
+   "atk"
+  ],
+  "sigParams": [
+   "atk"
+  ],
+  "cat": "player",
+  "desc": "设置武器提供的攻击加成，改完 GetAtkTotal 会跟着变。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetAtkItem"
+ },
+ {
+  "name": "Player_SetBattleFightMenuObj",
+  "kind": "global",
+  "file": "Player_SetBattleFightMenuObj/Player_SetBattleFightMenuObj.gml",
+  "params": [
+   "obj"
+  ],
+  "sigParams": [
+   "obj"
+  ],
+  "cat": "player",
+  "desc": "指定战斗中 FIGHT 攻击条要用的界面实例。自定义攻击条时替换它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetBattleFightMenuObj"
+ },
+ {
+  "name": "Player_SetDef",
+  "kind": "global",
+  "file": "Player_SetDef/Player_SetDef.gml",
+  "params": [
+   "def"
+  ],
+  "sigParams": [
+   "def"
+  ],
+  "cat": "player",
+  "desc": "设置玩家的基础防御力，不含护甲加成。写入的是静态存储里的 DEF 数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetDef"
+ },
+ {
+  "name": "Player_SetDefItem",
+  "kind": "global",
+  "file": "Player_SetDefItem/Player_SetDefItem.gml",
+  "params": [
+   "def"
+  ],
+  "sigParams": [
+   "def"
+  ],
+  "cat": "player",
+  "desc": "设置护甲物品提供的防御加成。它是叠加在基础防御之外的那一部分。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetDefItem"
+ },
+ {
+  "name": "Player_SetExp",
+  "kind": "global",
+  "file": "Player_SetExp/Player_SetExp.gml",
+  "params": [
+   "experience"
+  ],
+  "sigParams": [
+   "experience"
+  ],
+  "cat": "player",
+  "desc": "设置玩家经验值，之后需要自己调 Player_UpdateLv 判定升级。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetExp"
+ },
+ {
+  "name": "Player_SetGold",
+  "kind": "global",
+  "file": "Player_SetGold/Player_SetGold.gml",
+  "params": [
+   "gold"
+  ],
+  "sigParams": [
+   "gold"
+  ],
+  "cat": "player",
+  "desc": "直接设置玩家持有的金币数量，属于覆盖写入而非累加。做交易扣款或发放奖励时使用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetGold"
+ },
+ {
+  "name": "Player_SetHp",
+  "kind": "global",
+  "file": "Player_SetHp/Player_SetHp.gml",
+  "params": [
+   "hp"
+  ],
+  "sigParams": [
+   "hp"
+  ],
+  "cat": "player",
+  "desc": "设置玩家当前 HP。会被自动钳制在 0 ~ HpMax 之间。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetHp"
+ },
+ {
+  "name": "Player_SetHpMax",
+  "kind": "global",
+  "file": "Player_SetHpMax/Player_SetHpMax.gml",
+  "params": [
+   "hpMax"
+  ],
+  "sigParams": [
+   "hpMax"
+  ],
+  "cat": "player",
+  "desc": "设置玩家 HP 上限，会连带影响 LV 派生出的数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetHpMax"
+ },
+ {
+  "name": "Player_SetInv",
+  "kind": "global",
+  "file": "Player_SetInv/Player_SetInv.gml",
+  "params": [
+   "inv"
+  ],
+  "sigParams": [
+   "inv"
+  ],
+  "cat": "player",
+  "desc": "设置玩家基础无敌帧长度，也就是受伤后的短暂免伤时间。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetInv"
+ },
+ {
+  "name": "Player_SetInvItem",
+  "kind": "global",
+  "file": "Player_SetInvItem/Player_SetInvItem.gml",
+  "params": [
+   "inv"
+  ],
+  "sigParams": [
+   "inv"
+  ],
+  "cat": "item",
+  "desc": "写入玩家背包指定槽位的物品 ID。收下/丢掉道具时调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetInvItem"
+ },
+ {
+  "name": "Player_SetItemArmor",
+  "kind": "global",
+  "file": "Player_SetItemArmor/Player_SetItemArmor.gml",
+  "params": [
+   "item"
+  ],
+  "sigParams": [
+   "item"
+  ],
+  "cat": "player",
+  "desc": "更换当前装备的护甲，防御加成会立刻生效。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetItemArmor"
+ },
+ {
+  "name": "Player_SetItemWeapon",
+  "kind": "global",
+  "file": "Player_SetItemWeapon/Player_SetItemWeapon.gml",
+  "params": [
+   "item"
+  ],
+  "sigParams": [
+   "item"
+  ],
+  "cat": "player",
+  "desc": "更换当前装备的武器，攻击加成会立刻生效。",
+  "ex": "Player_SetItemWeapon(ITEM_TOY_KNIFE);\nPlayer_SetAtkItem(5);   // 玩具刀 +5 ATK",
+  "hadEntry": true,
+  "fromEntry": "Player_SetItemWeapon"
+ },
+ {
+  "name": "Player_SetKills",
+  "kind": "global",
+  "file": "Player_SetKills/Player_SetKills.gml",
+  "params": [
+   "kills"
+  ],
+  "sigParams": [
+   "kills"
+  ],
+  "cat": "player",
+  "desc": "设置玩家击杀数，部分结局判定会读它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetKills"
+ },
+ {
+  "name": "Player_SetKr",
+  "kind": "global",
+  "file": "Player_SetKr/Player_SetKr.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "设置玩家的 KR（业报）值。仅在全局开启了 KR 系统时才会真正写入，否则本函数什么都不做。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetKr"
+ },
+ {
+  "name": "Player_SetLv",
+  "kind": "global",
+  "file": "Player_SetLv/Player_SetLv.gml",
+  "params": [
+   "lv"
+  ],
+  "sigParams": [
+   "lv"
+  ],
+  "cat": "player",
+  "desc": "设置玩家 LV。改完一般要跟着调 Player_UpdateLv() 刷新派生属性。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetLv"
+ },
+ {
+  "name": "Player_SetName",
+  "kind": "global",
+  "file": "Player_SetName/Player_SetName.gml",
+  "params": [
+   "name"
+  ],
+  "sigParams": [
+   "name"
+  ],
+  "cat": "player",
+  "desc": "设置玩家名字。战斗中与存档界面的称呼都会随之变成这个名字。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetName"
+ },
+ {
+  "name": "Player_SetPlot",
+  "kind": "global",
+  "file": "Player_SetPlot/Player_SetPlot.gml",
+  "params": [
+   "plot"
+  ],
+  "sigParams": [
+   "plot"
+  ],
+  "cat": "player",
+  "desc": "设置剧情标记，自定义剧情进度常挂在这个值上。",
+  "ex": "Player_SetPlot(3);          // 推进到第3章\nif (Player_GetPlot() >= 3) { … }",
+  "hadEntry": true,
+  "fromEntry": "Player_SetPlot"
+ },
+ {
+  "name": "Player_SetSpd",
+  "kind": "global",
+  "file": "Player_SetSpd/Player_SetSpd.gml",
+  "params": [
+   "spd"
+  ],
+  "sigParams": [
+   "spd"
+  ],
+  "cat": "player",
+  "desc": "设置玩家的基础速度（不含装备加成）。会直接覆盖原有的基础速度数值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetSpd"
+ },
+ {
+  "name": "Player_SetSpdItem",
+  "kind": "global",
+  "file": "Player_SetSpdItem/Player_SetSpdItem.gml",
+  "params": [
+   "spd"
+  ],
+  "sigParams": [
+   "spd"
+  ],
+  "cat": "player",
+  "desc": "设置装备提供的速度加成。它是叠加在基础速度之外的那一部分。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_SetSpdItem"
+ },
+ {
+  "name": "Player_UpdateLv",
+  "kind": "global",
+  "file": "Player_UpdateLv/Player_UpdateLv.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "player",
+  "desc": "按当前 LV 重算所有派生属性（HP 上限、攻击、防御等）。调过 LV 或经验后应该调一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Player_UpdateLv"
+ },
+ {
+  "name": "RegisterManager",
+  "kind": "global",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "通用注册管理器（构造函数）。把「ID → 对象」登记在一张表里，供背包、物品类型、商店等处复用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "RegisterManager"
+ },
+ {
+  "name": "RegisterManager.Contains",
+  "kind": "method",
+  "owner": "RegisterManager",
+  "memName": "Contains",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [
+   "id"
+  ],
+  "sigParams": [
+   "id"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "RegisterManager.Get",
+  "kind": "method",
+  "owner": "RegisterManager",
+  "memName": "Get",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [
+   "id"
+  ],
+  "sigParams": [
+   "id"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "RegisterManager.GetIds",
+  "kind": "method",
+  "owner": "RegisterManager",
+  "memName": "GetIds",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "RegisterManager.GetOrUndefined",
+  "kind": "method",
+  "owner": "RegisterManager",
+  "memName": "GetOrUndefined",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [
+   "id"
+  ],
+  "sigParams": [
+   "id"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "RegisterManager.Register",
+  "kind": "method",
+  "owner": "RegisterManager",
+  "memName": "Register",
+  "file": "RegisterManager/RegisterManager.gml",
+  "params": [
+   "id",
+   "content"
+  ],
+  "sigParams": [
+   "id",
+   "content"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "RotateAround",
+  "kind": "global",
+  "file": "RotateAround/RotateAround.gml",
+  "params": [
+   "x_center",
+   "y_center",
+   "x_around",
+   "y_around",
+   "x_present",
+   "y_present",
+   "angle"
+  ],
+  "sigParams": [
+   "x_center",
+   "y_center",
+   "x_around",
+   "y_around",
+   "x_present",
+   "y_present",
+   "angle"
+  ],
+  "cat": "misc",
+  "desc": "让实例绕一个指定点旋转。做环绕运动、行星弹幕时用。",
+  "ex": "var pos = RotateAround(board.x, board.y, board.x, board.y, bone_x, bone_y, board.angle);\nbone.x = pos[0];\nbone.y = pos[1];",
+  "hadEntry": true,
+  "fromEntry": "RotateAround"
+ },
+ {
+  "name": "Shake_Create",
+  "kind": "global",
+  "file": "Shake_Create/Shake_Create.gml",
+  "params": [
+   "target",
+   "var_name",
+   "shake_distance",
+   "shake_speed",
+   "shake_random",
+   "shake_decrease",
+   "delay"
+  ],
+  "sigParams": [
+   "target",
+   "var_name",
+   "shake_distance",
+   "shake_speed",
+   "shake_random",
+   "shake_decrease",
+   "delay"
+  ],
+  "cat": "anim",
+  "desc": "让任意变量抖动（不只是屏幕）。做「受伤抖动」「数字跳动」。",
+  "ex": "// 让伤害数字左右抖 5 帧\nShake_Create(damage_inst, \"x\", 4, 6, false, 1, 0);",
+  "hadEntry": true,
+  "fromEntry": "Shake_Create"
+ },
+ {
+  "name": "Shop_CallDialog",
+  "kind": "global",
+  "file": "Shop_CallDialog/Shop_CallDialog.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "触发商店的第 index 段对话。用于店主边介绍边推进的多段台词。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_CallDialog"
+ },
+ {
+  "name": "Shop_CallEvent",
+  "kind": "global",
+  "file": "Shop_CallEvent/Shop_CallEvent.gml",
+  "params": [
+   "event"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "主动触发商店的事件回调，用于自定义商店的交互时机。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_CallEvent"
+ },
+ {
+  "name": "Shop_ClearTyper",
+  "kind": "global",
+  "file": "Shop_ClearTyper/Shop_ClearTyper.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "清空商店打字机正在显示的内容并收起对话框，用于立刻打断商店里的文字演出。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_ClearTyper"
+ },
+ {
+  "name": "Shop_CreateTyper",
+  "kind": "global",
+  "file": "Shop_CreateTyper/Shop_CreateTyper.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "为商店对话框创建打字机实例，负责逐字显示效果。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_CreateTyper"
+ },
+ {
+  "name": "Shop_Custom",
+  "kind": "global",
+  "file": "Shop_Custom/Shop_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "商店注册总入口，游戏初始化时自动执行。所有 Shop_Set 调用写在这里。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_Custom"
+ },
+ {
+  "name": "Shop_DialogStart",
+  "kind": "global",
+  "file": "Shop_DialogStart/Shop_DialogStart.gml",
+  "params": [
+   "text"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "开启一段商店对话。按索引取该商店的对话配置并显示出来。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_DialogStart"
+ },
+ {
+  "name": "Shop_End",
+  "kind": "global",
+  "file": "Shop_End/Shop_End.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "退出商店流程，关闭商店界面并把控制权交回地图。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_End"
+ },
+ {
+  "name": "Shop_GetBackground",
+  "kind": "global",
+  "file": "Shop_GetBackground/Shop_GetBackground.gml",
+  "params": [
+   "shop_id"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "读取某个商店使用的背景图。传入商店 ID，若该商店不存在则返回 -1。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_GetBackground"
+ },
+ {
+  "name": "Shop_GetBGM",
+  "kind": "global",
+  "file": "Shop_GetBGM/Shop_GetBGM.gml",
+  "params": [
+   "shop_id"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "读取某个商店播放的背景音乐。传入商店 ID，若该商店不存在则返回 -1。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_GetBGM"
+ },
+ {
+  "name": "Shop_GetDialogTitle",
+  "kind": "global",
+  "file": "Shop_GetDialogTitle/Shop_GetDialogTitle.gml",
+  "params": [
+   "index"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "读取商店对话标题栏上显示的文字（含颜色标记）。只接受 0 到 3 的索引，越界时返回空。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_GetDialogTitle"
+ },
+ {
+  "name": "Shop_GetHost",
+  "kind": "global",
+  "file": "Shop_GetHost/Shop_GetHost.gml",
+  "params": [
+   "shop_id"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "读取某个商店的店主配置（立绘、名称等）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_GetHost"
+ },
+ {
+  "name": "Shop_GoState",
+  "kind": "global",
+  "file": "Shop_GoState/Shop_GoState.gml",
+  "params": [
+   "state"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "手动切换商店的内部状态（浏览 / 买卖 / 对话等）。一般由商店流程自己驱动，自定义商店时才需要调。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_GoState"
+ },
+ {
+  "name": "Shop_Init",
+  "kind": "global",
+  "file": "Shop_Init/Shop_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "初始化商店系统，建好商店注册表与对话打字机。启动时调用一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_Init"
+ },
+ {
+  "name": "Shop_IsExists",
+  "kind": "global",
+  "file": "Shop_IsExists/Shop_IsExists.gml",
+  "params": [
+   "shop_id"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "判断某个商店 id 是否已注册，也就是是否存在于 Shop_Custom 的注册表里。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_IsExists"
+ },
+ {
+  "name": "Shop_RefreshTyper",
+  "kind": "global",
+  "file": "Shop_RefreshTyper/Shop_RefreshTyper.gml",
+  "params": [
+   "*left",
+   "*right",
+   "*state",
+   "*info"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "刷新商店打字机内容：传入左右选项与当前状态、提示信息，让它重新排版显示。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_RefreshTyper"
+ },
+ {
+  "name": "Shop_Set",
+  "kind": "global",
+  "file": "Shop_Set/Shop_Set.gml",
+  "params": [
+   "id",
+   "host",
+   "background",
+   "bgm*",
+   "pause_bgm*",
+   "quick*"
+  ],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "注册一个商店。传入商店 id、店主物体、背景与 BGM 等配置，之后用 Shop_Start 进入。",
+  "ex": "#macro SHOP_SANS \"sans_shop\"\n\nShop_Set(SHOP_SANS,\n         obj_sans_shopkeeper,      // 店主物体\n         spr_shop_bg,              // 背景\n         mus_shop,                 // BGM\n         true, false);",
+  "hadEntry": true,
+  "fromEntry": "Shop_Set"
+ },
+ {
+  "name": "Shop_SetDialog",
+  "kind": "global",
+  "file": "Shop_SetDialog/Shop_SetDialog.gml",
+  "params": [
+   "title",
+   "title_blend",
+   "text",
+   "next_dialog"
+  ],
+  "sigParams": [
+   "title",
+   "title_blend",
+   "text",
+   "next_dialog"
+  ],
+  "cat": "shop",
+  "desc": "设置商店对话框内容。title 是店主头顶的标题。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_SetDialog"
+ },
+ {
+  "name": "Shop_Start",
+  "kind": "global",
+  "file": "Shop_Start/Shop_Start.gml",
+  "params": [
+   "shop_id"
+  ],
+  "sigParams": [
+   "shop_id"
+  ],
+  "cat": "shop",
+  "desc": "按商店 id 进入商店流程，会创建商店实例并接管玩家操作。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_Start"
+ },
+ {
+  "name": "Shop_Uninit",
+  "kind": "global",
+  "file": "Shop_Uninit/Shop_Uninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "shop",
+  "desc": "卸载商店系统，释放注册表与打字机资源。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Shop_Uninit"
+ },
+ {
+  "name": "Storage",
+  "kind": "global",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "funcGetFilePath"
+  ],
+  "sigParams": [
+   "funcGetFilePath"
+  ],
+  "cat": "storage",
+  "desc": "存储单元的构造函数。每个存储单元对应一个 JSON 文件，内部用 StorageZone 分区分门别类地放数据。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage"
+ },
+ {
+  "name": "Storage_Custom",
+  "kind": "global",
+  "file": "Storage_Custom/Storage_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "引擎留给你注册存储区的地方。它内部依次调用上面那五个 Storage_Custom_* 函数。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom"
+ },
+ {
+  "name": "Storage_Custom_Dynamic",
+  "kind": "global",
+  "file": "Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml",
+  "params": [
+   "storages"
+  ],
+  "sigParams": [
+   "storages"
+  ],
+  "cat": "storage",
+  "desc": "注册 dynamic 区（存进 dynamic.json）。放**跟随存档槽**的可变数据，比如当前房间、背包内容。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom_Dynamic"
+ },
+ {
+  "name": "Storage_Custom_Info",
+  "kind": "global",
+  "file": "Storage_Custom_Info/Storage_Custom_Info.gml",
+  "params": [
+   "storages"
+  ],
+  "sigParams": [
+   "storages"
+  ],
+  "cat": "storage",
+  "desc": "注册 info 区（存进 info.json）。专门放**存档选择界面**要显示的信息，如 LV、游玩时长、所在地点。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom_Info"
+ },
+ {
+  "name": "Storage_Custom_Settings",
+  "kind": "global",
+  "file": "Storage_Custom_Settings/Storage_Custom_Settings.gml",
+  "params": [
+   "storages"
+  ],
+  "sigParams": [
+   "storages"
+  ],
+  "cat": "storage",
+  "desc": "注册 settings 区（存进 settings.json）。放玩家偏好设置，与存档槽无关。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom_Settings"
+ },
+ {
+  "name": "Storage_Custom_Static",
+  "kind": "global",
+  "file": "Storage_Custom_Static/Storage_Custom_Static.gml",
+  "params": [
+   "storages"
+  ],
+  "sigParams": [
+   "storages"
+  ],
+  "cat": "storage",
+  "desc": "注册 static 区（存进 static.json）。放**跨存档永久生效**的数据，比如见过的结局、解锁项。",
+  "ex": "// 引擎自带的注册内容（在 Storage_Custom_* 里）：\nfunction Storage_Custom_Static(storages){\n    var s = new Storage(Storage_MakeGetFilePathFunc(true, \"static.json\"));\n    storages.Register(\"static\", s);\n    s.Register(\"general\", new StorageZoneStruct());\n}\n\n// 你要加自己的：\nfunction Storage_Custom_Static(storages){\n    // …原有内容…\n    s.Register(\"my_quests\", new MyQuestZone());\n}",
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom_Static"
+ },
+ {
+  "name": "Storage_Custom_Temp",
+  "kind": "global",
+  "file": "Storage_Custom_Temp/Storage_Custom_Temp.gml",
+  "params": [
+   "storages"
+  ],
+  "sigParams": [
+   "storages"
+  ],
+  "cat": "storage",
+  "desc": "注册 temp 区。**只存在内存、不落盘**，适合放战斗内的临时状态，关掉游戏即消失。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Custom_Temp"
+ },
+ {
+  "name": "Storage_GetDynamic",
+  "kind": "global",
+  "file": "Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回名为 dynamic 的存储单元对象，用于读写游戏运行时（随存档一起保存）的数据。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetDynamic"
+ },
+ {
+  "name": "Storage_GetInfo",
+  "kind": "global",
+  "file": "Storage_Custom_Info/Storage_Custom_Info.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 info 存储单元对象，里面放的是存档界面显示用的信息。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetInfo"
+ },
+ {
+  "name": "Storage_GetInfoFlag",
+  "kind": "global",
+  "file": "Storage_GetInfoFlag/Storage_GetInfoFlag.gml",
+  "params": [
+   "flag",
+   "defaultValue"
+  ],
+  "sigParams": [
+   "flag",
+   "defaultValue"
+  ],
+  "cat": "storage",
+  "desc": "读取 info 区 general 分区里的一个标记值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetInfoFlag"
+ },
+ {
+  "name": "Storage_GetInfoGeneral",
+  "kind": "global",
+  "file": "Storage_Custom_Info/Storage_Custom_Info.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 info 区的 general 分区（带缓存）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetInfoGeneral"
+ },
+ {
+  "name": "Storage_GetManager",
+  "kind": "global",
+  "file": "Storage_InitUninit/Storage_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回全局存储管理器。四级存储区都注册在它下面，用 Get(\"static\") 这样的键取出来。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetManager"
+ },
+ {
+  "name": "Storage_GetSaveSlot",
+  "kind": "global",
+  "file": "Storage_Custom/Storage_Custom.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "读取当前使用的存档槽编号，决定数据具体读写到哪一个存档文件。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetSaveSlot"
+ },
+ {
+  "name": "Storage_GetSettings",
+  "kind": "global",
+  "file": "Storage_Custom_Settings/Storage_Custom_Settings.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回名为 settings 的存储单元对象，用于读写音量、按键等设置类数据，与存档彼此独立。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetSettings"
+ },
+ {
+  "name": "Storage_GetStatic",
+  "kind": "global",
+  "file": "Storage_Custom_Static/Storage_Custom_Static.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 static 存储单元对象，里面放的是跨存档永久生效的数据。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetStatic"
+ },
+ {
+  "name": "Storage_GetStaticFlag",
+  "kind": "global",
+  "file": "Storage_GetStaticFlag/Storage_GetStaticFlag.gml",
+  "params": [
+   "flag",
+   "defaultValue"
+  ],
+  "sigParams": [
+   "flag",
+   "defaultValue"
+  ],
+  "cat": "storage",
+  "desc": "读取 static 区 general 分区里的一个标记值。没存过就返回 defaultValue。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetStaticFlag"
+ },
+ {
+  "name": "Storage_GetStaticGeneral",
+  "kind": "global",
+  "file": "Storage_Custom_Static/Storage_Custom_Static.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 static 区的 general 分区。引擎为常用区做了缓存，所以它比 Get(\"general\") 更快。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetStaticGeneral"
+ },
+ {
+  "name": "Storage_GetTemp",
+  "kind": "global",
+  "file": "Storage_Custom_Temp/Storage_Custom_Temp.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 temp 存储单元对象，里面是只存内存、不落盘的临时数据。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetTemp"
+ },
+ {
+  "name": "Storage_GetTempFlag",
+  "kind": "global",
+  "file": "Storage_GetTempFlag/Storage_GetTempFlag.gml",
+  "params": [
+   "flag",
+   "defaultValue"
+  ],
+  "sigParams": [
+   "flag",
+   "defaultValue"
+  ],
+  "cat": "storage",
+  "desc": "读取 temp 区 general 分区里的一个标记值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetTempFlag"
+ },
+ {
+  "name": "Storage_GetTempGeneral",
+  "kind": "global",
+  "file": "Storage_Custom_Temp/Storage_Custom_Temp.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "取回 temp 区的 general 分区（带缓存）。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_GetTempGeneral"
+ },
+ {
+  "name": "Storage_Init",
+  "kind": "global",
+  "file": "Storage_InitUninit/Storage_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "初始化存档系统：建好存储管理器并注册四级存储区。启动时调用一次。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Init"
+ },
+ {
+  "name": "Storage_LoadGame",
+  "kind": "global",
+  "file": "Storage_Custom_Info/Storage_Custom_Info.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "读档：从文件里恢复 static 与 dynamic 两个区。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_LoadGame"
+ },
+ {
+  "name": "Storage_MakeGetFilePathFunc",
+  "kind": "global",
+  "file": "Storage_Custom/Storage_Custom.gml",
+  "params": [
+   "useSlots",
+   "fileName"
+  ],
+  "sigParams": [
+   "useSlots",
+   "fileName"
+  ],
+  "cat": "storage",
+  "desc": "生成一个「取存档文件路径」的函数，供自定义存储区复用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_MakeGetFilePathFunc"
+ },
+ {
+  "name": "Storage_SaveDynamic",
+  "kind": "global",
+  "file": "Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "单独把 dynamic 区落盘。适合在换房间等场合做轻量保存，不必走完整的存档流程。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SaveDynamic"
+ },
+ {
+  "name": "Storage_SaveGame",
+  "kind": "global",
+  "file": "Storage_Custom_Info/Storage_Custom_Info.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "存档：把 static 与 info 区落盘，并顺手写入当前房间与 LV 等供存档界面显示的信息。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SaveGame"
+ },
+ {
+  "name": "Storage_SetInfoFlag",
+  "kind": "global",
+  "file": "Storage_SetInfoFlag/Storage_SetInfoFlag.gml",
+  "params": [
+   "flag",
+   "value"
+  ],
+  "sigParams": [
+   "flag",
+   "value"
+  ],
+  "cat": "storage",
+  "desc": "写入 info 区 general 分区的一个标记值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SetInfoFlag"
+ },
+ {
+  "name": "Storage_SetSaveSlot",
+  "kind": "global",
+  "file": "Storage_Custom/Storage_Custom.gml",
+  "params": [
+   "slot"
+  ],
+  "sigParams": [
+   "slot"
+  ],
+  "cat": "storage",
+  "desc": "设置当前使用的存档槽编号。存档文件路径会跟着槽位走。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SetSaveSlot"
+ },
+ {
+  "name": "Storage_SetStaticFlag",
+  "kind": "global",
+  "file": "Storage_SetStaticFlag/Storage_SetStaticFlag.gml",
+  "params": [
+   "flag",
+   "value"
+  ],
+  "sigParams": [
+   "flag",
+   "value"
+  ],
+  "cat": "storage",
+  "desc": "写入 static 区 general 分区的一个标记值，返回该分区以便链式调用。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SetStaticFlag"
+ },
+ {
+  "name": "Storage_SetTempFlag",
+  "kind": "global",
+  "file": "Storage_SetTempFlag/Storage_SetTempFlag.gml",
+  "params": [
+   "flag",
+   "value"
+  ],
+  "sigParams": [
+   "flag",
+   "value"
+  ],
+  "cat": "storage",
+  "desc": "写入 temp 区 general 分区的一个标记值。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_SetTempFlag"
+ },
+ {
+  "name": "Storage_Uninit",
+  "kind": "global",
+  "file": "Storage_InitUninit/Storage_InitUninit.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "卸载存档系统，释放存储管理器占用的资源。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Storage_Uninit"
+ },
+ {
+  "name": "StorageZone",
+  "kind": "global",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "存储区基类（构造函数）。定义 OnWrite / OnRead / OnClear 三个钩子，子类可覆写来做加密或格式转换。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "StorageZone"
+ },
+ {
+  "name": "StorageZone.ClearData",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "ClearData",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.DeserializeFromJson",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "DeserializeFromJson",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "json"
+  ],
+  "sigParams": [
+   "json"
+  ],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.Get",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "Get",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "key",
+   "defaultValue"
+  ],
+  "sigParams": [
+   "key",
+   "defaultValue"
+  ],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.GetData",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "GetData",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.GetFilePath",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "GetFilePath",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.GetOrDefault",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "GetOrDefault",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "key",
+   "defaultValue"
+  ],
+  "sigParams": [
+   "key",
+   "defaultValue"
+  ],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.IsFileExists",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "IsFileExists",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.LoadFromFile",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "LoadFromFile",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.OnClear",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "OnClear",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.OnRead",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "OnRead",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "from"
+  ],
+  "sigParams": [
+   "from"
+  ],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.OnWrite",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "OnWrite",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.SaveToFile",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "SaveToFile",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.SerializeToJson",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "SerializeToJson",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZone.Set",
+  "kind": "method",
+  "owner": "StorageZone",
+  "memName": "Set",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "key",
+   "value"
+  ],
+  "sigParams": [
+   "key",
+   "value"
+  ],
+  "cat": "storage",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "StorageZoneInventories",
+  "kind": "global",
+  "file": "Storage/Storage.gml",
+  "params": [
+   "inventoryManager"
+  ],
+  "sigParams": [
+   "inventoryManager"
+  ],
+  "cat": "storage",
+  "desc": "专门用于存放各背包容器的存储区，把背包内容纳入存档体系。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "StorageZoneInventories"
+ },
+ {
+  "name": "StorageZoneStruct",
+  "kind": "global",
+  "file": "Storage/Storage.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "storage",
+  "desc": "带数据结构的存储区，继承自 StorageZone。绝大多数存放键值对的地方都用它。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "StorageZoneStruct"
+ },
+ {
+  "name": "TextTyper_Add",
+  "kind": "global",
+  "file": "TextTyper_Add/TextTyper_Add.gml",
+  "params": [
+   "x",
+   "y",
+   "depth",
+   "text"
+  ],
+  "sigParams": [
+   "x",
+   "y",
+   "depth",
+   "text"
+  ],
+  "cat": "dialog",
+  "desc": "在世界中直接生成一个打字机文本（不走队列，不进对话框）。返回实例。",
+  "ex": "TextTyper_Add(320, 240, -1000, \"* 这是一段漂浮文字\");",
+  "hadEntry": true,
+  "fromEntry": "TextTyper_Add"
+ },
+ {
+  "name": "Time_Init",
+  "kind": "global",
+  "file": "Time_init/Time_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "初始化游戏计时系统，开始累计游玩时长。",
+  "ex": "// 自己写弹幕运动时也要乘上它\ninst.hspeed = 3 * global.delta_time_factor;\n\n// 全局变速（做子弹时间）：直接改这个值\nglobal.delta_time_factor = 0.5;",
+  "hadEntry": true,
+  "fromEntry": "Time_Init"
+ },
+ {
+  "name": "Time_Step",
+  "kind": "global",
+  "file": "Time_init/Time_Init.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": "每帧推进计时。放在 Step 事件里调用，用于统计游玩时间（存档界面会显示）。",
+  "ex": "// 自己写弹幕运动时也要乘上它\ninst.hspeed = 3 * global.delta_time_factor;\n\n// 全局变速（做子弹时间）：直接改这个值\nglobal.delta_time_factor = 0.5;",
+  "hadEntry": true,
+  "fromEntry": "Time_Step"
+ },
+ {
+  "name": "Vector3",
+  "kind": "global",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "_x",
+   "_y",
+   "_z"
+  ],
+  "sigParams": [
+   "_x",
+   "_y",
+   "_z"
+  ],
+  "cat": "misc",
+  "desc": "三维向量（构造函数）。带一套常用的向量运算方法，用于 3D 骨骼与空间计算。",
+  "ex": null,
+  "hadEntry": true,
+  "fromEntry": "Vector3"
+ },
+ {
+  "name": "Vector3.Add",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Add",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Angle",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Angle",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Cross",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Cross",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Distance",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Distance",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.DivideScalar",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "DivideScalar",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Dot",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Dot",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Magnitude",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Magnitude",
+  "file": "Vector3/Vector3.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.MulScalar",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "MulScalar",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Normalize",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Normalize",
+  "file": "Vector3/Vector3.gml",
+  "params": [],
+  "sigParams": [],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ },
+ {
+  "name": "Vector3.Sub",
+  "kind": "method",
+  "owner": "Vector3",
+  "memName": "Sub",
+  "file": "Vector3/Vector3.gml",
+  "params": [
+   "value"
+  ],
+  "sigParams": [
+   "value"
+  ],
+  "cat": "misc",
+  "desc": null,
+  "ex": null,
+  "hadEntry": false,
+  "fromEntry": null
+ }
+]

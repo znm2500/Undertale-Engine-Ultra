@@ -1,0 +1,8 @@
+备份完成: _bak10-manual-api.js / _bak10-...html
+enemyEvents 14 条编号: 10~23 -> 0~13
+battle_enemy / battle_enemy_test 卡片已按源码修正
+snippets.enemyFull / customBullet 编号已修正
+manual-api.js 回写: 379768 bytes
+manual-api.js 重读断言通过
+教程速览表格 User Event 编号已同步
+ALL OK

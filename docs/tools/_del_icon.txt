@@ -1,0 +1,5 @@
+临时备份: _tmp-manual-api.js
+已删除 16 个分类的 icon 字段（其他字段不动）
+vm 重载验证通过：16 分类除 icon 外逐字段一致，functions 449 条不变
+临时备份已删除
+ALL OK

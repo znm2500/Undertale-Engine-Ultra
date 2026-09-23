@@ -1,0 +1,2920 @@
+待撰写介绍的函数：327
+
+### __Battle_Iloop   [board]   Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml
+   参数: _index, _list
+      function __Battle_Iloop(_index, _list) {
+      var _len = array_length(_list);
+      if (_len <= 0) return 0;
+      _index = _index mod _len;
+      if (_index < 0) _index += _len;
+      return _index;
+      }
+      // 直接创建一个框，创建后需要手动添加顶点
+
+### __Battle_RegisterBoard   [board]   Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml
+   参数: _board
+      function __Battle_RegisterBoard(_board) {
+      if (!variable_global_exists("boards_array")) global.boards_array = [];
+      if (!variable_global_exists("board_uid")) global.board_uid = 0;
+      _board.board_number = global.board_uid;
+      global.board_uid++;
+      array_push(global.boards_array, _board);
+      return _board;
+      }
+
+### __Battle_RemoveBoard   [board]   Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml
+   参数: _board
+      function __Battle_RemoveBoard(_board) {
+      if (!variable_global_exists("boards_array")) return;
+      var idx = array_find_index(global.boards_array, function(a, index) {
+      return a == _board;
+      });
+      if (idx != -1) array_delete(global.boards_array, idx, 1);
+      }
+      function __Battle_RemoveBoardController(_controller){
+
+### __Battle_RemoveBoardController   [board]   Battle_CreateBoardPoints/Battle_CreateBoardPoints.gml
+   参数: _controller
+      function __Battle_RemoveBoardController(_controller){
+      if (!variable_global_exists("boards_controller_array")) return;
+      var idx = array_find_index(global.boards_controller_array, function(a, index) {
+      return a == _controller;
+      });
+      if (idx != -1) array_delete(global.boards_controller_array, idx, 1);
+      }
+      function __Battle_Iloop(_index, _list) {
+      var _len = array_length(_list);
+
+### Anim_Init   [anim]   Anim_Init/Anim_Init.gml
+      function Anim_Init() {
+      enum ANIM_TWEEN {
+      LINEAR,
+      SINE,
+      QUAD,
+      CUBIC,
+      QUART,
+      QUINT,
+      EXPO,
+
+### Anim_Step   [anim]   Anim_Init/Anim_Init.gml
+      function Anim_Step() {
+      var i = 0;
+      repeat(array_length(global._animators)) {
+      global._animators[i++].Step();
+      }
+      var ease_list = global._anim_data;
+      for (i = 0; i < array_length(ease_list); i++) {
+      var anim_item = ease_list[i];
+      if (anim_item[$ "frozen"]) continue;
+
+### Anim_Uninit   [anim]   Anim_Init/Anim_Init.gml
+      function Anim_Uninit() {
+      delete global._anim_data;
+      delete global._animators;
+      return (true);
+      }
+      function Anim_IsExists(target, var_name = undefined) {
+      var i = 0;
+      repeat(array_length(global._anim_data)) {
+
+### Animator_Delete   [anim]   Anim_Init/Anim_Init.gml
+   参数: target, var_name
+      function Animator_Delete(target, var_name = undefined) {
+      var ease_list = global._animators;
+      var success = false;
+      for (var i = 0; i < array_length(ease_list); i++) {
+      var animator = ease_list[i],
+      p = 0;
+      repeat(array_length(animator.patterns)) {
+      var pattern = animator.patterns[p++];
+      if (var_name == undefined) {
+
+### Animator_Destroy   [anim]   Anim_Init/Anim_Init.gml
+   参数: target, var_name
+      function Animator_Destroy(target, var_name = undefined) {
+      var ease_list = global._animators;
+      var success = false;
+      for (var i = 0; i < array_length(ease_list); i++) {
+      var animator = ease_list[i],
+      p = 0;
+      repeat(array_length(animator.patterns)) {
+      var pattern = animator.patterns[p++];
+      if (var_name == undefined) {
+
+### Animator_IsExist   [anim]   Anim_Init/Anim_Init.gml
+   参数: target, var_name
+      function Animator_IsExist(target, var_name = undefined) {
+      var i = 0;
+      repeat(array_length(global._animators)) {
+      var animator = global._animators[i++],
+      p = 0;
+      repeat(array_length(animator.patterns)) {
+      var pattern = animator.patterns[p++];
+      if (var_name == undefined) {
+      if (pattern.target == target) {
+
+### Animator.Continue   [anim]   Anim_Init/Anim_Init.gml
+      function Continue() {
+      if (_play_speed == 0) return false;
+      play_speed = _play_speed;
+      return true;
+      }
+      function Destroy() {
+      var i = 0;
+      repeat(array_length(global._animators)) {
+      if (global._animators[i] == self) {
+
+### Animator.DeleteKeyFrame   [anim]   Anim_Init/Anim_Init.gml
+      function DeleteKeyFrame() {
+      var item = GetPattern(argument[0], argument[1]);
+      if (!item) return false;
+      var i = 1;
+      while (argument[i++] != undefined) {
+      var l = 0,
+      r = array_length(item.keyframes) - 1,
+      mid = l;
+      while (l <= r) {
+
+### Animator.DeletePattern   [anim]   Anim_Init/Anim_Init.gml
+   参数: target, varname
+      function DeletePattern(target, varname) {
+      var _index = 0;
+      repeat(array_length(patterns)) {
+      if (patterns[_index].target == target && patterns[_index].var_name = var_name) array_delete(patterns, _index, 1);
+      _index++;
+      }
+      return false;
+      }
+      function Pause() {
+
+### Animator.Destroy   [anim]   Anim_Init/Anim_Init.gml
+      function Destroy() {
+      var i = 0;
+      repeat(array_length(global._animators)) {
+      if (global._animators[i] == self) {
+      array_delete(global._animators, i, 1);
+      return true;
+      }
+      i++
+      }
+
+### Animator.GetPattern   [anim]   Anim_Init/Anim_Init.gml
+   参数: target, var_name
+      function GetPattern(target, var_name) {
+      var _index = 0;
+      repeat(array_length(patterns)) {
+      if (patterns[_index].target == target && patterns[_index].var_name = var_name) return patterns[_index];
+      _index++;
+      }
+      return false;
+      }
+      ///@arg target,var_name,keyframe...
+
+### Animator.IsKeyFrameExists   [anim]   Anim_Init/Anim_Init.gml
+   参数: pattern, progress
+      function IsKeyFrameExists(pattern, progress) {
+      var l = 0,
+      r = array_length(pattern.keyframes) - 1,
+      mid = l;
+      while (r - l > 1) {
+      mid = (r + l) >> 1;
+      if (pattern.keyframes[l][0] == progress) {
+      return true;
+      } else if (pattern.keyframes[r][0] == progress) {
+
+### Animator.Pause   [anim]   Anim_Init/Anim_Init.gml
+      function Pause() {
+      _play_speed = play_speed;
+      play_speed = 0;
+      return bool(_play_speed);
+      }
+      function Continue() {
+      if (_play_speed == 0) return false;
+      play_speed = _play_speed;
+      return true;
+
+### Animator.Play   [anim]   Anim_Init/Anim_Init.gml
+   参数: duration, delay, play_speed, play_direction, play_count, play_interval, auto_destroy
+      function Play(duration, delay = 0, play_speed = 1, play_direction = ANIMATOR_PLAY_DIREATION.NORMAL, play_count = 1, play_interval = 0, auto_destroy = 0) {
+      self.duration = round(abs(duration));
+      if (!self.duration) self.duration = 1;
+      self.delay = delay;
+      self.play_speed = abs(play_speed);
+      self.play_direction = play_direction;
+      self.play_count = play_count;
+      self.play_interval = play_interval;
+      self.auto_destroy = auto_destroy;
+
+### Animator.SetKeyframe   [anim]   Anim_Init/Anim_Init.gml
+      function SetKeyframe() {
+      var target = argument[0];
+      var var_name = argument[1];
+      var item = GetPattern(target, var_name);
+      var i = 1,
+      success = false;
+      if (item) {
+      while (argument[++i] != undefined) {
+      if (is_array(argument[i])) {
+
+### Animator.SetPlaySpeed   [anim]   Anim_Init/Anim_Init.gml
+   参数: play_speed
+      function SetPlaySpeed(play_speed) {
+      if (play_speed < 0) {
+      self.play_speed = -play_speed;
+      switch (play_direction) {
+      case 0:
+      play_direction = 1;
+      break;
+      case 1:
+      play_direction = 0;
+
+### Animator.SetProgress   [anim]   Anim_Init/Anim_Init.gml
+   参数: progress
+      function SetProgress(progress) {
+      if (progress > 1 || progress < 0) return;
+      _step = progress * duration;
+      }
+      ///@arg target,var_name,progress...
+      function DeleteKeyFrame() {
+      var item = GetPattern(argument[0], argument[1]);
+      if (!item) return false;
+      var i = 1;
+
+### Animator.Step   [anim]   Anim_Init/Anim_Init.gml
+      function Step() {
+      if (play_speed < 0) show_error("Cannot set play_speed negative directly!", true);
+      if (play_speed && play_count > 0) {
+      delay -= play_speed;
+      if (delay < 0) {
+      if (play_direction == 0 || (play_direction == 2 && !(_played_times & 1)) || (play_direction == 3 && _played_times & 1)) {
+      _step -= delay;
+      delay = 0;
+      if (_step > duration) _step = duration;
+
+### Battle_EndDialog   [battlecore]   Battle_EndDialog/Battle_EndDialog.gml
+      function Battle_EndDialog() {
+      if(Battle_GetState()==BATTLE_STATE.DIALOG){
+      Dialog_Clear();
+      Battle_CallEnemyEvent(BATTLE_ENEMY_EVENT.DIALOG_END);
+      Battle_GotoNextState();
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_EndMenu   [battlecore]   Battle_EndMenu/Battle_EndMenu.gml
+      function Battle_EndMenu() {
+      if(Battle_GetState()==BATTLE_STATE.MENU){
+      Battle_SetMenu(-1,false);
+      var BUTTON=Battle_GetMenuChoiceButton();
+      var MERCY=Battle_GetMenuChoiceMercy();
+      //使用物品
+      if(BUTTON==BATTLE_MENU_CHOICE_BUTTON.ITEM){
+
+### Battle_EndMenuFightAim   [battlecore]   Battle_EndMenuFightAim/Battle_EndMenuFightAim.gml
+      function Battle_EndMenuFightAim() {
+      if(Battle_GetMenu()==BATTLE_MENU.FIGHT_AIM){
+      Battle_SetMenu(BATTLE_MENU.FIGHT_ANIM);
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_EndMenuFightAnim   [battlecore]   Battle_EndMenuFightAnim/Battle_EndMenuFightAnim.gml
+      function Battle_EndMenuFightAnim() {
+      if(Battle_GetMenu()==BATTLE_MENU.FIGHT_ANIM){
+      Battle_SetMenuFightAnimTime(0);
+      Battle_SetMenu(BATTLE_MENU.FIGHT_DAMAGE);
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_EndMenuFightDamage   [battlecore]   Battle_EndMenuFightDamage/Battle_EndMenuFightDamage.gml
+      function Battle_EndMenuFightDamage() {
+      if(Battle_GetMenu()==BATTLE_MENU.FIGHT_DAMAGE){
+      Battle_EndMenu();
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_GetEnemyActionName   [enemy]   Battle_GetEnemyActionName/Battle_GetEnemyActionName.gml
+   参数: enemy_slot, action_slot
+      function Battle_GetEnemyActionName() {
+      var ENEMY=argument[0];
+      var ACTION=argument[1];
+      if(instance_exists(Battle_GetEnemy(ENEMY)) && ACTION>=0 && ACTION<=6){
+      return battle._enemy_action_name[ENEMY,ACTION];
+      }else{
+      return "";
+
+### Battle_GetEnemyActionNumber   [enemy]   Battle_GetEnemyActionNumber/Battle_GetEnemyActionNumber.gml
+   参数: enemy_slot
+      function Battle_GetEnemyActionNumber() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_action_number[ENEMY];
+      }else{
+      return 0;
+      }
+
+### Battle_GetEnemyCenterPosX   [enemy]   Battle_GetEnemyCenterPosX/Battle_GetEnemyCenterPosX.gml
+   参数: enemy_slot
+      function Battle_GetEnemyCenterPosX() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_center_pos_x[ENEMY];
+      }else{
+      return 0;
+      }
+
+### Battle_GetEnemyCenterPosY   [enemy]   Battle_GetEnemyCenterPosY/Battle_GetEnemyCenterPosY.gml
+   参数: enemy_slot
+      function Battle_GetEnemyCenterPosY() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_center_pos_y[ENEMY];
+      }else{
+      return 0;
+      }
+
+### Battle_GetEnemyDEF   [enemy]   Battle_GetEnemyDEF/Battle_GetEnemyDEF.gml
+   参数: enemy_slot
+      function Battle_GetEnemyDEF() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_def[ENEMY];
+      }else{
+      return 0;
+      }
+
+### Battle_GetEnemyName   [enemy]   Battle_GetEnemyName/Battle_GetEnemyName.gml
+   参数: enemy_slot
+      function Battle_GetEnemyName() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_name[ENEMY];
+      }else{
+      return "";
+      }
+
+### Battle_GetMenuChoiceAction   [battlecore]   Battle_GetMenuChoiceAction/Battle_GetMenuChoiceAction.gml
+      function Battle_GetMenuChoiceAction() {
+      return battle._menu_choice_action;
+      }
+
+### Battle_GetMenuChoiceEnemy   [battlecore]   Battle_GetMenuChoiceEnemy/Battle_GetMenuChoiceEnemy.gml
+      function Battle_GetMenuChoiceEnemy() {
+      return battle._menu_choice_enemy;
+      }
+
+### Battle_GetMenuChoiceItem   [battlecore]   Battle_GetMenuChoiceItem/Battle_GetMenuChoiceItem.gml
+      function Battle_GetMenuChoiceItem() {
+      return battle._menu_choice_item;
+      }
+
+### Battle_GetMenuChoiceMercy   [battlecore]   Battle_GetMenuChoiceMercy/Battle_GetMenuChoiceMercy.gml
+      function Battle_GetMenuChoiceMercy() {
+      return battle._menu_choice_mercy;
+      }
+
+### Battle_GetMenuChoiceMercyOverrideName   [battlecore]   Battle_GetMenuChoiceMercyOverrideName/Battle_GetMenuChoiceMercyOverrideName.gml
+   参数: choice_mercy_slot
+      function Battle_GetMenuChoiceMercyOverrideName() {
+      var SLOT=argument[0];
+      if(SLOT>=0&&SLOT<=2){
+      return battle._menu_choice_mercy_override_name[SLOT];
+      }else{
+      return "";
+      }
+
+### Battle_GetMenuChoiceMercyOverrideNumber   [battlecore]   Battle_GetMenuChoiceMercyOverrideNumber/Battle_GetMenuChoiceMercyOverrideNumber.gml
+      function Battle_GetMenuChoiceMercyOverrideNumber() {
+      return battle._menu_choice_mercy_override_number;
+      }
+
+### Battle_GetMenuFightAnimTime   [battlecore]   Battle_GetMenuFightAnimTime/Battle_GetMenuFightAnimTime.gml
+      function Battle_GetMenuFightAnimTime() {
+      return battle._menu_fight_anim_time;
+      }
+
+### Battle_GetMenuFightDamage   [battlecore]   Battle_GetMenuFightDamage/Battle_GetMenuFightDamage.gml
+      function Battle_GetMenuFightDamage() {
+      return battle._menu_fight_damage;
+      }
+
+### Battle_GetMenuFightDamageTime   [battlecore]   Battle_GetMenuFightDamageTime/Battle_GetMenuFightDamageTime.gml
+      function Battle_GetMenuFightDamageTime() {
+      return battle._menu_fight_damage_time;
+      }
+
+### Battle_GetMenuFightPanel   [battlecore]   Battle_GetMenuFightPanel/Battle_GetMenuFightPanel.gml
+      function Battle_GetMenuFightPanel(){
+      return global.Panel;
+      }
+
+### Battle_GetPlayerTempAtk   [battlecore]   Battle_GetPlayerTempAtk/Battle_GetPlayerTempAtk.gml
+      function Battle_GetPlayerTempAtk() {
+      return battle._player_temp_atk;
+      }
+
+### Battle_GetPlayerTempDef   [battlecore]   Battle_GetPlayerTempDef/Battle_GetPlayerTempDef.gml
+      function Battle_GetPlayerTempDef() {
+      return battle._player_temp_def;
+      }
+
+### Battle_GetPlayerTempInv   [battlecore]   Battle_GetPlayerTempInv/Battle_GetPlayerTempInv.gml
+      function Battle_GetPlayerTempInv() {
+      return battle._player_temp_inv;
+      }
+
+### Battle_GetPlayerTempSpd   [battlecore]   Battle_GetPlayerTempSpd/Battle_GetPlayerTempSpd.gml
+      function Battle_GetPlayerTempSpd() {
+      return battle._player_temp_spd;
+      }
+
+### Battle_GetRewardExp   [battlecore]   Battle_GetRewardExp/Battle_GetRewardExp.gml
+      function Battle_GetRewardExp() {
+      return battle._reward_exp;
+      }
+
+### Battle_GetRewardGold   [battlecore]   Battle_GetRewardGold/Battle_GetRewardGold.gml
+      function Battle_GetRewardGold() {
+      return battle._reward_gold;
+      }
+
+### Battle_GetTurnNumber   [battlecore]   Battle_GetTurnNumber/Battle_GetTurnNumber.gml
+      function Battle_GetTurnNumber() {
+      return battle._turn_number;
+      }
+
+### Battle_GetTurnTime   [battlecore]   Battle_GetTurnTime/Battle_GetTurnTime.gml
+      function Battle_GetTurnTime() {
+      return battle._turn_time;
+      }
+
+### Battle_IsDialogAutoEnd   [battlecore]   Battle_IsDialogAutoEnd/Battle_IsDialogAutoEnd.gml
+      function Battle_IsDialogAutoEnd() {
+      return battle._dialog_auto_end;
+      }
+
+### Battle_IsEnemySlotValid   [enemy]   Battle_IsEnemySlotValid/Battle_IsEnemySlotValid.gml
+   参数: enemy_slot
+      function Battle_IsEnemySlotValid() {
+      var ENEMY=argument[0];
+      return (ENEMY>=0 && ENEMY<=2);
+      }
+
+### Battle_IsEnemySpareable   [enemy]   Battle_IsEnemySpareable/Battle_IsEnemySpareable.gml
+   参数: enemy_slot
+      function Battle_IsEnemySpareable() {
+      var ENEMY=argument[0];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      return battle._enemy_spareable[ENEMY];
+      }else{
+      return false;
+      }
+
+### Battle_IsEnemyValid   [enemy]   Battle_IsEnemyValid/Battle_IsEnemyValid.gml
+   参数: enemy_obj/inst
+      function Battle_IsEnemyValid() {
+      var ENEMY=argument[0];
+      if(!object_exists(ENEMY) && instance_exists(ENEMY)){
+      ENEMY=ENEMY.object_index;
+      }
+      return (GetObjectBase(ENEMY)==battle_enemy);
+      }
+
+### Battle_IsFleeable   [battlecore]   Battle_IsFleeable/Battle_IsFleeable.gml
+      function Battle_IsFleeable() {
+      return battle._menu_fleeable;
+      }
+
+### Battle_IsMenuChoiceMercyOverride   [battlecore]   Battle_IsMenuChoiceMercyOverride/Battle_IsMenuChoiceMercyOverride.gml
+      function Battle_IsMenuChoiceMercyOverride() {
+      return battle._menu_choice_mercy_override;
+      }
+
+### Battle_IsMenuMercyFleeEnabled   [battlecore]   Battle_IsMenuMercyFleeEnabled/Battle_IsMenuMercyFleeEnabled.gml
+      function Battle_IsMenuMercyFleeEnabled() {
+      return battle._menu_mercy_flee_enabled;
+      }
+
+### Battle_MakeBoneWallBottom   [bullet]   Battle_MakeBoneWall/Battle_MakeBoneWall.gml
+   参数: pause, length, duration, type, follow_board
+      function Battle_MakeBoneWallBottom(pause, length, duration, type = 0, follow_board = 0) {
+      var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
+      var ii = 0;
+      for (i = -3; i < ((battle_board.left + battle_board.right) + SPR_HEIGHT); i += SPR_HEIGHT) {
+      ii += 1;
+      if (duration != -1) {
+
+### Battle_MakeBoneWallLeft   [bullet]   Battle_MakeBoneWall/Battle_MakeBoneWall.gml
+   参数: pause, length, duration, type, follow_board
+      function Battle_MakeBoneWallLeft(pause, length, duration, type = 0, follow_board = false) {
+      var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
+      var ii = 0;
+      for (i = 0; i < ((battle_board.up + battle_board.down) + SPR_HEIGHT); i += SPR_HEIGHT) {
+      ii += 1;
+      if (duration != -1) {
+
+### Battle_MakeBoneWallRight   [bullet]   Battle_MakeBoneWall/Battle_MakeBoneWall.gml
+   参数: pause, length, duration, type, follow_board
+      function Battle_MakeBoneWallRight(pause, length, duration, type = 0, follow_board = false) {
+      var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
+      var ii = 0;
+      for (i = 0; i < ((battle_board.up + battle_board.down) + SPR_HEIGHT); i += SPR_HEIGHT) {
+      ii += 1;
+      if (duration != -1) {
+      b[ii] = Battle_MakeBone((((battle_board.x + battle_board.right) + (length / 2)) + 5), ((battle_board.y - battle_board.up) + i), length, 0, 0, type, 0, 180, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
+
+### Battle_MakeBoneWallTop   [bullet]   Battle_MakeBoneWall/Battle_MakeBoneWall.gml
+   参数: pause, length, duration, type, follow_board
+      function Battle_MakeBoneWallTop(pause, length, duration, type = 0, follow_board = false) {
+      var SPR_HEIGHT = max(sprite_get_height(spr_bone), sprite_get_height(spr_bone)) + 1;
+      var ii = 0;
+      for (i = -3; i < ((battle_board.left + battle_board.right) + SPR_HEIGHT); i += SPR_HEIGHT) {
+      ii += 1;
+      if (duration != -1) {
+      b[ii] = Battle_MakeBone(((battle_board.x - battle_board.left) + i), (((battle_board.y - battle_board.up) - (length / 2)) - 5), length, 0, 0, type, 0, -90, 0, 0, ((duration + (pause * 2)) + 24), follow_board, follow_board);
+
+### Battle_RewardExp   [battlecore]   Battle_RewardExp/Battle_RewardExp.gml
+   参数: reward_exp
+      function Battle_RewardExp() {
+      var EXP=argument[0];
+      battle._reward_exp+=EXP;
+      return true;
+      }
+
+### Battle_RewardGold   [battlecore]   Battle_RewardGold/Battle_RewardGold.gml
+   参数: reward_gold
+      function Battle_RewardGold() {
+      var GOLD=argument[0];
+      battle._reward_gold+=GOLD;
+      return true;
+      }
+
+### Battle_SetDialogAutoEnd   [battlecore]   Battle_SetDialogAutoEnd/Battle_SetDialogAutoEnd.gml
+   参数: enabled
+      function Battle_SetDialogAutoEnd() {
+      battle._dialog_auto_end=argument[0];
+      return true;
+      }
+
+### Battle_SetEnemyActionName   [enemy]   Battle_SetEnemyActionName/Battle_SetEnemyActionName.gml
+   参数: enemy_slot, action_slot, text
+      function Battle_SetEnemyActionName() {
+      var ENEMY=argument[0];
+      var ACTION=argument[1];
+      var TEXT=argument[2];
+      if(instance_exists(Battle_GetEnemy(ENEMY)) && ACTION>=0 && ACTION<=6){
+      battle._enemy_action_name[ENEMY,ACTION]=TEXT;
+      return true;
+
+### Battle_SetEnemyActionNumber   [enemy]   Battle_SetEnemyActionNumber/Battle_SetEnemyActionNumber.gml
+   参数: enemy_slot, action_number
+      function Battle_SetEnemyActionNumber() {
+      var ENEMY=argument[0];
+      var NUM=argument[1];
+      if(instance_exists(Battle_GetEnemy(ENEMY)) && NUM>=0 && NUM<=6){
+      battle._enemy_action_number[ENEMY]=NUM;
+      return true;
+      }else{
+
+### Battle_SetEnemyCenterPos   [enemy]   Battle_SetEnemyCenterPos/Battle_SetEnemyCenterPos.gml
+   参数: enemy_slot, x, y
+      function Battle_SetEnemyCenterPos() {
+      var ENEMY=argument[0];
+      var X=argument[1];
+      var Y=argument[2];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      battle._enemy_center_pos_x[ENEMY]=X;
+      battle._enemy_center_pos_y[ENEMY]=Y;
+      return true;
+
+### Battle_SetEnemyDEF   [enemy]   Battle_SetEnemyDEF/Battle_SetEnemyDEF.gml
+   参数: enemy_slot, def
+      function Battle_SetEnemyDEF() {
+      var ENEMY=argument[0];
+      var DEF=argument[1];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      battle._enemy_def[ENEMY]=DEF;
+      return true;
+      }else{
+      return false;
+
+### Battle_SetEnemyName   [enemy]   Battle_SetEnemyName/Battle_SetEnemyName.gml
+   参数: enemy_slot, name
+      function Battle_SetEnemyName() {
+      var ENEMY=argument[0];
+      var NAME=argument[1];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      battle._enemy_name[ENEMY]=NAME;
+      return true;
+      }else{
+      return false;
+
+### Battle_SetEnemySpareable   [enemy]   Battle_SetEnemySpareable/Battle_SetEnemySpareable.gml
+   参数: enemy_slot, spareable
+      function Battle_SetEnemySpareable() {
+      var ENEMY=argument[0];
+      var SPAREABLE=argument[1];
+      if(instance_exists(Battle_GetEnemy(ENEMY))){
+      battle._enemy_spareable[ENEMY]=SPAREABLE;
+      return true;
+      }else{
+      return false;
+
+### Battle_SetFleeable   [battlecore]   Battle_SetFleeable/Battle_SetFleeable.gml
+   参数: fleeable
+      function Battle_SetFleeable() {
+      var FLEEABLE=argument[0];
+      battle._menu_fleeable=FLEEABLE;
+      return true;
+      }
+
+### Battle_SetMenuChoiceAction   [battlecore]   Battle_SetMenuChoiceAction/Battle_SetMenuChoiceAction.gml
+   参数: action_choice, call_event*
+      function Battle_SetMenuChoiceAction() {
+      var ACTION=argument[0];
+      var CALL=true;
+      if(argument_count>=2){
+      CALL=argument[1];
+      }
+      if(ACTION>=0 && ACTION<=5){
+      battle._menu_choice_action=ACTION;
+
+### Battle_SetMenuChoiceButton   [battlecore]   Battle_SetMenuChoiceButton/Battle_SetMenuChoiceButton.gml
+   参数: button_choice, call_event*
+      function Battle_SetMenuChoiceButton() {
+      var BUTTON=argument[0];
+      var CALL=true;
+      if(argument_count>=2){
+      CALL=argument[1];
+      }
+      if(BUTTON>=0 && BUTTON<=3){
+      battle._menu_choice_button=BUTTON;
+
+### Battle_SetMenuChoiceEnemy   [battlecore]   Battle_SetMenuChoiceEnemy/Battle_SetMenuChoiceEnemy.gml
+   参数: enemy_choice, call_event*
+      function Battle_SetMenuChoiceEnemy() {
+      var ENEMY=argument[0];
+      var CALL=true;
+      if(argument_count>=2){
+      CALL=argument[1];
+      }
+      if(ENEMY>=0 && ENEMY<Battle_GetEnemyNumber()){
+      battle._menu_choice_enemy=ENEMY;
+
+### Battle_SetMenuChoiceItem   [battlecore]   Battle_SetMenuChoiceItem/Battle_SetMenuChoiceItem.gml
+   参数: slot, call
+      function Battle_SetMenuChoiceItem(slot, call = true) {
+      var items = Item_GetInventoryItems();
+      var count = items.GetCount();
+      if (slot < count) {
+      battle._menu_choice_item = slot;
+      while (slot >= battle._menu_choice_item_first + 3) {
+      battle._menu_choice_item_first += 1;
+      }
+      while (slot < battle._menu_choice_item_first) {
+
+### Battle_SetMenuChoiceMercy   [battlecore]   Battle_SetMenuChoiceMercy/Battle_SetMenuChoiceMercy.gml
+   参数: mercy_choice, call_event*
+      function Battle_SetMenuChoiceMercy() {
+      var MERCY=argument[0];
+      var CALL=true;
+      if(argument_count>=2){
+      CALL=argument[1];
+      }
+      if((!Battle_IsMenuChoiceMercyOverride()&&MERCY>=0&&MERCY<=1)||(Battle_IsMenuChoiceMercyOverride()&&MERCY>=0&&MERCY<Battle_GetMenuChoiceMercyOverrideNumber())){
+      battle._menu_choice_mercy=MERCY;
+
+### Battle_SetMenuChoiceMercyOverrideName   [battlecore]   Battle_SetMenuChoiceMercyOverrideName/Battle_SetMenuChoiceMercyOverrideName.gml
+   参数: choice_mercy_slot, name
+      function Battle_SetMenuChoiceMercyOverrideName() {
+      var SLOT=argument[0];
+      var NAME=argument[1];
+      if(SLOT>=0&&SLOT<=2){
+      battle._menu_choice_mercy_override_name[SLOT]=NAME;
+      return true;
+      }else{
+      return false;
+
+### Battle_SetMenuChoiceMercyOverrideNumber   [battlecore]   Battle_SetMenuChoiceMercyOverrideNumber/Battle_SetMenuChoiceMercyOverrideNumber.gml
+   参数: number
+      function Battle_SetMenuChoiceMercyOverrideNumber() {
+      var NUMBER=argument[0];
+      if(NUMBER>=1&&NUMBER<=3){
+      battle._menu_choice_mercy_override_number=NUMBER;
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_SetMenuFightAnimTime   [battlecore]   Battle_SetMenuFightAnimTime/Battle_SetMenuFightAnimTime.gml
+   参数: time
+      function Battle_SetMenuFightAnimTime() {
+      var TIME=argument[0];
+      var MENU=Battle_GetMenu();
+      if((MENU==BATTLE_MENU.FIGHT_AIM||MENU==BATTLE_MENU.FIGHT_ANIM) && TIME>=-1){
+      battle._menu_fight_anim_time=TIME;
+      return true;
+      }else{
+
+### Battle_SetMenuFightDamage   [battlecore]   Battle_SetMenuFightDamage/Battle_SetMenuFightDamage.gml
+   参数: damage
+      function Battle_SetMenuFightDamage() {
+      var DAMAGE=argument[0];
+      if(DAMAGE>=-1){
+      battle._menu_fight_damage=DAMAGE;
+      return true;
+      }else{
+      return false;
+      }
+
+### Battle_SetMenuFightDamageTime   [battlecore]   Battle_SetMenuFightDamageTime/Battle_SetMenuFightDamageTime.gml
+   参数: time
+      function Battle_SetMenuFightDamageTime() {
+      var TIME=argument[0];
+      var MENU=Battle_GetMenu();
+      if((MENU==BATTLE_MENU.FIGHT_AIM||MENU==BATTLE_MENU.FIGHT_ANIM||MENU==BATTLE_MENU.FIGHT_DAMAGE) && TIME>=-1){
+      battle._menu_fight_damage_time=TIME;
+      return true;
+      }else{
+
+### Battle_SetMenuFightPanel   [battlecore]   Battle_SetMenuFightPanel/Battle_SetMenuFightPanel.gml
+   参数: Object
+      function Battle_SetMenuFightPanel(){
+      var OBJ = argument[0];
+      global.Panel = OBJ;
+      }
+
+### Battle_SetMenuMercyFleeEnabled   [battlecore]   Battle_SetMenuMercyFleeEnabled/Battle_SetMenuMercyFleeEnabled.gml
+   参数: flee_enabled
+      function Battle_SetMenuMercyFleeEnabled() {
+      var ENABLED=argument[0];
+      battle._menu_mercy_flee_enabled=ENABLED;
+      return true;
+      }
+
+### Battle_SetNextState   [battlecore]   Battle_SetNextState/Battle_SetNextState.gml
+   参数: next_state
+      function Battle_SetNextState() {
+      battle._state_next=argument[0];
+      }
+
+### Battle_SetPlayerTempAtk   [battlecore]   Battle_SetPlayerTempAtk/Battle_SetPlayerTempAtk.gml
+   参数: atk
+      function Battle_SetPlayerTempAtk() {
+      battle._player_temp_atk=argument[0];
+      return true;
+      }
+
+### Battle_SetPlayerTempDef   [battlecore]   Battle_SetPlayerTempDef/Battle_SetPlayerTempDef.gml
+   参数: def
+      function Battle_SetPlayerTempDef() {
+      battle._player_temp_def=argument[0];
+      return true;
+      }
+
+### Battle_SetPlayerTempInv   [battlecore]   Battle_SetPlayerTempInv/Battle_SetPlayerTempInv.gml
+   参数: inv
+      function Battle_SetPlayerTempInv() {
+      battle._player_temp_inv=argument[0];
+      return true;
+      }
+
+### Battle_SetPlayerTempSpd   [battlecore]   Battle_SetPlayerTempSpd/Battle_SetPlayerTempSpd.gml
+   参数: spd
+      function Battle_SetPlayerTempSpd() {
+      battle._player_temp_spd=argument[0];
+      return true;
+      }
+
+### Battle_SetTurnNumber   [battlecore]   Battle_SetTurnNumber/Battle_SetTurnNumber.gml
+   参数: turn_number
+      function Battle_SetTurnNumber() {
+      battle._turn_number=argument[0];
+      return true;
+      }
+
+### Battle_SetTurnTime   [battlecore]   Battle_SetTurnTime/Battle_SetTurnTime.gml
+   参数: time
+      function Battle_SetTurnTime() {
+      battle._turn_time=argument[0];
+      return true;
+      }
+
+### Bezier_AddPoint   [misc]   Anim_Init/Anim_Init.gml
+   参数: bezier, x, y
+      function Bezier_AddPoint(bezier, x, y) {
+      return (array_push(bezier[$ "points"], [x, y]));
+      }
+      function Bezier_GetValue(bezier, step) {
+      var startPoint = bezier[$ "startPoint"];
+      var lastPoint = bezier[$ "lastPoint"];
+      var points = bezier[$ "points"];
+      // 获取数据
+
+### Bezier_CreateStruct   [misc]   Anim_Init/Anim_Init.gml
+   参数: start_x, start_y, last_x, last_y
+      function Bezier_CreateStruct(start_x, start_y, last_x, last_y) {
+      var bezier = {};
+      bezier[$ "startPoint"] = [start_x, start_y];
+      bezier[$ "lastPoint"] = [last_x, last_y];
+      bezier[$ "points"] = [];
+      return bezier;
+      }
+      function Bezier_PointNumber(bezier) {
+
+### Bezier_GetValue   [misc]   Anim_Init/Anim_Init.gml
+   参数: bezier, step
+      function Bezier_GetValue(bezier, step) {
+      var startPoint = bezier[$ "startPoint"];
+      var lastPoint = bezier[$ "lastPoint"];
+      var points = bezier[$ "points"];
+      // 获取数据
+      var allPoints = [];
+      allPoints[0] = startPoint; // 添加第一个点的位置
+      allPoints = array_concat(allPoints, points); // 数组链接(旧版本可以自己写一个数组连接函数)
+      array_push(allPoints, lastPoint); // 添加第末尾点的位置
+
+### Bezier_PointNumber   [misc]   Anim_Init/Anim_Init.gml
+   参数: bezier
+      function Bezier_PointNumber(bezier) {
+      return (array_length(bezier[$ "points"]) + 2);
+      }
+      function Bezier_AddPoint(bezier, x, y) {
+      return (array_push(bezier[$ "points"], [x, y]));
+      }
+      function Bezier_GetValue(bezier, step) {
+
+### BGM_Fade   [audio]   BGM_Fade/BGM_Fade.gml
+   参数: bgm_slot, volume, TIME
+      function BGM_Fade(){
+      var SLOT=argument[0];
+      var VOLUME=argument[1];
+      var TIME=argument[2]*(1000/game_get_speed(gamespeed_fps));
+      if(BGM_IsSlotValid(SLOT)&&VOLUME>=0&&TIME>=0){
+      if(BGM_IsPlaying(SLOT)){
+      audio_sound_gain(BGM_GetID(SLOT),VOLUME,TIME);
+      return true;
+
+### BGM_GetAudio   [audio]   BGM_GetAudio/BGM_GetAudio.gml
+   参数: bgm_slot
+      function BGM_GetAudio() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      return global._bgm_audio[SLOT];
+      }else{
+      return -1;
+      }
+
+### BGM_GetID   [audio]   BGM_GetID/BGM_GetID.gml
+   参数: bgm_slot
+      function BGM_GetID() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      return global._bgm_id[SLOT];
+      }else{
+      return -1;
+      }
+
+### BGM_Init   [audio]   BGM_Init/BGM_Init.gml
+      function BGM_Init() {
+      var proc=0;
+      repeat(6){
+      global._bgm_id[proc]=-1;
+      global._bgm_audio[proc]=-1;
+      global._bgm_loop_start[proc]=-1;
+      global._bgm_loop_end[proc]=-1;
+      proc+=1;
+      }
+
+### BGM_IsPaused   [audio]   BGM_IsPaused/BGM_IsPaused.gml
+   参数: bgm_slot
+      function BGM_IsPaused() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      if(BGM_IsPlaying(SLOT)){
+      return audio_is_paused(BGM_GetID(SLOT));
+      }else{
+      return false;
+      }
+
+### BGM_IsPlaying   [audio]   BGM_IsPlaying/BGM_IsPlaying.gml
+   参数: bgm_slot
+      function BGM_IsPlaying() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      return audio_is_playing(BGM_GetID(SLOT));
+      }else{
+      return false;
+      }
+
+### BGM_IsSlotValid   [audio]   BGM_IsSlotValid/BGM_IsSlotValid.gml
+   参数: bgm_slot
+      function BGM_IsSlotValid() {
+      var SLOT=argument[0];
+      if(SLOT>=0&&SLOT<6){
+      return true;
+      }else{
+      return false;
+      }
+
+### BGM_Pause   [audio]   BGM_Pause/BGM_Pause.gml
+   参数: bgm_slot
+      function BGM_Pause() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      if(BGM_IsPlaying(SLOT)&&!BGM_IsPaused(SLOT)){
+      audio_pause_sound(BGM_GetID(SLOT));
+      return true;
+      }else{
+      return false;
+
+### BGM_Resume   [audio]   BGM_Resume/BGM_Resume.gml
+   参数: bgm_slot
+      function BGM_Resume() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      if(BGM_IsPlaying(SLOT)&&BGM_IsPaused(SLOT)){
+      audio_resume_sound(BGM_GetID(SLOT));
+      return true;
+      }else{
+      return false;
+
+### BGM_SetPitch   [audio]   BGM_SetPitch/BGM_SetPitch.gml
+   参数: bgm_slot, pitch
+      function BGM_SetPitch() {
+      var SLOT=argument[0];
+      var PITCH=argument[1];
+      if(BGM_IsSlotValid(SLOT)){
+      if(BGM_IsPlaying(SLOT)){
+      audio_sound_pitch(BGM_GetID(SLOT),PITCH);
+      return true;
+      }else{
+
+### BGM_SetVolume   [audio]   BGM_SetVolume/BGM_SetVolume.gml
+   参数: bgm_slot, volume, time*
+      function BGM_SetVolume() {
+      var SLOT=argument[0];
+      var VOLUME=argument[1];
+      var TIME=0;
+      if(argument_count>=3){
+      TIME=argument[2]*(1000/game_get_speed(gamespeed_fps));
+      }
+      if(BGM_IsSlotValid(SLOT)&&VOLUME>=0){
+
+### BGM_Step   [audio]   BGM_Step/BGM_Step.gml
+      function BGM_Step() {
+      var proc=0;
+      repeat(6){
+      var audio=BGM_GetID(proc);
+      if(audio_exists(audio)){
+      var start=global._bgm_loop_start[proc];
+      var endt=global._bgm_loop_end[proc];
+      if(start>=0 && endt>=0){
+      var pos=audio_sound_get_track_position(audio);
+
+### BGM_Stop   [audio]   BGM_Stop/BGM_Stop.gml
+   参数: bgm_slot
+      function BGM_Stop() {
+      var SLOT=argument[0];
+      if(BGM_IsSlotValid(SLOT)){
+      if(BGM_IsPlaying(SLOT)){
+      audio_stop_sound(BGM_GetID(SLOT));
+      return true;
+      }else{
+      return false;
+
+### Border_GetSprite   [ui]   Border_GetSprite/Border_GetSprite.gml
+      function Border_GetSprite() {
+      return border._sprite;
+      }
+
+### Border_IsEnabled   [ui]   Border_IsEnabled/Border_IsEnabled.gml
+      function Border_IsEnabled() {
+      return border._enabled;
+      }
+
+### Border_SetEnabled   [ui]   Border_SetEnabled/Border_SetEnabled.gml
+   参数: enabled,blur
+      function Border_SetEnabled() {
+      var ENABLED=argument[0];
+      if(ENABLED){
+      window_set_size(960,540);
+      border._enabled=true;
+      border.blur=argument[1]
+      }else{
+      window_set_size(640,480);
+
+### Border_SetSprite   [ui]   Border_SetSprite/Border_SetSprite.gml
+   参数: sprite, fade*, time*
+      function Border_SetSprite() {
+      var SPRITE=argument[0];
+      var FADE=true;
+      var TIME=GAME_FPS;
+      if(argument_count>=2){
+      FADE=argument[1];
+      }
+      if(argument_count>=3){
+      TIME=argument[2];
+
+### CustomItem_Bandage   [item]   CustomItem_Bandage/CustomItem_Bandage.gml
+      function CustomItem_Bandage() : ItemTypeSimple("Bandage","* Bandage - Heals 10 HP&* It has already been used&  several times.") constructor{
+      _price_buy = -1;
+      _price_sell = 1;
+      _shop_description = "Bandage";
+      function OnUse(inventory,index){
+      Dialog_Add("* You re-applied the bandage."+Item_GetTextHeal(10));
+      Dialog_Start();
+      Player_Heal(10);
+
+### CustomItem_Dice   [item]   CustomItem_Dice/CustomItem_Dice.gml
+      function CustomItem_Dice() : ItemType() constructor{
+      // You can override several functions to customize your item.
+      _price_buy = 4;
+      _price_sell = 0;
+      // GetName() returns the name of the item.
+      function GetName(){
+      return choose("Dice","Dice?","Dice!");
+      }
+
+### CustomItem_FadedRibbon   [item]   CustomItem_FadedRibbon/CustomItem_FadedRibbon.gml
+      function CustomItem_FadedRibbon() : ItemTypeSimple("Faded Ribbon","* Faded Ribbon - Armor DF 3&* If you're cuter,{sleep 20} monsters&  won't hit you as hard.") constructor{
+      _shop_description="Faded&Ribbon";
+      function OnUse(inventory,index){
+      Dialog_Add(Item_GetTextEquip(GetName()));
+      Dialog_Start();
+      var curArmor=Player_GetItemArmor();
+      inventory.Set(index,curArmor);
+      Player_SetItemArmor(ITEM_FADED_RIBBON);
+
+### CustomItem_Phone_TML   [item]   CustomItem_PhoneToriel/CustomItem_PhoneToriel.gml
+      function CustomItem_Phone_TML() : ItemType() constructor{
+      function GetName(){
+      return "Call Toriel";
+      }
+      function OnUse(inventory,index){
+      audio_play_sound(snd_phone_call,0,false);
+      Dialog_Add("* Dialing...");
+
+### CustomItem_Stick   [item]   CustomItem_Stick/CustomItem_Stick.gml
+      function CustomItem_Stick() : ItemTypeSimple("Stick","* Stick - Weapon AT 0&* Its bark is worse than&  its bite.") constructor{
+      _price_buy = 0;
+      _price_sell = 115;
+      _shop_description = "Stick"
+      function OnUse(inventory,index){
+      Dialog_Add("* You threw the stick away.{sleep 20}&* Then picked it back up.");
+      Dialog_Start();
+      }
+      }
+
+### CustomItem_ToyKnife   [item]   CustomItem_ToyKnife/CustomItem_ToyKnife.gml
+      function CustomItem_ToyKnife() : ItemTypeSimple("Toy Knife","* Toy Knife - Weapon AT 3&* Made of plastic.&* A rarity nowadays.") constructor{
+      price =1145;
+      _shop_description = "Toyknife"
+      function OnUse(inventory,index){
+      Dialog_Add(Item_GetTextEquip(GetName()));
+      Dialog_Start();
+      var curWeapon=Player_GetItemWeapon();
+      inventory.Set(index,curWeapon);
+
+### Demo_AddInput   [misc]   Demo_AddInput/Demo_AddInput.gml
+   参数: input
+      function Demo_AddInput() {
+      var INPUT=argument[0];
+      if(!Demo_IsRecording()){
+      if(ds_list_find_index(global._demo_input_list,INPUT)<0){
+      ds_list_add(global._demo_input_list,INPUT);
+      return true;
+      }else{
+      return false;
+
+### Demo_ClearInput   [misc]   Demo_ClearInput/Demo_ClearInput.gml
+      function Demo_ClearInput() {
+      if(!Demo_IsRecording()){
+      ds_list_clear(global._demo_input_list);
+      return true;
+      }else{
+      return false;
+      }
+
+### Demo_GetInput   [misc]   Demo_GetInput/Demo_GetInput.gml
+   参数: pos
+      function Demo_GetInput() {
+      var POS=argument[0];
+      if(POS>=0 && POS<Demo_GetInputNumber()){
+      return global._demo_input_list[|POS];
+      }else{
+      return -1;
+      }
+
+### Demo_GetInputNumber   [misc]   Demo_GetInputNumber/Demo_GetInputNumber.gml
+      function Demo_GetInputNumber() {
+      return ds_list_size(global._demo_input_list);
+      }
+
+### Demo_Init   [misc]   Demo_Init/Demo_Init.gml
+      function Demo_Init() {
+      global._demo_input_list=ds_list_create();
+      return true;
+      }
+
+### Demo_IsPlaying   [misc]   Demo_IsPlaying/Demo_IsPlaying.gml
+      function Demo_IsPlaying() {
+      return instance_exists(demo_player);
+      }
+
+### Demo_IsPlayingPaused   [misc]   Demo_IsPlayingPaused/Demo_IsPlayingPaused.gml
+      function Demo_IsPlayingPaused() {
+      if(Demo_IsPlaying()){
+      return demo_player._paused;
+      }else{
+      return false;
+      }
+      }
+
+### Demo_IsRecording   [misc]   Demo_IsRecording/Demo_IsRecording.gml
+      function Demo_IsRecording() {
+      return instance_exists(demo_recorder);
+      }
+
+### Demo_IsRecordingPaused   [misc]   Demo_IsRecordingPaused/Demo_IsRecordingPaused.gml
+      function Demo_IsRecordingPaused() {
+      if(Demo_IsRecording()){
+      return demo_recorder._paused;
+      }else{
+      return false;
+      }
+      }
+
+### Demo_PausePlaying   [misc]   Demo_PausePlaying/Demo_PausePlaying.gml
+      function Demo_PausePlaying() {
+      if(Demo_IsPlaying()){
+      if(!Demo_IsPlayingPaused()){
+      demo_player._paused=true;
+      return true;
+      }else{
+      return false;
+      }
+      }else{
+
+### Demo_PauseRecording   [misc]   Demo_PauseRecording/Demo_PauseRecording.gml
+      function Demo_PauseRecording() {
+      if(Demo_IsRecording()){
+      if(!Demo_IsRecordingPaused()){
+      demo_recorder._paused=true;
+      return true;
+      }else{
+      return false;
+      }
+      }else{
+
+### Demo_RemoveInput   [misc]   Demo_RemoveInput/Demo_RemoveInput.gml
+   参数: input
+      function Demo_RemoveInput() {
+      var INPUT=argument[0];
+      if(!Demo_IsRecording()){
+      var pos=ds_list_find_index(global._demo_input_list,INPUT);
+      if(pos>=0){
+      ds_list_delete(global._demo_input_list,pos);
+      return true;
+      }else{
+
+### Demo_ResumePlaying   [misc]   Demo_ResumePlaying/Demo_ResumePlaying.gml
+      function Demo_ResumePlaying() {
+      if(Demo_IsPlaying()){
+      if(Demo_IsPlayingPaused()){
+      demo_player._paused=false;
+      return true;
+      }else{
+      return false;
+      }
+      }else{
+
+### Demo_ResumeRecording   [misc]   Demo_ResumeRecording/Demo_ResumeRecording.gml
+      function Demo_ResumeRecording() {
+      if(Demo_IsRecording()){
+      if(Demo_IsRecordingPaused()){
+      demo_recorder._paused=false;
+      return true;
+      }else{
+      return false;
+      }
+      }else{
+
+### Demo_StartPlaying   [misc]   Demo_StartPlaying/Demo_StartPlaying.gml
+      function Demo_StartPlaying() {
+      if(!Demo_IsRecording()&&!Demo_IsPlaying()){
+      instance_create_depth(0,0,0,demo_player);
+      return true;
+      }else{
+      return false;
+      }
+
+### Demo_StartRecording   [misc]   Demo_StartRecording/Demo_StartRecording.gml
+      function Demo_StartRecording() {
+      if(!Demo_IsRecording()&&!Demo_IsPlaying()){
+      instance_create_depth(0,0,0,demo_recorder);
+      return true;
+      }else{
+      return false;
+      }
+
+### Demo_StopPlaying   [misc]   Demo_StopPlaying/Demo_StopPlaying.gml
+      function Demo_StopPlaying() {
+      if(Demo_IsPlaying()){
+      instance_destroy(demo_player);
+      return true;
+      }else{
+      return false;
+      }
+
+### Demo_StopRecording   [misc]   Demo_StopRecording/Demo_StopRecording.gml
+      function Demo_StopRecording() {
+      if(Demo_IsRecording()){
+      instance_destroy(demo_recorder);
+      return true;
+      }else{
+      return false;
+      }
+
+### Demo_Uninit   [misc]   Demo_Uninit/Demo_Uninit.gml
+      function Demo_Uninit() {
+      ds_list_destroy(global._demo_input_list);
+      return true;
+      }
+
+### Dialog_Init   [dialog]   Dialog_Init/Dialog_Init.gml
+      function Dialog_Init() {
+      global._dialog_queue=ds_queue_create();
+      return true;
+      }
+
+### Dialog_Uninit   [dialog]   Dialog_Uninit/Dialog_Uninit.gml
+      function Dialog_Uninit() {
+      ds_queue_destroy(global._dialog_queue);
+      return true;
+      }
+
+### Encounter_GetSoulX   [encounter]   Encounter_GetSoulX/Encounter_GetSoulX.gml
+   参数: encounter_id
+      function Encounter_GetSoulX() {
+      var ID=argument[0];
+      var map=global._encounter;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"soul_x");
+      return (is_real(result) ? result : 48);
+      }else{
+
+### Encounter_GetSoulY   [encounter]   Encounter_GetSoulY/Encounter_GetSoulY.gml
+   参数: encounter_id
+      function Encounter_GetSoulY() {
+      var ID=argument[0];
+      var map=global._encounter;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"soul_y");
+      return (is_real(result) ? result : 454);
+      }else{
+
+### Encounter_Init   [encounter]   Encounter_Init/Encounter_Init.gml
+      function Encounter_Init() {
+      global._encounter=ds_map_create();
+      Encounter_Custom();
+      }
+
+### Encounter_IsMenuMercyFleeEnabled   [encounter]   Encounter_IsMenuMercyFleeEnabled/Encounter_IsMenuMercyFleeEnabled.gml
+   参数: encounter_id
+      function Encounter_IsMenuMercyFleeEnabled() {
+      var ID=argument[0];
+      var map=global._encounter;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"menu_mercy_flee_enabled");
+      return (is_bool(result) ? result : true);
+      }else{
+
+### Encounter_IsPauseBGM   [encounter]   Encounter_IsPauseBGM/Encounter_IsPauseBGM.gml
+   参数: encounter_id
+      function Encounter_IsPauseBGM() {
+      var ID=argument[0];
+      var map=global._encounter;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"pause_bgm");
+      return (is_bool(result) ? result : true);
+      }else{
+
+### Encounter_IsQuick   [encounter]   Encounter_IsQuick/Encounter_IsQuick.gml
+   参数: encounter_id
+      function Encounter_IsQuick() {
+      var ID=argument[0];
+      var map=global._encounter;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"quick");
+      return (is_bool(result) ? result : true);
+      }else{
+
+### Encounter_Uninit   [encounter]   Encounter_Uninit/Encounter_Uninit.gml
+      function Encounter_Uninit() {
+      var map=global._encounter;
+      while(!ds_map_empty(map)){
+      var key=ds_map_find_first(map);
+      var map_e=ds_map_find_value(map,key);
+      ds_map_destroy(map_e);
+      ds_map_delete(map,key);
+      }
+      ds_map_destroy(map);
+
+### File_ReadAllText   [misc]   FileUtils/FileUtils.gml
+   参数: path
+      function File_ReadAllText(path){
+      var file=file_text_open_read(path);
+      if(file==-1){
+      return undefined;
+      }
+      var text="";
+      while(!file_text_eof(file)){
+      text+=file_text_readln(file);
+
+### File_WriteAllText   [misc]   FileUtils/FileUtils.gml
+   参数: path, text
+      function File_WriteAllText(path, text){
+      var file=file_text_open_write(path);
+      if(file==-1){
+      return false;
+      }
+      file_text_write_string(file,text);
+      file_text_close(file);
+      return true;
+      }
+
+### Game_GetFrameSkip   [ui]   Game_GetFrameSkip/Game_GetFrameSkip.gml
+      function Game_GetFrameSkip() {
+      return world._frame_skip;
+      }
+
+### Game_SetFrameSkip   [ui]   Game_SetFrameSkip/Game_SetFrameSkip.gml
+   参数: amount
+      function Game_SetFrameSkip(amount) {
+      if(amount<0){
+      return false;
+      }
+      world._frame_skip=amount;
+      }
+
+### Input_Init   [input]   Input_Init/Input_Init.gml
+      function Input_Init() {
+      //GMU_Input v1.1.0
+      global._gmu_input=ds_map_create();
+      global._gmu_input_state_override=ds_map_create();
+      enum INPUT_TYPE{
+      KEYBOARD,
+      GAMEPAD,
+
+### Input_RemoveStateOverride   [input]   Input_Init/Input_Init.gml
+   参数: input
+      function Input_RemoveStateOverride() {
+      var INPUT=argument[0];
+      var map=global._gmu_input_state_override;
+      if(ds_map_exists(map,INPUT)){
+      ds_map_delete(map,INPUT);
+      return true;
+      }else{
+      return false;
+
+### Input_SetStateOverride   [input]   Input_Init/Input_Init.gml
+   参数: input, state
+      function Input_SetStateOverride() {
+      var INPUT=argument[0];
+      var STATE=argument[1];
+      global._gmu_input_state_override[?INPUT]=STATE;
+      return true;
+
+### Input_Uninit   [input]   Input_Init/Input_Init.gml
+      function Input_Uninit() {
+      var map=global._gmu_input;
+      repeat(ds_map_size(map)){
+      var key=ds_map_find_first(map);
+      Input_Unbind(key);
+      }
+      ds_map_destroy(map);
+      ds_map_destroy(global._gmu_input_state_override);
+      return true;
+
+### Inventory.Add   [item]   Inventory/Inventory.gml
+   参数: itemId
+      function Add(itemId){
+      return Insert(GetCount(),itemId);
+      }
+      function GetItemName(index){
+      return GetItem(index).GetName();
+      }
+      function InvokeItemUse(index){
+      GetItem(index).OnUse(self,index);
+
+### Inventory.Clear   [item]   Inventory/Inventory.gml
+      function Clear(){
+      array_resize(itemIds,0);
+      return true;
+      }
+      function Insert(index,itemId){
+      if(!IsItemTypeValid(itemId)){
+      show_error("Item type does not exist in inventory's item type manager!",true);
+      return false;
+
+### Inventory.Get   [item]   Inventory/Inventory.gml
+   参数: index
+      function Get(index){
+      var count=GetCount();
+      if(index<0||index>=count){
+      show_error($"Inventory index out of range({index}>={count})!",true);
+      return undefined;
+      }
+      return itemIds[index];
+      }
+
+### Inventory.GetCapacity   [item]   Inventory/Inventory.gml
+      function GetCapacity(){
+      return capacity;
+      }
+      function GetCount(){
+      return array_length(itemIds);
+      }
+      function Get(index){
+      var count=GetCount();
+
+### Inventory.GetCount   [item]   Inventory/Inventory.gml
+      function GetCount(){
+      return array_length(itemIds);
+      }
+      function Get(index){
+      var count=GetCount();
+      if(index<0||index>=count){
+      show_error($"Inventory index out of range({index}>={count})!",true);
+      return undefined;
+
+### Inventory.GetItem   [item]   Inventory/Inventory.gml
+   参数: index
+      function GetItem(index){
+      var typeId=Get(index);
+      var itemType=itemTypeManager.Get(typeId);
+      return itemType;
+      }
+      function GetItemOrUndefined(index){
+      var typeId=GetOrEmpty(index);
+      if(typeId==ITEM_EMPTY){
+      return undefined;
+
+### Inventory.GetItemName   [item]   Inventory/Inventory.gml
+   参数: index
+      function GetItemName(index){
+      return GetItem(index).GetName();
+      }
+      function InvokeItemUse(index){
+      GetItem(index).OnUse(self,index);
+      }
+      function InvokeItemInfo(index){
+      GetItem(index).OnInfo(self,index);
+      }
+
+### Inventory.GetItemOrUndefined   [item]   Inventory/Inventory.gml
+   参数: index
+      function GetItemOrUndefined(index){
+      var typeId=GetOrEmpty(index);
+      if(typeId==ITEM_EMPTY){
+      return undefined;
+      }
+      var itemType=itemTypeManager.GetOrUndefined(typeId);
+      return itemType;
+      }
+
+### Inventory.GetOrEmpty   [item]   Inventory/Inventory.gml
+   参数: index
+      function GetOrEmpty(index){
+      var capacity=GetCapacity();
+      if(index<0||index>=capacity){
+      show_error($"Inventory index out of range({index}>={capacity})!",true);
+      return undefined;
+      }
+      if(index>=GetCount()){
+      return ITEM_EMPTY;
+      }
+
+### Inventory.GetRawArray   [item]   Inventory/Inventory.gml
+      function GetRawArray(){
+      return itemIds;
+      }
+      function SetRawArray(arr){
+      itemIds=arr;
+      Normalize();
+      }
+      self.itemTypeManager=itemTypeManager;
+
+### Inventory.Insert   [item]   Inventory/Inventory.gml
+   参数: index, itemId
+      function Insert(index,itemId){
+      if(!IsItemTypeValid(itemId)){
+      show_error("Item type does not exist in inventory's item type manager!",true);
+      return false;
+      }
+      var count=GetCount();
+      if(index<0||index>count){
+      show_error($"Inventory index out of range({index}>{count})!",true);
+
+### Inventory.InvokeItemDrop   [item]   Inventory/Inventory.gml
+   参数: index
+      function InvokeItemDrop(index){
+      GetItem(index).OnDrop(self,index);
+      }
+      }
+
+### Inventory.InvokeItemInfo   [item]   Inventory/Inventory.gml
+   参数: index
+      function InvokeItemInfo(index){
+      GetItem(index).OnInfo(self,index);
+      }
+      function InvokeItemDrop(index){
+      GetItem(index).OnDrop(self,index);
+      }
+      }
+
+### Inventory.InvokeItemUse   [item]   Inventory/Inventory.gml
+   参数: index
+      function InvokeItemUse(index){
+      GetItem(index).OnUse(self,index);
+      }
+      function InvokeItemInfo(index){
+      GetItem(index).OnInfo(self,index);
+      }
+      function InvokeItemDrop(index){
+      GetItem(index).OnDrop(self,index);
+      }
+
+### Inventory.IsItemTypeEmptyOrValid   [item]   Inventory/Inventory.gml
+   参数: itemId
+      function IsItemTypeEmptyOrValid(itemId){
+      return itemTypeManager.IsEmptyOrValid(itemId);
+      }
+      self.capacity = capacity;
+      function GetCapacity(){
+      return capacity;
+      }
+      function GetCount(){
+
+### Inventory.IsItemTypeValid   [item]   Inventory/Inventory.gml
+   参数: itemId
+      function IsItemTypeValid(itemId){
+      return itemTypeManager.IsValid(itemId);
+      }
+      function IsItemTypeEmptyOrValid(itemId){
+      return itemTypeManager.IsEmptyOrValid(itemId);
+      }
+      self.capacity = capacity;
+      function GetCapacity(){
+
+### Inventory.Normalize   [item]   Inventory/Inventory.gml
+      function Normalize(){
+      var slot=0;
+      var length=array_length(itemIds);
+      var capacity=GetCapacity();
+      if(length>capacity){
+      array_resize(itemIds,capacity);
+      length=capacity;
+      }
+      for(var i=0;i<length;i+=1){
+
+### Inventory.Remove   [item]   Inventory/Inventory.gml
+   参数: index
+      function Remove(index){
+      var count=GetCount();
+      if(index<0||index>=count){
+      show_error($"Inventory index out of range({index}>={count})!",true);
+      return false;
+      }
+      array_delete(itemIds,index,1);
+      return true;
+
+### Inventory.Set   [item]   Inventory/Inventory.gml
+   参数: index, itemId
+      function Set(index, itemId){
+      if(itemId==ITEM_EMPTY){
+      return Remove(index);
+      }
+      if(!IsItemTypeValid(itemId)){
+      show_error("Item type does not exist in inventory's item type manager!",true);
+      return false;
+      }
+
+### Inventory.SetRawArray   [item]   Inventory/Inventory.gml
+   参数: arr
+      function SetRawArray(arr){
+      itemIds=arr;
+      Normalize();
+      }
+      self.itemTypeManager=itemTypeManager;
+      function IsItemTypeValid(itemId){
+      return itemTypeManager.IsValid(itemId);
+      }
+
+### Item_GetInventoryBoxes   [item]   Item_Custom/Item_Custom.gml
+   参数: index
+      function Item_GetInventoryBoxes(index){
+      var boxId="box1";
+      switch(index){
+      case 0:
+      boxId="box1";
+      case 1:
+      boxId="box2";
+      }
+      return Item_GetInventoryManager().Get(boxId);
+
+### Item_GetInventoryItems   [item]   Item_Custom/Item_Custom.gml
+      function Item_GetInventoryItems(){
+      return Item_GetInventoryManager().Get("items");
+      }
+      function Item_GetInventoryPhones(){
+      return Item_GetInventoryManager().Get("phones");
+      }
+      function Item_GetInventoryBoxes(index){
+      var boxId="box1";
+      switch(index){
+
+### Item_GetInventoryManager   [item]   Item_InitUninit/Item_InitUninit.gml
+      function Item_GetInventoryManager(){
+      return global._item_inventory_manager;
+      }
+
+### Item_GetInventoryPhones   [item]   Item_Custom/Item_Custom.gml
+      function Item_GetInventoryPhones(){
+      return Item_GetInventoryManager().Get("phones");
+      }
+      function Item_GetInventoryBoxes(index){
+      var boxId="box1";
+      switch(index){
+      case 0:
+      boxId="box1";
+      case 1:
+
+### Item_GetNumber   [item]   Item_GetNumber/Item_GetNumber.gml
+      function Item_GetNumber() {
+      var items = Item_GetInventoryItems();
+      return items.GetCount();
+      }
+      function Phone_GetNumber() {
+      var phones = Item_GetInventoryPhones();
+      return phones.GetCount();
+      }
+
+### Item_GetTextEat   [item]   Item_GetTextEat/Item_GetTextEat.gml
+   参数: item_name
+      function Item_GetTextEat() {
+      var NAME=argument[0];
+      var result="";
+      result+="{define `ITEM` `"+NAME+"`}";
+      result+="* You ate the {insert ITEM}.";
+      return result;
+
+### Item_GetTextEquip   [item]   Item_GetTextEquip/Item_GetTextEquip.gml
+   参数: item_name
+      function Item_GetTextEquip() {
+      var NAME=argument[0];
+      var result="";
+      result+="{define `ITEM` `"+NAME+"`}";
+      result+="* You equiped the {insert ITEM}.";
+      return result;
+
+### Item_GetTextHeal   [item]   Item_GetTextHeal/Item_GetTextHeal.gml
+   参数: heal_hp, new_line*
+      function Item_GetTextHeal() {
+      var HEAL=argument[0];
+      var LINE=true;
+      if(argument_count>=2){
+      LINE=argument[1];
+      }
+      var result="";
+      result+=(LINE ? "&" : "");
+
+### Item_GetTypeManager   [item]   Item_InitUninit/Item_InitUninit.gml
+      function Item_GetTypeManager(){
+      return global._item_type_manager;
+      }
+      function Item_GetInventoryManager(){
+      return global._item_inventory_manager;
+      }
+
+### Item_Init   [item]   Item_InitUninit/Item_InitUninit.gml
+      function Item_Init(){
+      global._item_type_manager=new ItemTypeManager();
+      global._item_inventory_manager=new RegisterManager();
+      Item_Custom();
+      }
+      function Item_Uninit(){
+      delete global._item_type_manager;
+      delete global._item_inventory_manager;
+      }
+
+### Item_Uninit   [item]   Item_InitUninit/Item_InitUninit.gml
+      function Item_Uninit(){
+      delete global._item_type_manager;
+      delete global._item_inventory_manager;
+      }
+      function Item_GetTypeManager(){
+      return global._item_type_manager;
+      }
+      function Item_GetInventoryManager(){
+
+### ItemType.GetName   [item]   ItemType/ItemType.gml
+      function GetName() {
+      return _name;
+      }
+      function OnUse(inventory, index) {}
+      function OnInfo(inventory, index) {}
+      function OnDrop(inventory, index) {
+      var rand = irandom(18);
+      var sub = "* The {insert ITEM} was&  thrown away.";
+
+### ItemType.GetNameOrFallback   [item]   ItemType/ItemType.gml
+   参数: id
+      function GetNameOrFallback(id) {
+      if (id == ITEM_EMPTY) {
+      return FALLBACK_ITEM_NAME_EMPTY;
+      }
+      var itemType = GetOrUndefined(id);
+      if (is_undefined(itemType)) {
+      return FALLBACK_ITEM_NAME_UNDEFINED;
+      }
+      return itemType.GetName();
+
+### ItemType.IsEmptyOrValid   [item]   ItemType/ItemType.gml
+   参数: itemId
+      function IsEmptyOrValid(itemId) {
+      return itemId == ITEM_EMPTY || Contains(itemId);
+      }
+      }
+
+### ItemType.IsValid   [item]   ItemType/ItemType.gml
+   参数: itemId
+      function IsValid(itemId) {
+      return itemId != ITEM_EMPTY && Contains(itemId);
+      }
+      function IsEmptyOrValid(itemId) {
+      return itemId == ITEM_EMPTY || Contains(itemId);
+      }
+      }
+
+### ItemType.OnDrop   [item]   ItemType/ItemType.gml
+   参数: inventory, index
+      function OnDrop(inventory, index) {
+      var rand = irandom(18);
+      var sub = "* The {insert ITEM} was&  thrown away.";
+      switch (rand) {
+      case 0:
+      sub = "* You bid a quiet farewell&  to the {insert ITEM}.";
+      break;
+      case 1:
+      sub = "* You put the {insert ITEM}&  on the ground and gave it a&  little pat.";
+
+### ItemType.OnInfo   [item]   ItemType/ItemType.gml
+   参数: inventory, index
+      function OnInfo(inventory, index) {}
+      function OnDrop(inventory, index) {
+      var rand = irandom(18);
+      var sub = "* The {insert ITEM} was&  thrown away.";
+      switch (rand) {
+      case 0:
+      sub = "* You bid a quiet farewell&  to the {insert ITEM}.";
+      break;
+      case 1:
+
+### ItemType.OnUse   [item]   ItemType/ItemType.gml
+   参数: inventory, index
+      function OnUse(inventory, index) {}
+      function OnInfo(inventory, index) {}
+      function OnDrop(inventory, index) {
+      var rand = irandom(18);
+      var sub = "* The {insert ITEM} was&  thrown away.";
+      switch (rand) {
+      case 0:
+      sub = "* You bid a quiet farewell&  to the {insert ITEM}.";
+      break;
+
+### ItemTypeManager   [item]   ItemType/ItemType.gml
+      function ItemTypeManager() : RegisterManager() constructor {
+      function GetNameOrFallback(id) {
+      if (id == ITEM_EMPTY) {
+      return FALLBACK_ITEM_NAME_EMPTY;
+      }
+      var itemType = GetOrUndefined(id);
+      if (is_undefined(itemType)) {
+      return FALLBACK_ITEM_NAME_UNDEFINED;
+      }
+
+### ItemTypeSimple.GetName   [item]   CustomItem_Dice/CustomItem_Dice.gml
+      function GetName(){
+      return choose("Dice","Dice?","Dice!");
+      }
+      // OnUse(inventory, index) is called when the player uses the item.
+      function OnUse(inventory,index){
+      // We want a dice that rolls 1~6.
+      var number=irandom_range(1,6);
+      Dialog_Add($"* You rowed the dice.&* It's a {number}!");
+
+### ItemTypeSimple.OnInfo   [item]   CustomItem_Dice/CustomItem_Dice.gml
+   参数: inventory, index
+      function OnInfo(inventory,index){
+      Dialog_Add("* This is a 6-sided dice.&* You can roll it and something&  might happen.");
+      Dialog_Start();
+      }
+      // OnDrop(inventory, index) is called when player selects the drop button.
+      // The default implementation already handles dialogs and the removal of the item.
+      // There's no need to override OnDrop function.
+
+### ItemTypeSimple.OnUse   [item]   CustomItem_Bandage/CustomItem_Bandage.gml
+   参数: inventory, index
+      function OnUse(inventory,index){
+      Dialog_Add("* You re-applied the bandage."+Item_GetTextHeal(10));
+      Dialog_Start();
+      Player_Heal(10);
+      audio_play_sound(snd_item_heal,0,false);
+      inventory.Remove(index);
+      }
+
+### Macro_Battle   [misc]   Macro_Battle/Macro_Battle.gml
+      function Macro_Battle() {
+      enum BATTLE_STATE{
+      MENU,
+      DIALOG,
+      TURN_PREPARATION,
+      IN_TURN,
+      BOARD_RESETTING,
+      RESULT
+      };
+
+### Macro_Direction   [misc]   Macro_Direction/Macro_Direction.gml
+      function Macro_Direction() {
+      enum DIR{
+      UP=90,
+      DOWN=270,
+      LEFT=180,
+      RIGHT=0
+      };
+
+### Macro_Engine   [misc]   Macro_Engine/Macro_Engine.gml
+      function Macro_Engine() {
+      #macro ENGINE_VERSION "v1.4.0"
+      #macro GAME_FPS 60
+      }
+
+### Macro_Game   [misc]   Macro_Game/Macro_Game.gml
+      function Macro_Game() {
+      //Anything you want, must be a string.
+      #macro GAME_NAME "UNDERTALE Engine"
+      //Anything you want, must be a string.
+      #macro GAME_AUTHOR "TML"
+      //Anything you want, must be a string.
+      #macro GAME_VERSION "v0.0.0"
+
+### Macro_Input   [misc]   Macro_Input/Macro_Input.gml
+      function Macro_Input() {
+      enum INPUT{
+      UP,
+      DOWN,
+      LEFT,
+      RIGHT,
+      CONFIRM,
+      CANCEL,
+      MENU
+
+### Macro_Item   [misc]   Macro_Item/Macro_Item.gml
+      function Macro_Item() {
+      enum ITEM_EVENT{
+      USE,
+      INFO,
+      DROP
+      };
+      }
+
+### Macro_Phone   [misc]   Macro_Phone/Macro_Phone.gml
+      function Macro_Phone() {
+      enum PHONE_EVENT{
+      CALL
+      };
+      }
+
+### Macro_Plot   [misc]   Macro_Plot/Macro_Plot.gml
+      function Macro_Plot() {
+      enum PLOT{
+      START
+      };
+      }
+
+### Macro_Shop   [misc]   Macro_Shop/Macro_Shop.gml
+      function Macro_Shop() {
+      enum SHOP_STATE{
+      ENCOUNTER,
+      MENU,
+      BUY,
+      SELL,
+      DIALOG,
+      EXIT,
+      CLOSE
+
+### Phone_GetNumber   [item]   Item_GetNumber/Item_GetNumber.gml
+      function Phone_GetNumber() {
+      var phones = Item_GetInventoryPhones();
+      return phones.GetCount();
+      }
+
+### Player_GetAtk   [player]   Player_GetAtk/Player_GetAtk.gml
+      function Player_GetAtk() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_ATK);
+      }
+
+### Player_GetAtkItem   [player]   Player_GetAtkItem/Player_GetAtkItem.gml
+      function Player_GetAtkItem() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_ATK_ITEM,0);
+      }
+
+### Player_GetAtkTotal   [player]   Player_GetAtkTotal/Player_GetAtkTotal.gml
+      function Player_GetAtkTotal() {
+      return Player_GetAtk()+Player_GetAtkItem()+(Player_IsInBattle() ? Battle_GetPlayerTempAtk() : 0);
+      }
+
+### Player_GetBattleFightMenuObj   [player]   Player_GetBattleFightMenuObj/Player_GetBattleFightMenuObj.gml
+      function Player_GetBattleFightMenuObj(){
+      var name=Storage_GetStaticGeneral().Get(FLAG_STATIC_BATTLE_MENU_FIGHT_OBJ,"");
+      var asset=asset_get_index(name);
+      if(GetObjectBase(asset)!=battle_menu_fight){
+      return -1;
+      }
+      return asset;
+      }
+
+### Player_GetDef   [player]   Player_GetDef/Player_GetDef.gml
+      function Player_GetDef() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_DEF);
+      }
+
+### Player_GetDefItem   [player]   Player_GetDefItem/Player_GetDefItem.gml
+      function Player_GetDefItem() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_DEF_ITEM,0);
+      }
+
+### Player_GetDefTotal   [player]   Player_GetDefTotal/Player_GetDefTotal.gml
+      function Player_GetDefTotal() {
+      return Player_GetDef()+Player_GetDefItem()+(Player_IsInBattle() ? Battle_GetPlayerTempDef() : 0);
+      }
+
+### Player_GetExp   [player]   Player_GetExp/Player_GetExp.gml
+      function Player_GetExp() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_EXP,0);
+      }
+
+### Player_GetGold   [player]   Player_GetGold/Player_GetGold.gml
+      function Player_GetGold() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_GOLD,0);
+      }
+
+### Player_GetHp   [player]   Player_GetHp/Player_GetHp.gml
+      function Player_GetHp() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_HP);
+      }
+
+### Player_GetHpMax   [player]   Player_GetHpMax/Player_GetHpMax.gml
+      function Player_GetHpMax() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_HP_MAX);
+      }
+
+### Player_GetInv   [player]   Player_GetInv/Player_GetInv.gml
+      function Player_GetInv() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_INV);
+      }
+
+### Player_GetInvItem   [item]   Player_GetInvItem/Player_GetInvItem.gml
+      function Player_GetInvItem() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_INV_ITEM,0);
+      }
+
+### Player_GetInvTotal   [player]   Player_GetInvTotal/Player_GetInvTotal.gml
+      function Player_GetInvTotal() {
+      return Player_GetInv()+Player_GetInvItem()+(Player_IsInBattle() ? Battle_GetPlayerTempInv() : 0);
+      }
+
+### Player_GetItemArmor   [player]   Player_GetItemArmor/Player_GetItemArmor.gml
+      function Player_GetItemArmor() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_ITEM_ARMOR,"");
+      }
+
+### Player_GetItemWeapon   [player]   Player_GetItemWeapon/Player_GetItemWeapon.gml
+      function Player_GetItemWeapon() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_ITEM_WEAPON,"");
+      }
+
+### Player_GetKills   [player]   Player_GetKills/Player_GetKills.gml
+      function Player_GetKills() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_KILLS,0);
+      }
+
+### Player_GetKr   [player]   Player_GetKr/Player_GetKr.gml
+      function Player_GetKr() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_KR);
+      }
+
+### Player_GetLv   [player]   Player_GetLv/Player_GetLv.gml
+      function Player_GetLv() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_LV,1);
+      }
+
+### Player_GetLvAtk   [player]   Player_GetLvAtk/Player_GetLvAtk.gml
+   参数: lv
+      function Player_GetLvAtk() {
+      var LV=argument[0];
+      var result=-1;
+      result=10+(LV-1)*2;
+      return result;
+
+### Player_GetLvDef   [player]   Player_GetLvDef/Player_GetLvDef.gml
+   参数: lv
+      function Player_GetLvDef() {
+      var LV=argument[0];
+      var result=-1;
+      result=10+ceil((LV-4)/4);
+      return result;
+
+### Player_GetLvExp   [player]   Player_GetLvExp/Player_GetLvExp.gml
+   参数: lv
+      function Player_GetLvExp() {
+      var LV=argument[0];
+      var result=-1;
+      switch(LV){
+      case 2:
+      result=10;
+      break;
+
+### Player_GetLvHpMax   [player]   Player_GetLvHpMax/Player_GetLvHpMax.gml
+   参数: lv
+      function Player_GetLvHpMax() {
+      var LV=argument[0];
+      var result=-1;
+      if(LV>=20){
+      result=99;
+      }else{
+      result=20+(LV-1)*4;
+      }
+
+### Player_GetName   [player]   Player_GetName/Player_GetName.gml
+      function Player_GetName() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_NAME,"???");
+      }
+
+### Player_GetPlot   [player]   Player_GetPlot/Player_GetPlot.gml
+      function Player_GetPlot() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_PLOT);
+      }
+
+### Player_GetSpd   [player]   Player_GetSpd/Player_GetSpd.gml
+      function Player_GetSpd() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_SPD);
+      }
+
+### Player_GetSpdItem   [player]   Player_GetSpdItem/Player_GetSpdItem.gml
+      function Player_GetSpdItem() {
+      return Storage_GetStaticGeneral().Get(FLAG_STATIC_SPD_ITEM,0);
+      }
+
+### Player_GetSpdTotal   [player]   Player_GetSpdTotal/Player_GetSpdTotal.gml
+      function Player_GetSpdTotal() {
+      return Player_GetSpd()+Player_GetSpdItem()+(Player_IsInBattle() ? Battle_GetPlayerTempSpd() : 0);
+      }
+
+### Player_SetAtk   [player]   Player_SetAtk/Player_SetAtk.gml
+   参数: atk
+      function Player_SetAtk(atk) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_ATK,atk);
+      }
+
+### Player_SetAtkItem   [player]   Player_SetAtkItem/Player_SetAtkItem.gml
+   参数: atk
+      function Player_SetAtkItem(atk) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_ATK_ITEM,atk);
+      }
+
+### Player_SetBattleFightMenuObj   [player]   Player_SetBattleFightMenuObj/Player_SetBattleFightMenuObj.gml
+   参数: obj
+      function Player_SetBattleFightMenuObj(obj){
+      if(GetObjectBase(obj)!=battle_menu_fight){
+      return false;
+      }
+      var name=object_get_name(obj);
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_BATTLE_MENU_FIGHT_OBJ,name);
+      return true;
+      }
+
+### Player_SetDef   [player]   Player_SetDef/Player_SetDef.gml
+   参数: def
+      function Player_SetDef(def) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_DEF,def);
+      }
+
+### Player_SetDefItem   [player]   Player_SetDefItem/Player_SetDefItem.gml
+   参数: def
+      function Player_SetDefItem(def) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_DEF_ITEM,def);
+      }
+
+### Player_SetExp   [player]   Player_SetExp/Player_SetExp.gml
+   参数: experience
+      function Player_SetExp(experience) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_EXP,experience);
+      }
+
+### Player_SetGold   [player]   Player_SetGold/Player_SetGold.gml
+   参数: gold
+      function Player_SetGold(gold) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_GOLD,gold);
+      }
+
+### Player_SetHp   [player]   Player_SetHp/Player_SetHp.gml
+   参数: hp
+      function Player_SetHp(hp) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_HP,hp);
+      }
+
+### Player_SetHpMax   [player]   Player_SetHpMax/Player_SetHpMax.gml
+   参数: hpMax
+      function Player_SetHpMax(hpMax) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_HP_MAX,hpMax);
+      }
+
+### Player_SetInv   [player]   Player_SetInv/Player_SetInv.gml
+   参数: inv
+      function Player_SetInv(inv) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_INV,inv);
+      }
+
+### Player_SetInvItem   [item]   Player_SetInvItem/Player_SetInvItem.gml
+   参数: inv
+      function Player_SetInvItem(inv) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_INV_ITEM,inv);
+      }
+
+### Player_SetItemArmor   [player]   Player_SetItemArmor/Player_SetItemArmor.gml
+   参数: item
+      function Player_SetItemArmor(item) {
+      var itemTypes=Item_GetTypeManager();
+      if(!itemTypes.IsEmptyOrValid(item)){
+      return false;
+      }
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_ITEM_ARMOR,item);
+      return true;
+      }
+
+### Player_SetItemWeapon   [player]   Player_SetItemWeapon/Player_SetItemWeapon.gml
+   参数: item
+      function Player_SetItemWeapon(item) {
+      var itemTypes=Item_GetTypeManager();
+      if(!itemTypes.IsEmptyOrValid(item)){
+      return false;
+      }
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_ITEM_WEAPON,item);
+      return true;
+      }
+
+### Player_SetKills   [player]   Player_SetKills/Player_SetKills.gml
+   参数: kills
+      function Player_SetKills(kills) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_KILLS,kills);
+      }
+
+### Player_SetKr   [player]   Player_SetKr/Player_SetKr.gml
+      function Player_SetKr() {
+      if (global.kr) {
+      return Storage_GetStaticGeneral().Set(FLAG_STATIC_KR,argument[0]);
+      }
+      }
+
+### Player_SetLv   [player]   Player_SetLv/Player_SetLv.gml
+   参数: lv
+      function Player_SetLv(lv) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_LV,lv);
+      }
+
+### Player_SetName   [player]   Player_SetName/Player_SetName.gml
+   参数: name
+      function Player_SetName(name) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_NAME,name);
+      }
+
+### Player_SetPlot   [player]   Player_SetPlot/Player_SetPlot.gml
+   参数: plot
+      function Player_SetPlot(plot) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_PLOT,plot);
+      }
+
+### Player_SetSpd   [player]   Player_SetSpd/Player_SetSpd.gml
+   参数: spd
+      function Player_SetSpd(spd) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_SPD,spd);
+      }
+
+### Player_SetSpdItem   [player]   Player_SetSpdItem/Player_SetSpdItem.gml
+   参数: spd
+      function Player_SetSpdItem(spd) {
+      Storage_GetStaticGeneral().Set(FLAG_STATIC_SPD_ITEM,spd);
+      }
+
+### Player_UpdateLv   [player]   Player_UpdateLv/Player_UpdateLv.gml
+      function Player_UpdateLv() {
+      var result=false;
+      while(Player_GetLvExp(Player_GetLv()+1)!=-1 && Player_GetExp()>=Player_GetLvExp(Player_GetLv()+1)){
+      Player_LvUp(Player_GetLv()+1);
+      result=true;
+      }
+      return result;
+
+### RegisterManager.Contains   [misc]   RegisterManager/RegisterManager.gml
+   参数: id
+      function Contains(id){
+      return string_length(id)!=0 && struct_exists(contents,id);
+      }
+      function GetIds(){
+      return struct_get_names(contents);
+      }
+      }
+
+### RegisterManager.Get   [misc]   RegisterManager/RegisterManager.gml
+   参数: id
+      function Get(id){
+      if(!Contains(id)){
+      show_error($"id \"{id}\" not found!",true);
+      return undefined;
+      }
+      return struct_get(contents,id);
+      }
+      function Contains(id){
+      return string_length(id)!=0 && struct_exists(contents,id);
+
+### RegisterManager.GetIds   [misc]   RegisterManager/RegisterManager.gml
+      function GetIds(){
+      return struct_get_names(contents);
+      }
+      }
+
+### RegisterManager.GetOrUndefined   [misc]   RegisterManager/RegisterManager.gml
+   参数: id
+      function GetOrUndefined(id){
+      if(!Contains(id)){
+      return undefined;
+      }
+      return struct_get(contents,id);
+      }
+      function Get(id){
+      if(!Contains(id)){
+      show_error($"id \"{id}\" not found!",true);
+
+### RegisterManager.Register   [misc]   RegisterManager/RegisterManager.gml
+   参数: id, content
+      function Register(id, content){
+      if(string_length(id)==0){
+      show_error("id cannot be empty!",true);
+      return false;
+      }
+      if(Contains(id)){
+      show_error($"id \"{id}\" has already been registered!",true);
+      return false;
+      }
+
+### Shop_CallDialog   [shop]   Shop_CallDialog/Shop_CallDialog.gml
+   参数: index
+      function Shop_CallDialog(){
+      var INDEX = argument[0];
+      if(INDEX < 4 && INDEX >= 0)
+      {
+      var blt = shop._host.dialog[INDEX];
+      with(blt)
+      event_user(0);
+      }
+
+### Shop_ClearTyper   [shop]   Shop_ClearTyper/Shop_ClearTyper.gml
+      function Shop_ClearTyper(){
+      with(shop)event_user(2);
+      }
+
+### Shop_CreateTyper   [shop]   Shop_CreateTyper/Shop_CreateTyper.gml
+      function Shop_CreateTyper(){
+      with(shop)event_user(1);
+      }
+
+### Shop_DialogStart   [shop]   Shop_DialogStart/Shop_DialogStart.gml
+   参数: text
+      function Shop_DialogStart(){
+      var blt = instance_create_depth(shop.border_x1+2*shop.width_text,2*shop.border_y1+2*shop.height_text,0,shop_dialog_typer);
+      blt.text = argument[0];
+      shop._dialog=true;
+      }
+
+### Shop_GetBackground   [shop]   Shop_GetBackground/Shop_GetBackground.gml
+   参数: shop_id
+      function Shop_GetBackground(){
+      var ID=argument[0];
+      var map=global._shop;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"background");
+      return result;
+      }else{
+
+### Shop_GetBGM   [shop]   Shop_GetBGM/Shop_GetBGM.gml
+   参数: shop_id
+      function Shop_GetBGM(){
+      var ID=argument[0];
+      var map=global._shop;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"bgm");
+      return result;
+      }else{
+
+### Shop_GetDialogTitle   [shop]   Shop_GetDialogTitle/Shop_GetDialogTitle.gml
+   参数: index
+      function Shop_GetDialogTitle() {
+      var INDEX = argument[0];
+      if (INDEX < 4 && INDEX >= 0) {
+      var blt = shop._host.dialog[INDEX];
+      var TITLE = string(blt.title);
+      var BLEND = blt.title_blend;
+
+### Shop_GetHost   [shop]   Shop_GetHost/Shop_GetHost.gml
+   参数: shop_id
+      function Shop_GetHost(){
+      var ID=argument[0];
+      var map=global._shop;
+      if(ds_map_exists(map,ID)){
+      var map_e=ds_map_find_value(map,ID);
+      var result=ds_map_find_value(map_e,"host");
+      return result;
+      }else{
+
+### Shop_Init   [shop]   Shop_Init/Shop_Init.gml
+      function Shop_Init(){
+      global._shop=ds_map_create();
+      Shop_Custom();
+      }
+
+### Shop_RefreshTyper   [shop]   Shop_RefreshTyper/Shop_RefreshTyper.gml
+   参数: *left, *right, *state, *info
+      function Shop_RefreshTyper(){
+      shop._typer_left_refresh = true;
+      shop._typer_right_refresh = true;
+      shop._typer_state_refresh = true;
+      shop._typer_info_refresh = true;
+      if(argument_count > 0)
+      shop._typer_left_refresh = argument[0];
+      if(argument_count > 1)
+
+### Shop_Uninit   [shop]   Shop_Uninit/Shop_Uninit.gml
+      function Shop_Uninit(){
+      var map=global._shop;
+      while(!ds_map_empty(map)){
+      var key=ds_map_find_first(map);
+      var map_e=ds_map_find_value(map,key);
+      ds_map_destroy(map_e);
+      ds_map_delete(map,key);
+      }
+      ds_map_destroy(map);
+
+### Storage   [storage]   Storage/Storage.gml
+   参数: funcGetFilePath
+      function Storage(funcGetFilePath) : RegisterManager() constructor{
+      function ClearData(){
+      var ids=GetIds();
+      for(var i=0;i<array_length(ids);i+=1){
+      var idi=ids[i];
+      show_debug_message($"Clearing StorageUnit \"{idi}\"...");
+      var unit=Get(idi);
+      unit.OnClear();
+      }
+
+### Storage_Custom_Dynamic   [storage]   Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml
+   参数: storages
+      function Storage_Custom_Dynamic(storages){
+      var s=new Storage(Storage_MakeGetFilePathFunc(true,"dynamic.json"));
+      storages.Register("dynamic",s);
+      s.Register("general",new StorageZoneStruct());
+      }
+      function Storage_GetDynamic(){
+      return Storage_GetManager().Get("dynamic");
+
+### Storage_Custom_Info   [storage]   Storage_Custom_Info/Storage_Custom_Info.gml
+   参数: storages
+      function Storage_Custom_Info(storages){
+      var s=new Storage(Storage_MakeGetFilePathFunc(true,"info.json"));
+      storages.Register("info",s);
+      global._storage_cache_info_general=new StorageZoneStruct();
+      s.Register("general",global._storage_cache_info_general);
+      }
+      function Storage_GetInfo(){
+
+### Storage_Custom_Settings   [storage]   Storage_Custom_Settings/Storage_Custom_Settings.gml
+   参数: storages
+      function Storage_Custom_Settings(storages){
+      var s=new Storage(Storage_MakeGetFilePathFunc(false,"settings.json"));
+      storages.Register("settings",s);
+      s.Register("general",new StorageZoneStruct());
+      }
+      function Storage_GetSettings(){
+      return Storage_GetManager().Get("settings");
+
+### Storage_Custom_Static   [storage]   Storage_Custom_Static/Storage_Custom_Static.gml
+   参数: storages
+      function Storage_Custom_Static(storages){
+      var s=new Storage(Storage_MakeGetFilePathFunc(true,"static.json"));
+      storages.Register("static",s);
+      // General zone is for common player stats.
+      var zGeneral=new StorageZoneStruct();
+      // We use general zone a lot. Make a cached variable to make accessing faster.
+      global._storage_cache_static_general=zGeneral;
+      s.Register("general",zGeneral);
+
+### Storage_Custom_Temp   [storage]   Storage_Custom_Temp/Storage_Custom_Temp.gml
+   参数: storages
+      function Storage_Custom_Temp(storages){
+      var s=new Storage(undefined);
+      storages.Register("temp",s);
+      // Make a cache to make accessing faster since we use it a lot.
+      global._storage_cache_temp_general=new StorageZoneStruct();
+      s.Register("general",global._storage_cache_temp_general);
+      }
+
+### Storage_GetDynamic   [storage]   Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml
+      function Storage_GetDynamic(){
+      return Storage_GetManager().Get("dynamic");
+      }
+      function Storage_SaveDynamic(){
+      var s=Storage_GetDynamic();
+      s.SaveToFile();
+      }
+
+### Storage_GetInfo   [storage]   Storage_Custom_Info/Storage_Custom_Info.gml
+      function Storage_GetInfo(){
+      return Storage_GetManager().Get("info");
+      }
+      function Storage_GetInfoGeneral(){
+      return global._storage_cache_info_general;
+      }
+      function Storage_SaveGame(){
+      var sStatic=Storage_GetStatic();
+      var sInfo=Storage_GetInfo();
+
+### Storage_GetInfoFlag   [storage]   Storage_GetInfoFlag/Storage_GetInfoFlag.gml
+   参数: flag, defaultValue
+      function Storage_GetInfoFlag(flag,defaultValue=0){
+      return Storage_GetInfoGeneral().Get(flag,defaultValue);
+      }
+
+### Storage_GetInfoGeneral   [storage]   Storage_Custom_Info/Storage_Custom_Info.gml
+      function Storage_GetInfoGeneral(){
+      return global._storage_cache_info_general;
+      }
+      function Storage_SaveGame(){
+      var sStatic=Storage_GetStatic();
+      var sInfo=Storage_GetInfo();
+      var zStatic=Storage_GetStaticGeneral();
+      var zInfo=Storage_GetInfoGeneral();
+
+### Storage_GetManager   [storage]   Storage_InitUninit/Storage_InitUninit.gml
+      function Storage_GetManager(){
+      return global._storage_manager;
+      }
+
+### Storage_GetSaveSlot   [storage]   Storage_Custom/Storage_Custom.gml
+      function Storage_GetSaveSlot(){
+      return global._save_slot;
+      }
+
+### Storage_GetSettings   [storage]   Storage_Custom_Settings/Storage_Custom_Settings.gml
+      function Storage_GetSettings(){
+      return Storage_GetManager().Get("settings");
+      }
+
+### Storage_GetStatic   [storage]   Storage_Custom_Static/Storage_Custom_Static.gml
+      function Storage_GetStatic(){
+      return Storage_GetManager().Get("static");
+      }
+      function Storage_GetStaticGeneral(){
+      return global._storage_cache_static_general;
+      }
+
+### Storage_GetStaticFlag   [storage]   Storage_GetStaticFlag/Storage_GetStaticFlag.gml
+   参数: flag, defaultValue
+      function Storage_GetStaticFlag(flag,defaultValue=0){
+      return Storage_GetStaticGeneral().Get(flag,defaultValue);
+      }
+
+### Storage_GetStaticGeneral   [storage]   Storage_Custom_Static/Storage_Custom_Static.gml
+      function Storage_GetStaticGeneral(){
+      return global._storage_cache_static_general;
+      }
+
+### Storage_GetTemp   [storage]   Storage_Custom_Temp/Storage_Custom_Temp.gml
+      function Storage_GetTemp(){
+      return Storage_GetManager().Get("temp");
+      }
+      function Storage_GetTempGeneral(){
+      return global._storage_cache_temp_general;
+      }
+
+### Storage_GetTempFlag   [storage]   Storage_GetTempFlag/Storage_GetTempFlag.gml
+   参数: flag, defaultValue
+      function Storage_GetTempFlag(flag,defaultValue=0){
+      return Storage_GetTempGeneral().Get(flag,defaultValue);
+      }
+
+### Storage_GetTempGeneral   [storage]   Storage_Custom_Temp/Storage_Custom_Temp.gml
+      function Storage_GetTempGeneral(){
+      return global._storage_cache_temp_general;
+      }
+
+### Storage_Init   [storage]   Storage_InitUninit/Storage_InitUninit.gml
+      function Storage_Init(){
+      global._storage_manager=new RegisterManager();
+      Storage_Custom();
+      }
+      function Storage_Uninit(){
+      delete global._storage_manager;
+      }
+      function Storage_GetManager(){
+
+### Storage_LoadGame   [storage]   Storage_Custom_Info/Storage_Custom_Info.gml
+      function Storage_LoadGame(){
+      var sStatic=Storage_GetStatic();
+      var sDynamic=Storage_GetDynamic();
+      sStatic.LoadFromFile();
+      sDynamic.LoadFromFile();
+      }
+
+### Storage_SaveDynamic   [storage]   Storage_Custom_Dynamic/Storage_Custom_Dynamic.gml
+      function Storage_SaveDynamic(){
+      var s=Storage_GetDynamic();
+      s.SaveToFile();
+      }
+
+### Storage_SaveGame   [storage]   Storage_Custom_Info/Storage_Custom_Info.gml
+      function Storage_SaveGame(){
+      var sStatic=Storage_GetStatic();
+      var sInfo=Storage_GetInfo();
+      var zStatic=Storage_GetStaticGeneral();
+      var zInfo=Storage_GetInfoGeneral();
+      var roomName=room_get_name(room);
+      zStatic.Set(FLAG_STATIC_ROOM,roomName);
+      zInfo.Set(FLAG_INFO_LV,Player_GetLv());
+
+### Storage_SetInfoFlag   [storage]   Storage_SetInfoFlag/Storage_SetInfoFlag.gml
+   参数: flag, value
+      function Storage_SetInfoFlag(flag,value){
+      var z=Storage_GetInfoGeneral();
+      z.Set(flag,value);
+      return z;
+      }
+
+### Storage_SetSaveSlot   [storage]   Storage_Custom/Storage_Custom.gml
+   参数: slot
+      function Storage_SetSaveSlot(slot){
+      global._save_slot=slot;
+      }
+      function Storage_GetSaveSlot(){
+      return global._save_slot;
+      }
+
+### Storage_SetStaticFlag   [storage]   Storage_SetStaticFlag/Storage_SetStaticFlag.gml
+   参数: flag, value
+      function Storage_SetStaticFlag(flag,value){
+      var z=Storage_GetStaticGeneral();
+      z.Set(flag,value);
+      return z;
+      }
+
+### Storage_SetTempFlag   [storage]   Storage_SetTempFlag/Storage_SetTempFlag.gml
+   参数: flag, value
+      function Storage_SetTempFlag(flag,value){
+      var z=Storage_GetTempGeneral();
+      z.Set(flag,value);
+      return z;
+      }
+
+### Storage_Uninit   [storage]   Storage_InitUninit/Storage_InitUninit.gml
+      function Storage_Uninit(){
+      delete global._storage_manager;
+      }
+      function Storage_GetManager(){
+      return global._storage_manager;
+      }
+
+### StorageZone   [storage]   Storage/Storage.gml
+      function StorageZone() constructor{
+      function OnWrite(){
+      return undefined;
+      }
+      function OnRead(from){}
+      function OnClear(){}
+      }
+      // A storage unit with a sturct to hold the data.
+      function StorageZoneStruct() : StorageZone() constructor{
+
+### StorageZone.ClearData   [storage]   Storage/Storage.gml
+      function ClearData(){
+      var ids=GetIds();
+      for(var i=0;i<array_length(ids);i+=1){
+      var idi=ids[i];
+      show_debug_message($"Clearing StorageUnit \"{idi}\"...");
+      var unit=Get(idi);
+      unit.OnClear();
+      }
+      };
+
+### StorageZone.DeserializeFromJson   [storage]   Storage/Storage.gml
+   参数: json
+      function DeserializeFromJson(json){
+      var obj;
+      try{
+      obj=json_parse(json);
+      }catch(e){
+      show_message($"Failed to deserialize json content!\n{e}");
+      return false;
+      }
+
+### StorageZone.Get   [storage]   Storage/Storage.gml
+   参数: key, defaultValue
+      function Get(key,defaultValue=undefined){
+      return data[$key]??defaultValue;
+      }
+      function GetOrDefault(key,defaultValue){
+      return data[$key]??defaultValue;
+      }
+      function Set(key,value){
+      data[$key]=value;
+      }
+
+### StorageZone.GetData   [storage]   Storage/Storage.gml
+      function GetData(){
+      return data;
+      }
+      function OnWrite(){
+      return data;
+      }
+      function OnRead(from){
+      data=from;
+      }
+
+### StorageZone.GetFilePath   [storage]   Storage/Storage.gml
+      function GetFilePath(){
+      if(funcGetFilePath==undefined){
+      return undefined;
+      }
+      return funcGetFilePath();
+      }
+      function SaveToFile(){
+      var path=GetFilePath();
+      if(is_undefined(path)){
+
+### StorageZone.GetOrDefault   [storage]   Storage/Storage.gml
+   参数: key, defaultValue
+      function GetOrDefault(key,defaultValue){
+      return data[$key]??defaultValue;
+      }
+      function Set(key,value){
+      data[$key]=value;
+      }
+      }
+      // A storage zone that pulls data from or put data to registered inventories.
+      function StorageZoneInventories(inventoryManager) : StorageZone() constructor{
+
+### StorageZone.IsFileExists   [storage]   Storage/Storage.gml
+      function IsFileExists(){
+      return file_exists(GetFilePath());
+      }
+      }
+      // OnWrite() -> any -- When saving, return the data you want to save.
+      // OnRead(from: any) -- When loading, read the data from the given object.
+      // OnClear() -- Clear all the data this storage zone manages.
+      //              For example, empty the inventory, remove all data from the struct, etc.
+
+### StorageZone.LoadFromFile   [storage]   Storage/Storage.gml
+      function LoadFromFile(){
+      var path=GetFilePath();
+      if(is_undefined(path)){
+      show_error("This storage doesn't allow loading from disk!",true);
+      return false;
+      }
+      var json=File_ReadAllText(path);
+      if(is_undefined(json)){
+      show_debug_message($"Failed to load storage data from {path}!");
+
+### StorageZone.OnClear   [storage]   Storage/Storage.gml
+      function OnClear(){}
+      }
+      // A storage unit with a sturct to hold the data.
+      function StorageZoneStruct() : StorageZone() constructor{
+      data={};
+      function GetData(){
+      return data;
+      }
+      function OnWrite(){
+
+### StorageZone.OnRead   [storage]   Storage/Storage.gml
+   参数: from
+      function OnRead(from){}
+      function OnClear(){}
+      }
+      // A storage unit with a sturct to hold the data.
+      function StorageZoneStruct() : StorageZone() constructor{
+      data={};
+      function GetData(){
+      return data;
+      }
+
+### StorageZone.OnWrite   [storage]   Storage/Storage.gml
+      function OnWrite(){
+      return undefined;
+      }
+      function OnRead(from){}
+      function OnClear(){}
+      }
+      // A storage unit with a sturct to hold the data.
+      function StorageZoneStruct() : StorageZone() constructor{
+      data={};
+
+### StorageZone.SaveToFile   [storage]   Storage/Storage.gml
+      function SaveToFile(){
+      var path=GetFilePath();
+      if(is_undefined(path)){
+      show_error("This storage doesn't allow saving to disk!",true);
+      return false;
+      }
+      var json=SerializeToJson();
+      var written=File_WriteAllText(path,json);
+      if(!written){
+
+### StorageZone.SerializeToJson   [storage]   Storage/Storage.gml
+      function SerializeToJson(){
+      var obj={};
+      var ids=GetIds();
+      for(var i=0;i<array_length(ids);i+=1){
+      var idi=ids[i];
+      var unit=Get(idi);
+      var unitObj=unit.OnWrite();
+      obj[$idi]=unitObj;
+      }
+
+### StorageZone.Set   [storage]   Storage/Storage.gml
+   参数: key, value
+      function Set(key,value){
+      data[$key]=value;
+      }
+      }
+      // A storage zone that pulls data from or put data to registered inventories.
+      function StorageZoneInventories(inventoryManager) : StorageZone() constructor{
+      self.inventories=inventoryManager;
+      function OnWrite(){
+
+### StorageZoneStruct   [storage]   Storage/Storage.gml
+      function StorageZoneStruct() : StorageZone() constructor{
+      data={};
+      function GetData(){
+      return data;
+      }
+      function OnWrite(){
+      return data;
+      }
+      function OnRead(from){
+
+### Time_Init   [misc]   Time_init/Time_Init.gml
+      function Time_Init(){
+      global.delta_time_factor = 1; // 默认正常速度
+      // 可以在这里设置其他时间相关变量
+      }
+      function Time_Step(){
+      // 计算时间缩放因子
+      // delta_time 是以微秒为单位的游戏帧时间
+      // GAME_FPS 是目标帧率（通常是60）
+
+### Time_Step   [misc]   Time_init/Time_Init.gml
+      function Time_Step(){
+      // 计算时间缩放因子
+      // delta_time 是以微秒为单位的游戏帧时间
+      // GAME_FPS 是目标帧率（通常是60）
+      //global.delta_time_factor = delta_time / 1000000 * GAME_FPS;
+      //global.delta_time_factor = clamp(global.delta_time_factor, 0.1, 10);
+      global.delta_time_factor = GAME_FPS/game_get_speed(gamespeed_fps);
+      }
+
+### Vector3.Add   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Add(value) {
+      return new Vector3(x + value.x, y + value.y, z + value.z);
+      }
+      function Sub(value) {
+      return new Vector3(x - value.x, y - value.y, z - value.z);
+      }
+      function MulScalar(value) {
+
+### Vector3.Angle   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Angle(value) {
+      var dotProduct = Dot(value);
+      var magnitudeProduct = Magnitude() * value.Magnitude();
+      return arccos(dotProduct / magnitudeProduct);
+      }
+      function Add(value) {
+      return new Vector3(x + value.x, y + value.y, z + value.z);
+      }
+
+### Vector3.Cross   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Cross(value) {
+      var crossX = y * value.z - z * value.y;
+      var crossY = z * value.x - x * value.z;
+      var crossZ = x * value.y - y * value.x;
+      return new Vector3(crossX, crossY, crossZ);
+      }
+      function Angle(value) {
+      var dotProduct = Dot(value);
+
+### Vector3.Distance   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Distance(value) {
+      var dx = x - value.x;
+      var dy = y - value.y;
+      var dz = z - value.z;
+      return sqrt(dx * dx + dy * dy + dz * dz);
+      }
+      }
+
+### Vector3.DivideScalar   [misc]   Vector3/Vector3.gml
+   参数: value
+      function DivideScalar(value) {
+      return new Vector3(x / value.x, y / value.y, z / value.z);
+      }
+      function Distance(value) {
+      var dx = x - value.x;
+      var dy = y - value.y;
+      var dz = z - value.z;
+      return sqrt(dx * dx + dy * dy + dz * dz);
+
+### Vector3.Dot   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Dot(value) {
+      return x * value.x + y * value.y + z * value.z;
+      }
+      function Cross(value) {
+      var crossX = y * value.z - z * value.y;
+      var crossY = z * value.x - x * value.z;
+      var crossZ = x * value.y - y * value.x;
+      return new Vector3(crossX, crossY, crossZ);
+
+### Vector3.Magnitude   [misc]   Vector3/Vector3.gml
+      function Magnitude() {
+      return sqrt(x * x + y * y + z * z);
+      }
+      function Normalize() {
+      var magnitude = Magnitude();
+      if (magnitude != 0) {
+      x /= magnitude;
+      y /= magnitude;
+
+### Vector3.MulScalar   [misc]   Vector3/Vector3.gml
+   参数: value
+      function MulScalar(value) {
+      return new Vector3(x * value.x, y * value.y, z * value.z);
+      }
+      function DivideScalar(value) {
+      return new Vector3(x / value.x, y / value.y, z / value.z);
+      }
+      function Distance(value) {
+
+### Vector3.Normalize   [misc]   Vector3/Vector3.gml
+      function Normalize() {
+      var magnitude = Magnitude();
+      if (magnitude != 0) {
+      x /= magnitude;
+      y /= magnitude;
+      z /= magnitude;
+      }
+      }
+
+### Vector3.Sub   [misc]   Vector3/Vector3.gml
+   参数: value
+      function Sub(value) {
+      return new Vector3(x - value.x, y - value.y, z - value.z);
+      }
+      function MulScalar(value) {
+      return new Vector3(x * value.x, y * value.y, z * value.z);
+      }
+      function DivideScalar(value) {

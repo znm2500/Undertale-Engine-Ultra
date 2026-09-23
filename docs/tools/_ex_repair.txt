@@ -1,0 +1,6 @@
+替换 OK: files
+替换 OK: 准备块插入 code 首位
+vm 载入验证通过：准备块/真图/files 全部就位（lang: gml,gml,gml,text,img）
+_verify.js: 加断言「示例无待补占位残留」
+临时备份已删除
+ALL OK

@@ -1,0 +1,3891 @@
+{
+ "battle": [
+  {
+   "n": "_encounter",
+   "v": "Storage_GetTempFlag(FLAG_TEMP_ENCOUNTER)",
+   "note": ""
+  },
+  {
+   "n": "_enemy_object",
+   "v": "Encounter_GetEnemy(_encounter,0)",
+   "note": ""
+  },
+  {
+   "n": "_heal",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_hp",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_kr",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "damage",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_enemy",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_enemy_name",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_enemy_spareable",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_enemy_action_number",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_enemy_action_name",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_enemy_center_pos_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_enemy_center_pos_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_enemy_def",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_state",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_state_next",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_menu",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_button",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_enemy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_action",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_item",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_item_first",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_mercy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_mercy_override",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_mercy_override_number",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_menu_choice_mercy_override_name",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_menu_fleeable",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_menu_mercy_flee_enabled",
+   "v": "Encounter_IsMenuMercyFleeEnabled(_encounter)",
+   "note": ""
+  },
+  {
+   "n": "_menu_dialog",
+   "v": "Encounter_GetMenuDialog(_encounter)",
+   "note": ""
+  },
+  {
+   "n": "_menu_fight_damage",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_fight_anim_time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_fight_damage_time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_menu_item_used_last",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_turn_number",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_turn_info",
+   "v": "ds_map_create()",
+   "note": ""
+  },
+  {
+   "n": "_dialog",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_dialog_auto_end",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_dialog_enemy_auto_end",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_reward_gold",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_reward_exp",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_player_temp_atk",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_player_temp_def",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_player_temp_spd",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_player_temp_inv",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "kr_timer",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "hurt_timer",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_bg": [],
+ "battle_board": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BOARD",
+   "note": ""
+  },
+  {
+   "n": "_surface",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_surface_bg",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_surface_board_extra",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_surface_board_cover",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_surface_mask",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "x",
+   "v": "BATTLE_BOARD.X",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "BATTLE_BOARD.Y",
+   "note": ""
+  },
+  {
+   "n": "up",
+   "v": "BATTLE_BOARD.UP",
+   "note": ""
+  },
+  {
+   "n": "down",
+   "v": "BATTLE_BOARD.DOWN",
+   "note": ""
+  },
+  {
+   "n": "left",
+   "v": "BATTLE_BOARD.LEFT",
+   "note": ""
+  },
+  {
+   "n": "right",
+   "v": "BATTLE_BOARD.RIGHT",
+   "note": ""
+  },
+  {
+   "n": "angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "color_bg",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "alpha_bg",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "color_frame",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "mainboard",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "edge",
+   "v": "!global.classic_ui",
+   "note": ""
+  },
+  {
+   "n": "alpha_frame",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "global.boards_array",
+   "v": "array_create(0)",
+   "note": ""
+  },
+  {
+   "n": "global.boards_controller_array",
+   "v": "array_create(0)",
+   "note": ""
+  },
+  {
+   "n": "global.board_uid",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_bullet": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BULLET",
+   "note": ""
+  },
+  {
+   "n": "angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_y",
+   "v": "y",
+   "note": ""
+  },
+  {
+   "n": "_x",
+   "v": "x",
+   "note": ""
+  },
+  {
+   "n": "duration",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "auto_destroy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "out",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_vspeed",
+   "v": "vspeed",
+   "note": ""
+  },
+  {
+   "n": "_hspeed",
+   "v": "hspeed",
+   "note": ""
+  },
+  {
+   "n": "_speed",
+   "v": "speed",
+   "note": ""
+  },
+  {
+   "n": "_direction",
+   "v": "direction",
+   "note": ""
+  },
+  {
+   "n": "type",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "disposable",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_board",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_target",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "center_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "center_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "rotate",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "point_at",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angle_offset",
+   "v": "180",
+   "note": ""
+  },
+  {
+   "n": "processed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "path_function",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "battle_bullet_arrow": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BULLET_OUTSIDE_HIGH",
+   "note": ""
+  },
+  {
+   "n": "_distance",
+   "v": "500",
+   "note": ""
+  },
+  {
+   "n": "_dir",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_direction",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_speed",
+   "v": "2",
+   "note": ""
+  },
+  {
+   "n": "type",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "range",
+   "v": "_distance",
+   "note": ""
+  }
+ ],
+ "battle_bullet_bone": [
+  {
+   "n": "length",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "type",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "out",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "rotate",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "point",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_bullet_bone_3d": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BULLET_OUTSIDE_LOW",
+   "note": ""
+  },
+  {
+   "n": "enable",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "vert_list",
+   "v": "[]",
+   "note": "创建一个空数组"
+  },
+  {
+   "n": "vert_list_draw",
+   "v": "[]",
+   "note": "创建一个空数组"
+  },
+  {
+   "n": "edge_list",
+   "v": "[]",
+   "note": "创建一个空数组"
+  },
+  {
+   "n": "anglex",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angley",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "anglez",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angxs",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angys",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angzs",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "scalex",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "scaley",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "scalez",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "shape",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "out",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "type",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "gap",
+   "v": "40",
+   "note": ""
+  }
+ ],
+ "battle_bullet_gb": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BULLET_OUTSIDE_HIGH",
+   "note": ""
+  },
+  {
+   "n": "image_xscale",
+   "v": "800",
+   "note": ""
+  },
+  {
+   "n": "image_yscale",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_blaster_yscale",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "state",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "timer_move",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "timer_blast",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "timer_exit",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "time_move",
+   "v": "30",
+   "note": ""
+  },
+  {
+   "n": "time_delay",
+   "v": "16",
+   "note": ""
+  },
+  {
+   "n": "time_blast",
+   "v": "10",
+   "note": ""
+  },
+  {
+   "n": "time_stay",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "charge_sound",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "blast_sound",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "destroy",
+   "v": "false",
+   "note": ""
+  }
+ ],
+ "battle_bullet_test": [],
+ "battle_button": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI",
+   "note": ""
+  },
+  {
+   "n": "_button_slot",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "battle_button_act": [
+  {
+   "n": "_button_slot",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "battle_button_fight": [
+  {
+   "n": "_button_slot",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_button_item": [
+  {
+   "n": "_button_slot",
+   "v": "2",
+   "note": ""
+  }
+ ],
+ "battle_button_mercy": [
+  {
+   "n": "_button_slot",
+   "v": "3",
+   "note": ""
+  }
+ ],
+ "battle_damage": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI",
+   "note": ""
+  },
+  {
+   "n": "visible",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "yscale",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "alpha",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "damage",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "color",
+   "v": "c_red",
+   "note": ""
+  },
+  {
+   "n": "display_time",
+   "v": "GAME_FPS",
+   "note": ""
+  },
+  {
+   "n": "bar_visible",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "bar_width",
+   "v": "100",
+   "note": ""
+  },
+  {
+   "n": "bar_hp_max",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "bar_hp_original",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "bar_hp_target",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "bar_duration",
+   "v": "45",
+   "note": ""
+  },
+  {
+   "n": "_bar_hp",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "gra",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "vsp",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "battle_death_particle": [
+  {
+   "n": "sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "scale_x",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_ps",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_p",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_surface",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_inst",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_line",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "battle_death_particle_collision": [],
+ "battle_dialog_enemy": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI_HIGH",
+   "note": ""
+  },
+  {
+   "n": "visible",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "text",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "dir",
+   "v": "DIR.LEFT",
+   "note": ""
+  },
+  {
+   "n": "show_spike",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "wide_spike",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "up",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "down",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "left",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "right",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "template",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "text_offset_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "text_offset_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "fast",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_inst",
+   "v": "instance_create_depth(x-left+text_offset_x,y-up+te",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1 / global.delta_time_factor",
+   "note": ""
+  }
+ ],
+ "battle_enemy": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.ENEMY",
+   "note": ""
+  },
+  {
+   "n": "_enemy_slot",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "battle_enemy_test": [],
+ "battle_fader": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.FADER",
+   "note": ""
+  },
+  {
+   "n": "color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "alpha",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_menu_fight": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI",
+   "note": ""
+  },
+  {
+   "n": "x",
+   "v": "battle_board.x",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "battle_board.y",
+   "note": ""
+  }
+ ],
+ "battle_menu_fight_anim_knife": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI",
+   "note": ""
+  },
+  {
+   "n": "image_speed",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "battle_menu_fight_hp_bar": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI_HIGH",
+   "note": ""
+  },
+  {
+   "n": "enemy_slot",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "width",
+   "v": "101",
+   "note": ""
+  },
+  {
+   "n": "hp_max",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "hp",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_menu_fight_knife": [
+  {
+   "n": "_dir",
+   "v": "choose(DIR.LEFT,DIR.RIGHT)",
+   "note": ""
+  },
+  {
+   "n": "_input_acceptable",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_aim_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_aim_image",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_menu_item_dot": [],
+ "battle_menu_item_scrollbar": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI_HIGH",
+   "note": ""
+  },
+  {
+   "n": "x",
+   "v": "battle_board.x + battle_board.right - 16",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "battle_board.y",
+   "note": ""
+  },
+  {
+   "n": "moveable",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_arrow",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "NUMBER",
+   "v": "Item_GetNumber()",
+   "note": ""
+  },
+  {
+   "n": "alpha",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "yy1",
+   "v": "y - 10 * floor(1 / 2) - 10 - _arrow",
+   "note": ""
+  },
+  {
+   "n": "yy2",
+   "v": "y - 10 * floor(1 / 2) + 10 * 1 + _arrow",
+   "note": ""
+  },
+  {
+   "n": "yy",
+   "v": "[0, 0, 0, 0, 0, 0, 0, 0]",
+   "note": ""
+  },
+  {
+   "n": "yd",
+   "v": "global.classic_ui ? y - 10 * floor(NUMBER / 2) : y",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "21 * global.delta_time_factor",
+   "note": ""
+  }
+ ],
+ "battle_platform": [],
+ "battle_result_flee": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.SOUL",
+   "note": ""
+  },
+  {
+   "n": "image_speed",
+   "v": "(1/2) * global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "x",
+   "v": "battle_soul.x",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "battle_soul.y",
+   "note": ""
+  },
+  {
+   "n": "_ended",
+   "v": "false",
+   "note": ""
+  }
+ ],
+ "battle_soul": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.SOUL",
+   "note": ""
+  },
+  {
+   "n": "image_speed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "image_blend",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "init_alpha",
+   "v": "0.7 * !global.classic_ui",
+   "note": ""
+  },
+  {
+   "n": "moveable",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "light_size",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "index",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "follow_board",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_inv",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "global.moving",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_soul_aqua": [
+  {
+   "n": "type",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "moveable",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "image_blend",
+   "v": "c_aqua",
+   "note": ""
+  }
+ ],
+ "battle_soul_blue": [
+  {
+   "n": "moveable",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "dir",
+   "v": "270",
+   "note": ""
+  },
+  {
+   "n": "move",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "impact",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "on_block",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "on_platform",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "on_board",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "jump_state",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "inst_plat",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "image_blend",
+   "v": "c_blue",
+   "note": ""
+  },
+  {
+   "n": "gravity_jump",
+   "v": "0.15",
+   "note": ""
+  },
+  {
+   "n": "gravity_fall",
+   "v": "0.15",
+   "note": ""
+  },
+  {
+   "n": "jump_speed",
+   "v": "4.8",
+   "note": ""
+  },
+  {
+   "n": "max_speed",
+   "v": "20",
+   "note": ""
+  }
+ ],
+ "battle_soul_green": [],
+ "battle_soul_moving_effect": [
+  {
+   "n": "image_blend",
+   "v": "c_orange",
+   "note": ""
+  }
+ ],
+ "battle_soul_orange": [
+  {
+   "n": "moveable",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "dir",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "3 / global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "image_blend",
+   "v": "make_color_rgb(248,148,29)",
+   "note": ""
+  }
+ ],
+ "battle_soul_purple": [
+  {
+   "n": "image_blend",
+   "v": "make_color_rgb(128, 0, 128)",
+   "note": ""
+  },
+  {
+   "n": "x_on",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "y_on",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "cross_step",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "cross_start",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "cross_target",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "point",
+   "v": "[]",
+   "note": ""
+  },
+  {
+   "n": "moving_direction",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "x_index",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "y_index",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "battle_soul_red": [
+  {
+   "n": "image_blend",
+   "v": "c_red",
+   "note": ""
+  },
+  {
+   "n": "moveable",
+   "v": "true",
+   "note": ""
+  }
+ ],
+ "battle_soul_yellow": [
+  {
+   "n": "moveable",
+   "v": "true",
+   "note": ""
+  }
+ ],
+ "battle_soul_yellow_bullet": [],
+ "battle_soul_yellow_target": [],
+ "battle_turn": [],
+ "battle_ui": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI",
+   "note": ""
+  },
+  {
+   "n": "x",
+   "v": "30",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "401",
+   "note": ""
+  }
+ ],
+ "block": [
+  {
+   "n": "block_enabled",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "pus_hspeedoulEnabled",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "pus_hspeedoulDirection",
+   "v": "DIR.DOWN",
+   "note": ""
+  }
+ ],
+ "block_corner": [],
+ "bone_arrow": [],
+ "bone_box": [
+  {
+   "n": "duration",
+   "v": "10",
+   "note": ""
+  },
+  {
+   "n": "color",
+   "v": "255",
+   "note": ""
+  },
+  {
+   "n": "x1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "x2",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "y1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "y2",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "xx1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "xx2",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "yy1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "yy2",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "xx3",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "xx4",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "yy3",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "yy4",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "follow_board",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "circle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "center_x",
+   "v": "battle_board.x",
+   "note": ""
+  },
+  {
+   "n": "center_y",
+   "v": "battle_board.y",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "duration / global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.BULLET",
+   "note": ""
+  }
+ ],
+ "bone_box_round": [],
+ "bone_circle": [
+  {
+   "n": "number",
+   "v": "10",
+   "note": ""
+  },
+  {
+   "n": "size_x",
+   "v": "100",
+   "note": ""
+  },
+  {
+   "n": "size_y",
+   "v": "100",
+   "note": ""
+  },
+  {
+   "n": "length",
+   "v": "100",
+   "note": ""
+  },
+  {
+   "n": "rot",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "rott",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "roting",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "type",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "extra_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "out",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "enable",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "border": [
+  {
+   "n": "depth",
+   "v": "-9999",
+   "note": ""
+  },
+  {
+   "n": "_kawase",
+   "v": "new Kawase(640, 480, 2)",
+   "note": ""
+  },
+  {
+   "n": "_enabled",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_sprite_previous",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_alpha",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "blur",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "camera": [
+  {
+   "n": "_camera",
+   "v": "camera_create_view(x,y,width/scale_x,height/scale_",
+   "note": ""
+  }
+ ],
+ "char": [
+  {
+   "n": "char_id",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "dir",
+   "v": "DIR.DOWN",
+   "note": ""
+  },
+  {
+   "n": "dir_locked",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "talking",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "interacting",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "move_speed",
+   "v": "2",
+   "note": ""
+  },
+  {
+   "n": "move",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "collision",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_collision_list",
+   "v": "[]",
+   "note": ""
+  },
+  {
+   "n": "res_override",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_talking_previous",
+   "v": "!talking",
+   "note": ""
+  },
+  {
+   "n": "_dir_previous",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_move_previous",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "char_box": [],
+ "char_player": [
+  {
+   "n": "char_id",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "res_idle_sprite",
+   "v": "spr_char_frisk_up",
+   "note": ""
+  },
+  {
+   "n": "res_move_sprite",
+   "v": "spr_char_frisk_up",
+   "note": ""
+  },
+  {
+   "n": "moveable",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_dialog",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_menu",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_save",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_warp",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_shop",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_encounter",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_moveable_box",
+   "v": "true",
+   "note": ""
+  }
+ ],
+ "char_sans": [
+  {
+   "n": "char_id",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "dir_locked",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "res_idle_sprite",
+   "v": "spr_char_sans_up",
+   "note": ""
+  },
+  {
+   "n": "res_move_sprite",
+   "v": "spr_char_sans_up",
+   "note": ""
+  }
+ ],
+ "char_save": [
+  {
+   "n": "res_idle_speed",
+   "v": "spd",
+   "note": ""
+  },
+  {
+   "n": "res_move_speed",
+   "v": "spd",
+   "note": ""
+  },
+  {
+   "n": "res_talk_speed",
+   "v": "spd",
+   "note": ""
+  }
+ ],
+ "char_sign": [
+  {
+   "n": "dir_locked",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "text",
+   "v": "\"* It's a sign.\"",
+   "note": ""
+  }
+ ],
+ "closed_captions": [
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.PANEL",
+   "note": ""
+  },
+  {
+   "n": "_x",
+   "v": "320",
+   "note": ""
+  },
+  {
+   "n": "_y",
+   "v": "400",
+   "note": ""
+  },
+  {
+   "n": "_up",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "_down",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_left",
+   "v": "250",
+   "note": ""
+  },
+  {
+   "n": "_right",
+   "v": "250",
+   "note": ""
+  },
+  {
+   "n": "_color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "_alpha",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_alpha_base",
+   "v": "0.6",
+   "note": ""
+  },
+  {
+   "n": "_queue_text",
+   "v": "ds_queue_create()",
+   "note": ""
+  },
+  {
+   "n": "_queue_duration",
+   "v": "ds_queue_create()",
+   "note": ""
+  },
+  {
+   "n": "_list_inst",
+   "v": "ds_list_create()",
+   "note": ""
+  },
+  {
+   "n": "_list_time",
+   "v": "ds_list_create()",
+   "note": ""
+  },
+  {
+   "n": "_list_destroy_inst",
+   "v": "ds_list_create()",
+   "note": ""
+  },
+  {
+   "n": "_list_destroy_time",
+   "v": "ds_list_create()",
+   "note": ""
+  },
+  {
+   "n": "_showed",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_up_previous",
+   "v": "_up",
+   "note": ""
+  }
+ ],
+ "demo_player": [
+  {
+   "n": "_buffer",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_seed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_input_number",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_input_list",
+   "v": "ds_list_create()",
+   "note": ""
+  },
+  {
+   "n": "_frame_number",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_frame_current",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_paused",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_fps",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_icon_show_tick",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.FADER-100",
+   "note": ""
+  }
+ ],
+ "demo_recorder": [
+  {
+   "n": "_buffer",
+   "v": "buffer_create(1,buffer_grow,1)",
+   "note": ""
+  },
+  {
+   "n": "_frame_number",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_paused",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_seed",
+   "v": "random_get_seed()",
+   "note": ""
+  },
+  {
+   "n": "_icon_show_tick",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.FADER-100",
+   "note": ""
+  }
+ ],
+ "encounter_anim": [
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.ENCOUNTER_ANIM",
+   "note": ""
+  },
+  {
+   "n": "_encounter",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_exclam",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_quick",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_soul_x",
+   "v": "48",
+   "note": ""
+  },
+  {
+   "n": "_soul_y",
+   "v": "454",
+   "note": ""
+  },
+  {
+   "n": "_draw_soul",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_draw_soul_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_draw_soul_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_draw_player",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_draw_black",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_flash",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "exclamation": [
+  {
+   "n": "depth",
+   "v": "-1600",
+   "note": ""
+  },
+  {
+   "n": "image_speed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "time",
+   "v": "60",
+   "note": ""
+  },
+  {
+   "n": "_time",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "face": [
+  {
+   "n": "face_id",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "emotion",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "gui",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "talking",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "surface_target",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_emotion_previous",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_talking_previous",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "image_xscale",
+   "v": "2",
+   "note": ""
+  },
+  {
+   "n": "image_yscale",
+   "v": "2",
+   "note": ""
+  },
+  {
+   "n": "idle_sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "idle_image",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "idle_speed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "talk_sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "talk_image",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "talk_speed",
+   "v": "1/2",
+   "note": ""
+  }
+ ],
+ "face_sans": [],
+ "fader": [
+  {
+   "n": "depth",
+   "v": "-9999",
+   "note": ""
+  },
+  {
+   "n": "color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "alpha",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "gameover": [
+  {
+   "n": "x",
+   "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X)",
+   "note": ""
+  },
+  {
+   "n": "y",
+   "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_Y)",
+   "note": ""
+  },
+  {
+   "n": "image_blend",
+   "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_COLOR)",
+   "note": ""
+  },
+  {
+   "n": "time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "40/global.delta_time_factor",
+   "note": ""
+  }
+ ],
+ "gameover_shard": [
+  {
+   "n": "image_speed",
+   "v": "(1/4) * global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "gravity",
+   "v": "0.1*global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "gravity_direction",
+   "v": "DIR.DOWN",
+   "note": ""
+  },
+  {
+   "n": "speed",
+   "v": "3.5 * global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "direction",
+   "v": "random(360)",
+   "note": ""
+  }
+ ],
+ "hint_bgm": [
+  {
+   "n": "bgm_slot",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "bgm",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "pitch",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "hint_border": [
+  {
+   "n": "sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "hint_half_size": [
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "hint_landmark": [
+  {
+   "n": "landmark_id",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "logo": [
+  {
+   "n": "_hint",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "200 / global.delta_time_factor",
+   "note": ""
+  }
+ ],
+ "menu": [
+  {
+   "n": "_menu",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_mode",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_prefix",
+   "v": "\"{instant true}{font 1}{space_x -0.5}\"",
+   "note": ""
+  },
+  {
+   "n": "_inst_instruction",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_begin",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_settings",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_name",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_lv",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_time",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_room",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_continue",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_reset",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_naming_title",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_naming_letters",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_naming_quit",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_naming_backspace",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_naming_done",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_confirm_title",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_confirm_yes",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_confirm_no",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_choice",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_naming",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_naming_letter",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_naming_command",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_confirm",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_title",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_confirm_valid",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_scale",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_offset_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_offset_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_confirm_name_update",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_naming_name",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_change_inst",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_change_color",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "_change_id",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "shaker": [
+  {
+   "n": "target",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "var_name",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "shake_distance",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "shake_speed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "shake_random",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "shake_decrease",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_shake_base",
+   "v": "undefined",
+   "note": ""
+  },
+  {
+   "n": "_shake_pos",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_shake_time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_shake_positive",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "delay",
+   "v": "0",
+   "note": ""
+  }
+ ],
+ "shop": [
+  {
+   "n": "depth",
+   "v": "97",
+   "note": ""
+  },
+  {
+   "n": "border_x1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "border_y1",
+   "v": "120",
+   "note": ""
+  },
+  {
+   "n": "border_x2",
+   "v": "319",
+   "note": ""
+  },
+  {
+   "n": "border_y2",
+   "v": "239",
+   "note": ""
+  },
+  {
+   "n": "border_width",
+   "v": "4",
+   "note": ""
+  },
+  {
+   "n": "width_text",
+   "v": "25",
+   "note": ""
+  },
+  {
+   "n": "width_heart",
+   "v": "30",
+   "note": ""
+  },
+  {
+   "n": "height_text",
+   "v": "10",
+   "note": ""
+  },
+  {
+   "n": "menu_divide_x",
+   "v": "209",
+   "note": ""
+  },
+  {
+   "n": "state_info_y",
+   "v": "200",
+   "note": ""
+  },
+  {
+   "n": "buy_info_x",
+   "v": "menu_divide_x",
+   "note": ""
+  },
+  {
+   "n": "buy_info_y",
+   "v": "border_y1 - 80",
+   "note": ""
+  },
+  {
+   "n": "buy_info_inst_y",
+   "v": "border_y1",
+   "note": ""
+  },
+  {
+   "n": "buy_info__vspeedpeed",
+   "v": "8 * global.delta_time_factor",
+   "note": ""
+  },
+  {
+   "n": "_index",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_indexy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_index_buy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_index_sell",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_state",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_pre_index",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_pre_index_buy",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_pre_index_sell",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_exit_index",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_host",
+   "v": "instance_create_depth(160,border_y1,-100,Shop_GetH",
+   "note": ""
+  },
+  {
+   "n": "_background",
+   "v": "Shop_GetBackground(SHOP)",
+   "note": ""
+  },
+  {
+   "n": "_typer_left",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_typer_right",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_typer_info",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_typer_state_0",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_typer_state_1",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_typer_left_refresh",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_typer_right_refresh",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_typer_info_refresh",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_typer_state_refresh",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_state",
+   "v": "SHOP_STATE.ENCOUNTER",
+   "note": ""
+  },
+  {
+   "n": "_dialog",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_pre",
+   "v": "\"{color `white`}{scale 1}{voice 0}{speed 2}{space_",
+   "note": ""
+  },
+  {
+   "n": "_pre_inst",
+   "v": "\"{color `white`}{font 1}{scale 1}{space_y 4}{shado",
+   "note": ""
+  },
+  {
+   "n": "_pre_inst_2",
+   "v": "\"{color `white`}{scale 1}{space_y 2}{shadow true}{",
+   "note": ""
+  },
+  {
+   "n": "_pre_inst_3",
+   "v": "\"{color `white`}{scale 1}{space_y 1}{shadow true}{",
+   "note": ""
+  },
+  {
+   "n": "_snd_buy_item",
+   "v": "snd_buyitem",
+   "note": ""
+  }
+ ],
+ "shop_dialog": [
+  {
+   "n": "title",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "title_blend",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "text",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "next_dialog",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "shop_dialog_typer": [
+  {
+   "n": "depth",
+   "v": "DEPTH_BATTLE.UI_HIGH",
+   "note": ""
+  },
+  {
+   "n": "visible",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "text_offset_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "text_offset_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "fast",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "text",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_inst",
+   "v": "instance_create_depth(2*x+text_offset_x,2*y+text_o",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "shop_host": [
+  {
+   "n": "encounter_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "menu_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "host_sprite",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "shop_item",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "buy_before_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "buy_after_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "buy_false_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "sold_available",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "sold_before_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "sold_choice_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "sold_after_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "sold_false_text",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "dialog_init",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "dialog",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "exit_text",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "shop_host_test": [
+  {
+   "n": "encounter_text",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "menu_text",
+   "v": "\"* LOL\"",
+   "note": ""
+  },
+  {
+   "n": "shop_item",
+   "v": "ITEM_TOY_KNIFE",
+   "note": ""
+  },
+  {
+   "n": "buy_before_text",
+   "v": "\"Buy&something?\"",
+   "note": ""
+  },
+  {
+   "n": "buy_after_text",
+   "v": "\"Oh,&that's&good.\"",
+   "note": ""
+  },
+  {
+   "n": "buy_false_text_0",
+   "v": "\"Lack money.\"",
+   "note": ""
+  },
+  {
+   "n": "buy_false_text_1",
+   "v": "\"Too much&Items.\"",
+   "note": ""
+  },
+  {
+   "n": "sold_available",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "sold_false_text",
+   "v": "\"* Refuse selling.\"",
+   "note": ""
+  },
+  {
+   "n": "dialog_before_text",
+   "v": "\"Dialog.\"",
+   "note": ""
+  },
+  {
+   "n": "dialog",
+   "v": "Shop_SetDialog(\"111\",c_rainbow,\"awa\")",
+   "note": ""
+  },
+  {
+   "n": "exit_text",
+   "v": "\"* ByeBye.\"",
+   "note": ""
+  }
+ ],
+ "shop_ui_deeperpart": [
+  {
+   "n": "buy_info_x",
+   "v": "shop.menu_divide_x",
+   "note": ""
+  },
+  {
+   "n": "buy_info_y",
+   "v": "shop.border_y1 - 80",
+   "note": ""
+  },
+  {
+   "n": "buy_info_inst_y",
+   "v": "shop.buy_info_inst_y",
+   "note": ""
+  },
+  {
+   "n": "border_x1",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "border_x2",
+   "v": "shop.border_x2",
+   "note": ""
+  },
+  {
+   "n": "border_width",
+   "v": "shop.border_width",
+   "note": ""
+  },
+  {
+   "n": "_background",
+   "v": "shop._background",
+   "note": ""
+  },
+  {
+   "n": "_host",
+   "v": "shop._host.host_sprite",
+   "note": ""
+  },
+  {
+   "n": "depth",
+   "v": "99",
+   "note": ""
+  }
+ ],
+ "soul_auxiliary": [],
+ "soul_block": [],
+ "text_typer": [
+  {
+   "n": "text",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_line",
+   "v": "0",
+   "note": "目前所在行"
+  },
+  {
+   "n": "_type_dir",
+   "v": "0",
+   "note": "打字方向：0 为水平，1 为垂直"
+  },
+  {
+   "n": "_halign",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_valign",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_speed",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_per_frame",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_position_follow",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_audio_clear",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_voice",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_voice_single",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_sleep",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_skippable",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_skipping",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_paused",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_instant",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_space_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_space_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_frame_remain",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_angle",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_sprite",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_char_sprite_image",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_char_proc",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_voice_played",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_char_data_list",
+   "v": "[]",
+   "note": ""
+  },
+  {
+   "n": "_list_cmd",
+   "v": "[]",
+   "note": ""
+  },
+  {
+   "n": "_map_macro",
+   "v": "{}",
+   "note": "如果需要，map 也可以改成 struct，此处暂保留"
+  },
+  {
+   "n": "_face",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_face_linked",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_char_linked",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_skip_space",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_choice",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_choice_x",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_y",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_macro",
+   "v": "\"\"",
+   "note": ""
+  },
+  {
+   "n": "_choice_switch_direction",
+   "v": "0",
+   "note": "0 为左右，1 为上下"
+  },
+  {
+   "n": "_choice_switch_key",
+   "v": "[INPUT.LEFT, INPUT.RIGHT]",
+   "note": ""
+  },
+  {
+   "n": "_choice_switch_sound",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_show_item",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_font",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_scale_x",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_scale_y",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_shadow",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_outline",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_color_text",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "_color_shadow",
+   "v": "make_color_rgb(49, 49, 79)",
+   "note": ""
+  },
+  {
+   "n": "_color_outline",
+   "v": "make_color_rgb(110, 110, 110)",
+   "note": ""
+  },
+  {
+   "n": "_alpha",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_rainbow",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_alpha_text",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_alpha_shadow",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_alpha_outline",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "_shadow_x",
+   "v": "0.5",
+   "note": ""
+  },
+  {
+   "n": "_shadow_y",
+   "v": "0.5",
+   "note": ""
+  },
+  {
+   "n": "_effect",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_gui",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_angle_previous",
+   "v": "_angle",
+   "note": ""
+  },
+  {
+   "n": "_angle_follow",
+   "v": "true",
+   "note": ""
+  },
+  {
+   "n": "_effect_shook",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_surface_target",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "width",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "height",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "override_alpha_enabled",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "override_alpha",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "override_color_text_enabled",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "override_color_text",
+   "v": "c_white",
+   "note": ""
+  },
+  {
+   "n": "_time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "torder",
+   "v": "[]",
+   "note": ""
+  },
+  {
+   "n": "_order",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "auto_destroy",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "alarm",
+   "v": "1",
+   "note": ""
+  }
+ ],
+ "trigger": [
+  {
+   "n": "user_char",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_triggered",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "_collided_previous",
+   "v": "false",
+   "note": ""
+  }
+ ],
+ "trigger_shop": [
+  {
+   "n": "user_char",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_shop_id",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_landmark",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "fade_in_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "fade_in_color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "fade_out_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "fade_out_color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "bgm_fade",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "bgm_fade_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "warp_wait",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "player_dir",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "trigger_warp": [
+  {
+   "n": "user_char",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "target_room",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "target_landmark",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "fade_in_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "fade_in_color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "fade_out_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "fade_out_color",
+   "v": "c_black",
+   "note": ""
+  },
+  {
+   "n": "bgm_fade",
+   "v": "false",
+   "note": ""
+  },
+  {
+   "n": "bgm_fade_time",
+   "v": "20",
+   "note": ""
+  },
+  {
+   "n": "warp_wait",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "player_dir",
+   "v": "-1",
+   "note": ""
+  }
+ ],
+ "turn_test": [],
+ "ui_box": [
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.PANEL",
+   "note": ""
+  },
+  {
+   "n": "box_slot",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_state",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_choice_mode",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_mode_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_surface",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_surface_text",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_prefix",
+   "v": "\"{shadow true}{color `white`}{scale 2}{font 1}{ins",
+   "note": ""
+  },
+  {
+   "n": "_show_width",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_inst_inventory",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_box",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item_inventory",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item_box",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_finish",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "ui_dialog": [
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.PANEL",
+   "note": ""
+  },
+  {
+   "n": "_surface_text",
+   "v": "surface_create(640,480)",
+   "note": ""
+  },
+  {
+   "n": "_inst",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "ui_menu": [
+  {
+   "n": "depth",
+   "v": "-9000",
+   "note": ""
+  },
+  {
+   "n": "_offset",
+   "v": "-100",
+   "note": ""
+  },
+  {
+   "n": "_menu",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item_operate",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_item_operate_soul",
+   "v": "11.5",
+   "note": ""
+  },
+  {
+   "n": "_choice_phone",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_phone_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_surface",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_surface_text",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_prefix",
+   "v": "\"{font 1}{shadow true}{color `white`}{instant true",
+   "note": ""
+  },
+  {
+   "n": "_inst_name",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_menu",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item_use",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item_info",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_item_drop",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_stat_0",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_stat_1",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_phone",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_show_width",
+   "v": "array_create(3, 0)",
+   "note": ""
+  },
+  {
+   "n": "_destroy_time",
+   "v": "array_create(3, 0)",
+   "note": ""
+  }
+ ],
+ "ui_save": [
+  {
+   "n": "depth",
+   "v": "DEPTH_UI.PANEL",
+   "note": ""
+  },
+  {
+   "n": "_show_width",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_state",
+   "v": "-1",
+   "note": ""
+  },
+  {
+   "n": "_choice",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_choice_soul",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_prefix",
+   "v": "\"{shadow true}{color `white`}{font 1}{scale 2}{ins",
+   "note": ""
+  },
+  {
+   "n": "_surface",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_surface_text",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  },
+  {
+   "n": "_inst_name",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_lv",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_time",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_room",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_save",
+   "v": "noone",
+   "note": ""
+  },
+  {
+   "n": "_inst_return",
+   "v": "noone",
+   "note": ""
+  }
+ ],
+ "world": [
+  {
+   "n": "_time",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_frame_skip",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "_frame_skipped",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "global.blur_strength",
+   "v": "[0,0]",
+   "note": "第一个元素是横向模糊强度，第二个是纵向模糊强度"
+  },
+  {
+   "n": "global.blur_amount",
+   "v": "0",
+   "note": "也与模糊程度相关"
+  },
+  {
+   "n": "global.classic_ui",
+   "v": "0",
+   "note": ""
+  },
+  {
+   "n": "global.Panel",
+   "v": "battle_menu_fight_knife",
+   "note": ""
+  },
+  {
+   "n": "global.kr",
+   "v": "1",
+   "note": ""
+  },
+  {
+   "n": "global.surface_gui",
+   "v": "surface_create(640, 480)",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+落盘 img/ex1-battle-turn_test.gif (500569 B)
+落盘 img/ex2-act-menu-dialog.gif (1678160 B)
+manual-examples.js: 两处 b 已换为相对路径，文件 5251 B（原 ~2.9MB）
+旧 imgBlock: function imgBlock(b){
+  if(/^data:image\//.test(b)) return '<img class="imgpic" src="'+b+'" alt="">';
+  return '<div class="imgph">'+esc(b||'截图 / GIF 待补')+'</div>';
+}
+HTML: imgBlock 支持 img/ 相对路径 + lazy，data URI 分支保留兼容
+_verify.js: 画面块断言改为外链图 ×2 + 文件落盘检查
+临时备份已删除
+ALL OK

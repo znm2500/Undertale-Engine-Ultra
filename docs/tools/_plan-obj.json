@@ -1,0 +1,2813 @@
+[
+ {
+  "name": "battle",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "damage",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "kr_timer",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "hurt_timer",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "战斗总控。所有战斗状态都存在它的实例变量里，通过 Battle_* 函数间接访问。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bg",
+  "group": "core",
+  "parent": null,
+  "vars": [],
+  "desc": "战斗背景。战斗中铺在面板后面的底图，创建时会用一个 120 帧的补间把它从屏幕外滑到预定位置，做出「场景切入」的观感。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_board",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BOARD",
+    "c": ""
+   },
+   {
+    "n": "x",
+    "v": "BATTLE_BOARD.X",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "BATTLE_BOARD.Y",
+    "c": ""
+   },
+   {
+    "n": "up",
+    "v": "BATTLE_BOARD.UP",
+    "c": ""
+   },
+   {
+    "n": "down",
+    "v": "BATTLE_BOARD.DOWN",
+    "c": ""
+   },
+   {
+    "n": "left",
+    "v": "BATTLE_BOARD.LEFT",
+    "c": ""
+   },
+   {
+    "n": "right",
+    "v": "BATTLE_BOARD.RIGHT",
+    "c": ""
+   },
+   {
+    "n": "angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "color_bg",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "alpha_bg",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "color_frame",
+    "v": "c_white",
+    "c": ""
+   },
+   {
+    "n": "mainboard",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "edge",
+    "v": "!global.classic_ui",
+    "c": ""
+   },
+   {
+    "n": "alpha_frame",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "global.boards_array",
+    "v": "array_create(0)",
+    "c": ""
+   },
+   {
+    "n": "global.boards_controller_array",
+    "v": "array_create(0)",
+    "c": ""
+   },
+   {
+    "n": "global.board_uid",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "战斗面板。x/y 是中心，up/down/left/right 是四边延伸距离，angle 是旋转角。绘制用了多层 surface 做旋转与遮罩。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet",
+  "group": "bullet",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BULLET",
+    "c": ""
+   },
+   {
+    "n": "angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "duration",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "auto_destroy",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "out",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "type",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "disposable",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_board",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_x",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_y",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_target",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "center_x",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "center_y",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "rotate",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "point_at",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angle_offset",
+    "v": "180",
+    "c": ""
+   },
+   {
+    "n": "processed",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "path_function",
+    "v": "noone",
+    "c": ""
+   }
+  ],
+  "desc": "所有弹幕的父物体。自带与灵魂的碰撞检测，碰撞后调 event_user(10) = SOUL_COLLISION、event_user(11) = TURN_END。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet_arrow",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BULLET_OUTSIDE_HIGH",
+    "c": ""
+   },
+   {
+    "n": "type",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "range",
+    "v": "_distance",
+    "c": ""
+   }
+  ],
+  "desc": "箭头骨。多出 scale（缩放）、extra_angle（张开角，默认30）、range（射程）。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet_bone",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [
+   {
+    "n": "length",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "type",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "out",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "rotate",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "point",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "sprite_index",
+    "v": "spr_bone_1",
+    "c": ""
+   },
+   {
+    "n": "sprite_index",
+    "v": "spr_bone",
+    "c": ""
+   }
+  ],
+  "desc": "骨头。继承 battle_bullet，用 spr_bone / spr_bone_1 拉伸绘制（image_xscale = (length+10)/14）。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet_bone_3d",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BULLET_OUTSIDE_LOW",
+    "c": ""
+   },
+   {
+    "n": "enable",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "vert_list",
+    "v": "[]",
+    "c": "创建一个空数组"
+   },
+   {
+    "n": "vert_list_draw",
+    "v": "[]",
+    "c": "创建一个空数组"
+   },
+   {
+    "n": "edge_list",
+    "v": "[]",
+    "c": "创建一个空数组"
+   },
+   {
+    "n": "anglex",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angley",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "anglez",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angxs",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angys",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angzs",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "scalex",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "scaley",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "scalez",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "shape",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "out",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "type",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "gap",
+    "v": "40",
+    "c": ""
+   },
+   {
+    "n": "argument3",
+    "v": "vert_list",
+    "c": "默认使用 vert_list"
+   },
+   {
+    "n": "vert_list_draw",
+    "v": "[]",
+    "c": "清空 vert_list_draw"
+   },
+   {
+    "n": "Y",
+    "v": "YY",
+    "c": ""
+   },
+   {
+    "n": "Z",
+    "v": "ZZ",
+    "c": ""
+   },
+   {
+    "n": "ZZ",
+    "v": "((Z * dcos(angley)) - (X * dsin(angley)))",
+    "c": ""
+   },
+   {
+    "n": "Z",
+    "v": "ZZ",
+    "c": ""
+   },
+   {
+    "n": "X",
+    "v": "XX",
+    "c": ""
+   },
+   {
+    "n": "XX",
+    "v": "((X * dcos(anglez)) - (Y * dsin(anglez)))",
+    "c": ""
+   },
+   {
+    "n": "YY",
+    "v": "((X * dsin(anglez)) + (Y * dcos(anglez)))",
+    "c": ""
+   },
+   {
+    "n": "X",
+    "v": "XX",
+    "c": ""
+   },
+   {
+    "n": "Y",
+    "v": "YY",
+    "c": ""
+   }
+  ],
+  "desc": "3D 骨头。用 anglex/y/z、angxs/ys/zs、scalex/y/z 控制三维姿态，shape 控制形状，gap 控制间距。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet_gb",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BULLET_OUTSIDE_HIGH",
+    "c": ""
+   },
+   {
+    "n": "image_xscale",
+    "v": "800",
+    "c": ""
+   },
+   {
+    "n": "image_yscale",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_x",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_y",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "state",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "timer_move",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "timer_blast",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "timer_exit",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "time_move",
+    "v": "30",
+    "c": ""
+   },
+   {
+    "n": "time_delay",
+    "v": "16",
+    "c": ""
+   },
+   {
+    "n": "time_blast",
+    "v": "10",
+    "c": ""
+   },
+   {
+    "n": "time_stay",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "charge_sound",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "blast_sound",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "destroy",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "加斯特冲击波。内部有 blaster 结构体（骷髅头）、state 状态机，以及 time_move / time_delay / time_blast 三个时间参数控制蓄力到发射的节奏。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_bullet_test",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [],
+  "desc": "弹幕测试物件，继承自 battle_bullet。引擎自带的调试样例，用来验证弹幕能否正常生成、移动与销毁，写自己的弹幕时可以先照着它改。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_button",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI",
+    "c": ""
+   }
+  ],
+  "desc": "主菜单四个按钮的基类。负责绘制、光标高亮与按下反馈；本身不参与菜单逻辑，实际用的是下面四个子物体。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_button_act",
+  "group": "ui",
+  "parent": "battle_button",
+  "vars": [],
+  "desc": "ACT 按钮。贴图 spr_battle_button_act，以 battle_button 为父物体。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_button_fight",
+  "group": "ui",
+  "parent": "battle_button",
+  "vars": [],
+  "desc": "FIGHT 按钮。贴图 spr_battle_button_fight，以 battle_button 为父物体继承光标与反馈逻辑。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_button_item",
+  "group": "ui",
+  "parent": "battle_button",
+  "vars": [],
+  "desc": "ITEM 按钮。贴图 spr_battle_button_item，以 battle_button 为父物体。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_button_mercy",
+  "group": "ui",
+  "parent": "battle_button",
+  "vars": [],
+  "desc": "MERCY 按钮。贴图 spr_battle_button_mercy，以 battle_button 为父物体。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_damage",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI",
+    "c": ""
+   },
+   {
+    "n": "visible",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "yscale",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "alpha",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "damage",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "color",
+    "v": "c_red",
+    "c": ""
+   },
+   {
+    "n": "display_time",
+    "v": "GAME_FPS",
+    "c": ""
+   },
+   {
+    "n": "bar_visible",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "bar_width",
+    "v": "100",
+    "c": ""
+   },
+   {
+    "n": "bar_hp_max",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "bar_hp_original",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "bar_hp_target",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "bar_duration",
+    "v": "45",
+    "c": ""
+   },
+   {
+    "n": "gra",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "vsp",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "伤害数字弹出。被 FIGHT 命中时显示数值并向上飘，会自动销毁。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_death_particle",
+  "group": "fx",
+  "parent": null,
+  "vars": [
+   {
+    "n": "sprite",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "scale_x",
+    "v": "1",
+    "c": ""
+   }
+  ],
+  "desc": "敌人被击败时炸开的碎片粒子。接受精灵与缩放参数，配合速度做抛物散落，是「怪物碎成渣」效果的单片。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_death_particle_collision",
+  "group": "fx",
+  "parent": null,
+  "vars": [],
+  "desc": "死亡碎片的碰撞体。本身不绘制，只负责给碎片提供落点判定，让碎片能砸在地面或平台上而不是穿过去。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_dialog_enemy",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI_HIGH",
+    "c": ""
+   },
+   {
+    "n": "visible",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "text",
+    "v": "\"\"",
+    "c": ""
+   },
+   {
+    "n": "dir",
+    "v": "DIR.LEFT",
+    "c": ""
+   },
+   {
+    "n": "show_spike",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "wide_spike",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "up",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "down",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "left",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "right",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "template",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "text_offset_x",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "text_offset_y",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "fast",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "敌人身上的气泡对话框。配合 Battle_Dialog_Enemy_Add 使用。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_enemy",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.ENEMY",
+    "c": ""
+   }
+  ],
+  "desc": "所有敌人的父物体。事件通过 User Event 10~23 回调，与 BATTLE_ENEMY_EVENT 枚举一一对应（枚举值 + 10）。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_enemy_test",
+  "group": "core",
+  "parent": "battle_enemy",
+  "vars": [],
+  "desc": "敌人测试物件，继承自 battle_enemy。引擎自带的调试样例，用来单独验证敌人事件回调是否按预期触发，自己写敌人时可以从它复制。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_fader",
+  "group": "fx",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.FADER",
+    "c": ""
+   },
+   {
+    "n": "color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "alpha",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "战斗专用黑幕，层级由 DEPTH_BATTLE.FADER 决定，保证盖在面板与 UI 之上。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_fight",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI",
+    "c": ""
+   },
+   {
+    "n": "x",
+    "v": "battle_board.x",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "battle_board.y",
+    "c": ""
+   }
+  ],
+  "desc": "FIGHT 攻击条的主控。创建时会自动对齐到 battle_board 中心，负责瞄准、挥刀与伤害结算三个阶段。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_fight_anim_knife",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI",
+    "c": ""
+   },
+   {
+    "n": "image_speed",
+    "v": "1",
+    "c": ""
+   }
+  ],
+  "desc": "挥刀动画的专用物件。只负责「刀挥下去」这一段演出，播放完毕即自行销毁，不参与瞄准与判定。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_fight_hp_bar",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI_HIGH",
+    "c": ""
+   },
+   {
+    "n": "enemy_slot",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "width",
+    "v": "101",
+    "c": ""
+   },
+   {
+    "n": "hp_max",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "hp",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "FIGHT 界面右下角的玩家 HP 条。命中后会播放血条从旧值滚到新值的动画，让扣血看得见。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_fight_knife",
+  "group": "ui",
+  "parent": "battle_menu_fight",
+  "vars": [],
+  "desc": "FIGHT 的刀本体。以 battle_menu_fight 为父物体，负责瞄准条的移动、按键判定与命中时机。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_item_dot",
+  "group": "core",
+  "parent": null,
+  "vars": [],
+  "desc": "ITEM 菜单滚动条两端的装饰圆点。纯视觉元素，让滚动条看起来有头有尾，不参与任何交互逻辑。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_menu_item_scrollbar",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI_HIGH",
+    "c": ""
+   },
+   {
+    "n": "x",
+    "v": "battle_board.x + battle_board.right - 16",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "battle_board.y",
+    "c": ""
+   },
+   {
+    "n": "moveable",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "NUMBER",
+    "v": "Item_GetNumber()",
+    "c": ""
+   },
+   {
+    "n": "alpha",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "yy1",
+    "v": "y - 10 * floor(1 / 2) - 10 - _arrow",
+    "c": ""
+   },
+   {
+    "n": "yy2",
+    "v": "y - 10 * floor(1 / 2) + 10 * 1 + _arrow",
+    "c": ""
+   },
+   {
+    "n": "yy",
+    "v": "[0, 0, 0, 0, 0, 0, 0, 0]",
+    "c": ""
+   },
+   {
+    "n": "yd",
+    "v": "global.classic_ui ? y - 10 * floor(NUMBER / 2) : y",
+    "c": ""
+   },
+   {
+    "n": "alpha",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "yy1",
+    "v": "y - 10 * floor(NUMBER / 2) - 10 - _arrow",
+    "c": ""
+   },
+   {
+    "n": "yy2",
+    "v": "y - 10 * floor(NUMBER / 2) + 10 * NUMBER + _arrow",
+    "c": ""
+   }
+  ],
+  "desc": "ITEM 菜单的滚动条。物品数量超过一屏时出现，指示当前停留在整份列表的哪个位置。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_platform",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [],
+  "desc": "蓝魂跳跃平台。width / angle / sticky / bounce / duration / auto_destroy。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_result_flee",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.SOUL",
+    "c": ""
+   },
+   {
+    "n": "image_speed",
+    "v": "(1/2) * global.delta_time_factor",
+    "c": ""
+   },
+   {
+    "n": "x",
+    "v": "battle_soul.x",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "battle_soul.y",
+    "c": ""
+   }
+  ],
+  "desc": "逃跑成功的过场动画，用 spr_battle_menu_flee 播放。灵魂从面板飞出画面，随后战斗结束返回地图。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul",
+  "group": "soul",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.SOUL",
+    "c": ""
+   },
+   {
+    "n": "image_speed",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "c_white",
+    "c": ""
+   },
+   {
+    "n": "init_alpha",
+    "v": "0.7 * !global.classic_ui",
+    "c": ""
+   },
+   {
+    "n": "moveable",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "light_size",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "index",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "follow_board",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "global.moving",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "灵魂的父物体。子物体包括 red / blue / green / yellow / orange / aqua / purple 七种模式。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_aqua",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "type",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "moveable",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "c_aqua",
+    "c": ""
+   }
+  ],
+  "desc": "青心模式——可以斜向移动。在红心四个方向的基础上放开斜角，移动自由度最高，常用于需要精细走位的弹幕。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_blue",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "moveable",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "dir",
+    "v": "270",
+    "c": ""
+   },
+   {
+    "n": "move",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "impact",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "on_block",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "on_platform",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "on_board",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "jump_state",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "inst_plat",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "c_blue",
+    "c": ""
+   },
+   {
+    "n": "gravity_jump",
+    "v": "0.15",
+    "c": ""
+   },
+   {
+    "n": "gravity_fall",
+    "v": "0.15",
+    "c": ""
+   },
+   {
+    "n": "jump_speed",
+    "v": "4.8",
+    "c": ""
+   },
+   {
+    "n": "max_speed",
+    "v": "20",
+    "c": ""
+   }
+  ],
+  "desc": "蓝心模式——重力 + 跳跃，横版平台玩法。灵魂会往下掉，只有踩到平台或地面才能再跳，需要配合 battle_platform 使用。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_green",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [],
+  "desc": "绿心模式——举盾格挡。灵魂固定在面板中央不动，改为用一个 soul_block 当盾牌挡开弹幕，是「防守回合」的玩法。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_moving_effect",
+  "group": "soul",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.SOUL + 1",
+    "c": ""
+   },
+   {
+    "n": "image_speed",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "c_orange",
+    "c": ""
+   }
+  ],
+  "desc": "灵魂移动时的拖尾残影。灵魂快速移动时留下一串渐隐的影子，让动作看起来更有速度感。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_orange",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "moveable",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "dir",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "make_color_rgb(248,148,29)",
+    "c": ""
+   }
+  ],
+  "desc": "橙心模式——受重力下落。与蓝心不同，这里只有持续的重力，没有跳跃，灵魂会被压到底部平面上滑动。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_purple",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "image_blend",
+    "v": "make_color_rgb(128, 0, 128)",
+    "c": ""
+   },
+   {
+    "n": "x_on",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "y_on",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "cross_step",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "cross_start",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "cross_target",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "point",
+    "v": "[]",
+    "c": ""
+   },
+   {
+    "n": "moving_direction",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "x_index",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "y_index",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "紫心模式——线形束缚。灵魂只能沿蜘蛛网一样的线移动，且在线上是「跳着走」而不是连续滑动，用来做限定路线的谜题式回合。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_red",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "image_blend",
+    "v": "c_red",
+    "c": ""
+   },
+   {
+    "n": "moveable",
+    "v": "true",
+    "c": ""
+   }
+  ],
+  "desc": "红心模式——最基础的自由移动。上下左右随便走，UNDERTALE 默认玩法。所有其他模式都是在它基础上改移动规则。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_yellow",
+  "group": "soul",
+  "parent": "battle_soul",
+  "vars": [
+   {
+    "n": "moveable",
+    "v": "true",
+    "c": ""
+   }
+  ],
+  "desc": "黄心模式——可以朝四个方向射击。灵魂本身移动，额外用确认键发射子弹，适合做需要还击的回合。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_yellow_bullet",
+  "group": "soul",
+  "parent": null,
+  "vars": [],
+  "desc": "黄心模式发射的子弹。按下确认键时生成，朝灵魂当前朝向飞出，命中敌人后结算伤害。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_soul_yellow_target",
+  "group": "soul",
+  "parent": null,
+  "vars": [],
+  "desc": "黄心模式的瞄准光标。在灵魂前方指示当前射击方向，随玩家操作旋转，让「朝哪打」一目了然。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_turn",
+  "group": "core",
+  "parent": null,
+  "vars": [],
+  "desc": "回合内计时与状态推进。event_user(10~13) 对应 TURN_PREPARATION_START / _END / TURN_START / TURN_END。",
+  "hadEntry": true
+ },
+ {
+  "name": "battle_ui",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI",
+    "c": ""
+   },
+   {
+    "n": "x",
+    "v": "30",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "401",
+    "c": ""
+   }
+  ],
+  "desc": "战斗界面底板。承载战斗区的整体布局，所有战斗 UI 元素都相对它的坐标摆放，改它的位置等于整体挪动战斗界面。",
+  "hadEntry": true
+ },
+ {
+  "name": "block",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "block_enabled",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "pus_hspeedoulEnabled",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "pus_hspeedoulDirection",
+    "v": "DIR.DOWN",
+    "c": ""
+   }
+  ],
+  "desc": "顶层阻挡基类，所有「会被墙挡住、会贴边」的实体都继承它。char（角色）与 block_corner 都从这里派生，是地图实体体系的根。",
+  "hadEntry": true
+ },
+ {
+  "name": "block_corner",
+  "group": "core",
+  "parent": "block",
+  "vars": [],
+  "desc": "角落阻挡物，继承自 block。贴在房间四角补上碰撞，防止角色卡进死角或从角落缝隙溜出地图。",
+  "hadEntry": true
+ },
+ {
+  "name": "bone_arrow",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [],
+  "desc": "箭头形骨头，直接继承 battle_bullet。用 direction 控制飞行方向，适合做直线射出的箭矢，与只能横竖摆放的普通骨头不同，它可以斜着飞。",
+  "hadEntry": true
+ },
+ {
+  "name": "bone_box",
+  "group": "bullet",
+  "parent": null,
+  "vars": [
+   {
+    "n": "duration",
+    "v": "10",
+    "c": ""
+   },
+   {
+    "n": "color",
+    "v": "255",
+    "c": ""
+   },
+   {
+    "n": "x1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "x2",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "y1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "y2",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "xx1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "xx2",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "yy1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "yy2",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "xx3",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "xx4",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "yy3",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "yy4",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "follow_board",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "circle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "center_x",
+    "v": "battle_board.x",
+    "c": ""
+   },
+   {
+    "n": "center_y",
+    "v": "battle_board.y",
+    "c": ""
+   },
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.BULLET",
+    "c": ""
+   }
+  ],
+  "desc": "方框骨头，用 8 个端点凑出一个矩形边框。常用于围出封闭区域、做「牢笼」型攻击，可以只开部分边留出缺口。",
+  "hadEntry": true
+ },
+ {
+  "name": "bone_box_round",
+  "group": "bullet",
+  "parent": null,
+  "vars": [],
+  "desc": "圆角方框骨头，在 bone_box 的基础上把四个角磨圆。视觉上更柔和，适合做科技感或装饰性的包围框。",
+  "hadEntry": true
+ },
+ {
+  "name": "bone_circle",
+  "group": "bullet",
+  "parent": "battle_bullet",
+  "vars": [
+   {
+    "n": "number",
+    "v": "10",
+    "c": ""
+   },
+   {
+    "n": "size_x",
+    "v": "100",
+    "c": ""
+   },
+   {
+    "n": "size_y",
+    "v": "100",
+    "c": ""
+   },
+   {
+    "n": "length",
+    "v": "100",
+    "c": ""
+   },
+   {
+    "n": "rot",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "rott",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "roting",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "type",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "extra_angle",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "out",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "enable",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "环形骨头，由 number 根骨头绕中心排成一圈。做包围型、收缩型攻击的常用件，也可只留一段弧做扇形弹幕。",
+  "hadEntry": true
+ },
+ {
+  "name": "border",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "-9999",
+    "c": ""
+   },
+   {
+    "n": "blur",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "战斗面板边框——围住弹幕区的那圈白线。支持自定义精灵与 Kawase 模糊着色器，可以做「画面失焦、只留边框」的演出。",
+  "hadEntry": true
+ },
+ {
+  "name": "camera",
+  "group": "fx",
+  "parent": null,
+  "vars": [],
+  "desc": "摄像机控制物。负责视角跟随与偏移，让画面能在大地图上移动。地图大于一屏时必须靠它决定看到哪一块。",
+  "hadEntry": true
+ },
+ {
+  "name": "char",
+  "group": "map",
+  "parent": "block",
+  "vars": [
+   {
+    "n": "char_id",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "dir",
+    "v": "DIR.DOWN",
+    "c": ""
+   },
+   {
+    "n": "dir_locked",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "talking",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "interacting",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "collision",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "res_override",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "地图角色的基类，负责移动、朝向、动画与碰撞。char_player / char_sans / char_save 都以它或它的子类为父物体。",
+  "hadEntry": true
+ },
+ {
+  "name": "char_box",
+  "group": "map",
+  "parent": "char_sign",
+  "vars": [],
+  "desc": "箱子角色，继承自 char_sign。有打开与关闭两种状态，交互一次就打开，是地图上常见的容器类交互物。",
+  "hadEntry": true
+ },
+ {
+  "name": "char_player",
+  "group": "map",
+  "parent": "char",
+  "vars": [
+   {
+    "n": "char_id",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "moveable",
+    "v": "true",
+    "c": ""
+   }
+  ],
+  "desc": "玩家角色。默认贴图是 Frisk 四方向，父物体为 char。",
+  "hadEntry": true
+ },
+ {
+  "name": "char_sans",
+  "group": "map",
+  "parent": "char_sign",
+  "vars": [
+   {
+    "n": "char_id",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "dir_locked",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "可互动 NPC 示例。父物体是 char_sign，用来演示「一个会说话的地图角色」怎么写。",
+  "hadEntry": true
+ },
+ {
+  "name": "char_save",
+  "group": "map",
+  "parent": "char_sign",
+  "vars": [],
+  "desc": "存档点。玩家碰到后可存档、读档或返回标题，父物体为 char_sign。",
+  "hadEntry": true
+ },
+ {
+  "name": "char_sign",
+  "group": "map",
+  "parent": "char",
+  "vars": [
+   {
+    "n": "dir_locked",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "text",
+    "v": "\"* It's a sign.\"",
+    "c": ""
+   }
+  ],
+  "desc": "告示牌基类。char_sans / char_save / char_box 都继承它。定义「一个会在地图上说话、可交互的物件」的基本骨架。",
+  "hadEntry": true
+ },
+ {
+  "name": "closed_captions",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.PANEL",
+    "c": ""
+   }
+  ],
+  "desc": "闭路字幕显示。把 CC_Add 追加的文字渲染到屏幕下方。",
+  "hadEntry": true
+ },
+ {
+  "name": "demo_player",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.FADER-100",
+    "c": ""
+   }
+  ],
+  "desc": "输入回放器。读取 demo_recorder 的缓冲区，按帧重放操作并还原随机种子。",
+  "hadEntry": true
+ },
+ {
+  "name": "demo_recorder",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.FADER-100",
+    "c": ""
+   }
+  ],
+  "desc": "输入录制器。把玩家的操作按帧写进缓冲区，同时记录随机种子，用于复现 bug 与做演示。",
+  "hadEntry": true
+ },
+ {
+  "name": "encounter_anim",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.ENCOUNTER_ANIM",
+    "c": ""
+   },
+   {
+    "n": "char_player._moveable_encounter",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "遭遇动画：惊叹号弹出 + 屏幕破碎。Encounter_Start 带动画入场时创建它。",
+  "hadEntry": true
+ },
+ {
+  "name": "exclamation",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "-1600",
+    "c": ""
+   },
+   {
+    "n": "image_speed",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "time",
+    "v": "60",
+    "c": ""
+   }
+  ],
+  "desc": "感叹号。遭遇战触发时出现在玩家头顶「惊讶！」的那一下，配合遭遇动画的时机播放。",
+  "hadEntry": true
+ },
+ {
+  "name": "face",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "face_id",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "emotion",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "gui",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "talking",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "surface_target",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "image_xscale",
+    "v": "2",
+    "c": ""
+   },
+   {
+    "n": "image_yscale",
+    "v": "2",
+    "c": ""
+   }
+  ],
+  "desc": "表情立绘系统。按 face_id（角色）与 emotion（情绪）两段索引去取对应表情，既可画在场景里也可画到 GUI 或 surface 上。",
+  "hadEntry": true
+ },
+ {
+  "name": "face_sans",
+  "group": "ui",
+  "parent": "face",
+  "vars": [],
+  "desc": "Sans 专用表情立绘，继承自 face。预设好 Sans 的 face_id 与口型 / 眨眼时序，直接用就能让他说话。",
+  "hadEntry": true
+ },
+ {
+  "name": "fader",
+  "group": "fx",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "-9999",
+    "c": ""
+   },
+   {
+    "n": "color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "alpha",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "通用全屏黑幕。地图切换、过场都能用，由 Fader_Fade 驱动淡入淡出。",
+  "hadEntry": true
+ },
+ {
+  "name": "gameover",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "x",
+    "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_X)",
+    "c": ""
+   },
+   {
+    "n": "y",
+    "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_Y)",
+    "c": ""
+   },
+   {
+    "n": "image_blend",
+    "v": "Storage_GetTempFlag(FLAG_TEMP_GAMEOVER_SOUL_COLOR)",
+    "c": ""
+   },
+   {
+    "n": "time",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "GAME OVER 画面。显示碎掉的灵魂与「Stay determined」提示，灵魂颜色与位置会从 temp 存储里读回来，保证与死亡瞬间一致。",
+  "hadEntry": true
+ },
+ {
+  "name": "gameover_shard",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "image_speed",
+    "v": "(1/4) * global.delta_time_factor",
+    "c": ""
+   },
+   {
+    "n": "gravity",
+    "v": "0.1*global.delta_time_factor",
+    "c": ""
+   },
+   {
+    "n": "gravity_direction",
+    "v": "DIR.DOWN",
+    "c": ""
+   },
+   {
+    "n": "speed",
+    "v": "3.5 * global.delta_time_factor",
+    "c": ""
+   },
+   {
+    "n": "direction",
+    "v": "random(360)",
+    "c": ""
+   }
+  ],
+  "desc": "GAME OVER 时灵魂碎裂的碎片。带重力地四散飞出，是「心碎」那一秒的视觉表现。",
+  "hadEntry": true
+ },
+ {
+  "name": "hint_bgm",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "bgm_slot",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "bgm",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "pitch",
+    "v": "1",
+    "c": ""
+   }
+  ],
+  "desc": "地图上的 BGM 提示物。踩上去就切换背景音乐，让房间之间的音乐过渡不必写进触发器里，摆一个就生效。",
+  "hadEntry": true
+ },
+ {
+  "name": "hint_border",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "sprite",
+    "v": "-1",
+    "c": ""
+   }
+  ],
+  "desc": "地图上的边框提示物。踩上去就替换屏幕边框样式，用来标记「进入某个区域」的视觉切换。",
+  "hadEntry": true
+ },
+ {
+  "name": "hint_half_size",
+  "group": "ui",
+  "parent": null,
+  "vars": [],
+  "desc": "半尺寸提示物。踩上去把场景缩到一半，用来做「进入小房间」或「缩小视野」的演出。",
+  "hadEntry": true
+ },
+ {
+  "name": "hint_landmark",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "landmark_id",
+    "v": "-1",
+    "c": ""
+   }
+  ],
+  "desc": "地标提示物。给地图上的关键位置打标记，供存档界面显示所在地点名称，也可以作为传送目标。",
+  "hadEntry": true
+ },
+ {
+  "name": "logo",
+  "group": "ui",
+  "parent": null,
+  "vars": [],
+  "desc": "标题 Logo 显示物件。创建时播放 Logo 音效，并用两个闹钟控制出现与停留时间，是开场演出的主角。",
+  "hadEntry": true
+ },
+ {
+  "name": "menu",
+  "group": "ui",
+  "parent": null,
+  "vars": [],
+  "desc": "主菜单物件。管理继续游戏、开始新游戏、设置、命名、退出这一整套入口，会创建并持有各个按钮与文字实例。",
+  "hadEntry": true
+ },
+ {
+  "name": "shaker",
+  "group": "fx",
+  "parent": null,
+  "vars": [
+   {
+    "n": "target",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "var_name",
+    "v": "\"\"",
+    "c": ""
+   },
+   {
+    "n": "shake_distance",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "shake_speed",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "shake_random",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "shake_decrease",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "delay",
+    "v": "0",
+    "c": ""
+   }
+  ],
+  "desc": "通用震屏驱动器。挂到任意实例上，按参数抖动它的某个变量，可做震屏、抖字、抖面板。骨头从面板里「长出来」的抖动就是它在驱动。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "97",
+    "c": ""
+   },
+   {
+    "n": "border_x1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "border_y1",
+    "v": "120",
+    "c": ""
+   },
+   {
+    "n": "border_x2",
+    "v": "319",
+    "c": ""
+   },
+   {
+    "n": "border_y2",
+    "v": "239",
+    "c": ""
+   },
+   {
+    "n": "border_width",
+    "v": "4",
+    "c": ""
+   },
+   {
+    "n": "width_text",
+    "v": "25",
+    "c": ""
+   },
+   {
+    "n": "width_heart",
+    "v": "30",
+    "c": ""
+   },
+   {
+    "n": "height_text",
+    "v": "10",
+    "c": ""
+   },
+   {
+    "n": "menu_divide_x",
+    "v": "209",
+    "c": ""
+   },
+   {
+    "n": "state_info_y",
+    "v": "200",
+    "c": ""
+   },
+   {
+    "n": "buy_info_x",
+    "v": "menu_divide_x",
+    "c": ""
+   },
+   {
+    "n": "buy_info_y",
+    "v": "border_y1 - 80",
+    "c": ""
+   },
+   {
+    "n": "buy_info_inst_y",
+    "v": "border_y1",
+    "c": ""
+   },
+   {
+    "n": "buy_info__vspeedpeed",
+    "v": "8 * global.delta_time_factor",
+    "c": ""
+   }
+  ],
+  "desc": "商店主控。负责光标移动、买卖分支切换、价格结算与退出，是整套商店流程的中枢，其余三个 shop_ 物体都配合它工作。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop_dialog",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "title",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "title_blend",
+    "v": "c_white",
+    "c": ""
+   },
+   {
+    "n": "text",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "next_dialog",
+    "v": "noone",
+    "c": ""
+   }
+  ],
+  "desc": "商店的对话框容器，负责把 shop_host 里配好的文案显示出来。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop_dialog_typer",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_BATTLE.UI_HIGH",
+    "c": ""
+   },
+   {
+    "n": "visible",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "text_offset_x",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "text_offset_y",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "fast",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "text",
+    "v": "\"\"",
+    "c": ""
+   }
+  ],
+  "desc": "商店对话框专用的打字机，复用了主引擎的逐字显示逻辑，用于把店主的话逐字打出来。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop_host",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "encounter_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "menu_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "host_sprite",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "buy_before_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "buy_after_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "buy_false_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "sold_available",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "sold_before_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "sold_choice_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "sold_after_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "sold_false_text",
+    "v": "noone",
+    "c": ""
+   },
+   {
+    "n": "exit_text",
+    "v": "noone",
+    "c": ""
+   }
+  ],
+  "desc": "店主配置。定义立绘、货架商品与各阶段的对话文案，通常做成多个物体来区分不同店主。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop_host_test",
+  "group": "map",
+  "parent": "shop_host",
+  "vars": [
+   {
+    "n": "encounter_text",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "menu_text",
+    "v": "\"* LOL\"",
+    "c": ""
+   },
+   {
+    "n": "buy_before_text",
+    "v": "\"Buy&something?\"",
+    "c": ""
+   },
+   {
+    "n": "buy_after_text",
+    "v": "\"Oh,&that's&good.\"",
+    "c": ""
+   },
+   {
+    "n": "buy_false_text_0",
+    "v": "\"Lack money.\"",
+    "c": ""
+   },
+   {
+    "n": "buy_false_text_1",
+    "v": "\"Too much&Items.\"",
+    "c": ""
+   },
+   {
+    "n": "sold_available",
+    "v": "true",
+    "c": ""
+   },
+   {
+    "n": "sold_false_text",
+    "v": "\"* Refuse selling.\"",
+    "c": ""
+   },
+   {
+    "n": "dialog_before_text",
+    "v": "\"Dialog.\"",
+    "c": ""
+   },
+   {
+    "n": "exit_text",
+    "v": "\"* ByeBye.\"",
+    "c": ""
+   }
+  ],
+  "desc": "店主测试物件，继承自 shop_host。把所有可配置的台词字段都填了示例值，用来验证商店在各状态下显示是否正确。",
+  "hadEntry": true
+ },
+ {
+  "name": "shop_ui_deeperpart",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "buy_info_x",
+    "v": "shop.menu_divide_x",
+    "c": ""
+   },
+   {
+    "n": "buy_info_y",
+    "v": "shop.border_y1 - 80",
+    "c": ""
+   },
+   {
+    "n": "buy_info_inst_y",
+    "v": "shop.buy_info_inst_y",
+    "c": ""
+   },
+   {
+    "n": "border_x1",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "border_x2",
+    "v": "shop.border_x2",
+    "c": ""
+   },
+   {
+    "n": "border_width",
+    "v": "shop.border_width",
+    "c": ""
+   },
+   {
+    "n": "depth",
+    "v": "99",
+    "c": ""
+   }
+  ],
+  "desc": "商店界面的「深层」装饰部分。负责画出货架信息区的分割线与边框，是商店 UI 里负责层次感的那一层。",
+  "hadEntry": true
+ },
+ {
+  "name": "soul_auxiliary",
+  "group": "soul",
+  "parent": null,
+  "vars": [],
+  "desc": "灵魂辅助物。承载灵魂的附加显示元素（装饰圈、拖影等），自身不参与碰撞与移动，只跟着灵魂画。",
+  "hadEntry": true
+ },
+ {
+  "name": "soul_block",
+  "group": "soul",
+  "parent": null,
+  "vars": [],
+  "desc": "灵魂阻挡物。给灵魂加一块可移动的碰撞体，绿心模式的盾牌就是它的实例。也可用来做「灵魂被框住」的限制效果。",
+  "hadEntry": true
+ },
+ {
+  "name": "text_typer",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "text",
+    "v": "\"\"",
+    "c": ""
+   },
+   {
+    "n": "width",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "height",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "override_alpha_enabled",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "override_alpha",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "override_color_text_enabled",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "torder",
+    "v": "[]",
+    "c": ""
+   },
+   {
+    "n": "auto_destroy",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "character.x",
+    "v": "x + character._offset_x[0] + character._xUnit[0] * character",
+    "c": ""
+   },
+   {
+    "n": "character.y",
+    "v": "y + character. _offset_y[0] +character. _xUnit[1] * characte",
+    "c": ""
+   },
+   {
+    "n": "character.x",
+    "v": "x + character._offset_x[0] +character. _xUnit[1] * character",
+    "c": ""
+   },
+   {
+    "n": "character.y",
+    "v": "y + character._offset_y[0] + character._xUnit[0] *character.",
+    "c": ""
+   },
+   {
+    "n": "id.text",
+    "v": "text",
+    "c": ""
+   },
+   {
+    "n": "width",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "height",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "override_alpha_enabled",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "override_alpha",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "override_color_text_enabled",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "打字机。核心变量是 text（带格式标签的字符串），负责逐字显示、停顿与音效。",
+  "hadEntry": true
+ },
+ {
+  "name": "trigger",
+  "group": "map",
+  "parent": null,
+  "vars": [
+   {
+    "n": "user_char",
+    "v": "-1",
+    "c": ""
+   }
+  ],
+  "desc": "触发器的基类。放在地图上，玩家碰到即触发；trigger_warp / trigger_shop 都继承它。",
+  "hadEntry": true
+ },
+ {
+  "name": "trigger_shop",
+  "group": "map",
+  "parent": "trigger",
+  "vars": [
+   {
+    "n": "user_char",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_shop_id",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_landmark",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "fade_in_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "fade_in_color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "fade_out_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "fade_out_color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "bgm_fade",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "bgm_fade_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "warp_wait",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "player_dir",
+    "v": "-1",
+    "c": ""
+   }
+  ],
+  "desc": "进入商店的触发器。碰到后打开指定商店，父物体为 trigger。",
+  "hadEntry": true
+ },
+ {
+  "name": "trigger_warp",
+  "group": "map",
+  "parent": "trigger",
+  "vars": [
+   {
+    "n": "user_char",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "target_room",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "target_landmark",
+    "v": "-1",
+    "c": ""
+   },
+   {
+    "n": "fade_in_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "fade_in_color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "fade_out_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "fade_out_color",
+    "v": "c_black",
+    "c": ""
+   },
+   {
+    "n": "bgm_fade",
+    "v": "false",
+    "c": ""
+   },
+   {
+    "n": "bgm_fade_time",
+    "v": "20",
+    "c": ""
+   },
+   {
+    "n": "warp_wait",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "player_dir",
+    "v": "-1",
+    "c": ""
+   }
+  ],
+  "desc": "房间切换触发器。踩上去后按配置淡入黑幕、可选淡出 BGM，再把玩家送进目标房间的落点标记，是地图串联的核心物件。",
+  "hadEntry": true
+ },
+ {
+  "name": "turn_test",
+  "group": "core",
+  "parent": "battle_turn",
+  "vars": [],
+  "desc": "回合测试物件，继承自 battle_turn。用于单独验证回合推进、计时与结束条件，不参与正式战斗流程。",
+  "hadEntry": true
+ },
+ {
+  "name": "ui_box",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.PANEL",
+    "c": ""
+   },
+   {
+    "n": "box_slot",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "char_player._moveable_box",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "对话框底板。承载文字框的图形，出现在地图上时会把玩家的移动锁住，直到对话结束。",
+  "hadEntry": true
+ },
+ {
+  "name": "ui_dialog",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.PANEL",
+    "c": ""
+   },
+   {
+    "n": "char_player._moveable_dialog",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "地图上的对话框容器。_choose_enable / _choice 控制选项的开关与当前选择。",
+  "hadEntry": true
+ },
+ {
+  "name": "ui_menu",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "-9000",
+    "c": ""
+   }
+  ],
+  "desc": "游戏内菜单底板（ITEM / PHONE 等菜单的容器）。管理菜单层级、光标位置与各种子选项状态，是背包界面的总控。",
+  "hadEntry": true
+ },
+ {
+  "name": "ui_save",
+  "group": "ui",
+  "parent": null,
+  "vars": [
+   {
+    "n": "depth",
+    "v": "DEPTH_UI.PANEL",
+    "c": ""
+   },
+   {
+    "n": "char_player._moveable_save",
+    "v": "false",
+    "c": ""
+   }
+  ],
+  "desc": "存档界面底板。显示存档槽信息（LV、时间、地点），创建时同样会锁住玩家移动，避免在存档时走出地图。",
+  "hadEntry": true
+ },
+ {
+  "name": "world",
+  "group": "core",
+  "parent": null,
+  "vars": [
+   {
+    "n": "global.blur_strength",
+    "v": "[0,0]",
+    "c": "第一个元素是横向模糊强度，第二个是纵向模糊强度"
+   },
+   {
+    "n": "global.blur_amount",
+    "v": "0",
+    "c": "也与模糊程度相关"
+   },
+   {
+    "n": "global.classic_ui",
+    "v": "0",
+    "c": ""
+   },
+   {
+    "n": "global.Panel",
+    "v": "battle_menu_fight_knife",
+    "c": ""
+   },
+   {
+    "n": "global.kr",
+    "v": "1",
+    "c": ""
+   },
+   {
+    "n": "global.surface_gui",
+    "v": "surface_create(640, 480)",
+    "c": ""
+   }
+  ],
+  "desc": "地图全局初始化物。开局设置模糊强度、classic_ui 开关、KR 开关、面板外观与 GUI 画布等全局变量，是引擎进入游戏世界后的第一站。",
+  "hadEntry": true
+ }
+]

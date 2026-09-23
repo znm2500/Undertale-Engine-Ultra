@@ -1,0 +1,3 @@
+vm 载入验证通过：lang 序列 gml,gml,gml,text,img，准备块/files 均正确
+_verify.js: 加断言「示例2 有 turn_test 准备步骤」
+ALL OK

@@ -1,0 +1,9 @@
+# 手册数据的手工备份（不入库，避免二进制噪声）
+_backup-*.js
+_backup-*.html
+_backup-*.gml
+*_bak*-*
+
+# 校验脚本生成的报告
+_verify.txt
+_panel_audit.txt

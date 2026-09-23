@@ -1,0 +1,16 @@
+手册判定无参数: 184 | 其中源码实际有参数: 0
+
+手册带参数表: 265
+物体带变量表: 91 / 91
+
+Animator.SetKeyframe  签名: SetKeyframe(target, var_name, keyframe...)
+   - target | 实例 id / 物体 / global | 动画作用的目标：可以是某个实例 id、物体索引，或 global（配合 var_name 指定要驱动哪个全局变量）。
+   - var_name | string | 要驱动的变量名。目标是实例时直接写变量名；目标是 global 时必须写成字符串形式的名字。
+   - keyframe | 0~1 | 关键帧位置，取值 0 到 1。0 表示开头、1 表示结尾，中间值即进度比例；可一次传入多个。
+Animator.DeleteKeyFrame  签名: DeleteKeyFrame(target, var_name, progress...)
+   - target | 实例 id / 物体 / global | 动画作用的目标：可以是某个实例 id、物体索引，或 global（配合 var_name 指定要驱动哪个全局变量）。
+   - var_name | string | 要驱动的变量名。目标是实例时直接写变量名；目标是 global 时必须写成字符串形式的名字。
+   - progress | 0~1 | 播放进度，0 = 开头，1 = 结尾 可一次传入多个。
+Animator.GetPattern  签名: GetPattern(target, var_name)
+   - target | 实例 id / 物体 / global | 动画作用的目标：可以是某个实例 id、物体索引，或 global（配合 var_name 指定要驱动哪个全局变量）。
+   - var_name | string | 要驱动的变量名。目标是实例时直接写变量名；目标是 global 时必须写成字符串形式的名字。

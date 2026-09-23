@@ -10,6 +10,8 @@ This is an open-source game engine built with [GameMaker Studio 2](https://www.y
 
 Developers can use this engine as a foundation to create their own *Undertale* fan games or to study its internal workings.
 
+**📖 Online Manual (GitHub Pages): [https://znm2500.github.io/Undertale-Engine-Ultra/](https://znm2500.github.io/Undertale-Engine-Ultra/)** — an interactive Chinese-language manual with API reference (449 functions / 91 objects), tutorials, and playable examples.
+
 ### Features
 
 Based on the current project structure, this engine includes the following features:
@@ -87,6 +89,8 @@ Please support the official game.
 **本项目基于 TML 的 [UndertaleEngine](https://github.com/TML233/UndertaleEngine) 并加以改进和扩展。**
 
 开发者可以利用这个引擎作为基础，来创建自己的《Undertale》同人游戏或学习其内部工作原理。
+
+**📖 在线手册（GitHub Pages）：[https://znm2500.github.io/Undertale-Engine-Ultra/](https://znm2500.github.io/Undertale-Engine-Ultra/)** —— 交互式中文手册：449 个函数 / 91 个物体的 API 速查、上手教程与可玩示例。
 
 ### 主要功能 (Features)
 

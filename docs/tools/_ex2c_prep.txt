@@ -1,0 +1,8 @@
+    { t: "准备 · 先注释掉 turn_test", lang: "gml", b: `// battle_enemy_test 的 User Event 8 · TURN_PREPARATION_START 原文就一行：
+instance_create_depth(0,0,0,turn_test)
+
+// 本篇只展示对话 —— 先把这行注释掉，不然每回合准备阶段
+// 都会冒出弹幕演示（骨头 / 紫魂 / 龙骨炮），没法安心测 ACT：
+// instance_create_depth(0,0,0,turn_test)
+
+// 测完想玩弹幕了，取消注释即可恢复。` },

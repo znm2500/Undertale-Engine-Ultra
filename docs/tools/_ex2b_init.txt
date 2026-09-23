@@ -1,0 +1,19 @@
+    { t: "User Event 0 · INIT —— 设置敌人属性 + 注册行动选项", lang: "gml", b: `// battle_enemy_test 的 User Event 0（INIT，敌人出场时调用一次）
+// ⚠ 槽位是 1：遭遇 0 里 battle_enemy_test 排第 2 个敌人参数 ——
+//    Encounter_Set(0, -1, battle_enemy_test, -1, ...)
+//                          │         └→ enemy_1，槽位 = 1
+//                          └→ enemy_0，空
+//    Battle_SetEnemy* 系列的 enemy_slot 就是这个排位（0~2）
+
+// ---- 敌人属性 ----
+Battle_SetEnemyName(1, "battle_enemy_test");   // 名字（战斗文本、ACT 目标处显示）
+Battle_SetEnemyDEF(1, 1);                      // 防御力：越高，玩家一刀伤害越低
+// 引擎没有敌人 HP / ATK 的设置项；敌人能否被饶恕由 Battle_SetEnemySpareable 控制
+
+// ---- 行动选项 ----
+Battle_SetEnemyActionNumber(1, 3);             // ACT 菜单一共 3 个选项
+Battle_SetEnemyActionName(1, 0, "检查");
+Battle_SetEnemyActionName(1, 1, "聊天");
+Battle_SetEnemyActionName(1, 2, "讨好");
+
+_spare_count = 0;   // 实例变量：「讨好」计数，MENU_END 里要用` },

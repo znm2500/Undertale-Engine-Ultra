@@ -1,0 +1,6 @@
+备份完成: _bak12-...html / _bak11-manual-examples.js / _verify.js.bak3
+HTML: CSS(.imgph/.imgpic) + imgBlock() + secHtml img 分支 已插入
+HTML 重读断言通过
+示例 ex_encounter_battle_enemy_test 已插入画面占位块（lang:"img"）
+_verify.js 已加断言「示例画面占位渲染正常」
+ALL OK

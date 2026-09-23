@@ -1,0 +1,5 @@
+manual-examples.js: 31766 -> 702 bytes（原文件备份 _bak9）
+_verify.js 三条示例断言已改为空态断言
+_TODO.md 状态行/交付物表/第九轮小节已同步
+重读断言通过
+ALL OK

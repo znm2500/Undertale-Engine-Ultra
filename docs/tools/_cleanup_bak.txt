@@ -1,0 +1,53 @@
+待删备份 43 个：
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_backup-manual-api.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_backup-manual.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_backup-text-typer-Create_0.gml
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak10-manual-api.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak10-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak10-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak11-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak11-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak12-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak13-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak14-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak15-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak16-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak17-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak18-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak19-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak2-manual-api.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak2-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak20-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak21-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak3-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak4-manual-api.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak4-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak4-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak5-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak6-manual-api.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak7-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak8-UNDERTALE-Engine-Ultra-手册.html
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_bak9-manual-examples.js
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_TODO.md.bak
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_TODO.md.bak2
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_TODO.md.bak3
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/_TODO.md.bak4
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_tut_overview.js.bak
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak2
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak3
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak4
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak5
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak6
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak7
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak8
+  C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/tools/_verify.js.bak9
+删除完成: 成功 43 / 失败 0
+残留备份: 0
+  活文件在: UNDERTALE-Engine-Ultra-手册.html (49993 B)
+  活文件在: manual-api.js (379768 B)
+  活文件在: manual-examples.js (2913273 B)
+  活文件在: tools/_verify.js (13992 B)
+  活文件在: favicon.png (18802 B)
+  活文件在: _TODO.md (32473 B)
+ALL OK

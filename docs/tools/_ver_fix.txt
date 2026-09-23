@@ -1,6 +1,0 @@
-备份完成: _bak14-...html / _verify.js.bak5 / _tut_overview.js.bak / _TODO.md.bak4
-HTML: brandver 三处已撤回，教程 ENGINE_VERSION 已改 v2.0.1，重读断言通过
-_verify.js: 旧版本断言已删，新断言「教程引擎版本 v2.0.1」已加
-_tut_overview.js 模板已同步 v2.0.1（防重跑回退）
-_TODO.md 引擎版本描述已同步 v2.0.1
-ALL OK

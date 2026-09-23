@@ -1,1 +1,0 @@
-len=297864 tail=" ──\\nStorage_SetSaveSlot(0);\\nStorage_SaveGame();\\nStorage_LoadGame();\"\n   }\n};\n" hasSemicolon=true

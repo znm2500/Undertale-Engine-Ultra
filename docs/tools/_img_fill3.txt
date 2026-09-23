@@ -1,3 +1,0 @@
-GIF 已落盘 C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/img/ex3-battle-use-medicine.gif (563691 B)
-vm 验证通过：三篇 img 块全部外链图且文件在盘，无占位/base64 残留
-FATAL: _verify 外链图计数锚点不唯一，中止

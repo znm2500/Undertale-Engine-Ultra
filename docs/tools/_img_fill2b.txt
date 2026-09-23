@@ -1,2 +1,0 @@
-GIF 读取成功: 1678160 bytes → base64 2237570 chars
-FATAL: 第 2 篇 lang 序列不对: gml,gml,text,img

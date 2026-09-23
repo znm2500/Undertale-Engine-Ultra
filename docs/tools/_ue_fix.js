@@ -7,7 +7,7 @@ const vm = require('vm');
 
 const DOCS = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
 const APIP = DOCS + 'manual-api.js';
-const HTML = DOCS + 'UNDERTALE-Engine-Ultra-手册.html';
+const HTML = DOCS + 'index.html';
 const LOGP = DOCS + 'tools/_ue_fix.txt';
 
 const lines = [];
@@ -15,7 +15,7 @@ function log(x) { lines.push(x); console.log(x); }
 
 // ---------- 0. 备份 ----------
 fs.copyFileSync(APIP, DOCS + '_bak10-manual-api.js');
-fs.copyFileSync(HTML, DOCS + '_bak10-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(HTML, DOCS + '_bak10-index.html');
 log('备份完成: _bak10-manual-api.js / _bak10-...html');
 
 // ---------- 1. manual-api.js：载入 → 内存改 ----------

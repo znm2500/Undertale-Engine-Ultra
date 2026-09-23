@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DOCS = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
-const HTML = DOCS + 'UNDERTALE-Engine-Ultra-手册.html';
+const HTML = DOCS + 'index.html';
 const VERIFY = DOCS + 'tools/_verify.js';
 const TODO = DOCS + '_TODO.md';
 const LOGP = DOCS + 'tools/_tut_trim.txt';
@@ -14,7 +14,7 @@ const lines = [];
 function log(x) { lines.push(x); console.log(x); }
 
 // ---------- 0. 备份 ----------
-const BAK_HTML = DOCS + '_bak7-UNDERTALE-Engine-Ultra-手册.html';
+const BAK_HTML = DOCS + '_bak7-index.html';
 const BAK_VERIFY = DOCS + 'tools/_verify.js.bak';
 const BAK_TODO = DOCS + '_TODO.md.bak';
 fs.copyFileSync(HTML, BAK_HTML);

@@ -1,7 +1,13 @@
 # 手册任务 · 进度交接
 
 > 目标：为 `C:\Users\Weaver\Documents\GitHub\Undertale-Engine-Ultra`（GameMaker / GML 的 Undertale 引擎 v2.0.1）写一份**交互式 HTML 开发手册**，内容侧重「API 速查 + 上手教程 + 可玩示例」。
-> 状态：**已完成（2026-09-22：示例重写第 1 篇「用 battle_enemy_test 跑通遭遇战」；并全库修正 User Event 编号口径 —— 正确为 User Event 0~13 = BATTLE_ENEMY_EVENT 枚举值，此前误用 .yy 文件号 10~23）** · 最后更新：2026-09-22
+> 状态：**已完成（2026-09-23：手册入库并挂载 GitHub Pages，改名 index.html）** · 最后更新：2026-09-23
+
+## 2026-09-23：手册上线 GitHub Pages + 改名 index.html
+
+- 手册文件 `UNDERTALE-Engine-Ultra-手册.html` 改名 **`index.html`**（GitHub Pages 根路径直达，不再需要跳转页），全库引用（本文件 + 16 个 tools 脚本共 35 处）已同步替换。
+- `docs/` 已纳入 git（根 .gitignore 的 `docs/` 已移除）；Pages 用 Settings → Pages → Deploy from a branch → main + /docs 开启，地址 `https://znm2500.github.io/Undertale-Engine-Ultra/`。
+- gitignore 收紧：`tools/*.txt`（一次性脚本的运行日志）与 `tools/_sig.json` / `_plan-fn.json` / `_plan-obj.json`（管线中间产物，重跑即再生）不入库；**`tools/_objvars.json` 保留** —— `_verify.js` 运行时依赖它，fresh clone 不跑生成管线也能直接校验。
 
 ## 2026-09-22：示例重写第 1 篇 + User Event 口径修正
 
@@ -18,7 +24,7 @@
 
 | 文件 | 大小 | 说明 |
 |---|---|---|
-| `docs/UNDERTALE-Engine-Ultra-手册.html` | ~68 KB | 单文件交互手册。浏览器直接打开，无需服务器。**界面全中文** · favicon 内联 base64 · 教程 **1 节**（`TUT_SECTIONS` 数据驱动） |
+| `docs/index.html` | ~68 KB | 单文件交互手册。浏览器直接打开，无需服务器。**界面全中文** · favicon 内联 base64 · 教程 **1 节**（`TUT_SECTIONS` 数据驱动） |
 | `docs/favicon.png` | 18 KB | 256×256 图标，取自引擎自带 `options/windows/icons/icon.ico`（与 `Desktop/ank03-0b4wj-009.png` 逐像素一致） |
 | `docs/manual-api.js` | ~240 KB | API 数据：16 分类 / **449 条目** / **91 物体卡**（变量表共 **902 行**）/ **6 物体分组** / 14 敌人事件 / 5 弹幕类型 / 8 段代码片段 |
 | `docs/manual-examples.js` | 已清空 | **示例数据待重写**（`window.EXAMPLES = []`；原 14 个示例备份于 `_bak9-manual-examples.js`，渲染代码与筛选 UI 原样保留，空数据自动显示空态） |
@@ -287,7 +293,7 @@ node tools/_covcheck.js     # 6. 覆盖对账（源码侧反向）→ tools/_cov
 **事故经过**：为把响应式断点从 1000px 改成 900px，执行了
 
 ```powershell
-(Get-Content "$d\UNDERTALE-Engine-Ultra-手册.html" -Raw) -replace 'window\.innerWidth<=1000','window.innerWidth<=900' | Set-Content "$d\UNDERTALE-Engine-Ultra-手册.html" -Encoding UTF8
+(Get-Content "$d\index.html" -Raw) -replace 'window\.innerWidth<=1000','window.innerWidth<=900' | Set-Content "$d\index.html" -Encoding UTF8
 ```
 
 PowerShell 把 UTF-8 文件**当 GBK 读入**，再以 UTF-8 写出 → **1019 行里 168 行中文全部变成乱码**，并且**若干行被合并**，直接**破坏 JS 语法**。三种反向解码全部失败——原始字节已永久丢失。当时 `docs/` 未被 git 跟踪，**没有备份**。

@@ -5,7 +5,7 @@ const path = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
 const out = [];
 const log = (...a) => out.push(a.join(' '));
 
-const html = fs.readFileSync(path + 'UNDERTALE-Engine-Ultra-手册.html', 'utf8');
+const html = fs.readFileSync(path + 'index.html', 'utf8');
 const apiSrc = fs.readFileSync(path + 'manual-api.js', 'utf8');
 const exSrc = fs.readFileSync(path + 'manual-examples.js', 'utf8');
 

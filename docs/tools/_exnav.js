@@ -6,8 +6,8 @@ const out = (s) => LOG.push(s);
 const die = (s) => { out('FATAL: ' + s); fs.writeFileSync(BASE + 'tools/_exnav.txt', LOG.join('\n'), { encoding: 'utf8' }); process.exit(1); };
 const count = (s, sub) => s.split(sub).length - 1;
 
-const htmlPath = BASE + 'UNDERTALE-Engine-Ultra-手册.html';
-fs.copyFileSync(htmlPath, BASE + '_bak19-UNDERTALE-Engine-Ultra-手册.html');
+const htmlPath = BASE + 'index.html';
+fs.copyFileSync(htmlPath, BASE + '_bak19-index.html');
 fs.copyFileSync(BASE + 'tools/_verify.js', BASE + 'tools/_verify.js.bak9');
 out('备份完成: _bak19-...html / _verify.js.bak9');
 

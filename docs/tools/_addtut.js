@@ -2,12 +2,12 @@
 // 用 JSON 解析 → 插入 → 序列化回写，避免手工改内联脚本出错
 const fs = require('fs');
 const P = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
-const FILE = P + 'UNDERTALE-Engine-Ultra-手册.html';
+const FILE = P + 'index.html';
 
 let html = fs.readFileSync(FILE, 'utf8');
 
 // 备份
-fs.copyFileSync(FILE, P + '_bak3-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(FILE, P + '_bak3-index.html');
 
 const KEY = 'const TUT_SECTIONS = [';
 const i = html.indexOf(KEY);

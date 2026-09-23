@@ -5,11 +5,11 @@ const BASE = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
 const LOG = [];
 const out = (s) => LOG.push(s);
 
-const htmlPath = BASE + 'UNDERTALE-Engine-Ultra-手册.html';
+const htmlPath = BASE + 'index.html';
 const verPath = BASE + 'tools/_verify.js';
 
 // ---------- 备份 ----------
-fs.copyFileSync(htmlPath, BASE + '_bak13-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(htmlPath, BASE + '_bak13-index.html');
 fs.copyFileSync(verPath, BASE + 'tools/_verify.js.bak4');
 out('备份完成: _bak13-...html / _verify.js.bak4');
 

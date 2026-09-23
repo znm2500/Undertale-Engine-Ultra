@@ -1,4 +1,0 @@
-GIF 读取成功: 1678160 bytes → base64 2237570 chars
-备份完成: _bak21-manual-examples.js
-vm 载入验证通过：第 2 篇 img 块已填真图（标题「ACT 菜单与行动对话」），无占位残留
-ALL OK

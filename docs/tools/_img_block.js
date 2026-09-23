@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 const DOCS = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
-const HTML = DOCS + 'UNDERTALE-Engine-Ultra-手册.html';
+const HTML = DOCS + 'index.html';
 const EX = DOCS + 'manual-examples.js';
 const VERIFY = DOCS + 'tools/_verify.js';
 const LOGP = DOCS + 'tools/_img_block.txt';
@@ -12,7 +12,7 @@ const lines = [];
 function log(x) { lines.push(x); console.log(x); }
 
 // ---------- 0. 备份 ----------
-fs.copyFileSync(HTML, DOCS + '_bak12-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(HTML, DOCS + '_bak12-index.html');
 fs.copyFileSync(EX, DOCS + '_bak11-manual-examples.js');
 fs.copyFileSync(VERIFY, DOCS + 'tools/_verify.js.bak3');
 log('备份完成: _bak12-...html / _bak11-manual-examples.js / _verify.js.bak3');

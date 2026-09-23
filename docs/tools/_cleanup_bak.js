@@ -19,7 +19,7 @@ out('待删备份 ' + targets.length + ' 个：');
 targets.forEach(t => out('  ' + t));
 
 // 保护性断言：绝不允许出现活文件名
-const PROTECT = ['UNDERTALE-Engine-Ultra-手册.html', 'manual-api.js', 'manual-examples.js', '_verify.js', '_TODO.md'];
+const PROTECT = ['index.html', 'manual-api.js', 'manual-examples.js', '_verify.js', '_TODO.md'];
 for (const t of targets) {
   if (PROTECT.includes(path.basename(t))) die('FATAL: 待删清单命中活文件 ' + t);
   if (/\d{4,}\.txt$|\.js$/.test(path.basename(t)) && !/\.bak/.test(path.basename(t)) && !/^_bak\d+-/.test(path.basename(t)) && !/^_backup-/.test(path.basename(t))) die('FATAL: 异常路径 ' + t);
@@ -39,7 +39,7 @@ out('残留备份: ' + (left.length ? left.join(', ') : '0'));
 
 // 活文件完好核对（体积骤降强信号检查）
 const MUST_EXIST = [
-  'UNDERTALE-Engine-Ultra-手册.html', 'manual-api.js', 'manual-examples.js',
+  'index.html', 'manual-api.js', 'manual-examples.js',
   'tools/_verify.js', 'favicon.png', '_TODO.md'
 ];
 for (const m of MUST_EXIST) {

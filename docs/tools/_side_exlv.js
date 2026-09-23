@@ -3,14 +3,14 @@
 const fs = require('fs');
 
 const DOCS = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
-const HTML = DOCS + 'UNDERTALE-Engine-Ultra-手册.html';
+const HTML = DOCS + 'index.html';
 const LOGP = DOCS + 'tools/_side_exlv.txt';
 
 const lines = [];
 function log(x) { lines.push(x); console.log(x); }
 
 // ---------- 0. 备份 ----------
-fs.copyFileSync(HTML, DOCS + '_bak11-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(HTML, DOCS + '_bak11-index.html');
 log('备份完成: _bak11-...html');
 
 // ---------- 1. 精确删除该行 ----------

@@ -1,4 +1,0 @@
-备份完成: _bak17-manual-examples.js / _verify.js.bak7
-manual-examples.js: 第 2 篇已插入，vm 载入验证通过（EXAMPLES=2，lang 序列 gml,gml,text,img）
-_verify.js: 分级断言改 2、hOne2 渲染、示例2 两条断言已加
-ALL OK

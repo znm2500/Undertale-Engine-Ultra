@@ -1,14 +1,784 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=UNDERTALE-Engine-Ultra-%E6%89%8B%E5%86%8C.html">
-<title>UNDERTALE Engine Ultra 手册</title>
-<style>body{background:#1e2733;color:#dde3ea;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}a{color:#4a9eff}</style>
-<script>location.replace("UNDERTALE-Engine-Ultra-%E6%89%8B%E5%86%8C.html");</script>
+<html lang="zh-CN" data-page-node-id="K1mivSCYDmfSNEKey5C0l1">
+<head data-page-node-id="DRxkn2WeG8puPj5FjKYOLM">
+<meta charset="UTF-8" data-page-node-id="zDHXV8aGzh2BdKyfzdrR8D">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="Azi2hkVEHaWLGGgcxz07By">
+<title>UNDERTALE Engine Ultra 开发手册</title>
+<style>
+:root{
+  /* 深色 · 全平 · 单一强调色 */
+  --bg:#1e2733;
+  --side:#19212b;
+  --line:#2c3746;
+  --line2:#37455a;
+  --tx:#dde3ea;
+  --tx2:#9aa7b6;
+  --tx3:#6b7887;
+  --acc:#4a9eff;
+  --accdim:#2b4a6e;
+  --code:#161d26;
+  --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Consolas,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--tx);
+  font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+/* ---------- 布局 ---------- */
+.layout{display:flex;min-height:100vh}
+.side{
+  width:224px;flex:0 0 224px;background:var(--side);
+  height:100vh;position:sticky;top:0;display:flex;flex-direction:column;
+}
+.brand{padding:16px 18px 12px}
+.brand{display:flex;align-items:center;gap:9px}
+.brandico{width:22px;height:22px;flex:0 0 22px;image-rendering:pixelated;border-radius:4px}
+.brand h1{font-size:13.5px;font-weight:500;color:var(--tx2);letter-spacing:.1px}
+.search{padding:0 12px 10px}
+.search input{
+  width:100%;padding:7px 10px;border:0;border-radius:6px;
+  background:#141b23;font-family:var(--sans);font-size:13px;color:var(--tx);outline:none;
+}
+.search input::placeholder{color:var(--tx3)}
+.search input:focus{box-shadow:0 0 0 1px var(--accdim)}
+.nav{flex:1;overflow-y:auto;padding:2px 8px 40px}
+.nav::-webkit-scrollbar{width:6px}
+.nav::-webkit-scrollbar-thumb{background:#2c3746;border-radius:3px}
+.nav .grp>.t{
+  display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:6px;
+  font-weight:400;font-size:13.5px;color:var(--tx2);cursor:pointer;user-select:none;
+  position:relative;
+}
+.nav .grp>.t:hover{background:#212c38;color:var(--tx)}
+.nav .grp .cnt{margin-left:auto;font-size:11.5px;font-family:var(--mono);color:var(--tx3)}
+.nav .grp>.t .caret{font-size:9px;color:var(--tx3);transition:transform .15s;flex:0 0 auto;width:9px}
+.nav .grp.open>.t .caret{transform:rotate(90deg)}
+.nav .grp .items{display:none;padding:1px 0 6px 10px}
+.nav .grp.open>.items{display:block}
+.nav .grp.open>.t{color:var(--tx)}
+.nav .item{
+  display:block;padding:5px 10px;font-size:13px;color:var(--tx2);
+  border-radius:6px;cursor:pointer;position:relative;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.nav .item.exitem{white-space:normal;line-height:1.45;padding-left:20px;font-size:12.5px;color:var(--tx3)}
+.nav .item:hover{color:var(--tx);background:#212c38}
+.nav .item.on{color:var(--acc);background:transparent;font-weight:400}
+.nav .item.on::before{
+  content:"";position:absolute;left:-8px;top:3px;bottom:3px;width:2px;
+  background:var(--acc);
+}
+/* ---------- 主体 ---------- */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{
+  position:sticky;top:0;z-index:30;background:var(--bg);
+  border-bottom:1px solid var(--line);padding:10px 24px;
+  display:flex;align-items:center;gap:12px;
+}
+.topbar .crumb{font-size:13px;color:var(--tx3)}
+.wrap{padding:56px 40px 120px;max-width:760px;margin-left:190px}
+/* ---------- 教程 ---------- */
+.sec{margin-bottom:52px}
+.sec>h3{
+  font-size:22px;font-weight:400;margin-bottom:14px;color:var(--tx);
+  letter-spacing:-.2px;
+}
+.sec>.lead{color:var(--tx2);font-size:14.5px;margin-bottom:20px}
+.card{background:transparent;border:0;padding:0;margin-bottom:0}
+.card h4{font-size:15px;font-weight:500;margin-bottom:10px;color:var(--tx);margin-top:26px}
+.card p{color:var(--tx2);font-size:14.5px;margin-bottom:12px}
+.card p:last-child{margin-bottom:0}
+.tip{
+  border-left:3px solid var(--acc);background:#222d3a;
+  padding:13px 16px;border-radius:3px;font-size:14px;color:var(--tx2);margin:18px 0;
+}
+.tip b{color:var(--tx);font-weight:500}
+.imgph{border:1px dashed #3a4757;border-radius:4px;padding:34px 20px;text-align:center;color:var(--tx3);font-size:13.5px;background:rgba(255,255,255,.02)}
+.imgpic{max-width:100%;display:block;margin:6px auto 0;border-radius:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.chips a,.chips span{
+  display:inline-block;padding:6px 12px;border:1px solid #2c3746;border-radius:4px;
+  font-size:13px;color:var(--tx2);text-decoration:none;background:#222d3a;transition:border-color .15s,color .15s;
+}
+.chips a:hover{color:var(--acc);border-color:var(--acc)}
+.chips a b{color:inherit;font-weight:500}
+.warnbox{
+  border-left:3px solid #e0a800;background:#2b2718;
+  padding:13px 16px;border-radius:3px;font-size:14px;color:#d9c48a;margin:18px 0;
+}
+/* ---------- 代码 ---------- */
+pre{
+  background:var(--code);border:0;border-radius:6px;
+  padding:15px 17px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;
+  line-height:1.65;margin:14px 0;color:#c8d3df;
+}
+pre::-webkit-scrollbar{height:8px}
+pre::-webkit-scrollbar-thumb{background:#2c3746;border-radius:4px}
+code{font-family:var(--mono);font-size:.875em;background:#2a3543;
+  padding:1.5px 5px;border-radius:3px;color:#a8c8f0}
+pre code{background:none;padding:0;color:#c8d3df;font-size:13.5px}
+.cm{color:#5f6f80}
+.kw{color:#e06c75}
+.fn{color:#8ab4f8}
+.st{color:#98c379}
+.nm{color:#d4a05a}
+.mc{color:#e5a663}
+/* ---------- API 列表 ---------- */
+.apibar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.chip{
+  border:0;background:transparent;padding:4px 9px;border-radius:5px;
+  font-size:13px;cursor:pointer;color:var(--tx2);font-weight:400;
+}
+.chip:hover{color:var(--tx);background:#212c38}
+.chip.on{color:var(--acc);background:var(--accdim)}
+.api{
+  background:transparent;border:0;border-radius:0;
+  border-bottom:1px solid var(--line);overflow:hidden;
+}
+.api>.hd{padding:11px 0;cursor:pointer;display:flex;align-items:flex-start;gap:10px}
+.api .sig{
+  flex:1;font-family:var(--mono);font-size:13.5px;font-weight:400;color:var(--tx);
+  word-break:break-word;line-height:1.55;
+}
+.api .sig .fx{color:var(--acc)}
+.api .sig .ar{color:var(--tx3)}
+.api .badge{
+  flex:0 0 auto;font-size:11.5px;font-family:var(--mono);
+  background:transparent;color:var(--tx3);padding:0;margin-top:1px;
+}
+.api .chev{color:var(--tx3);font-size:9px;margin-top:4px;transition:.15s;flex:0 0 auto}
+.api .hot{
+  flex:0 0 auto;font-size:11px;color:var(--acc);border:1px solid var(--accdim);
+  border-radius:3px;padding:0 5px;margin-top:2px;line-height:1.5;white-space:nowrap;
+}
+.api.open .chev{transform:rotate(90deg)}
+.api .bd{display:none;padding:12px 0 18px}
+.api.open .bd{display:block}
+.api .desc{font-size:14px;color:var(--tx2);margin-bottom:12px;white-space:pre-wrap}
+.api .desc b{color:var(--tx);font-weight:500}
+table.pt{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+table.pt th{
+  text-align:left;font-weight:400;color:var(--tx3);font-size:12px;
+  letter-spacing:.3px;padding:6px 12px 6px 0;border-bottom:1px solid var(--line);
+}
+table.pt td{padding:7px 12px 7px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--tx2)}
+table.pt td:first-child{font-family:var(--mono);color:var(--tx);white-space:nowrap}
+.rel{margin:14px 0}
+.rel>.rt{font-size:12px;color:var(--tx3);letter-spacing:.3px;margin-bottom:7px}
+.rel table{width:100%;border-collapse:collapse;font-size:13.5px}
+.rel td{padding:6px 12px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.rel tr:last-child td{border-bottom:0}
+.rel td:first-child{font-family:var(--mono);color:var(--tx);white-space:nowrap;width:1%}
+.rel td:last-child{color:var(--tx2)}
+.empty{text-align:center;padding:70px 20px;color:var(--tx3);font-size:14px}
+/* ---------- 物体卡 ---------- */
+.ob{border-bottom:1px solid var(--line);padding-bottom:20px;margin-top:20px}
+.ob h4{font-size:14.5px;font-family:var(--mono);color:var(--acc);font-weight:400;margin-bottom:7px}
+.ob .tag{font-size:11.5px;font-family:var(--mono);background:#2a3543;color:var(--tx3);
+  padding:1px 6px;border-radius:3px;margin-left:7px;vertical-align:middle}
+.ob p{font-size:14px;color:var(--tx2)}
+.ob .hot{
+  font-size:11px;color:var(--acc);border:1px solid var(--accdim);
+  border-radius:3px;padding:0 5px;margin-left:7px;vertical-align:middle;
+  font-weight:400;line-height:1.6;
+}
+.obgrp{margin-top:38px}
+.obgrp:first-of-type{margin-top:24px}
+.obgrt{
+  font-size:12px;color:var(--tx3);letter-spacing:.6px;text-transform:uppercase;
+  padding-bottom:8px;border-bottom:1px solid var(--line2);display:flex;align-items:center;gap:8px;
+}
+.obgrc{font-family:var(--mono);font-size:11.5px;color:var(--tx3)}
+.exgrp{margin-top:38px}
+.exgrp:first-of-type{margin-top:24px}
+.exgrt{
+  font-size:12px;color:var(--tx3);letter-spacing:.6px;text-transform:uppercase;
+  padding-bottom:8px;border-bottom:1px solid var(--line2);display:flex;align-items:center;gap:8px;
+}
+.exgrc{font-family:var(--mono);font-size:11.5px;color:var(--tx3)}
+.exback{display:inline-block;font-size:13.5px;color:var(--acc);cursor:pointer;padding:0}
+.exback:hover{text-decoration:underline}
+.exback::before{content:"← "}
+.tip .go{display:inline-block;margin-left:5px;color:var(--acc);cursor:pointer;
+  text-decoration:underline;text-underline-offset:2px}
+/* ---------- 分页 ---------- */
+.pager{
+  display:flex;justify-content:space-between;gap:20px;
+  border-top:1px solid var(--line);margin-top:64px;padding-top:22px;
+}
+.pager a{display:block;cursor:pointer;text-decoration:none;color:inherit;max-width:47%}
+.pager a.next{text-align:right;margin-left:auto}
+.pager .lab{font-size:11.5px;color:var(--tx3);letter-spacing:.6px;text-transform:uppercase}
+.pager .ttl{font-size:15px;color:var(--acc);margin-top:3px}
+.pager a:hover .ttl{text-decoration:underline}
+/* ---------- 响应式 ---------- */
+.menubtn{display:none}
+@media(max-width:900px){
+  .side{position:fixed;left:0;top:0;z-index:100;transform:translateX(-100%);transition:.2s}
+  .side.show{transform:none}
+  .wrap{padding:28px 20px 90px;margin-left:0}
+  .topbar{padding:10px 16px}
+  .menubtn{display:block;border:0;background:transparent;color:var(--tx2);
+    padding:4px 8px;cursor:pointer;font-size:16px}
+}
+</style>
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB20lEQVR42q3Ty0vUYRTGcf+XKNp2J4g2lVBQaVAWLVpIaSrqokwrGzNrIRaJpqAQWGDeklIsu0A6lCUZLcwLaIuxQiylG5UKHybyZyOTRS16Vw+c5/mel8M5CQn/8y2xwQpr/M03YyWflsX7ltpntT02SbLLDtlSFoFG7DMlienNvFnHi+Xmw4XWKpAoT4psqTLky1YpLwYZcMxbuWYdYmovI9t4tD6or1Jtiwopyh1WKhqNRosVq1MWA7x23hdn52peZvJ0P51bg/pGrZI1OahxzvDzNavzRINRDaZciavpSqdldwBIFLZfWK6wEt0xY4eOmJ5xO6Y9PsfNI1w+EAC2G5ZqUL5hFwypM6TDYFzHueCrOzyv5+5Frp7kfFoASDIhzaRC71SY1GAyFh43jvGF7t2tNFZRESKUGQCSZ0if4dQ3Lk3T9E0s8HHa/OAi9PRyo53qWk6fISsnAOx8zcFXnIhQHqF+jHsR8UPrfx+AmnuovE6oioyi+F052kdp30Kw6+GCFp5d0GX3KahfvLEZ7fFdbzbxrI2xNj63/PKj7M4/r/wPQ2kZ1yrpqmGghokqZssCyF+PKiuPUD61IW6V0FvCaBEfjiP3q3++zvJMmnN4kEN/lt8GvwNWLk3aVIA6CgAAAABJRU5ErkJggg==" data-page-node-id="JX8mqLia7o2N7YBrnPnlFj">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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" data-page-node-id="6J6JXUZai9M4NPDxsmBlyR">
+<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,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" data-page-node-id="af4iSxtGP2F5L3EUnmwzqC">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" data-page-node-id="Q9YhgxCrdrHb4EAFqEpcsW">
 </head>
-<body>
-<p>正在进入手册……若无跳转，<a href="UNDERTALE-Engine-Ultra-%E6%89%8B%E5%86%8C.html">点此打开</a>。</p>
+<body data-page-node-id="FlnTiWK2uRtmliagbEJTzy">
+<div class="layout" data-page-node-id="fW3QXSOMPxQqG4MKlcXJjA">
+
+  <aside class="side" id="side" data-page-node-id="xJGNEHbajSBrpZ4TUIIHPj">
+    <div class="brand" data-page-node-id="lBCQErPxeqdKhLMd6kXRHj"><img class="brandico" src="favicon.png?h=f1f4dab2" alt="" data-page-node-id="pMQrljAMkOEBJNPEGr9GGD"><h1 data-page-node-id="RvXrqpIPlYBJkW9fsiGqkV">UNDERTALE Engine Ultra</h1></div>
+    <div class="search" data-page-node-id="8e8QKF3OqdveXB2qo62vyx">
+      <input id="q" type="text" placeholder="搜索…" autocomplete="off" data-page-node-id="16NMvFNpEWGq42grox0qpN">
+    </div>
+    <nav class="nav" id="nav" data-page-node-id="yIm3JGAJM5YCKa8ZjP1Bxc"></nav>
+  </aside>
+
+  <main class="main" data-page-node-id="F39sNXNCcwxd1uRelMIpxT">
+    <div class="topbar" data-page-node-id="mybmbBMC0G6AfV12xKE4CZ">
+      <button class="menubtn" onclick="document.getElementById('side').classList.toggle('show')" data-page-node-id="jb3xI5DAGHIHcIqe1znDXn">☰</button>
+      <div class="crumb" id="crumb" data-page-node-id="yMg9ZLtRqmdERhp5J1CUtH">教程</div>
+    </div>
+    <div class="wrap" id="wrap" data-page-node-id="t8GHD5UNB3GkN5XRHCgsdU"></div>
+  </main>
+</div>
+
+<script src="manual-api.js"></script>
+<script src="manual-examples.js"></script>
+<script>
+/* ===================== 代码高亮 ===================== */
+const GML_KW = /\b(if|else|while|for|repeat|do|until|switch|case|default|break|continue|return|var|globalvar|function|constructor|new|delete|try|catch|throw|with|enum|macro|static|self|other|noone|undefined|true|false|infinity|div|mod|and|or|not)\b/g;
+function esc(s){
+  if(s===undefined||s===null) return '';
+  if(typeof s!=='string') s=String(s);
+  return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+function hl(code){
+  let s = esc(code);
+  // 注释
+  s = s.replace(/(\/\/[^\n]*)/g, '\u0001$1\u0002');
+  // 字符串
+  s = s.replace(/("(?:[^"\\]|\\.)*")/g, '\u0003$1\u0004');
+  // 常量
+  s = s.replace(/\b([A-Z][A-Z0-9_]{2,})\b/g, '\u0005$1\u0006');
+  // 函数名（后跟括号，排除关键字）
+  s = s.replace(/\b([A-Za-z_][A-Za-z0-9_]*)(?=\s*\()/g, '\u0007$1\u0008');
+  // 关键字
+  s = s.replace(GML_KW, '\u0009$1\u000A');
+  // 数字
+  s = s.replace(/\b(\d+(?:\.\d+)?)\b/g, '\u000B$1\u000C');
+  // 还原
+  s = s.replace(/\u0001([\s\S]*?)\u0002/g,'<span class="cm">$1</span>')
+       .replace(/\u0003([\s\S]*?)\u0004/g,'<span class="st">$1</span>')
+       .replace(/\u0005([\s\S]*?)\u0006/g,'<span class="mc">$1</span>')
+       .replace(/\u0007([\s\S]*?)\u0008/g,'<span class="fn">$1</span>')
+       .replace(/\u0009([\s\S]*?)\u000A/g,'<span class="kw">$1</span>')
+       .replace(/\u000B([\s\S]*?)\u000C/g,'<span class="nm">$1</span>');
+  return s;
+}
+function code(t){return '<pre><code>'+hl(t)+'</code></pre>';}
+function imgBlock(b){ if(/^data:image\//.test(b)) return '<img class="imgpic" loading="lazy" src="'+b+'" alt="">'; if(/^img\//.test(b)) return '<img class="imgpic" loading="lazy" src="'+esc(b)+'" alt="">'; return '<div class="imgph">'+esc(b||'截图 / GIF 待补')+'</div>'; }
+
+/* ===================== 侧栏导航 ===================== */
+const NAVS = [
+  {id:'tutorial', name:'教程'},
+  {id:'examples', name:'示例'},
+  {id:'api',      name:'函数'},
+  {id:'objects',  name:'物体'},
+];
+let curView='tutorial', curCat='all', curEx=null, curObj='all', curExLv='all';
+
+// 示例的分类：取自数据里每条示例的 level 字段，按固定顺序排列
+const EX_LEVELS = ['入门','进阶','实用','必读'];
+
+function buildNav(){
+  const nav=document.getElementById('nav');
+  let h='';
+  NAVS.forEach(n=>{
+    if(n.id==='api'){
+      h+='<div class="grp open" data-grp="api">'+
+        '<div class="t" data-nav="api"><span class="caret">▶</span>'+n.name+
+        '<span class="cnt">'+API.functions.length+'</span></div><div class="items">';
+      h+='<div class="item on" data-cat="all">全部</div>';
+      API.categories.forEach(c=>{
+        const n2=API.functions.filter(f=>f.c===c.id).length;
+        h+='<div class="item" data-cat="'+c.id+'">'+c.name+
+           ' <span style="color:var(--tx3)">'+n2+'</span></div>';
+      });
+      h+='</div></div>';
+    }else if(n.id==='examples'){
+      // 示例：按 level 分成可折叠分类树，与 Functions / Objects 三者一致
+      h+='<div class="grp open" data-grp="ex">'+
+        '<div class="t" data-nav="examples"><span class="caret">▶</span>'+n.name+
+        '<span class="cnt">'+EXAMPLES.length+'</span></div><div class="items">';
+      h+='<div class="item on" data-exid="all">全部</div>';
+      EX_LEVELS.forEach(lv=>{
+        const c=EXAMPLES.filter(e=>e.level===lv).length;
+        if(!c) return;
+        h+='<div class="item'+(curExLv===lv?' on':'')+'" data-exlv="'+lv+'">'+lv+
+           ' <span style="color:var(--tx3)">'+c+'</span></div>';
+      });
+      EXAMPLES.forEach(e=>{
+        h+='<div class="item exitem" data-exid="'+e.id+'">'+esc(e.title)+'</div>';
+      });
+      h+='</div></div>';
+    }else{
+      // Tutorials / Objects：Objects 也做成可折叠分类树
+      if(n.id==='objects'){
+        const gs = API.objectsGroups || [];
+        h+='<div class="grp open" data-grp="obj">'+
+          '<div class="t" data-nav="objects"><span class="caret">▶</span>'+n.name+
+          '<span class="cnt">'+API.objects.length+'</span></div><div class="items">';
+        h+='<div class="item on" data-objg="all">全部</div>';
+        gs.forEach(x=>{
+          const c=API.objects.filter(o=>o.g===x.id).length;
+          if(!c) return;
+          h+='<div class="item" data-objg="'+x.id+'">'+esc(x.name)+
+             ' <span style="color:var(--tx3)">'+c+'</span></div>';
+        });
+        h+='</div></div>';
+      }else{
+        h+='<div class="grp"><div class="t" data-nav="'+n.id+
+           '"><span class="caret" style="visibility:hidden">▶</span>'+n.name+'</div></div>';
+      }
+    }
+  });
+  nav.innerHTML=h;
+  nav.querySelectorAll('[data-nav]').forEach(el=>{
+    el.onclick=()=>{
+      const id=el.dataset.nav;
+      if(id==='api'||id==='examples'||id==='objects'){
+        el.parentElement.classList.toggle('open');
+      }
+      if(id==='examples') { curEx=null; curExLv='all'; }
+      if(id==='objects') curObj='all';
+      switchView(id);
+      if(id==='examples'){
+        nav.querySelectorAll('[data-exid]').forEach(x=>x.classList.toggle('on',x.dataset.exid==='all'));
+        nav.querySelectorAll('[data-exlv]').forEach(x=>x.classList.toggle('on',x.dataset.exlv==='all'));
+      }
+      if(id==='objects'){
+        nav.querySelectorAll('[data-objg]').forEach(x=>x.classList.toggle('on',x.dataset.objg==='all'));
+      }
+      if(window.innerWidth<=900) document.getElementById('side').classList.remove('show');
+    };
+  });
+  nav.querySelectorAll('[data-cat]').forEach(el=>{
+    el.onclick=()=>{
+      curCat=el.dataset.cat;
+      nav.querySelectorAll('[data-cat]').forEach(x=>x.classList.remove('on'));
+      el.classList.add('on');
+      switchView('api');
+      if(window.innerWidth<=900) document.getElementById('side').classList.remove('show');
+    };
+  });
+  nav.querySelectorAll('[data-exid]').forEach(el=>{
+    el.onclick=()=>{
+      curEx = el.dataset.exid==='all' ? null : el.dataset.exid;
+      nav.querySelectorAll('[data-exid]').forEach(x=>x.classList.remove('on'));
+      el.classList.add('on');
+      switchView('examples');
+      if(window.innerWidth<=900) document.getElementById('side').classList.remove('show');
+    };
+  });
+  nav.querySelectorAll('[data-exlv]').forEach(el=>{
+    el.onclick=()=>{
+      curExLv = el.dataset.exlv;
+      curEx = null;
+      nav.querySelectorAll('[data-exlv]').forEach(x=>x.classList.remove('on'));
+      nav.querySelectorAll('[data-exid]').forEach(x=>x.classList.toggle('on',x.dataset.exid==='all'));
+      el.classList.add('on');
+      switchView('examples');
+      if(window.innerWidth<=900) document.getElementById('side').classList.remove('show');
+    };
+  });
+  nav.querySelectorAll('[data-objg]').forEach(el=>{
+    el.onclick=()=>{
+      curObj=el.dataset.objg;
+      nav.querySelectorAll('[data-objg]').forEach(x=>x.classList.remove('on'));
+      el.classList.add('on');
+      switchView('objects');
+      if(window.innerWidth<=900) document.getElementById('side').classList.remove('show');
+    };
+  });
+}
+function markNav(){
+  document.querySelectorAll('[data-nav]').forEach(el=>{
+    el.style.color = (el.dataset.nav===curView) ? 'var(--tx)' : '';
+  });
+}
+function switchView(v){
+  curView=v;
+  markNav();
+  if(v==='tutorial') renderTutorial();
+  else if(v==='examples') renderExamples();
+  else if(v==='api') renderAPI();
+  else renderObjects();
+}
+
+/* ===================== 底部分页 ===================== */
+const ORDER=[
+  {id:'tutorial', name:'教程'},
+  {id:'examples', name:'示例'},
+  {id:'api',      name:'函数'},
+  {id:'objects',  name:'物体'},
+];
+function pagerHtml(){
+  const i=ORDER.findIndex(x=>x.id===curView);
+  if(i<0) return '';
+  const prev=ORDER[i-1], next=ORDER[i+1];
+  let h='<div class="pager">';
+  h += prev
+    ? '<a class="prev" onclick="switchView(\''+prev.id+'\')"><span class="lab">← 上一页</span><div class="ttl">'+prev.name+'</div></a>'
+    : '<span></span>';
+  h += next
+    ? '<a class="next" onclick="switchView(\''+next.id+'\')"><span class="lab">下一页 →</span><div class="ttl">'+next.name+'</div></a>'
+    : '<span></span>';
+  return h+'</div>';
+}
+
+/* ===================== 渲染：可玩示例 ===================== */
+function renderExamples(){
+  const one = (curEx && curExLv==='all') ? EXAMPLES.find(e=>e.id===curEx) : null;
+  const filtering = (curExLv!=='all');
+  const list = one ? [one] : EXAMPLES.filter(e=>curExLv==='all'||e.level===curExLv);
+  document.getElementById('crumb').innerHTML = one ? esc(one.title)
+    : (filtering ? '示例 · '+curExLv : '示例');
+
+  let h='';
+  if(!one){
+    h+='<h2 style="font-size:22px;font-weight:400;margin-bottom:14px">示例</h2>'+
+       '<p style="color:var(--tx2);font-size:14.5px;margin-bottom:24px">'+
+       '每个示例都是<b style="color:var(--tx);font-weight:400">完整可运行</b>的：告诉你建什么物体、放在哪、写什么代码。'+
+       '建议按顺序看，前两个吃透了，其余都是同一个套路的变形。</p>';
+
+    // 分级筛选栏
+    h+='<div class="apibar">'+
+       '<span class="chip '+(curExLv==='all'?'on':'')+'" onclick="pickExLv(\'all\')">全部 '+EXAMPLES.length+'</span>';
+    EX_LEVELS.forEach(lv=>{
+      const n=EXAMPLES.filter(e=>e.level===lv).length;
+      if(!n) return;
+      h+='<span class="chip '+(curExLv===lv?'on':'')+'" onclick="pickExLv(\''+lv+'\')">'+lv+' '+n+'</span>';
+    });
+    h+='</div>';
+  } else if(one){
+    h+='<div style="margin-bottom:24px"><span class="exback" onclick="pickEx(\'all\')">返回示例列表</span></div>';
+  }
+
+  const secHtml = e =>
+    '<div class="sec ex" data-k="'+esc((e.title+' '+e.scene+' '+e.level).toLowerCase())+'">'+
+      '<h3>'+esc(e.title)+'</h3>'+
+      '<div class="lead">'+esc(e.scene)+
+      ' <span style="color:var(--tx3);font-size:12.5px">· '+esc(e.level)+'</span></div>'+
+      (e.files&&e.files.length ? (()=>{
+        let s='<div class="card"><h4>要新建的东西</h4>';
+        e.files.forEach(f=>{
+          s+='<p><b style="color:var(--tx);font-weight:400">'+esc(f.t)+'</b></p>'+
+             '<pre style="margin-top:4px"><code>'+esc(f.b)+'</code></pre>';
+        });
+        return s+'</div>';
+      })() : '')+
+      e.code.map(c=>'<div class="card"><h4>'+esc(c.t)+'</h4>'+
+        (c.lang==='gml' ? code(c.b) : (c.lang==='img' ? imgBlock(c.b) : '<pre><code>'+esc(c.b)+'</code></pre>'))+'</div>').join('')+
+    '</div>';
+
+  if(curExLv==='all'){
+    // 选中「全部」时按分级分段并加小标题，与物体视图一致
+    EX_LEVELS.forEach(lv=>{
+      const arr=list.filter(e=>e.level===lv);
+      if(!arr.length) return;
+      h+='<div class="exgrp" data-lv="'+lv+'">'+
+         '<div class="exgrt">'+lv+'<span class="exgrc">'+arr.length+'</span></div>'+
+         arr.map(secHtml).join('')+'</div>';
+    });
+    if(!h.includes('class="exgrp"')) h+='<div class="empty">没有匹配的条目</div>';
+  }else{
+    h+='<div id="exlist">'+(list.length?list.map(secHtml).join(''):'<div class="empty">没有匹配的条目</div>')+'</div>';
+  }
+  if(!one) h+=pagerHtml();
+  document.getElementById('wrap').innerHTML=h;
+  try{ window.scrollTo(0,0); }catch(e){}
+}
+function pickEx(id){
+  curEx = id==='all' ? null : id;
+  curExLv = 'all';
+  document.querySelectorAll('[data-exid]').forEach(x=>x.classList.toggle('on',x.dataset.exid===(id||'all')));
+  document.querySelectorAll('[data-exlv]').forEach(x=>x.classList.toggle('on',x.dataset.exlv==='all'));
+  switchView('examples');
+}
+function pickExLv(lv){
+  curExLv = lv;
+  curEx = null;
+  document.querySelectorAll('[data-exlv]').forEach(x=>x.classList.toggle('on',x.dataset.exlv===(lv||'all')));
+  document.querySelectorAll('[data-exid]').forEach(x=>x.classList.toggle('on',x.dataset.exid==='all'));
+  switchView('examples');
+}
+
+/* ===================== 渲染：API ===================== */
+function apiCard(f){
+  const sig = '<span class="fx">'+esc(String(f.n||'').split('(')[0])+'</span>' +
+    (String(f.s||'').includes('(') ? '<span class="ar">'+esc(String(f.s).slice(String(f.s).indexOf('(')))+'</span>' : '');
+  let h='<div class="api" data-k="'+esc((f.n+' '+f.s+' '+(f.d||'')).toLowerCase())+'">'+
+    '<div class="hd"><span class="chev">▶</span><span class="sig">'+sig+'</span>'+
+    (f.hot ? '<span class="hot">重点</span>' : '')+
+    '<span class="badge">'+esc(f.c)+'</span></div><div class="bd">';
+  if(f.d) h+='<div class="desc">'+esc(f.d).replace(/\n/g,'<br>')+'</div>';
+  if(f.p){
+    // 参数行有两种写法：[名称, 说明]（2 列）或 [名称, 类型, 说明]（3 列），两种都要能渲染
+    const wide = f.p.some(row=>Array.isArray(row) && row.length>=3);
+    h+='<table class="pt"><tr>' +
+      (wide ? '<th>参数</th><th>类型</th><th>说明</th>' : '<th>参数</th><th>说明</th>') +
+      '</tr>' +
+      f.p.map(row=>{
+        if(!Array.isArray(row)) return '';
+        const cells = wide ? [row[0], row[1], row[2]] : [row[0], row[1]];
+        return '<tr>' + cells.map(cx=>
+          '<td>'+esc(cx===undefined||cx===null ? '' : String(cx))+'</td>').join('') + '</tr>';
+      }).join('') + '</table>';
+  }
+  if(f.rel) f.rel.forEach(r=>{
+    if(!Array.isArray(r) || !Array.isArray(r[1])) return;
+    const wide = r[1].some(x=>Array.isArray(x) && x.length>=2);
+    h+='<div class="rel"><div class="rt">'+esc(r[0])+'</div><table>'+
+      r[1].map(x=>{
+        if(!Array.isArray(x)) return '';
+        const cells = wide ? [x[0], x[1]] : [x[0]];
+        return '<tr>' + cells.map(cx=>
+          '<td>'+esc(cx===undefined||cx===null ? '' : String(cx))+'</td>').join('') + '</tr>';
+      }).join('')+'</table></div>';
+  });
+  if(f.ex) h+=code(f.ex);
+  return h+'</div></div>';
+}
+function renderAPI(){
+  const list = curCat==='all' ? API.functions : API.functions.filter(f=>f.c===curCat);
+  const cat = API.categories.find(c=>c.id===curCat);
+  document.getElementById('crumb').innerHTML = cat ? esc(cat.name) : '函数';
+  let h='<h2 style="font-size:22px;font-weight:400;margin-bottom:14px">函数</h2>';
+  h+='<div class="tip" style="margin-bottom:24px">用搜索框快速定位函数，或点下面的分类筛选。标着<b>重点</b>的是日常写敌人最常用到的条目。</div>';
+  h+='<div class="apibar">'+
+     '<span class="chip '+(curCat==='all'?'on':'')+'" onclick="pickCat(\'all\')">全部 '+API.functions.length+'</span>';
+  API.categories.forEach(c=>{
+    const n=API.functions.filter(f=>f.c===c.id).length;
+    if(!n) return;
+    h+='<span class="chip '+(curCat===c.id?'on':'')+'" onclick="pickCat(\''+c.id+'\')">'+esc(c.name)+' '+n+'</span>';
+  });
+  h+='</div>';
+  if(cat) h+='<p style="color:var(--tx2);font-size:14px;margin-bottom:22px">'+esc(cat.desc)+'</p>';
+  h+='<div id="apilist">'+(list.length?list.map(apiCard).join(''):'<div class="empty">没有匹配的条目</div>')+'</div>';
+  if(curCat==='all') h+=pagerHtml();
+  document.getElementById('wrap').innerHTML=h;
+  bindApi();
+}
+function pickCat(c){
+  curCat=c;
+  document.querySelectorAll('[data-cat]').forEach(x=>x.classList.toggle('on',x.dataset.cat===c));
+  renderAPI();
+  document.getElementById('side').classList.remove('show');
+}
+function bindApi(){
+  document.querySelectorAll('.api>.hd').forEach(hd=>{
+    hd.onclick=()=>hd.parentElement.classList.toggle('open');
+  });
+}
+
+/* ===================== 渲染：物体 ===================== */
+function renderObjects(){
+  const groups = API.objectsGroups || [];
+  const inGroup = o => curObj==='all' || o.g===curObj;
+  const list = API.objects.filter(inGroup);
+  const g = groups.find(x=>x.id===curObj);
+  document.getElementById('crumb').innerHTML = g ? esc(g.name) : '物体';
+
+  let h='<h2 style="font-size:22px;font-weight:400;margin-bottom:14px">物体</h2>'+
+    '<p style="color:var(--tx2);font-size:14.5px;margin-bottom:24px">'+
+    '引擎共 <b style="color:var(--tx);font-weight:400">'+API.objects.length+'</b> 个物体，按用途分为 '+groups.length+' 类。'+
+    '标着<b>重点</b>的是改引擎时最先要理解的几个。所有敌人物体都必须以 <code>battle_enemy</code> 为父物体，'+
+    '弹幕以 <code>battle_bullet</code> 为父物体。</p>';
+
+  // 分类筛选栏
+  h+='<div class="apibar">'+
+     '<span class="chip '+(curObj==='all'?'on':'')+'" onclick="pickObj(\'all\')">全部 '+API.objects.length+'</span>';
+  groups.forEach(x=>{
+    const n=API.objects.filter(o=>o.g===x.id).length;
+    if(!n) return;
+    h+='<span class="chip '+(curObj===x.id?'on':'')+'" onclick="pickObj(\''+x.id+'\')">'+esc(x.name)+' '+n+'</span>';
+  });
+  h+='</div>';
+  if(g) h+='<p style="color:var(--tx2);font-size:14px;margin-bottom:22px">'+esc(g.desc)+'</p>';
+
+  // 列表：选中「全部」时按分类分段并加小标题；选中单一分类时直接平铺
+  const render = (arr) => arr.map(o=>{
+    const vkeys = (o.v||[]).map(v=>Array.isArray(v)?v.join(' '):String(v)).join(' ');
+    const rkeys = (o.rel||[]).map(r=>Array.isArray(r)?String(r[0]):String(r)).join(' ');
+    let s='<div class="ob" data-g="'+esc(o.g||'')+'" data-k="'+
+      esc(((o.n||'')+' '+(o.t||'')+' '+(o.d||'')+' '+vkeys+' '+rkeys).toLowerCase())+'">'+
+      '<h4>'+esc(o.n)+'<span class="tag">'+esc(o.t)+'</span>'+
+      (o.hot ? '<span class="hot">重点</span>' : '')+'</h4>'+
+      '<p>'+esc(o.d).replace(/\n/g,'<br>')+'</p>';
+    if(o.v) s+='<table class="pt"><tr><th>变量</th><th>说明</th></tr>'+
+      o.v.map(v=>'<tr><td>'+esc(v&&v[0])+'</td><td>'+esc(v&&v[1])+'</td></tr>').join('')+'</table>';
+    if(o.rel) o.rel.forEach(r=>{
+      if(!Array.isArray(r) || !Array.isArray(r[1])) return;
+      s+='<div class="rel"><div class="rt">'+esc(r[0])+'</div><table>'+
+        r[1].map(x=>'<tr><td>'+esc(x&&x[0])+'</td><td>'+esc(x&&x[1])+'</td></tr>').join('')+'</table></div>';
+    });
+    return s+'</div>';
+  }).join('');
+
+  if(curObj==='all'){
+    groups.forEach(x=>{
+      const arr=API.objects.filter(o=>o.g===x.id);
+      if(!arr.length) return;
+      h+='<div class="obgrp" data-g="'+x.id+'">'+
+         '<div class="obgrt">'+esc(x.name)+'<span class="obgrc">'+arr.length+'</span></div>'+
+         render(arr)+'</div>';
+    });
+  }else{
+    h+='<div id="oblist">'+(list.length?render(list):'<div class="empty">没有匹配的条目</div>')+'</div>';
+  }
+
+  h+=pagerHtml();
+  document.getElementById('wrap').innerHTML=h;
+}
+function pickObj(g){
+  curObj=g;
+  renderObjects();
+  try{ window.scrollTo(0,0); }catch(e){}
+  document.getElementById('side').classList.remove('show');
+}
+
+/* ===================== 渲染：教程 ===================== */
+const TUT_SECTIONS = [{"h":"引擎速览","lead":"先花三分钟认识项目里有什么、代码怎么组织，后面的写法都建立在这些概念上。","body":"\n      <h4>这是什么</h4>\n      <p>UNDERTALE Engine Ultra 是用 GameMaker Studio 2 制作的 Undertale 同人游戏引擎（当前 <code>ENGINE_VERSION v2.0.1</code>，60 帧），基于 TML 的 UndertaleEngine 改进扩展。打开工程根目录的 <code>UNDERTALE Engine Ultra.yyp</code> 按 F5 即可运行：Logo → 主菜单 → 示例地图 <code>room_area_0</code>，直接就能体验完整的地图、对话与战斗流程。</p>\n\n      <h4>项目里有什么</h4>\n      <table class=\"pt\">\n        <tr><th>目录</th><th>规模</th><th>内容</th></tr>\n        <tr><td>scripts/</td><td>301 个模块</td><td>引擎全部函数，命名前缀即模块名</td></tr>\n        <tr><td>objects/</td><td>91 个物体</td><td>战斗、角色、商店、UI 等实体</td></tr>\n        <tr><td>rooms/</td><td>8 个房间</td><td>初始化、Logo、主菜单、示例地图、战斗、商店、设置、游戏结束</td></tr>\n        <tr><td>sprites/ · sounds/</td><td>91 · 38</td><td>贴图与音频资源</td></tr>\n      </table>\n\n      <h4>脚本层：调函数就够了</h4>\n      <p>引擎所有能力都以 <code>XXX_DoSomething()</code> 函数暴露，<b>前缀即模块</b>。你 90% 的代码只需要调函数，不用碰物体内部：</p>\n      <table class=\"pt\">\n        <tr><th>前缀</th><th>规模</th><th>负责什么</th></tr>\n        <tr><td>Battle_*</td><td>108</td><td>战斗核心：回合流程、战斗框、弹幕、菜单、敌人接口</td></tr>\n        <tr><td>Player_*</td><td>58</td><td>玩家：HP/LV、装备、伤害公式、移动与初始数据</td></tr>\n        <tr><td>Shop_* / Item_* / Inventory</td><td>27</td><td>商店、物品类型、背包</td></tr>\n        <tr><td>Demo_*</td><td>19</td><td>输入录制与回放（调试、自动演示）</td></tr>\n        <tr><td>Encounter_* / Storage_* / BGM_*</td><td>各 14</td><td>遭遇战配置 / 四级存档 / 音乐播放</td></tr>\n        <tr><td>Dialog_* / TextTyper</td><td>8</td><td>对话框与打字机</td></tr>\n        <tr><td>Macro_*</td><td>11</td><td>全部枚举与常量（战斗、输入、存储键名、绘制深度…）</td></tr>\n        <tr><td>Anim / Input / Time / Camera / Fader 等</td><td>—</td><td>补间动画、输入映射、计时、镜头、淡入淡出等基础设施</td></tr>\n      </table>\n\n      <h4>物体层：继承 + User Event</h4>\n      <p>91 个物体里，先记住这几条继承链：</p>\n      <table class=\"pt\">\n        <tr><th>父物体</th><th>现成派生</th><th>怎么用</th></tr>\n        <tr><td>battle_enemy</td><td>battle_enemy_test</td><td>你的敌人把它设为 Parent，在 User Event 0~13 里写回合逻辑</td></tr>\n        <tr><td>battle_bullet</td><td>_bone / _bone_3d / _gb / _arrow</td><td>骨头、冲击波、箭矢都在这条链上，自定义弹幕同样继承它</td></tr>\n        <tr><td>battle_soul</td><td>red / blue / green / yellow / orange / aqua / purple</td><td>七种灵魂玩法，<code>Battle_SetSoul()</code> 一行切换</td></tr>\n        <tr><td>char_*</td><td>char_player / char_sans / char_save / char_sign</td><td>地图角色与交互物</td></tr>\n        <tr><td>trigger_*</td><td>trigger_warp / trigger_shop</td><td>碰撞即触发换图 / 进商店</td></tr>\n      </table>\n      <p>唯一例外是 <code>world</code>：没有父物体和精灵、persistent 常驻，是引擎的总控（详见「物体」页的 world）。</p>\n\n      <h4>数据层：四级存储</h4>\n      <p>所有持久化数据走 <code>Storage_*</code> 函数 + <code>FLAG_*</code> 键名宏（定义在 <code>Macro_Flag</code>），分四级：<b>Static</b>（存档点落盘的进度）、<b>Dynamic</b>（与存档槽绑定的动态数据）、<b>Info</b>（存档界面展示）、<b>Temp</b>（跨房间临时传递，不落盘）。</p>"}];
+
+function renderTutorial(){
+  document.getElementById('crumb').innerHTML='教程';
+  const S=API.snippets||{};
+  let h='<h2 style="font-size:22px;font-weight:400;margin-bottom:14px">教程</h2>'+
+    '<p style="color:var(--tx2);font-size:14.5px;margin-bottom:0">'+
+    'UNDERTALE Engine Ultra 是基于 TML 的 <a href="https://github.com/TML233/UndertaleEngine" target="_blank" rel="noopener" style="color:var(--acc);text-decoration:none">UndertaleEngine</a> 改进扩展的开源 GameMaker 引擎，'+
+    '用于制作 Undertale 同人游戏。本教程讲清引擎的整体结构；各系统的具体写法见「示例」页，函数与物体细节见「函数」「物体」页。'+
+    '共 '+API.functions.length+' 个 API 条目、'+API.objects.length+' 个物体，均与引擎源码交叉核对过。</p>'+
+    '<div class="chips">'+
+    '<a href="https://github.com/znm2500/Undertale-Engine-Ultra" target="_blank" rel="noopener"><b>GitHub 仓库</b> · 源码与下载</a>'+
+    '<a href="https://github.com/znm2500/Undertale-Engine-Ultra/issues" target="_blank" rel="noopener">反馈 Bug / 提建议</a>'+
+    '<span>QQ 交流群：<b style="color:var(--tx)">964060828</b></span>'+
+    '<a href="https://github.com/TML233/UndertaleEngine" target="_blank" rel="noopener">原版引擎 · TML UndertaleEngine</a>'+
+    '</div>'+
+    '<div class="tip" style="margin-top:18px"><b>三分钟跑起来：</b>① 安装 <a href="https://www.yoyogames.com/en/gamemaker" target="_blank" rel="noopener" style="color:var(--acc);text-decoration:none">GameMaker Studio 2</a>（v2022.x 或更高）→ '+
+    '② 从 <a href="https://github.com/znm2500/Undertale-Engine-Ultra" target="_blank" rel="noopener" style="color:var(--acc);text-decoration:none">GitHub 仓库</a> 克隆或下载本工程 → '+
+    '③ 在 IDE 中选择 Import Project，打开根目录的 <code>UNDERTALE Engine Ultra.yyp</code> → ④ 按 F5 编译运行。<br>'+
+    '遇到问题可以到 QQ 群 <b>964060828</b> 交流；明确的引擎 bug 请到 GitHub Issues 提 issue，附上复现步骤。各系统的实战写法都在「示例」页。</div>';
+
+  TUT_SECTIONS.forEach(s=>{
+    let b = s.body;
+    // 代码占位
+    b = b.replace(/@@CODE@@([\s\S]*?)@@END@@/g, (m, src) => code(src));
+    // snippet 占位
+    b = b.replace(/__SNIPPET_([A-Za-z0-9_]+)__/g, (m, k) => code(S[k]||('// 缺少 snippet: '+k)));
+    // 敌人事件表
+    b = b.replace('__ENEMYEVENTS__', (API.enemyEvents||[]).map(e=>
+      '<tr><td>'+esc(e[0])+'</td><td style="font-family:var(--mono);color:var(--tx2)">event_user('+e[1]+')</td><td>'+esc(e[2])+'</td></tr>'
+    ).join(''));
+    // 弹幕类型表
+    b = b.replace('__BONETYPES__', (API.boneTypes||[]).map(t=>
+      '<tr><td>'+esc(t.t)+'</td><td>'+esc(t.n)+'</td><td>'+esc(t.d)+'</td></tr>'
+    ).join(''));
+
+    h+='<div class="sec"><h3>'+esc(s.h)+'</h3>'+
+       '<div class="lead">'+s.lead+'</div>'+
+       '<div class="card">'+b+'</div></div>';
+  });
+
+  h+=pagerHtml();
+  document.getElementById('wrap').innerHTML=h;
+}
+
+/* ===================== 搜索 ===================== */
+const qEl=document.getElementById('q');
+let lastKey='';
+qEl.addEventListener('input',()=>{
+  const k=qEl.value.trim().toLowerCase();
+  if(k===lastKey) return;
+  const wasSearching = !!lastKey;
+  lastKey=k;
+
+  if(!k){
+    if(wasSearching){
+      if(curView==='api') renderAPI();
+      else if(curView==='objects') renderObjects();
+      else if(curView==='examples') renderExamples();
+      qEl.blur();
+    }
+    return;
+  }
+  if(curView!=='api' && curView!=='objects' && curView!=='examples'){
+    curCat='all';
+    switchView('api');
+    document.querySelectorAll('[data-cat]').forEach(x=>x.classList.toggle('on',x.dataset.cat==='all'));
+  }
+  // 在 Objects 视图搜索时，先回到「全部」以免只搜到一个分组
+  if(curView==='objects' && curObj!=='all'){
+    curObj='all';
+    renderObjects();
+    document.querySelectorAll('[data-objg]').forEach(x=>x.classList.toggle('on',x.dataset.objg==='all'));
+  }
+  // 在示例视图搜索时同理：先回到「全部」，并退出单篇详情
+  if(curView==='examples' && (curExLv!=='all' || curEx)){
+    curExLv='all'; curEx=null;
+    renderExamples();
+    document.querySelectorAll('[data-exlv]').forEach(x=>x.classList.toggle('on',x.dataset.exlv==='all'));
+    document.querySelectorAll('[data-exid]').forEach(x=>x.classList.toggle('on',x.dataset.exid==='all'));
+  }
+  document.querySelectorAll('#apilist .api').forEach(c=>{
+    const ok=c.dataset.k.includes(k);
+    c.style.display=ok?'':'none';
+    if(ok) c.classList.add('open'); else c.classList.remove('open');
+  });
+  // 物体：先过滤单条，再收敛空分组；侧栏同步隐藏无命中的分类
+  document.querySelectorAll('.ob').forEach(c=>{
+    c.style.display=c.dataset.k.includes(k)?'':'none';
+  });
+  document.querySelectorAll('.obgrp').forEach(g=>{
+    const any=[...g.querySelectorAll('.ob')].some(o=>o.style.display!=='none');
+    g.style.display=any?'':'none';
+  });
+  document.querySelectorAll('[data-objg]').forEach(x=>{
+    if(x.dataset.objg==='all') return;
+    const hit=API.objects.some(o=>o.g===x.dataset.objg &&
+      (o.n+' '+o.t+' '+o.d).toLowerCase().includes(k));
+    x.style.display=hit?'':'none';
+  });
+  document.querySelectorAll('[data-exid]').forEach(x=>{
+    if(x.dataset.exid==='all') return;
+    const e=(typeof EXAMPLES!=='undefined')&&EXAMPLES.find(y=>y.id===x.dataset.exid);
+    x.style.display=(e && (e.title+' '+e.scene+' '+e.level).toLowerCase().includes(k))?'':'none';
+  });
+  // 示例：先过滤单条，再收敛空分组；侧栏同步隐藏无命中的分级
+  document.querySelectorAll('.sec.ex').forEach(c=>{
+    c.style.display=c.dataset.k.includes(k)?'':'none';
+  });
+  document.querySelectorAll('.exgrp').forEach(g=>{
+    const any=[...g.querySelectorAll('.sec.ex')].some(o=>o.style.display!=='none');
+    g.style.display=any?'':'none';
+  });
+  document.querySelectorAll('[data-exlv]').forEach(x=>{
+    if(x.dataset.exlv==='all') return;
+    const hit=EXAMPLES.some(e=>e.level===x.dataset.exlv &&
+      (e.title+' '+e.scene+' '+e.level).toLowerCase().includes(k));
+    x.style.display=hit?'':'none';
+  });
+});
+
+/* ===================== 启动 ===================== */
+buildNav();
+renderTutorial();
+</script>
 </body>
 </html>

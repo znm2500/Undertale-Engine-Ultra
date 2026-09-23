@@ -2,14 +2,14 @@
 const fs = require('fs');
 
 const DOCS = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
-const HTML = DOCS + 'UNDERTALE-Engine-Ultra-手册.html';
+const HTML = DOCS + 'index.html';
 const LOGP = DOCS + 'tools/_tut_cut_custom.txt';
 
 const lines = [];
 function log(x) { lines.push(x); console.log(x); }
 
 // ---------- 0. 备份 ----------
-const BAK = DOCS + '_bak8-UNDERTALE-Engine-Ultra-手册.html';
+const BAK = DOCS + '_bak8-index.html';
 fs.copyFileSync(HTML, BAK);
 log('备份完成: _bak8-...html');
 

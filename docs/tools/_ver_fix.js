@@ -9,14 +9,14 @@ const die = (s) => { out('FATAL: ' + s); fs.writeFileSync(BASE + 'tools/_ver_fix
 const count = (s, sub) => s.split(sub).length - 1;
 
 // ---------- 备份 ----------
-fs.copyFileSync(BASE + 'UNDERTALE-Engine-Ultra-手册.html', BASE + '_bak14-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(BASE + 'index.html', BASE + '_bak14-index.html');
 fs.copyFileSync(BASE + 'tools/_verify.js', BASE + 'tools/_verify.js.bak5');
 fs.copyFileSync(BASE + 'tools/_tut_overview.js', BASE + 'tools/_tut_overview.js.bak');
 fs.copyFileSync(BASE + '_TODO.md', BASE + '_TODO.md.bak4');
 out('备份完成: _bak14-...html / _verify.js.bak5 / _tut_overview.js.bak / _TODO.md.bak4');
 
 // ---------- 1. 手册 HTML ----------
-const htmlPath = BASE + 'UNDERTALE-Engine-Ultra-手册.html';
+const htmlPath = BASE + 'index.html';
 let h = fs.readFileSync(htmlPath, { encoding: 'utf8' });
 if (count(h, 'v1.4.0') !== 1) die('HTML 里 v1.4.0 出现次数不是 1，中止');
 

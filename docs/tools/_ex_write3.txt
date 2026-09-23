@@ -1,5 +1,0 @@
-开工核对通过：外链图 ×2、准备块均在
-vm 载入验证通过：EXAMPLES=3，lang 序列 gml,gml,text,img，前两篇外链图未受影响
-_verify.js: hOne3 渲染、占位断言改「无 base64 残留」、示例3 两条断言已加
-临时备份已删除
-ALL OK

@@ -1,6 +1,6 @@
 // 重写教程页「引擎速览」，保留「引擎的启动流程」，删除其后所有章节
 const fs = require('fs');
-const p = 'docs/UNDERTALE-Engine-Ultra-手册.html';
+const p = 'docs/index.html';
 let s = fs.readFileSync(p, 'utf8');
 
 const lineRe = /^const TUT_SECTIONS = (.*)$/m;

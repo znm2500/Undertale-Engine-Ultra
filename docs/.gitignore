@@ -7,3 +7,12 @@ _backup-*.gml
 # 校验脚本生成的报告
 _verify.txt
 _panel_audit.txt
+
+# 一次性脚本的运行日志 / 片段（可再生）
+tools/*.txt
+
+# 管线中间产物（重跑 _sig / _plan / _planobj 即再生）
+# ⚠ tools/_objvars.json 保留 —— _verify.js 运行时依赖它
+tools/_sig.json
+tools/_plan-fn.json
+tools/_plan-obj.json

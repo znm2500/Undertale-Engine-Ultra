@@ -1,4 +1,0 @@
-备份完成: _bak13-...html / _verify.js.bak4
-HTML: title + 侧栏版本行 + CSS 已插入，重读断言通过
-_verify.js 已加断言「版本号 v2.0.1 已标注」
-ALL OK

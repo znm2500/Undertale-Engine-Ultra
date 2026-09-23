@@ -1,5 +1,0 @@
-备份完成: _bak10-manual-examples.js / _verify.js.bak2
-manual-examples.js 写入 1 个示例（ex_encounter_battle_enemy_test，入门）
-_verify.js 三条断言 + 详情渲染目标已更新
-重读断言通过
-ALL OK

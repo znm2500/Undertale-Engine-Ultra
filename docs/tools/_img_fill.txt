@@ -1,5 +1,0 @@
-GIF 读取成功: 500569 bytes → base64 667450 chars
-备份完成: _bak15-manual-examples.js / _verify.js.bak6
-manual-examples.js: 占位块已替换为真图 data URI（标题改「战斗画面 · turn_test」），重读断言通过
-_verify.js: 断言改为「示例画面块渲染正常（真图）」
-ALL OK

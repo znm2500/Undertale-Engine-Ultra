@@ -54,7 +54,7 @@ if (ex2.length > 100000) die('文件仍偏大（' + ex2.length + 'B），疑似�
 out('manual-examples.js: 两处 b 已换为相对路径，文件 ' + ex2.length + ' B（原 ~2.9MB）');
 
 // ---------- 3. HTML imgBlock() 改造 ----------
-const htmlPath = BASE + 'UNDERTALE-Engine-Ultra-手册.html';
+const htmlPath = BASE + 'index.html';
 let h = fs.readFileSync(htmlPath, { encoding: 'utf8' });
 const fnRe = /function imgBlock\(b\)\{[\s\S]*?\}/;
 const fm = h.match(fnRe);

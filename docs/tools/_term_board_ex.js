@@ -17,7 +17,7 @@ const P = 'C:/Users/Weaver/Documents/GitHub/Undertale-Engine-Ultra/docs/';
 
 // ---------- 2. HTML TUT_SECTIONS ----------
 {
-  const FILE = P + 'UNDERTALE-Engine-Ultra-手册.html';
+  const FILE = P + 'index.html';
   let html = fs.readFileSync(FILE, 'utf8');
 
   const KEY = 'const TUT_SECTIONS = [';

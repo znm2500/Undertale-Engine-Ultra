@@ -30,8 +30,8 @@ function parseArray(html, label) {
   return { arr, start, end };
 }
 
-const curHtml = fs.readFileSync(P + 'UNDERTALE-Engine-Ultra-手册.html', 'utf8');
-const bak3 = fs.readFileSync(P + '_bak3-UNDERTALE-Engine-Ultra-手册.html', 'utf8');
+const curHtml = fs.readFileSync(P + 'index.html', 'utf8');
+const bak3 = fs.readFileSync(P + '_bak3-index.html', 'utf8');
 const cur = parseArray(curHtml, '当前');
 const old = parseArray(bak3, '_bak3');
 
@@ -67,12 +67,12 @@ console.log('恢复章节内 面板→战斗框:', fixCount, '处');
 if (DRY) { console.log('（dry 模式，未写回）'); process.exit(0); }
 
 // 写回：替换当前文件的数组字面量
-fs.copyFileSync(P + 'UNDERTALE-Engine-Ultra-手册.html', P + '_bak5-UNDERTALE-Engine-Ultra-手册.html');
+fs.copyFileSync(P + 'index.html', P + '_bak5-index.html');
 const html2 = curHtml.slice(0, cur.start) + JSON.stringify(dedup) + curHtml.slice(cur.end + 1);
-fs.writeFileSync(P + 'UNDERTALE-Engine-Ultra-手册.html', html2, { encoding: 'utf8' });
+fs.writeFileSync(P + 'index.html', html2, { encoding: 'utf8' });
 
 // 自检：用 verify 同款朴素解析再读一遍
-const check = parseArray(fs.readFileSync(P + 'UNDERTALE-Engine-Ultra-手册.html', 'utf8'), '写回后');
-console.log('写回后章节数:', check.arr.length, '| 大小', (fs.statSync(P + 'UNDERTALE-Engine-Ultra-手册.html').size / 1024).toFixed(1), 'KB');
+const check = parseArray(fs.readFileSync(P + 'index.html', 'utf8'), '写回后');
+console.log('写回后章节数:', check.arr.length, '| 大小', (fs.statSync(P + 'index.html').size / 1024).toFixed(1), 'KB');
 if (check.arr.length !== dedup.length) throw new Error('写回后章节数不符！');
 console.log('OK');

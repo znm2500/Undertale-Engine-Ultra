@@ -1,2 +1,0 @@
-备份完成: _bak20-manual-examples.js
-FATAL: lang 序列不对: gml,,gml,gml,text,img
